@@ -1857,6 +1857,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
         },
         onPause: function (event, isFromM6, isFromCpPause) {
             if(localStorage.getItem('index')){
+                console.log("incrementar");
                 var index = localStorage.getItem('index');
                 index++;
                 localStorage.setItem('index', index);
