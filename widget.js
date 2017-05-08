@@ -1589,6 +1589,11 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             this.onPlayNextLine();
         },
         onPause: function (event, isFromM6, isFromCpPause) {
+            if(localStorage.getItem('index')){
+                var index = localStorage.getItem('index');
+                index++;
+                localStorage.setItem('index', index);
+            }
             if (this.isPaused) {
                 console.log("onPause. was previously paused by user, unpausing");
                 this.isPaused = false;
@@ -1644,6 +1649,9 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             console.groupEnd();
         },
         onStop: function (event) {
+            
+            localStorage.setItem('index', 0);
+            
 
             if (event && ('viaOnExecute' in event || 'viaOnComplete' in event)) {
                 // this was triggered after seeing the last onExecute cmd
