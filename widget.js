@@ -1589,7 +1589,13 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             this.onPlayNextLine();
         },
         onPause: function (event, isFromM6, isFromCpPause) {
-            
+            if(localStorage.getItem('index') && this.isPaused){
+                console.log("incrementar");
+                macro.status("incrementar");
+                var index = localStorage.getItem('index');
+                index++;
+                localStorage.setItem('index', index);
+            }
             if (this.isPaused) {
                 console.log("onPause. was previously paused by user, unpausing");
                 this.isPaused = false;
