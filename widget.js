@@ -1593,8 +1593,10 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             if(localStorage.getItem('index') && this.isPaused){
                
                 macro.status("incrementar");
+                
                 var index = localStorage.getItem('index');
                 index++;
+                console.log(index);
                 localStorage.setItem('index', index);
             }
             
