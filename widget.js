@@ -1423,7 +1423,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             //tr.parent().find('td').removeClass('alert-danger').css('background-color', 'none');
             tr.find('.glyphicon-ok').css('color', '#a94442').parent().css('background-color', '#f2dede');
             this.currentLine = indx - 1;
-            
+            localStorage.setItem('currentLine', this.currentLine);
             console.groupEnd();
 
         },
@@ -1578,6 +1578,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             console.log("onStepBack. ");
             if (evt) this.hideToolChangeDiv(false);
             this.currentLine = this.currentLine - 2;
+            localStorage.setItem('currentLine', this.currentLine);
             if (this.currentLine < 0) this.currentLine = 0;
             this.isPlayStep = true;
             this.onPlayNextLine();
@@ -1669,6 +1670,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 this.isPlaying = false;
                 this.isPaused = false;
                 this.currentLine = 0; 
+                localStorage.setItem('currentLine', this.currentLine);
                 this.isResetMetaBeforePlay = true;
             } else {
                 
@@ -1989,7 +1991,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
 
             console.log("this.currentLine:", this.currentLine);
             var ctr = this.currentLine != null ? this.currentLine : 0;
-
+            
             if (ctr >= this.fileLines.length) {
                 console.log("at end of buffering gcode. exiting.");
                 chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "Gcode Sender", "Done buffering Gcode.", 3000, true);
@@ -2036,7 +2038,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 this.gotoLine(ctr + 1, true);
              */
             this.currentLine++;
-
+            localStorage.setItem('currentLine', this.currentLine);
             if (this.statEls == null) {
                 //console.log("lazy loading statEls");
                 this.statEls = {
