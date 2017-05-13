@@ -1578,8 +1578,8 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             console.log("onStepBack. ");
             if (evt) this.hideToolChangeDiv(false);
             this.currentLine = this.currentLine - 2;
-            localStorage.setItem('currentLine', this.currentLine);
             if (this.currentLine < 0) this.currentLine = 0;
+            localStorage.setItem('currentLine', this.currentLine);
             this.isPlayStep = true;
             this.onPlayNextLine();
         },
@@ -1686,9 +1686,10 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 if (event)
                     this.isResetMetaBeforePlay = true;
                 
-                if (event)
+                if (event){
                     this.currentLine = 0;
-                
+                    localStorage.setItem('currentLine', this.currentLine);
+                }
                 // wipe metadata of isQueue,isWritten,isComplete
                 if (event)
                     this.resetMetaDataQueueWriteComplete();
@@ -1991,7 +1992,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
 
             console.log("this.currentLine:", this.currentLine);
             var ctr = this.currentLine != null ? this.currentLine : 0;
-            
+            localStorage.setItem('currentLine', ctr);
             if (ctr >= this.fileLines.length) {
                 console.log("at end of buffering gcode. exiting.");
                 chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "Gcode Sender", "Done buffering Gcode.", 3000, true);
