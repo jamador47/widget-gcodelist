@@ -1429,7 +1429,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             //tr.parent().find('td').removeClass('alert-danger').css('background-color', 'none');
             tr.find('.glyphicon-ok').css('color', '#a94442').parent().css('background-color', '#f2dede');
             this.currentLine = indx - 1;
-            
+            localStorage.setItem('currentLine', this.currentLine);
             console.groupEnd();
 
         },
@@ -1585,6 +1585,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             if (evt) this.hideToolChangeDiv(false);
             this.currentLine = this.currentLine - 2;
             if (this.currentLine < 0) this.currentLine = 0;
+            localStorage.setItem('currentLine', this.currentLine);
             this.isPlayStep = true;
             this.onPlayNextLine();
         },
@@ -1595,6 +1596,17 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             this.onPlayNextLine();
         },
         onPause: function (event, isFromM6, isFromCpPause) {
+            
+            if(localStorage.getItem('index') && this.isPaused){
+               
+                macro.status("incrementar");
+                
+                var index = localStorage.getItem('index');
+                index++;
+                console.log(index);
+                localStorage.setItem('index', index);
+            }
+            
             if (this.isPaused) {
                 console.log("onPause. was previously paused by user, unpausing");
                 this.isPaused = false;
@@ -1650,6 +1662,9 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             console.groupEnd();
         },
         onStop: function (event) {
+            
+            localStorage.setItem('index', 0);
+            
 
             if (event && ('viaOnExecute' in event || 'viaOnComplete' in event)) {
                 // this was triggered after seeing the last onExecute cmd
@@ -1661,6 +1676,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 this.isPlaying = false;
                 this.isPaused = false;
                 this.currentLine = 0; 
+                localStorage.setItem('currentLine', this.currentLine);
                 this.isResetMetaBeforePlay = true;
             } else {
                 
@@ -1676,9 +1692,10 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 if (event)
                     this.isResetMetaBeforePlay = true;
                 
-                if (event)
+                if (event){
                     this.currentLine = 0;
-                
+                    localStorage.setItem('currentLine', this.currentLine);
+                }
                 // wipe metadata of isQueue,isWritten,isComplete
                 if (event)
                     this.resetMetaDataQueueWriteComplete();
@@ -1981,7 +1998,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
 
             console.log("this.currentLine:", this.currentLine);
             var ctr = this.currentLine != null ? this.currentLine : 0;
-
+            localStorage.setItem('currentLine', ctr);
             if (ctr >= this.fileLines.length) {
                 console.log("at end of buffering gcode. exiting.");
                 chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "Gcode Sender", "Done buffering Gcode.", 3000, true);
@@ -2028,7 +2045,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 this.gotoLine(ctr + 1, true);
              */
             this.currentLine++;
-
+            localStorage.setItem('currentLine', this.currentLine);
             if (this.statEls == null) {
                 //console.log("lazy loading statEls");
                 this.statEls = {

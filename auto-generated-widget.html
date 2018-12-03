@@ -474,10 +474,10 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
 cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints", "jqueryuiResizeable", "jquerycookie"], function () {
     return {
         id: "com-chilipeppr-widget-gcode",
-        url: "http://raw.githubusercontent.com/chilipeppr/widget-gcodelist/master/auto-generated-widget.html",       // The final URL of the working widget as a single HTML file with CSS and Javascript inlined. You can let runme.js auto fill this if you are using Cloud9.
-        fiddleurl: "http://ide.c9.io/chilipeppr/widget-gcodelist", // The edit URL. This can be auto-filled by runme.js in Cloud9 if you'd like, or just define it on your own to help people know where they can edit/fork your widget
-        githuburl: "http://github.com/chilipeppr/widget-gcodelist", // The backing github repo
-        testurl: "http://widget-gcodelist-chilipeppr.c9users.io/widget.html",   // The standalone working widget so can view it working by itself
+        url: "http://raw.githubusercontent.com/jeruick/widget-gcodelist/master/auto-generated-widget.html",       // The final URL of the working widget as a single HTML file with CSS and Javascript inlined. You can let runme.js auto fill this if you are using Cloud9.
+        fiddleurl: "http://ide.c9.io/eaclaya/widget-gcode-list", // The edit URL. This can be auto-filled by runme.js in Cloud9 if you'd like, or just define it on your own to help people know where they can edit/fork your widget
+        githuburl: "http://github.com/jeruick/widget-gcodelist", // The backing github repo
+        testurl: "http://widget-gcode-list-eaclaya.c9users.io/widget.html",   // The standalone working widget so can view it working by itself
         name: "Widget / Gcode v8",
         desc: "The Gcode widget shows you the Gcode loaded into your workspace, lets you send it to the serial port, get back per line status, see an estimated length of time to execute the Gcode, navigate to the XYZ position of a specific line, and much more.",
         publish: {
@@ -1696,7 +1696,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             //tr.parent().find('td').removeClass('alert-danger').css('background-color', 'none');
             tr.find('.glyphicon-ok').css('color', '#a94442').parent().css('background-color', '#f2dede');
             this.currentLine = indx - 1;
-            
+            localStorage.setItem('currentLine', this.currentLine);
             console.groupEnd();
 
         },
@@ -1852,6 +1852,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             if (evt) this.hideToolChangeDiv(false);
             this.currentLine = this.currentLine - 2;
             if (this.currentLine < 0) this.currentLine = 0;
+            localStorage.setItem('currentLine', this.currentLine);
             this.isPlayStep = true;
             this.onPlayNextLine();
         },
@@ -1862,6 +1863,17 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             this.onPlayNextLine();
         },
         onPause: function (event, isFromM6, isFromCpPause) {
+            
+            if(localStorage.getItem('index') && this.isPaused){
+               
+                macro.status("incrementar");
+                
+                var index = localStorage.getItem('index');
+                index++;
+                console.log(index);
+                localStorage.setItem('index', index);
+            }
+            
             if (this.isPaused) {
                 console.log("onPause. was previously paused by user, unpausing");
                 this.isPaused = false;
@@ -1917,6 +1929,9 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             console.groupEnd();
         },
         onStop: function (event) {
+            
+            localStorage.setItem('index', 0);
+            
 
             if (event && ('viaOnExecute' in event || 'viaOnComplete' in event)) {
                 // this was triggered after seeing the last onExecute cmd
@@ -1928,6 +1943,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 this.isPlaying = false;
                 this.isPaused = false;
                 this.currentLine = 0; 
+                localStorage.setItem('currentLine', this.currentLine);
                 this.isResetMetaBeforePlay = true;
             } else {
                 
@@ -1943,9 +1959,10 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 if (event)
                     this.isResetMetaBeforePlay = true;
                 
-                if (event)
+                if (event){
                     this.currentLine = 0;
-                
+                    localStorage.setItem('currentLine', this.currentLine);
+                }
                 // wipe metadata of isQueue,isWritten,isComplete
                 if (event)
                     this.resetMetaDataQueueWriteComplete();
@@ -2248,7 +2265,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
 
             console.log("this.currentLine:", this.currentLine);
             var ctr = this.currentLine != null ? this.currentLine : 0;
-
+            localStorage.setItem('currentLine', ctr);
             if (ctr >= this.fileLines.length) {
                 console.log("at end of buffering gcode. exiting.");
                 chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "Gcode Sender", "Done buffering Gcode.", 3000, true);
@@ -2295,7 +2312,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 this.gotoLine(ctr + 1, true);
              */
             this.currentLine++;
-
+            localStorage.setItem('currentLine', this.currentLine);
             if (this.statEls == null) {
                 //console.log("lazy loading statEls");
                 this.statEls = {
