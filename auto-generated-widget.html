@@ -3169,7 +3169,8 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
         lastLineMarkedExecuted: null,
         onExecute: function(data) {
             // write it to the log
-            alert("SE EJECUTO");
+            alert(data);
+          
             //console.group("gcode widget - onExecute");
             console.log("onExecute data:", data);
             console.log("onExecute lastLineMarkedExecuted:", this.lastLineMarkedExecuted,
