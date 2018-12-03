@@ -264,6 +264,9 @@
     </style>
 
     <script type='text/javascript'>
+//variables DETECAP
+    const serialPort = "/dev/ttyUSB0";
+ var contadordelinea = 0;
     //<![CDATA[
 // Load additional files via Chilipeppr's require.js
 requirejs.config({
@@ -3201,9 +3204,303 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             if ('line' in item && item.line >= 0) {
                 
                 console.log("onExecute. seems we have an id for this item with a g. item:", item);
-                // get id
+                contadordelinea = contadordelinea + 1;
                 var idnum = item.line;
-                alert(idnum);
+                var index = idnum;
+                console.log(idnum);
+                console.log(contadordelinea);
+
+                //COMIENZA
+
+
+                if (index == contadordelinea){
+   // our id is always 1 ahead of the gcode.lines array index, i.e.
+   // line 1 in the widget is this.gcode.lines[0]
+   var gcodeline = this.gcode.lines[index -1 ];
+
+
+   macro.status(gcodeline);
+   // Try to match M3, M5, and M30 (program end)
+   // The \b is a word boundary so looking for M3 doesn't also
+   // hit on M30
+   if (gcodeline.match(/\bM3\b/i)) {
+       console.log("ENTRO A M3");
+    var cmd  = "!";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+
+      
+      var HttpClient = function() {
+        this.get = function(aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function() { 
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open( "GET", aUrl, true ); 
+        anHttpRequest.send( null ); 
+        }
+        }
+        var theurl='http://192.168.0.88/arduino/digital/29/1';
+        var client = new HttpClient();
+        client.get(theurl, function(response) { 
+        var response1 = JSON.parse(response);
+             }); 
+                               
+                               
+                           var HttpClient = function() {
+        this.get = function(aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function() { 
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open( "GET", aUrl, true ); 
+        anHttpRequest.send( null ); 
+        }
+        }
+        var theurl='http://192.168.0.88/arduino/digital/19/1';
+        var client = new HttpClient();
+        client.get(theurl, function(response) { 
+        var response1 = JSON.parse(response);
+             }); 
+                               
+                           var HttpClient = function() {
+        this.get = function(aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function() { 
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open( "GET", aUrl, true ); 
+        anHttpRequest.send( null ); 
+        }
+        }
+        var theurl='http://192.168.0.88/arduino/digital/22/1';
+        var client = new HttpClient();
+        client.get(theurl, function(response) { 
+        var response1 = JSON.parse(response);
+             }); 
+
+
+             setTimeout(function(){ var cmd  = "~";
+             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+              }, 5000);
+      
+  
+   } else if (gcodeline.match(/\bM5\b/i)) {
+    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+
+    console.log("Llego a M5");
+    var HttpClient = function() {
+      this.get = function(aUrl, aCallback) {
+      var anHttpRequest = new XMLHttpRequest();
+      anHttpRequest.onreadystatechange = function() { 
+      if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+      aCallback(anHttpRequest.responseText);
+      }
+      anHttpRequest.open( "GET", aUrl, true ); 
+      anHttpRequest.send( null ); 
+      }
+      }
+      var theurl='http://192.168.0.88/arduino/digital/22/0';
+      var client = new HttpClient();
+      client.get(theurl, function(response) { 
+      var response1 = JSON.parse(response);
+           }); 
+                             
+                             
+                         var HttpClient = function() {
+      this.get = function(aUrl, aCallback) {
+      var anHttpRequest = new XMLHttpRequest();
+      anHttpRequest.onreadystatechange = function() { 
+      if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+      aCallback(anHttpRequest.responseText);
+      }
+      anHttpRequest.open( "GET", aUrl, true ); 
+      anHttpRequest.send( null ); 
+      }
+      }
+      var theurl='http://192.168.0.88/arduino/digital/19/0';
+      var client = new HttpClient();
+      client.get(theurl, function(response) { 
+      var response1 = JSON.parse(response);
+           }); 
+                             
+                         var HttpClient = function() {
+      this.get = function(aUrl, aCallback) {
+      var anHttpRequest = new XMLHttpRequest();
+      anHttpRequest.onreadystatechange = function() { 
+      if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+      aCallback(anHttpRequest.responseText);
+      }
+      anHttpRequest.open( "GET", aUrl, true ); 
+      anHttpRequest.send( null ); 
+      }
+      }
+      var theurl='http://192.168.0.88/arduino/digital/29/0';
+      var client = new HttpClient();
+      client.get(theurl, function(response) { 
+      var response1 = JSON.parse(response);
+           });
+
+    setTimeout(function(){ var cmd  = "~";
+             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+              }, 5000);
+   
+   } else if (gcodeline.match(/\bM30\b/i)) {
+    macro.status("Done running our gcode. Laser off.");
+    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + this.arduinoSerialPort + " laser-off\n");
+    this.uninit();
+   }
+  }
+  else{
+
+    
+    while(index>contadordelinea){
+      var gcodeline = this.gcode.lines[contadordelinea-1];
+      macro.status("Lineasaltada");
+      var cmd  = "!";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      
+      if (gcodeline.match(/\bM3\b/i)) {
+        console.log(
+               "llego a m3"
+           );
+        var cmd  = "!";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+    
+         
+          var HttpClient = function() {
+            this.get = function(aUrl, aCallback) {
+            var anHttpRequest = new XMLHttpRequest();
+            anHttpRequest.onreadystatechange = function() { 
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+            aCallback(anHttpRequest.responseText);
+            }
+            anHttpRequest.open( "GET", aUrl, true ); 
+            anHttpRequest.send( null ); 
+            }
+            }
+            var theurl='http://192.168.0.88/arduino/digital/29/1';
+            var client = new HttpClient();
+            client.get(theurl, function(response) { 
+            var response1 = JSON.parse(response);
+                 }); 
+                                   
+                                   
+                               var HttpClient = function() {
+            this.get = function(aUrl, aCallback) {
+            var anHttpRequest = new XMLHttpRequest();
+            anHttpRequest.onreadystatechange = function() { 
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+            aCallback(anHttpRequest.responseText);
+            }
+            anHttpRequest.open( "GET", aUrl, true ); 
+            anHttpRequest.send( null ); 
+            }
+            }
+            var theurl='http://192.168.0.88/arduino/digital/19/1';
+            var client = new HttpClient();
+            client.get(theurl, function(response) { 
+            var response1 = JSON.parse(response);
+                 }); 
+                                   
+                               var HttpClient = function() {
+            this.get = function(aUrl, aCallback) {
+            var anHttpRequest = new XMLHttpRequest();
+            anHttpRequest.onreadystatechange = function() { 
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+            aCallback(anHttpRequest.responseText);
+            }
+            anHttpRequest.open( "GET", aUrl, true ); 
+            anHttpRequest.send( null ); 
+            }
+            }
+            var theurl='http://192.168.0.88/arduino/digital/22/1';
+            var client = new HttpClient();
+            client.get(theurl, function(response) { 
+            var response1 = JSON.parse(response);
+                 }); 
+
+
+
+          setTimeout(function(){ var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+           }, 5000);
+      
+       } else if (gcodeline.match(/\bM5\b/i)) {
+           console.log(
+               "llego a m5"
+           );
+        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+    
+
+        var HttpClient = function() {
+          this.get = function(aUrl, aCallback) {
+          var anHttpRequest = new XMLHttpRequest();
+          anHttpRequest.onreadystatechange = function() { 
+          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+          aCallback(anHttpRequest.responseText);
+          }
+          anHttpRequest.open( "GET", aUrl, true ); 
+          anHttpRequest.send( null ); 
+          }
+          }
+          var theurl='http://192.168.0.88/arduino/digital/22/0';
+          var client = new HttpClient();
+          client.get(theurl, function(response) { 
+          var response1 = JSON.parse(response);
+               }); 
+                                 
+                                 
+                             var HttpClient = function() {
+          this.get = function(aUrl, aCallback) {
+          var anHttpRequest = new XMLHttpRequest();
+          anHttpRequest.onreadystatechange = function() { 
+          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+          aCallback(anHttpRequest.responseText);
+          }
+          anHttpRequest.open( "GET", aUrl, true ); 
+          anHttpRequest.send( null ); 
+          }
+          }
+          var theurl='http://192.168.0.88/arduino/digital/19/0';
+          var client = new HttpClient();
+          client.get(theurl, function(response) { 
+          var response1 = JSON.parse(response);
+               }); 
+                                 
+                             var HttpClient = function() {
+          this.get = function(aUrl, aCallback) {
+          var anHttpRequest = new XMLHttpRequest();
+          anHttpRequest.onreadystatechange = function() { 
+          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+          aCallback(anHttpRequest.responseText);
+          }
+          anHttpRequest.open( "GET", aUrl, true ); 
+          anHttpRequest.send( null ); 
+          }
+          }
+          var theurl='http://192.168.0.88/arduino/digital/29/0';
+          var client = new HttpClient();
+          client.get(theurl, function(response) { 
+          var response1 = JSON.parse(response);
+               });
+       
+        setTimeout(function(){ var cmd  = "~";
+        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+         }, 5000);
+       
+       }
+      contadordelinea = contadordelinea+1;
+
+    }}
+
+
+
+
+
+                //TERMINA
                 
                 // ok, here's the deal, we only get status intervals every
                 // 250ms, which means we'll get a line number that could be
