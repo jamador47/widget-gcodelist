@@ -1727,6 +1727,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
          * This gives other widgets a chance to interrupt the play event.
          */
         onPlay: function(event) {
+                  alert("ONPLAY");
             
             console.log("got onPlay. this:", this, "event:", event);
             
@@ -1747,6 +1748,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
          * we subscribe at the lowest priority.
          */
         onPlayAfter: function (event) {
+            alert("ONPLAY");
             // loop thru each line and send gcode
             console.log("got onPlayAfter. this:", this, "event:", event);
             //console.log(event);
