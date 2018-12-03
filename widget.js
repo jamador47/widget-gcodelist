@@ -1646,6 +1646,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
         },
         // pass in 0-based array index cuz this is manipulating array meta data
         resetMetaDataQueueWriteComplete: function(indexToStartAfter) {
+            console.group("QUETAPASANDOO");
             console.group("gcode widget - resetMetaDataQueueWriteComplete");
             console.log("indexToStartAfter:", indexToStartAfter);
             var that = this;
@@ -1664,6 +1665,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
         onStop: function (event) {
             
             localStorage.setItem('index', 0);
+            console.group("QUETAPASANDOOSTOP");
             
 
             if (event && ('viaOnExecute' in event || 'viaOnComplete' in event)) {
