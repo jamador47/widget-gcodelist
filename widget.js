@@ -2903,7 +2903,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
         onExecute: function(data) {
             // write it to the log
             //console.group("gcode widget - onExecute");
-            alert(data);
+             console.group("gcode widget - ejecutando");ejecutando
             console.log("onExecute data:", data);
             console.log("onExecute lastLineMarkedExecuted:", this.lastLineMarkedExecuted,
                 " isInExecuteScrollToMode:", this.isInExecuteScrollToMode);
