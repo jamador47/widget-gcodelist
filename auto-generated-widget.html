@@ -3169,7 +3169,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
         lastLineMarkedExecuted: null,
         onExecute: function(data) {
             // write it to the log
-            alert(data);
+          
           
             //console.group("gcode widget - onExecute");
             console.log("onExecute data:", data);
@@ -3203,6 +3203,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 console.log("onExecute. seems we have an id for this item with a g. item:", item);
                 // get id
                 var idnum = item.line;
+                alert(idnum);
                 
                 // ok, here's the deal, we only get status intervals every
                 // 250ms, which means we'll get a line number that could be
