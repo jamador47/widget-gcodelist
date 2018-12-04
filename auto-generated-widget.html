@@ -3184,7 +3184,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
         lastLineMarkedExecuted: null,
         onExecute: function(data) {
             // write it to the log
-            contadordelinea = contadordelinea + 1;
+            
           
             //console.group("gcode widget - onExecute");
             console.log("onExecute data:", data);
@@ -3199,6 +3199,8 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 return;
             }
 
+            contadordelinea = contadordelinea + 1;
+
             // if we get something lower than our start, which is 1
             // just ignore it. Need to do this before setting
             // isInExecuteScrollToMode below or we'll think that we
@@ -3211,12 +3213,14 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             
             var msgEl;
 
-             alert(contadordelinea);
+       
             // check that id string is not null/empty and starts with
             // a g, cuz we make all our id's start with g
             // otherwise this callback is not for us
             if ('line' in item && item.line >= 0) {
                 
+
+                contadordelinea = contadordelinea + 1;
                 console.log("onExecute. seems we have an id for this item with a g. item:", item);
                 
                 var idnum = item.line;
