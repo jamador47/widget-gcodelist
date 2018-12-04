@@ -3309,6 +3309,7 @@ alert(contadordelinea +" "+ index);
       
   
    } else if (gcodeline.match(/\bM5\b/i)) {
+    var cmd  = "~";
     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
     alert("Llego a M5");
