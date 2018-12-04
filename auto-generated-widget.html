@@ -3224,7 +3224,11 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 console.log(contadordelinea);
 
                 //COMIENZA
+                if (contadordelinea > index ){
 
+                    contadordelinea = index;
+
+                }
 
                 if (index == contadordelinea){
    // our id is always 1 ahead of the gcode.lines array index, i.e.
