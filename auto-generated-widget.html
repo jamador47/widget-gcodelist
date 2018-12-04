@@ -3236,7 +3236,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
    // The \b is a word boundary so looking for M3 doesn't also
    // hit on M30
    if (gcodeline.match(/\bM3\b/i)) {
-       console.log("ENTRO A M3");
+       alert("ENTRO A M3");
     var cmd  = "!";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
@@ -3375,9 +3375,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       
       if (gcodeline.match(/\bM3\b/i)) {
-        console.log(
-               "llego a m3"
-           );
+        alert("llego a m3");
         var cmd  = "!";
           chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
     
