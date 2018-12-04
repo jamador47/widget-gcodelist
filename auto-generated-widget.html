@@ -3379,8 +3379,9 @@ alert(contadordelinea +" "+ index);
     
     while(index>contadordelinea){
 
-        alert("contadoratrasado");
+        
         contadordelinea = contadordelinea + 1;
+        alert(index + " " + contadordelinea);
       var gcodeline = this.gcode.lines[contadordelinea-1];
       macro.status("Lineasaltada");
       var cmd  = "!";
