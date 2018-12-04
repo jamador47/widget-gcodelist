@@ -3371,7 +3371,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
 
     
     while(index>contadordelinea){
-      var gcodeline = this.gcode.lines[contadordelinea];
+      var gcodeline = this.gcode.lines[contadordelinea-1];
       macro.status("Lineasaltada");
       var cmd  = "!";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
