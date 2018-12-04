@@ -3221,12 +3221,13 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 
 
                 contadordelinea = contadordelinea + 1;
+                
                 console.log("onExecute. seems we have an id for this item with a g. item:", item);
                 
                 var idnum = item.line;
                 var index = idnum;
                
-
+                alert(index + " " + contadordelinea);
                
                 //COMIENZA
                 if (contadordelinea > index ){
