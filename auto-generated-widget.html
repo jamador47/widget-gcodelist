@@ -3309,7 +3309,7 @@ contadordelinea = index;
       
   
    } else if (gcodeline.match(/\bM5\b/i)) {
-    var cmd  = "~";
+    var cmd  = "!";
     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
     alert("Llego a M5");
@@ -3455,7 +3455,10 @@ contadordelinea = index;
            }, 5000);
       
        } else if (gcodeline.match(/\bM5\b/i)) {
+        var cmd  = "!";
+    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
         alert("LLego a m5");
+        
 
         var HttpClient = function() {
           this.get = function(aUrl, aCallback) {
@@ -4153,7 +4156,7 @@ contadordelinea = index;
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">CODIGO G SU</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">CODIGO G SUP</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
