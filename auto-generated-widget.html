@@ -3210,6 +3210,8 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             this.isInExecuteScrollToMode = true;
             
             var msgEl;
+
+             alert(contadordelinea);
             // check that id string is not null/empty and starts with
             // a g, cuz we make all our id's start with g
             // otherwise this callback is not for us
@@ -3221,7 +3223,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 var index = idnum;
                
 
-                alert(idnum + " " + contadordelinea);
+               
                 //COMIENZA
                 if (contadordelinea > index ){
 
