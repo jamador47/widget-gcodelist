@@ -3184,7 +3184,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
         lastLineMarkedExecuted: null,
         onExecute: function(data) {
             // write it to the log
-          
+            contadordelinea = contadordelinea + 1;
           
             //console.group("gcode widget - onExecute");
             console.log("onExecute data:", data);
@@ -3216,7 +3216,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             if ('line' in item && item.line >= 0) {
                 
                 console.log("onExecute. seems we have an id for this item with a g. item:", item);
-                contadordelinea = contadordelinea + 1;
+                
                 var idnum = item.line;
                 var index = idnum;
                
