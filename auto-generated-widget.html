@@ -266,7 +266,7 @@
     <script type='text/javascript'>
 //variables DETECAP
     const serialPort = "/dev/ttyUSB0";
- var contadordelinea = 0;
+     var contadordelinea = 0;
  
     //<![CDATA[
 // Load additional files via Chilipeppr's require.js
@@ -3220,8 +3220,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 var idnum = item.line;
                 var index = idnum;
                
-                console.log(idnum);
-                console.log(contadordelinea);
+
                 alert(idnum + " " + contadordelinea);
                 //COMIENZA
                 if (contadordelinea > index ){
@@ -3371,6 +3370,8 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
 
     
     while(index>contadordelinea){
+
+        alert("contadoratrasado");
       var gcodeline = this.gcode.lines[contadordelinea-1];
       macro.status("Lineasaltada");
       var cmd  = "!";
