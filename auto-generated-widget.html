@@ -3198,9 +3198,6 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 //console.groupEnd();
                 return;
             }
-
-            contadordelinea = contadordelinea + 1;
-
             // if we get something lower than our start, which is 1
             // just ignore it. Need to do this before setting
             // isInExecuteScrollToMode below or we'll think that we
@@ -3379,12 +3376,14 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
     while(index>contadordelinea){
 
         alert("contadoratrasado");
+        contadordelinea = contadordelinea + 1;
       var gcodeline = this.gcode.lines[contadordelinea-1];
       macro.status("Lineasaltada");
       var cmd  = "!";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      
+       
       if (gcodeline.match(/\bM3\b/i)) {
+       
         alert("llego a m3");
         var cmd  = "!";
           chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -3508,7 +3507,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
          }, 5000);
        
        }
-      contadordelinea = contadordelinea+1;
+      
 
     }}
 
