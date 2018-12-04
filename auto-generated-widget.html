@@ -265,7 +265,7 @@
 
     <script type='text/javascript'>
 //variables DETECAP
-    const serialPort = "/dev/ttyUSB0";
+    const serialPort = "COM30";
      var contadordelinea = 0;
      alert("INICIALIZO");
  
@@ -3229,7 +3229,10 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
 contadordelinea = index;
 
 }
+
+alert(contadordelinea);
                 
+
                
                 //COMIENZA
 
@@ -3238,7 +3241,6 @@ contadordelinea = index;
    // our id is always 1 ahead of the gcode.lines array index, i.e.
    // line 1 in the widget is this.gcode.lines[0]
    var gcodeline = this.gcode.lines[index-1];
-   alert(this.gcode.lines[index-1] + gcodeline);
    // Try to match M3, M5, and M30 (program end)
    // The \b is a word boundary so looking for M3 doesn't also
    // hit on M30
