@@ -3444,6 +3444,11 @@ chilipeppr.publish(
     macro.status("Done running our gcode. Laser off.");
     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + this.arduinoSerialPort + " laser-off\n");
     this.uninit();
+   }else{
+
+var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+
    }
   }
   else{
