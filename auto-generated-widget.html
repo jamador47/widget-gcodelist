@@ -3663,7 +3663,12 @@ chilipeppr.publish(
         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
          }, 5000);
        
-       }
+       }else{
+
+var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+
+   }
        contadordelinea = contadordelinea + 1;
        
 
