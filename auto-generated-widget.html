@@ -3338,6 +3338,14 @@ var client = new HttpClient();
 client.get(theurl, function(response) { 
 var response1 = JSON.parse(response);
 }); 
+
+document.getElementById("com-chilipeppr-widget-husillo-tab1").style.backgroundColor = "#1AEB36";
+chilipeppr.publish(
+                '/com-chilipeppr-elem-flashmsg/flashmsg',
+                "Estado del Husillo",
+                "Husillo Activado ",
+                2000 /* show for 2 second */
+            );
 setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }, 3000);
@@ -3420,6 +3428,14 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
       client.get(theurl, function(response) { 
       var response1 = JSON.parse(response);
            });
+
+           document.getElementById("com-chilipeppr-widget-husillo-tab1").style.backgroundColor = "white";
+chilipeppr.publish(
+                '/com-chilipeppr-elem-flashmsg/flashmsg',
+                "Estado del Husillo",
+                "Husillo Desactivado ",
+                2000 /* show for 2 second */
+            );
 
     setTimeout(function(){ var cmd  = "~";
              chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -3567,6 +3583,14 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
           client.get(theurl, function(response) { 
           var response1 = JSON.parse(response);
                });
+
+               document.getElementById("com-chilipeppr-widget-husillo-tab1").style.backgroundColor = "white";
+chilipeppr.publish(
+                '/com-chilipeppr-elem-flashmsg/flashmsg',
+                "Estado del Husillo",
+                "Husillo Desactivado ",
+                2000 /* show for 2 second */
+            );
        
         setTimeout(function(){ var cmd  = "~";
         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
