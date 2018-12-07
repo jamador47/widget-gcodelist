@@ -3246,7 +3246,8 @@ contadordelinea = index;
    // hit on M30
    if (gcodeline.match(/\bM3\b/i)) {
        
-     
+    document.getElementById("com-chilipeppr-widget-husillo-tab1").style.backgroundColor = "#1AEB36";
+
 var HttpClient = function() {
            this.get = function(aUrl, aCallback) {
                var anHttpRequest = new XMLHttpRequest();
@@ -3463,71 +3464,135 @@ chilipeppr.publish(
     
       if (gcodeline.match(/\bM3\b/i)) {
        
-        
-        var cmd  = "!";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-    
+        document.getElementById("com-chilipeppr-widget-husillo-tab1").style.backgroundColor = "#1AEB36";
+
+       var HttpClient = function() {
+                  this.get = function(aUrl, aCallback) {
+                      var anHttpRequest = new XMLHttpRequest();
+                      anHttpRequest.onreadystatechange = function() {
+                          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                              aCallback(anHttpRequest.responseText);
+                      }
+                      anHttpRequest.open("GET", aUrl, true);
+                      anHttpRequest.send(null);
+                  }
+              }
+              var theurl = 'http://192.168.0.88/arduino/analog/5';
+              var client = new HttpClient();
+              client.get(theurl, function(response) {
+           var res = response.split("Pin A5 reads analog ");
+           
+           response = parseInt(res[1]);
+       
+                  if (response > 850) {
+                      
+                      var HttpClient = function() {
+                      this.get = function(aUrl, aCallback) {
+                      var anHttpRequest = new XMLHttpRequest();
+                      anHttpRequest.onreadystatechange = function() {
+                          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                              aCallback(anHttpRequest.responseText);
+                      }
+                      anHttpRequest.open("GET", aUrl, true);
+                      anHttpRequest.send(null);
+                          }
+                      }
+                      var theurl = 'http://192.168.0.89/arduino/digital/11';
+                      var client = new HttpClient();
+                      client.get(theurl, function(response) {
+       var res = response.split("Pin D11 set to ");
+           
+           response = parseInt(res[1]);
+                          if (response == 0) {
+       var cmd  = "!";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       var HttpClient = function() {
+       this.get = function(aUrl, aCallback) {
+       var anHttpRequest = new XMLHttpRequest();
+       anHttpRequest.onreadystatechange = function() { 
+       if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+       aCallback(anHttpRequest.responseText);
+       }
+       anHttpRequest.open( "GET", aUrl, true ); 
+       anHttpRequest.send( null ); 
+       }
+       }
+       var theurl='http://192.168.0.88/arduino/digital/29/1';
+       var client = new HttpClient();
+       client.get(theurl, function(response) { 
+       var response1 = JSON.parse(response);
+       }); 
+                 
+                 
+             var HttpClient = function() {
+       this.get = function(aUrl, aCallback) {
+       var anHttpRequest = new XMLHttpRequest();
+       anHttpRequest.onreadystatechange = function() { 
+       if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+       aCallback(anHttpRequest.responseText);
+       }
+       anHttpRequest.open( "GET", aUrl, true ); 
+       anHttpRequest.send( null ); 
+       }
+       }
+       var theurl='http://192.168.0.88/arduino/digital/19/1';
+       var client = new HttpClient();
+       client.get(theurl, function(response) { 
+       var response1 = JSON.parse(response);
+       }); 
+                 
+             var HttpClient = function() {
+       this.get = function(aUrl, aCallback) {
+       var anHttpRequest = new XMLHttpRequest();
+       anHttpRequest.onreadystatechange = function() { 
+       if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+       aCallback(anHttpRequest.responseText);
+       }
+       anHttpRequest.open( "GET", aUrl, true ); 
+       anHttpRequest.send( null ); 
+       }
+       }
+       var theurl='http://192.168.0.88/arduino/digital/22/1';
+       var client = new HttpClient();
+       client.get(theurl, function(response) { 
+       var response1 = JSON.parse(response);
+       }); 
+       
+       document.getElementById("com-chilipeppr-widget-husillo-tab1").style.backgroundColor = "#1AEB36";
+       chilipeppr.publish(
+                       '/com-chilipeppr-elem-flashmsg/flashmsg',
+                       "Estado del Husillo",
+                       "Husillo Activado ",
+                       2000 /* show for 2 second */
+                   );
+       setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 3000);
+                              
+                              } else {
+                              chilipeppr.publish(
+                                  '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                  "Estado del Husillo",
+                                  "El husillo no está desbloqueado (I.99) ",
+                                  2000 /* show for 2 second */
+                              );
+                          }
+                      });
+                  } 
+                  else {
+                      chilipeppr.publish(
+                                  '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                  "Estado del Husillo",
+                                  "El Husillo no está desocupado (I.19) ",
+                                  2000 /* show for 2 second */
+                              );
+                  }
+              });
+       
+             
          
-          var HttpClient = function() {
-            this.get = function(aUrl, aCallback) {
-            var anHttpRequest = new XMLHttpRequest();
-            anHttpRequest.onreadystatechange = function() { 
-            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-            aCallback(anHttpRequest.responseText);
-            }
-            anHttpRequest.open( "GET", aUrl, true ); 
-            anHttpRequest.send( null ); 
-            }
-            }
-            var theurl='http://192.168.0.88/arduino/digital/29/1';
-            var client = new HttpClient();
-            client.get(theurl, function(response) { 
-            var response1 = JSON.parse(response);
-                 }); 
-                                   
-                                   
-                               var HttpClient = function() {
-            this.get = function(aUrl, aCallback) {
-            var anHttpRequest = new XMLHttpRequest();
-            anHttpRequest.onreadystatechange = function() { 
-            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-            aCallback(anHttpRequest.responseText);
-            }
-            anHttpRequest.open( "GET", aUrl, true ); 
-            anHttpRequest.send( null ); 
-            }
-            }
-            var theurl='http://192.168.0.88/arduino/digital/19/1';
-            var client = new HttpClient();
-            client.get(theurl, function(response) { 
-            var response1 = JSON.parse(response);
-                 }); 
-                                   
-                               var HttpClient = function() {
-            this.get = function(aUrl, aCallback) {
-            var anHttpRequest = new XMLHttpRequest();
-            anHttpRequest.onreadystatechange = function() { 
-            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-            aCallback(anHttpRequest.responseText);
-            }
-            anHttpRequest.open( "GET", aUrl, true ); 
-            anHttpRequest.send( null ); 
-            }
-            }
-            var theurl='http://192.168.0.88/arduino/digital/22/1';
-            var client = new HttpClient();
-            client.get(theurl, function(response) { 
-            var response1 = JSON.parse(response);
-                 }); 
-
-
-
-          setTimeout(function(){ var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-           }, 5000);
-      
-       } else if (gcodeline.match(/\bM5\b/i)) {
-        var cmd  = "!";
+          } else if (gcodeline.match(/\bM5\b/i)) {
+           var cmd  = "!";
     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
         
         
