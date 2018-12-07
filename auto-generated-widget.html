@@ -3284,7 +3284,6 @@ var HttpClient = function() {
 var res = response.split("Pin D11 set to ");
 	
 	response = parseInt(res[1]);
-alert(response)
                    if (response == 0) {
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -3369,7 +3368,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
     var cmd  = "!";
     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
-    alert("Llego a M5");
+    
     var HttpClient = function() {
       this.get = function(aUrl, aCallback) {
       var anHttpRequest = new XMLHttpRequest();
@@ -3448,7 +3447,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
     
       if (gcodeline.match(/\bM3\b/i)) {
        
-        alert("llego a m3");
+        
         var cmd  = "!";
           chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
     
@@ -3514,7 +3513,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
        } else if (gcodeline.match(/\bM5\b/i)) {
         var cmd  = "!";
     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-        alert("LLego a m5");
+        
         
 
         var HttpClient = function() {
