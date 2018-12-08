@@ -3245,6 +3245,8 @@ contadordelinea = index;
    // The \b is a word boundary so looking for M3 doesn't also
    // hit on M30
    if (gcodeline.match(/\bM3\b/i)) {
+    var cmd  = "!";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        
 var HttpClient = function() {
            this.get = function(aUrl, aCallback) {
@@ -3284,8 +3286,7 @@ var res = response.split("Pin D11 set to ");
 	
 	response = parseInt(res[1]);
                    if (response == 0) {
-var cmd  = "!";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+
 var HttpClient = function() {
 this.get = function(aUrl, aCallback) {
 var anHttpRequest = new XMLHttpRequest();
@@ -3350,20 +3351,26 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 }, 3000);
                        
                        } else {
+                        $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
                        chilipeppr.publish(
                            '/com-chilipeppr-elem-flashmsg/flashmsg',
                            "Estado del Husillo",
-                           "El husillo no está desbloqueado (I.99) ",
+                           "El husillo no está desbloqueado (I.99), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
                            2000 /* show for 2 second */
                        );
                    }
                });
            } 
            else {
+            $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
                chilipeppr.publish(
                            '/com-chilipeppr-elem-flashmsg/flashmsg',
                            "Estado del Husillo",
-                           "El Husillo no está desocupado (I.19) ",
+                           "El Husillo no está desocupado (I.19), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
                            2000 /* show for 2 second */
                        );
            }
@@ -3444,7 +3451,12 @@ chilipeppr.publish(
     macro.status("Done running our gcode. Laser off.");
     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + this.arduinoSerialPort + " laser-off\n");
     this.uninit();
-   }else{
+   }
+   else if (gcodeline.match(/\bI\b/i)) {
+  alert("Tiene I");
+   }
+   
+   else{
 
 var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -3466,7 +3478,9 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
        
     
       if (gcodeline.match(/\bM3\b/i)) {
-       
+          
+        var cmd  = "!";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       
        var HttpClient = function() {
                   this.get = function(aUrl, aCallback) {
@@ -3572,22 +3586,28 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
        }, 3000);
                               
                               } else {
-                              chilipeppr.publish(
-                                  '/com-chilipeppr-elem-flashmsg/flashmsg',
-                                  "Estado del Husillo",
-                                  "El husillo no está desbloqueado (I.99) ",
-                                  2000 /* show for 2 second */
-                              );
-                          }
-                      });
-                  } 
-                  else {
-                      chilipeppr.publish(
-                                  '/com-chilipeppr-elem-flashmsg/flashmsg',
-                                  "Estado del Husillo",
-                                  "El Husillo no está desocupado (I.19) ",
-                                  2000 /* show for 2 second */
-                              );
+                        $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                       chilipeppr.publish(
+                           '/com-chilipeppr-elem-flashmsg/flashmsg',
+                           "Estado del Husillo",
+                           "El husillo no está desbloqueado (I.99), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                           2000 /* show for 2 second */
+                       );
+                   }
+               });
+           } 
+           else {
+            $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+               chilipeppr.publish(
+                           '/com-chilipeppr-elem-flashmsg/flashmsg',
+                           "Estado del Husillo",
+                           "El Husillo no está desocupado (I.19), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                           2000 /* show for 2 second */
+                       );
                   }
               });
        
