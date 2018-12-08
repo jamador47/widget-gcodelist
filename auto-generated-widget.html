@@ -3452,7 +3452,7 @@ chilipeppr.publish(
     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + this.arduinoSerialPort + " laser-off\n");
     this.uninit();
    }
-   else if (gcodeline.match(/\bI\b/i)) {
+   else if (gcodeline.match(/J/i)) {
   alert("Tiene I");
    }
    
