@@ -3453,7 +3453,7 @@ chilipeppr.publish(
     this.uninit();
    }
    else if (gcodeline.match(/J/i)) {
-  alert("Tiene I");
+  
    }
    
    else{
@@ -3683,7 +3683,9 @@ chilipeppr.publish(
         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
          }, 5000);
        
-       }else{
+       }else if (gcodeline.match(/J/i)) {
+ 
+   }else{
 
 var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
