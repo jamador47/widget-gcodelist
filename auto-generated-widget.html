@@ -3237,7 +3237,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                         //+++++++++++++
                         
                         if (gcodeline.match(/\bM3\b/i)) {
-                            alert("m3");
+                           
                             var HttpClient = function() {
                   this.get = function(aUrl, aCallback) {
                       var anHttpRequest = new XMLHttpRequest();
@@ -3371,7 +3371,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
          
           } else if (gcodeline.match(/\bM5\b/i)) {
                         
-                           alert("m5");
+                         
                         
         var HttpClient = function() {
           this.get = function(aUrl, aCallback) {
@@ -3475,7 +3475,7 @@ chilipeppr.publish(
                         //+++++++++++++
                         
                         if (gcodeline.match(/\bM3\b/i)) {
-                            alert("m3");
+                           
                             var HttpClient = function() {
                   this.get = function(aUrl, aCallback) {
                       var anHttpRequest = new XMLHttpRequest();
@@ -3608,7 +3608,7 @@ chilipeppr.publish(
   
                        } else if (gcodeline.match(/\bM5\b/i)) {
                         
-                           alert("m5");
+                         
                         
         var HttpClient = function() {
           this.get = function(aUrl, aCallback) {
@@ -4321,7 +4321,7 @@ chilipeppr.publish(
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">COD G8</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">CODIGO G</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
