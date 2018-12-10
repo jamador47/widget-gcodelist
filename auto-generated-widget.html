@@ -1990,7 +1990,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
          * This gives other widgets a chance to interrupt the play event.
          */
         onPlay: function(event) {
-            
+             this.getGcode();
             console.log("got onPlay. this:", this, "event:", event);
             
             // indicate we're starting play in the UI
@@ -2002,6 +2002,14 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
 
         },
+                getGcode: function() {
+  chilipeppr.subscribe("/com-chilipeppr-widget-gcode/recvGcode", this, this.getGcodeCallback);
+  chilipeppr.publish("/com-chilipeppr-widget-gcode/requestGcode", "");
+  chilipeppr.unsubscribe("/com-chilipeppr-widget-gcode/recvGcode", this.getGcodeCallback);
+ },
+ getGcodeCallback: function(data) {
+  this.gcode = data;
+ },
         isResetMetaBeforePlay: false, // this is set to true after a play has been completed and done all the way to the end. usually we reset the meta data when user hits stop, but we want to let the user know all lines were completed after their job was done so we don't reset. however, if they hit play again we need to reset
         isJobDonePubSubSent: false, // track this so that we don't fire the end of job pubsub event more than once. this was needed because you could sleep your laptop after a job done, then unsleep, reconnect to cnc controller, get the line complete status again, and think the job just got done when it clearly didn't
         /**
