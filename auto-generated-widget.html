@@ -3228,11 +3228,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                     }
                 
                 // Si el contador va bien
-                var gcodelinetest = this.gcode.lines[idnum-1];
-                alert(this.gcode.lines[idnum-1]);
-                 if (gcodelinetest.match(/\bM3\b/i) || gcodelinetest.match(/\bM5\b/i)){
-                         alert("ejecuto");
-                 alert(idnum +" " +contadordelinea);}
+                
                 if (idnum == contadordelinea)
                 {
                     
@@ -3473,7 +3469,7 @@ chilipeppr.publish(
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                     // Si el contador esta retrasado.    
                     
-                     while(idnum>contadordelinea){
+                     while(idnum>=contadordelinea){
                          
                         var gcodeline = this.gcode.lines[contadordelinea-1];
                          if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM5\b/i)){
@@ -4330,7 +4326,7 @@ chilipeppr.publish(
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">CODIGO G6</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">CODIGO G8</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
