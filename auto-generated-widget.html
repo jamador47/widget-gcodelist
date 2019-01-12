@@ -3334,7 +3334,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
        var response1 = JSON.parse(response);
        }); 
        
-       document.getElementById("indicadorhusillo").className = "led-green";
+       document.getElementById("com-chilipeppr-widget-husillo-tab1").style.backgroundColor = "#1AEB36";
        chilipeppr.publish(
                        '/com-chilipeppr-elem-flashmsg/flashmsg',
                        "Estado del Husillo",
@@ -3429,7 +3429,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
           var response1 = JSON.parse(response);
                });
 
-               document.getElementById("indicadorhusillo").className = "led-off";
+               document.getElementById("com-chilipeppr-widget-husillo-tab1").style.backgroundColor = "white";
 chilipeppr.publish(
                 '/com-chilipeppr-elem-flashmsg/flashmsg',
                 "Estado del Husillo",
@@ -3464,9 +3464,10 @@ chilipeppr.publish(
                 }
                 else{
                     
+                    var gcodelineantes = this.gcode.lines[idnum-1];
+
                     // Parar el procesamiento en tinyG
-                    var cmd  = "!";
-                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+
                     // Si el contador esta retrasado.    
                     
                      while(idnum>=contadordelinea){
@@ -3573,7 +3574,7 @@ chilipeppr.publish(
        var response1 = JSON.parse(response);
        }); 
        
-       document.getElementById("indicadorhusillo").className = "led-green";
+       document.getElementById("com-chilipeppr-widget-husillo-tab1").style.backgroundColor = "#1AEB36";
        chilipeppr.publish(
                        '/com-chilipeppr-elem-flashmsg/flashmsg',
                        "Estado del Husillo",
@@ -3664,10 +3665,10 @@ chilipeppr.publish(
           var theurl='http://192.168.0.88/arduino/digital/29/0';
           var client = new HttpClient();
           client.get(theurl, function(response) { 
-          var response1 = JSON.parse(response);     
+          var response1 = JSON.parse(response);
                });
 
-               document.getElementById("indicadorhusillo").className = "led-off";
+               document.getElementById("com-chilipeppr-widget-husillo-tab1").style.backgroundColor = "white";
 chilipeppr.publish(
                 '/com-chilipeppr-elem-flashmsg/flashmsg',
                 "Estado del Husillo",
@@ -4326,7 +4327,7 @@ chilipeppr.publish(
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">CODIGO G FIX</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">CODIGO G + Hus</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
