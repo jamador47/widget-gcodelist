@@ -3464,9 +3464,10 @@ chilipeppr.publish(
                 }
                 else{
                     
+                    var gcodelineantes = this.gcode.lines[idnum-1];
+
                     // Parar el procesamiento en tinyG
-                    var cmd  = "!";
-                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+
                     // Si el contador esta retrasado.    
                     
                      while(idnum>=contadordelinea){
