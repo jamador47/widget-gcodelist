@@ -381,6 +381,8 @@ cprequire_test(["inline:com-chilipeppr-widget-gcode"], function (gcode) {
     //window.open('data:text/csv;charset=utf-8,' + escape(txt));
     
     // test a fake receiving of an onQueue msg
+    var numerobroca = "no";
+
     var testOnQueue = function() {
         setTimeout(function() {
             chilipeppr.publish("/com-chilipeppr-widget-serialport/onQueue", { Id: "g2" });   
@@ -3233,13 +3235,207 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 {
                     
                     var gcodeline = this.gcode.lines[idnum-1];
-                    if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM5\b/i)){
+                    if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) || gcodeline.match(/\bM111\b/i) || gcodeline.match(/\bM110\b/i) || gcodeline.match(/\bM109\b/i) || gcodeline.match(/\bM108\b/i) || gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || gcodeline.match(/\bM701\b/i)
+)  {
                       
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                         
-                        //+++++++++++++
-                        
+                        //Inicio codigo taladro
+                        if (gcodeline.match(/\bM116\b/i)) {
+                        numerobroca = "16"; 
+                        var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+
+                        if (gcodeline.match(/\bM115\b/i)){ numerobroca = "15";
+                        var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM114\b/i)){ numerobroca = "14";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM113\b/i)){ numerobroca = "13";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM112\b/i)){ numerobroca = "12";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM111\b/i)){ numerobroca = "11";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM110\b/i)){ numerobroca = "10";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM109\b/i)){ numerobroca = "9";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM108\b/i)){ numerobroca = "8";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM107\b/i)){ numerobroca = "7";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM106\b/i)){ numerobroca = "6";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM105\b/i)){ numerobroca = "5";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM104\b/i)){ numerobroca = "4";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM103\b/i)){ numerobroca = "3";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM102\b/i)){ numerobroca = "2";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM101\b/i)){ numerobroca = "1";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM100\b/i)){ this.subirtbrocaBtnClick;  
+    setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000); }
+if (gcodeline.match(/\bM22\b/i)){ this.taladroarribaBtnClick;
+}
+if (gcodeline.match(/\bM12\b/i)){ this.taladroabajoBtnClick;
+}
+if (gcodeline.match(/\bM9\b/i)){ this.taladroonBtnClick;//funcion apaga taladro
+    setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 2000);}
+if (gcodeline.match(/\bM9\b/i)){ this.taladrooffBtnClick;//funcion enciende taladro
+    setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 2000);}
+if (gcodeline.match(/\bM199\b/i)){ //funcion bajar broca 
+    switch(numerobroca){
+        case "1":
+                this.bajarbroca1();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+
+                case "2":
+                this.bajarbroca2();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+                
+                case "3":
+                this.bajarbroca3();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break; 
+
+                case "4":
+                this.bajarbroca4();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+
+                case "5":
+                this.bajarbroca5();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+
+                case "6":
+                this.bajarbroca6();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+
+                case "7":
+                this.bajarbroca7();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+                
+                case "8":
+                this.bajarbroca8();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;  
+                case "9":
+                this.bajarbroca9();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+
+                case "10":
+                this.bajarbroca10();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+                
+                case "11":
+                this.bajarbroca11();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break; 
+
+                case "12":
+                this.bajarbroca12();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+
+                case "13":
+                this.bajarbroca13();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+
+                case "14":
+                this.bajarbroca14();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+
+                case "15":
+                this.bajarbroca15();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+                
+                case "16":
+                this.bajarbroca16();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;  
+
+    }
+}
+
+//Final codigo taladro
+
+
+                        //CODIGO M3
                         if (gcodeline.match(/\bM3\b/i)) {
                            
                             var HttpClient = function() {
@@ -3373,7 +3569,10 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
        
              
          
-          } else if (gcodeline.match(/\bM5\b/i)) {
+          }
+          
+          // CODIGO M5
+          else if (gcodeline.match(/\bM5\b/i)) {
                         
                          
                         
@@ -3473,12 +3672,204 @@ chilipeppr.publish(
                      while(idnum>=contadordelinea){
                          
                         var gcodeline = this.gcode.lines[contadordelinea-1];
-                         if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM5\b/i)){
+                        if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) || gcodeline.match(/\bM111\b/i) || gcodeline.match(/\bM110\b/i) || gcodeline.match(/\bM109\b/i) || gcodeline.match(/\bM108\b/i) || gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || gcodeline.match(/\bM701\b/i)
+)  {
                             
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-                        
-                        //+++++++++++++
+                        //Inicio codigo taladro
+                        if (gcodeline.match(/\bM116\b/i)) {
+                        numerobroca = "16"; 
+                        var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+
+                        if (gcodeline.match(/\bM115\b/i)){ numerobroca = "15";
+                        var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM114\b/i)){ numerobroca = "14";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM113\b/i)){ numerobroca = "13";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM112\b/i)){ numerobroca = "12";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM111\b/i)){ numerobroca = "11";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM110\b/i)){ numerobroca = "10";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM109\b/i)){ numerobroca = "9";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM108\b/i)){ numerobroca = "8";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM107\b/i)){ numerobroca = "7";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM106\b/i)){ numerobroca = "6";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM105\b/i)){ numerobroca = "5";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM104\b/i)){ numerobroca = "4";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM103\b/i)){ numerobroca = "3";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM102\b/i)){ numerobroca = "2";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM101\b/i)){ numerobroca = "1";
+var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
+if (gcodeline.match(/\bM100\b/i)){ this.subirtbrocaBtnClick;  
+    setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000); }
+if (gcodeline.match(/\bM22\b/i)){ this.taladroarribaBtnClick;
+}
+if (gcodeline.match(/\bM12\b/i)){ this.taladroabajoBtnClick;
+}
+if (gcodeline.match(/\bM9\b/i)){ this.taladroonBtnClick;//funcion apaga taladro
+    setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 2000);}
+if (gcodeline.match(/\bM9\b/i)){ this.taladrooffBtnClick;//funcion enciende taladro
+    setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 2000);}
+if (gcodeline.match(/\bM199\b/i)){ //funcion bajar broca 
+    switch(numerobroca){
+        case "1":
+                this.bajarbroca1();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+
+                case "2":
+                this.bajarbroca2();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+                
+                case "3":
+                this.bajarbroca3();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break; 
+
+                case "4":
+                this.bajarbroca4();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+
+                case "5":
+                this.bajarbroca5();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+
+                case "6":
+                this.bajarbroca6();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+
+                case "7":
+                this.bajarbroca7();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+                
+                case "8":
+                this.bajarbroca8();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;  
+                case "9":
+                this.bajarbroca9();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+
+                case "10":
+                this.bajarbroca10();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+                
+                case "11":
+                this.bajarbroca11();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break; 
+
+                case "12":
+                this.bajarbroca12();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+
+                case "13":
+                this.bajarbroca13();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+
+                case "14":
+                this.bajarbroca14();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+
+                case "15":
+                this.bajarbroca15();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+                
+                case "16":
+                this.bajarbroca16();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;  
+
+    }
+}
+
+//Final codigo taladro
+                        //Inicio Husillo
                         
                         if (gcodeline.match(/\bM3\b/i)) {
                           
