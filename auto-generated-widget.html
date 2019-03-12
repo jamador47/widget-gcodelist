@@ -3235,7 +3235,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 {
                     
                     var gcodeline = this.gcode.lines[idnum-1];
-                    if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) || gcodeline.match(/\bM111\b/i) || gcodeline.match(/\bM110\b/i) || gcodeline.match(/\bM109\b/i) || gcodeline.match(/\bM108\b/i) || gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || gcodeline.match(/\bM701\b/i)
+                    if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) || gcodeline.match(/\bM111\b/i) || gcodeline.match(/\bM110\b/i) || gcodeline.match(/\bM109\b/i) || gcodeline.match(/\bM108\b/i) || gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i)
 )  {
                       
                         var cmd  = "!";
@@ -3298,6 +3298,19 @@ if (gcodeline.match(/\bM100\b/i)){ this.subirtbrocaBtnClick;
        }, 1000); }
 if (gcodeline.match(/\bM22\b/i)){ this.taladroarribaBtnClick;
 }
+
+if (gcodeline.match(/\bM20\b/i)){ this.onM20BtnClick;
+                                 setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 2000);
+}
+if (gcodeline.match(/\bM10\b/i)){ this.onM10BtnClick;
+                                 setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 2000);
+}
+                        
+                        
 if (gcodeline.match(/\bM12\b/i)){ this.taladroabajoBtnClick;
 }
 if (gcodeline.match(/\bM9\b/i)){ this.taladroonBtnClick;//funcion apaga taladro
@@ -3740,10 +3753,16 @@ if (gcodeline.match(/\bM9\b/i)){ this.taladroonBtnClick;//funcion apaga taladro
     setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);}
-if (gcodeline.match(/\bM9\b/i)){ this.taladrooffBtnClick;//funcion enciende taladro
-    setTimeout(function(){ var cmd  = "~";
+if (gcodeline.match(/\bM20\b/i)){ this.onM20BtnClick;
+                                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 2000);}
+       }, 2000);
+}
+if (gcodeline.match(/\bM10\b/i)){ this.onM10BtnClick;
+                                 setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 2000);
+}
 if (gcodeline.match(/\bM199\b/i)){ //funcion bajar broca 
     switch(numerobroca){
         case "1":
@@ -4264,6 +4283,187 @@ var HttpClient = function() {
 });
 
 },
+
+          
+        onM20BtnClick : function(evt){
+         
+
+            
+            
+         /*   var erroresexistentes = document.getElementById("textoalarmas").value;
+            
+            alarmasexistentes = alarmasexistentes.concat("\\\n\\\n");
+            
+            alarmasexistentes = alarmasexistentes.concat("LALA");
+         
+            document.getElementById("textoalarmas").value = alarmasexistentes;
+            */
+            
+            
+          var HttpClient = function() {
+           this.get = function(aUrl, aCallback) {
+               var anHttpRequest = new XMLHttpRequest();
+               anHttpRequest.onreadystatechange = function() {
+                   if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                       aCallback(anHttpRequest.responseText);
+               }
+               anHttpRequest.open("GET", aUrl, true);
+               anHttpRequest.send(null);
+           }
+       }
+       var theurl = 'http://192.168.0.97/?cmd=s';
+       var client = new HttpClient();
+       client.get(theurl, function(response) {
+
+           
+           res = JSON.parse(response);
+            
+           // Validación
+           
+           // Si el brazo no está extendido
+            if (parseInt(res.brazo) != 1){
+                
+                var cmd  = "!";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+                
+                var cmd  = "g";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort2 + " " + cmd);
+                
+                document.getElementById("indicadorposhusillo").className = "led-off";
+                
+                chilipeppr.publish(
+                '/com-chilipeppr-elem-flashmsg/flashmsg',
+                "Estado del Husillo",
+                "Husillo en posición de descanso",
+                4000 /* show for 2 second */
+            );
+          
+        setTimeout(function(){ var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}, 3000);
+            //Continúa procedimiento
+                
+            }
+           
+           
+           
+           else{
+               // Pausa la máquina y da mensaje de alerta.
+               var cmd  = "!";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+                    chilipeppr.publish(
+                '/com-chilipeppr-elem-flashmsg/flashmsg',
+                "ALARMA",
+                "Brazo extendido, Husillo no puede subir, solucione el problema y presione resumir (~) para continuar.",
+                4000 /* show for 2 second */
+            );
+               
+               
+               
+               //Codigo Alarmas
+               
+                       var alarmasexistentes = document.getElementById("textoalarmas").value;
+               document.getElementById("indicadoralarma").className = "led-yellow";
+            alarmasexistentes = alarmasexistentes.concat("\\\n\\\n");
+            
+            alarmasexistentes = alarmasexistentes.concat("Brazo extendido, Husillo no puede subir, solucione el problema y presione resumir (~) para continuar.");
+                        
+           document.getElementById("textoalarmas").value = alarmasexistentes;
+          
+           }
+           
+
+    });
+
+
+            
+            
+        },
+        
+        
+                
+//Husillo trabajo
+        
+        onM10BtnClick : function(evt){
+     
+    var HttpClient = function() {
+           this.get = function(aUrl, aCallback) {
+               var anHttpRequest = new XMLHttpRequest();
+               anHttpRequest.onreadystatechange = function() {
+                   if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                       aCallback(anHttpRequest.responseText);
+               }
+               anHttpRequest.open("GET", aUrl, true);
+               anHttpRequest.send(null);
+           }
+       }
+       var theurl = 'http://192.168.0.97/?cmd=s';
+       var client = new HttpClient();
+       client.get(theurl, function(response) {
+
+           
+           res = JSON.parse(response);
+            
+           // Validación
+           
+           // Si el brazo no está extendido
+            if (parseInt(res.brazo) != 1){
+                
+                var cmd  = "!";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+                
+                var cmd  = "e";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort2 + " " + cmd);
+                
+                document.getElementById("indicadorposhusillo").className = "led-green";
+                
+                chilipeppr.publish(
+                '/com-chilipeppr-elem-flashmsg/flashmsg',
+                "Estado del Husillo",
+                "Husillo en posición de trabajo",
+                4000 /* show for 2 second */
+            );
+                
+        setTimeout(function(){ var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}, 3000);
+            //Continúa procedimiento
+                
+            }
+           
+           
+           
+           else{
+               // Pausa la máquina y da mensaje de alerta.
+               var cmd  = "!";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+                    chilipeppr.publish(
+                '/com-chilipeppr-elem-flashmsg/flashmsg',
+                "ALARMA",
+                "Brazo extendido, Husillo no puede bajar, solucione el problema y presione resumir (~) para continuar.",
+                4000 /* show for 2 second */
+            );
+               
+               
+                       var alarmasexistentes = document.getElementById("textoalarmas").value;
+               document.getElementById("indicadoralarma").className = "led-yellow";
+            alarmasexistentes = alarmasexistentes.concat("\\\n\\\n");
+            
+            alarmasexistentes = alarmasexistentes.concat("Brazo extendido, Husillo no puede bajar, solucione el problema y presione resumir (~) para continuar.");
+                        
+           document.getElementById("textoalarmas").value = alarmasexistentes;
+               
+               
+               
+           }
+           
+
+    });
+
+
+            
+            
+        },
 
 //subir taladro
 taladroarribaBtnClick: function(evt) {
@@ -6638,7 +6838,7 @@ this.bajarbroca16();
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">CODIGO G + Hus</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">CODIGO G M10</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
