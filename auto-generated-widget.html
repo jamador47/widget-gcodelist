@@ -1991,73 +1991,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
          * /onPlay publish event at the lowest priority so that it can play as the last step in the pubsub chain.
          * This gives other widgets a chance to interrupt the play event.
          */
-        bajartstopsBtnClick: function (evt) {
-
-                    var HttpClient = function () {
-                        this.get = function (aUrl, aCallback) {
-                            var anHttpRequest = new XMLHttpRequest();
-                            anHttpRequest.onreadystatechange = function () {
-                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                    aCallback(anHttpRequest.responseText);
-                            }
-                            anHttpRequest.open("GET", aUrl, true);
-                            anHttpRequest.send(null);
-                        }
-                    }
-                    var theurl = 'http://192.168.0.82/arduino/bajarstops/';
-                    var client = new HttpClient();
-                    client.get(theurl, function (response) {
-                        
-                         var HttpClient = function () {
-                        this.get = function (aUrl, aCallback) {
-                            var anHttpRequest = new XMLHttpRequest();
-                            anHttpRequest.onreadystatechange = function () {
-                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                    aCallback(anHttpRequest.responseText);
-                            }
-                            anHttpRequest.open("GET", aUrl, true);
-                            anHttpRequest.send(null);
-                        }
-                    }
-                    var theurl = 'http://192.168.0.83/arduino/bajarstops/';
-                    var client = new HttpClient();
-                    client.get(theurl, function (response) {
-
-                        chilipeppr.publish(
-                            '/com-chilipeppr-elem-flashmsg/flashmsg',
-                            "Mesas",
-                            "Posicionadores Abajo",
-                            2000
-                        );
-
-                        document.getElementById("sa1f1").className = "led-off";
-                        document.getElementById("sa1f2").className = "led-off";
-                        document.getElementById("sa1l1").className = "led-off";
-                        document.getElementById("sa2f1").className = "led-off";
-                        document.getElementById("sa2f2").className = "led-off";
-                        document.getElementById("sa2l1").className = "led-off";
-                        document.getElementById("sa2l2").className = "led-off";
-                        document.getElementById("sy1f1").className = "led-off";
-                        document.getElementById("sy1f2").className = "led-off";
-                        document.getElementById("sy1l1").className = "led-off";
-                        document.getElementById("sy2f1").className = "led-off";
-                        document.getElementById("sy2f2").className = "led-off";
-                        document.getElementById("sy2l1").className = "led-off";
-                        document.getElementById("sy2l2").className = "led-off";
-
-                    });
-                    });
-                },
-        
         onPlay: function(event) {
-            
-            
-            
-            
-            this.bajartstopsBtnClick();
-            
-            setTimeout(function(){
-        
              this.getGcode();
             console.log("got onPlay. this:", this, "event:", event);
             
@@ -2068,7 +2002,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             var meta = { isPlayByUser: event ? true : false };
             meta.gcodeLines = this.fileLines;
             chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
-            }, 2000);
+
         },
                 getGcode: function() {
   chilipeppr.subscribe("/com-chilipeppr-widget-gcode/recvGcode", this, this.getGcodeCallback);
