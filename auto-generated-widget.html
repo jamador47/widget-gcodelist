@@ -1985,6 +1985,64 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             this.feedrateEnable();
             
         },
+
+        bajartstopsBtnClick: function (evt) {
+
+var HttpClient = function () {
+    this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+    }
+}
+var theurl = 'http://192.168.0.82/arduino/bajarstops/1';
+var client = new HttpClient();
+client.get(theurl, function (response) {
+    
+     var HttpClient = function () {
+    this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+    }
+}
+var theurl = 'http://192.168.0.83/arduino/bajarstops/1';
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+    chilipeppr.publish(
+        '/com-chilipeppr-elem-flashmsg/flashmsg',
+        "Mesas",
+        "Posicionadores Abajo",
+        2000
+    );
+
+    document.getElementById("sa1f1").className = "led-off";
+    document.getElementById("sa1f2").className = "led-off";
+    document.getElementById("sa1l1").className = "led-off";
+    document.getElementById("sa2f1").className = "led-off";
+    document.getElementById("sa2f2").className = "led-off";
+    document.getElementById("sa2l1").className = "led-off";
+    document.getElementById("sa2l2").className = "led-off";
+    document.getElementById("sy1f1").className = "led-off";
+    document.getElementById("sy1f2").className = "led-off";
+    document.getElementById("sy1l1").className = "led-off";
+    document.getElementById("sy2f1").className = "led-off";
+    document.getElementById("sy2f2").className = "led-off";
+    document.getElementById("sy2l1").className = "led-off";
+    document.getElementById("sy2l2").className = "led-off";
+
+});
+});
+},
         /**
          * The onPlay is called from the Play button (or other mechanism) and as of 1/2/17 it
          * now fires off the /onPlay pubsub so that a Play can get interrupted. It then listens to it's own
@@ -1992,6 +2050,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
          * This gives other widgets a chance to interrupt the play event.
          */
         onPlay: function(event) {
+            this.bajartstopsBtnClick();
              this.getGcode();
             console.log("got onPlay. this:", this, "event:", event);
             
@@ -2001,8 +2060,11 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             // fire off pubsub signal for others to watch the play btn
             var meta = { isPlayByUser: event ? true : false };
             meta.gcodeLines = this.fileLines;
-            chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
 
+            this.bajartstopsBtnClick();
+            setTimeout(function(){
+            chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
+        }, 2000);
         },
                 getGcode: function() {
   chilipeppr.subscribe("/com-chilipeppr-widget-gcode/recvGcode", this, this.getGcodeCallback);
