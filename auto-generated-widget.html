@@ -2858,7 +2858,7 @@ client.get(theurl, function (response) {
             this.bajartstopsBtnClick();
             setTimeout(function(){
             chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
-        }, 2000);
+        }, 4000);
         },
                 getGcode: function() {
   chilipeppr.subscribe("/com-chilipeppr-widget-gcode/recvGcode", this, this.getGcodeCallback);
@@ -4089,7 +4089,120 @@ client.get(theurl, function (response) {
                 
                 if (idnum == contadordelinea)
                 {
-                    
+                    //MESA A SUBIR
+
+// COMIENZAN POSICIONADORES
+
+if (gcodeline.match(/\bG611\b/i)){
+    // VERIFICAR SI MESA A ESTA AFUERA
+     this.subirstopa1f1;
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+}
+
+if (gcodeline.match(/\bG612\b/i)){
+    // VERIFICAR SI MESA A ESTA AFUERA
+     this.subirstopa1f2;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+if (gcodeline.match(/\bG613\b/i)){
+    // VERIFICAR SI MESA A ESTA AFUERA
+     this.subirstopa1l1;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+if (gcodeline.match(/\bG621\b/i)){
+    // VERIFICAR SI MESA A ESTA AFUERA
+     this.subirstopa2f1;
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+}
+
+if (gcodeline.match(/\bG622\b/i)){
+    // VERIFICAR SI MESA A ESTA AFUERA
+     this.subirstopa2f2;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+if (gcodeline.match(/\bG623\b/i)){
+    // VERIFICAR SI MESA A ESTA AFUERA
+     this.subirstopa2l1;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+
+if (gcodeline.match(/\bG624\b/i)){
+    // VERIFICAR SI MESA A ESTA AFUERA
+     this.subirstopa2l2;
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+}
+
+
+
+
+// MESA Y SUBIR
+
+
+if (gcodeline.match(/\bG711\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+     this.subirstopy1f1;
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+}
+
+if (gcodeline.match(/\bG712\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+     this.subirstopy1f2;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+if (gcodeline.match(/\bG713\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+     this.subirstopy1l1;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+if (gcodeline.match(/\bG721\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+     this.subirstopy2f1;
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+}
+
+if (gcodeline.match(/\bG722\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+     this.subirstopy2f2;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+if (gcodeline.match(/\bG723\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+     this.subirstopy2l1;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+
+if (gcodeline.match(/\bG724\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+     this.subirstopa2l2;
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+}
+
+
+
+//TERMINAN POSICIONADORES
+
                     var gcodeline = this.gcode.lines[idnum-1];
                     if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) || gcodeline.match(/\bM111\b/i) || gcodeline.match(/\bM110\b/i) || gcodeline.match(/\bM109\b/i) || gcodeline.match(/\bM108\b/i) || gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i)
 )  {
@@ -4538,9 +4651,130 @@ chilipeppr.publish(
 
                     // Si el contador esta retrasado.    
                     
+                    
                      while(idnum>=contadordelinea){
                          
                         var gcodeline = this.gcode.lines[contadordelinea-1];
+
+
+      // COMIENZAN POSICIONADRES      
+
+
+
+
+//MESA A SUBIR
+
+
+
+if (gcodeline.match(/\bG611\b/i)){
+    // VERIFICAR SI MESA A ESTA AFUERA
+     this.subirstopa1f1;
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+}
+
+if (gcodeline.match(/\bG612\b/i)){
+    // VERIFICAR SI MESA A ESTA AFUERA
+     this.subirstopa1f2;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+if (gcodeline.match(/\bG613\b/i)){
+    // VERIFICAR SI MESA A ESTA AFUERA
+     this.subirstopa1l1;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+if (gcodeline.match(/\bG621\b/i)){
+    // VERIFICAR SI MESA A ESTA AFUERA
+     this.subirstopa2f1;
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+}
+
+if (gcodeline.match(/\bG622\b/i)){
+    // VERIFICAR SI MESA A ESTA AFUERA
+     this.subirstopa2f2;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+if (gcodeline.match(/\bG623\b/i)){
+    // VERIFICAR SI MESA A ESTA AFUERA
+     this.subirstopa2l1;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+
+if (gcodeline.match(/\bG624\b/i)){
+    // VERIFICAR SI MESA A ESTA AFUERA
+     this.subirstopa2l2;
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+}
+
+
+
+
+// MESA Y SUBIR
+
+
+if (gcodeline.match(/\bG711\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+     this.subirstopy1f1;
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+}
+
+if (gcodeline.match(/\bG712\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+     this.subirstopy1f2;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+if (gcodeline.match(/\bG713\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+     this.subirstopy1l1;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+if (gcodeline.match(/\bG721\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+     this.subirstopy2f1;
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+}
+
+if (gcodeline.match(/\bG722\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+     this.subirstopy2f2;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+if (gcodeline.match(/\bG723\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+     this.subirstopy2l1;
+                                 setTimeout(function(){ var cmd  = "~";
+      
+       }, 1500);
+}
+
+if (gcodeline.match(/\bG724\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+     this.subirstopa2l2;
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+}
+
+
+
+    //TERMINAN POSICIONADORES
                         if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) || gcodeline.match(/\bM111\b/i) || gcodeline.match(/\bM110\b/i) || gcodeline.match(/\bM109\b/i) || gcodeline.match(/\bM108\b/i) || gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || gcodeline.match(/\bM701\b/i)
 )  {
                             
@@ -4744,6 +4978,14 @@ if (gcodeline.match(/\bM199\b/i)){ //funcion bajar broca
 }
 
 //Final codigo taladro
+
+//INICIO codigo posicionadores 
+
+
+
+
+
+// Final Codigo posicionadores
                         //Inicio Husillo
                         
                         if (gcodeline.match(/\bM3\b/i)) {
