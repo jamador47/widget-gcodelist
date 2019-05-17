@@ -4199,12 +4199,93 @@ if (gcodeline.match(/\bG724\b/i)){
        }, 1500);
 }
 
+                    
+                    
+                    // SACAR PALETA DERECHA
+
+if (gcodeline.match(/\bM57\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+    
+    
+     var HttpClient = function () {
+                            this.get = function (aUrl, aCallback) {
+                                var anHttpRequest = new XMLHttpRequest();
+                                anHttpRequest.onreadystatechange = function () {
+                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                        aCallback(anHttpRequest.responseText);
+                                }
+                                anHttpRequest.open("GET", aUrl, true);
+                                anHttpRequest.send(null);
+                            }
+                        }
+
+
+ var theurl = 'http://192.168.0.82/arduino/digital/46';
+                        var client = new HttpClient();
+                        client.get(theurl, function (response) {
+
+var res = response.split("Pin D46 set to ");
+
+                                            response = parseInt(res[1]);
+
+                                            if (response == 1) {
+                                                    
+                                                
+                                                this.sacarpaletaderecha;
+					
+					}
+
+});
+    
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+}
+                    
+                    //METER PALETA DERECHA
+                    
+     if (gcodeline.match(/\bM67\b/i)){
+    // VERIFICAR SI MESA Y ESTA AFUERA
+    
+    
+     var HttpClient = function () {
+                            this.get = function (aUrl, aCallback) {
+                                var anHttpRequest = new XMLHttpRequest();
+                                anHttpRequest.onreadystatechange = function () {
+                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                        aCallback(anHttpRequest.responseText);
+                                }
+                                anHttpRequest.open("GET", aUrl, true);
+                                anHttpRequest.send(null);
+                            }
+                        }
+
+
+ var theurl = 'http://192.168.0.82/arduino/digital/46';
+                        var client = new HttpClient();
+                        client.get(theurl, function (response) {
+
+var res = response.split("Pin D46 set to ");
+
+                                            response = parseInt(res[1]);
+
+                                            if (response == 1) {
+                                                    
+                                                
+                                                this.meterpaletaderecha;
+					
+					}
+
+});
+    
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+}      
 
 
 //TERMINAN POSICIONADORES
 
                     var gcodeline = this.gcode.lines[idnum-1];
-                    if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) || gcodeline.match(/\bM111\b/i) || gcodeline.match(/\bM110\b/i) || gcodeline.match(/\bM109\b/i) || gcodeline.match(/\bM108\b/i) || gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i)
+                    if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) || gcodeline.match(/\bM111\b/i) || gcodeline.match(/\bM110\b/i) || gcodeline.match(/\bM109\b/i) || gcodeline.match(/\bM108\b/i) || gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) 
 )  {
                       
                         var cmd  = "!";
@@ -7262,58 +7343,58 @@ chilipeppr.publish(
 },
 
 //fin bajar brocas
-
+        
+        
+        
+// SACARMESADERECHA
+sacarpaletaderecha: function(evt){
+    
+    
+},
+ 
+// METERMESADERECHA
+meterpaletaderecha: function(evt){
+    
+    
+},
 
 //Todas brocas
 subirtbrocaBtnClick: function(evt) {
 
-alert("Subiendo todas las brocas, espere al menos 8 segundos para continuar");
-this.subirbroca1();
-setTimeout(function(){
-this.subirbroca2();
-setTimeout(function(){
-this.subirbroca3();
-setTimeout(function(){
-this.subirbroca4();
-setTimeout(function(){
-this.subirbroca5();
-setTimeout(function(){
-this.subirbroca6();
-setTimeout(function(){
-this.subirbroca7();
-setTimeout(function(){
-this.subirbroca8();
-setTimeout(function(){
-this.subirbroca9();
-setTimeout(function(){
-this.subirbroca10();
-setTimeout(function(){
-this.subirbroca11();
-setTimeout(function(){
-this.subirbroca12();
-setTimeout(function(){
-this.subirbroca13();
-setTimeout(function(){
-this.subirbroca14();
-setTimeout(function(){
-this.subirbroca15();
-setTimeout(function(){
-this.subirbroca16();
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
+alert("Subiendo todas las brocas");
+   alert("Subiendo todas las brocas, espere al menos 2 segundos para continuar");
+                     var HttpClient = function () {
+                        this.get = function (aUrl, aCallback) {
+                            var anHttpRequest = new XMLHttpRequest();
+                            anHttpRequest.onreadystatechange = function () {
+                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                    aCallback(anHttpRequest.responseText);
+                            }
+                            anHttpRequest.open("GET", aUrl, true);
+                            anHttpRequest.send(null);
+                        }
+                    }
+                    var theurl = 'http://192.168.0.84/arduino/subirbrocas/1';
+                    var client = new HttpClient();
+                    client.get(theurl, function (response) {
+                         document.getElementById("ib1").className = "led-off";
+                        document.getElementById("ib2").className = "led-off";
+                        document.getElementById("ib3").className = "led-off";
+                        document.getElementById("ib4").className = "led-off";
+                        document.getElementById("ib5").className = "led-off";
+                        document.getElementById("ib6").className = "led-off";
+                        document.getElementById("ib7").className = "led-off";
+                        document.getElementById("ib8").className = "led-off";
+                        document.getElementById("ib9").className = "led-off";
+                        document.getElementById("ib10").className = "led-off";
+                        document.getElementById("ib11").className = "led-off";
+                        document.getElementById("ib12").className = "led-off";
+                        document.getElementById("ib13").className = "led-off";
+                        document.getElementById("ib14").className = "led-off";
+                        document.getElementById("ib15").className = "led-off";
+                        document.getElementById("ib16").className = "led-off";
+                        
+                    });
 
 
 
@@ -7321,57 +7402,49 @@ this.subirbroca16();
 },
 
 bajartbrocaBtnClick: function(evt) {
-alert("Bajando todas las brocas, espere al menos 8 segundos para continuar");
-this.bajarbroca1();
-setTimeout(function(){
-this.bajarbroca2();
-setTimeout(function(){
-this.bajarbroca3();
-setTimeout(function(){
-this.bajarbroca4();
-setTimeout(function(){
-this.bajarbroca5();
-setTimeout(function(){
-this.bajarbroca6();
-setTimeout(function(){
-this.bajarbroca7();
-setTimeout(function(){
-this.bajarbroca8();
-setTimeout(function(){
-this.bajarbroca9();
-setTimeout(function(){
-this.bajarbroca10();
-setTimeout(function(){
-this.bajarbroca11();
-setTimeout(function(){
-this.bajarbroca12();
-setTimeout(function(){
-this.bajarbroca13();
-setTimeout(function(){
-this.bajarbroca14();
-setTimeout(function(){
-this.bajarbroca15();
-setTimeout(function(){
-this.bajarbroca16();
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
-},500);
+alert("Bajando todas las brocas");
 
+                  
+                     var HttpClient = function () {
+                        this.get = function (aUrl, aCallback) {
+                            var anHttpRequest = new XMLHttpRequest();
+                            anHttpRequest.onreadystatechange = function () {
+                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                    aCallback(anHttpRequest.responseText);
+                            }
+                            anHttpRequest.open("GET", aUrl, true);
+                            anHttpRequest.send(null);
+                        }
+                    }
+                    var theurl = 'http://192.168.0.84/arduino/bajarbrocas/1';
+                    var client = new HttpClient();
+                    client.get(theurl, function (response) {
+                         document.getElementById("ib1").className = "led-green";
+                        document.getElementById("ib2").className = "led-green";
+                        document.getElementById("ib3").className = "led-green";
+                        document.getElementById("ib4").className = "led-green";
+                        document.getElementById("ib5").className = "led-green";
+                        document.getElementById("ib6").className = "led-green";
+                        document.getElementById("ib7").className = "led-green";
+                        document.getElementById("ib8").className = "led-green";
+                        document.getElementById("ib9").className = "led-green";
+                        document.getElementById("ib10").className = "led-green";
+                        document.getElementById("ib11").className = "led-green";
+                        document.getElementById("ib12").className = "led-green";
+                        document.getElementById("ib13").className = "led-green";
+                        document.getElementById("ib14").className = "led-green";
+                        document.getElementById("ib15").className = "led-green";
+                        document.getElementById("ib16").className = "led-green";
+                        
+                    });
+                    
 
 
 },
+        
+        
+        
+
 
         // linenum is 1-based since visually gcode starts at line 1, this.fileLines is 0-based
         // so don't forget
