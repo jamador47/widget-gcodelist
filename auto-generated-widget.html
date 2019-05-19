@@ -7426,7 +7426,90 @@ chilipeppr.publish(
           
             
         },
+  
         
+        
+
+// Chequeo posicion trabajo
+        
+        checkposiciontrabajo: function(evt){
+                
+     var HttpClient = function () {
+         
+            
+                             this.get = function (aUrl, aCallback) {
+                                var anHttpRequest = new XMLHttpRequest();
+                                anHttpRequest.onreadystatechange = function () {
+                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                        aCallback(anHttpRequest.responseText);
+                                }
+                                anHttpRequest.open("GET", aUrl, true);
+                                anHttpRequest.send(null);
+                            }
+                        }
+
+// LEE SI MESA ESTA EN TRABAJO
+ var theurl = 'http://192.168.0.83/arduino/digital/32';
+                        var client = new HttpClient();
+                        client.get(theurl, function (response) {
+
+var res = response.split("Pin D32 set to ");
+
+                                            response = parseInt(res[1]);
+
+                                            if (response == 1) {
+       
+        return true;
+    }
+    else{ 
+       
+        return false;
+    }
+});
+            
+            
+        },
+        
+        
+// Chequeo posicion carga
+        
+                checkposicioncarga: function(evt){
+                
+     var HttpClient = function () {
+         
+                                                 this.get = function (aUrl, aCallback) {
+                                var anHttpRequest = new XMLHttpRequest();
+                                anHttpRequest.onreadystatechange = function () {
+                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                        aCallback(anHttpRequest.responseText);
+                                }
+                                anHttpRequest.open("GET", aUrl, true);
+                                anHttpRequest.send(null);
+                            }
+                        }
+
+// LEE SI MESA ESTA EN CARGA
+ var theurl = 'http://192.168.0.83/arduino/digital/31';
+                        var client = new HttpClient();
+                        client.get(theurl, function (response) {
+
+var res = response.split("Pin D31 set to ");
+
+                                            response = parseInt(res[1]);
+
+                                            if (response == 1) {
+                                                return true;
+        
+    }
+    else{
+        return false;
+        
+    }
+});
+            
+            
+            
+        },
         
         
 // SACARMESADERECHA
@@ -7497,7 +7580,7 @@ var res = response.split("Pin D30 set to ");
                         }
 
 // ENCIENDE INTERRUPTOR
- var theurl = '192.168.0.83/arduino/digital/43/1';
+ var theurl = 'http://192.168.0.83/arduino/digital/43/1';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
                             
@@ -7514,7 +7597,7 @@ var res = response.split("Pin D30 set to ");
                         }
 
 // APAGA INTERRUPTOR
- var theurl = '192.168.0.83/arduino/digital/43/0';
+ var theurl = 'http://192.168.0.83/arduino/digital/43/0';
                         var client = new HttpClient();
                         
                             
@@ -7702,10 +7785,23 @@ var res = response.split("Pin D30 set to ");
                             }
                         }
 
-// ACTIVAR RUN
+// DESACTIVAR RUN
  var theurl = 'http://192.168.0.85/arduino/digital/10/0';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
+                            
+                         if (this.checkposicioncarga){
+                             
+                             this.bloquearpaletaderecha;
+                             
+                         }  else {
+                             
+                             
+                             // ERROR CARGA
+                             
+                             
+                         } 
+                        
                             
                         });
                             
@@ -7906,6 +8002,15 @@ var res = response.split("Pin D30 set to ");
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
                             
+                                                        if (this.checkposicioncarga){
+                             
+                             this.bloquearpaletaderecha;
+                             
+                         }   else{
+                             // ERROR
+                         }
+                            
+                            
                         });
                             
                         });
@@ -8021,7 +8126,7 @@ var res = response.split("Pin D30 set to ");
                         }
 
 // ENCIENDE INTERRUPTOR
- var theurl = '192.168.0.83/arduino/digital/43/1';
+ var theurl = 'http://192.168.0.83/arduino/digital/43/1';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
                             
@@ -8038,7 +8143,7 @@ var res = response.split("Pin D30 set to ");
                         }
 
 // APAGA INTERRUPTOR
- var theurl = '192.168.0.83/arduino/digital/43/0';
+ var theurl = 'http://192.168.0.83/arduino/digital/43/0';
                         var client = new HttpClient();
                         
                             
@@ -8225,6 +8330,14 @@ var res = response.split("Pin D30 set to ");
  var theurl = 'http://192.168.0.85/arduino/digital/10/0';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
+                                                        if (this.checkposiciontrabajo){
+                             
+                             this.bloquearpaletaderecha;
+                             
+                         }   else{
+                             // ERROR
+                         }
+                            
                             
                         });
                             
@@ -8425,6 +8538,13 @@ var res = response.split("Pin D30 set to ");
  var theurl = 'http://192.168.0.85/arduino/digital/10/0';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
+                                                     if (this.checkposiciontrabajo){
+                             
+                             this.bloquearpaletaderecha;
+                             
+                         }   else{
+                             // ERROR
+                         }
                             
                         });
                             
