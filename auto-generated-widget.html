@@ -4091,6 +4091,15 @@ client.get(theurl, function (response) {
                 {
                     //MESA A SUBIR
 
+//TERMINAN POSICIONADORES
+
+                    var gcodeline = this.gcode.lines[idnum-1];
+                    if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bG724\b/i)  || gcodeline.match(/\bG723\b/i)  || gcodeline.match(/\bG722\b/i)  || gcodeline.match(/\bG721\b/i)  || gcodeline.match(/\bG713\b/i)  || gcodeline.match(/\bG712\b/i)  || gcodeline.match(/\bG711\b/i) || gcodeline.match(/\bG624\b/i) || gcodeline.match(/\bG623\b/i) || gcodeline.match(/\bG622\b/i) || gcodeline.match(/\bG621\b/i) || gcodeline.match(/\bG613\b/i) || gcodeline.match(/\bG612\b/i)|| gcodeline.match(/\bG611\b/i) || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) || gcodeline.match(/\bM111\b/i) || gcodeline.match(/\bM110\b/i) || gcodeline.match(/\bM109\b/i) || gcodeline.match(/\bM108\b/i) || gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) 
+)  {
+                      
+                        var cmd  = "!";
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+    
 // COMIENZAN POSICIONADORES
 
 if (gcodeline.match(/\bG611\b/i)){
@@ -4364,16 +4373,7 @@ var res = response.split("Pin D46 set to ");
                                  setTimeout(function(){ var cmd  = "~";
        }, 1500);
 }      
-
-//TERMINAN POSICIONADORES
-
-                    var gcodeline = this.gcode.lines[idnum-1];
-                    if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) || gcodeline.match(/\bM111\b/i) || gcodeline.match(/\bM110\b/i) || gcodeline.match(/\bM109\b/i) || gcodeline.match(/\bM108\b/i) || gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) 
-)  {
-                      
-                        var cmd  = "!";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-                        
+                    
                         //Inicio codigo taladro
                         if (gcodeline.match(/\bM116\b/i)) {
                         numerobroca = "16"; 
@@ -4830,6 +4830,15 @@ chilipeppr.publish(
 
 
 
+    //TERMINAN POSICIONADORES
+    if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bG724\b/i)  || gcodeline.match(/\bG723\b/i)  || gcodeline.match(/\bG722\b/i)  || gcodeline.match(/\bG721\b/i)  || gcodeline.match(/\bG713\b/i)  || gcodeline.match(/\bG712\b/i)  || gcodeline.match(/\bG711\b/i) || gcodeline.match(/\bG624\b/i) || gcodeline.match(/\bG623\b/i) || gcodeline.match(/\bG622\b/i) || gcodeline.match(/\bG621\b/i) || gcodeline.match(/\bG613\b/i) || gcodeline.match(/\bG612\b/i)|| gcodeline.match(/\bG611\b/i) || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) || gcodeline.match(/\bM111\b/i) || gcodeline.match(/\bM110\b/i) || gcodeline.match(/\bM109\b/i) || gcodeline.match(/\bM108\b/i) || gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) 
+)  {
+                            
+                        var cmd  = "!";
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+                        //Inicio codigo taladro
+                        
+
 if (gcodeline.match(/\bG611\b/i)){
     // VERIFICAR SI MESA A ESTA AFUERA
      this.subirstopa1f1;
@@ -4937,14 +4946,6 @@ if (gcodeline.match(/\bG724\b/i)){
 }
 
 
-
-    //TERMINAN POSICIONADORES
-                        if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) || gcodeline.match(/\bM111\b/i) || gcodeline.match(/\bM110\b/i) || gcodeline.match(/\bM109\b/i) || gcodeline.match(/\bM108\b/i) || gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || gcodeline.match(/\bM701\b/i)
-)  {
-                            
-                        var cmd  = "!";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-                        //Inicio codigo taladro
                         if (gcodeline.match(/\bM116\b/i)) {
                         numerobroca = "16"; 
                         var cmd  = "~";
