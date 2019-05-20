@@ -4079,7 +4079,8 @@ client.get(theurl, function (response) {
                 
                 
                 // Igualando en caso de que sea segunda vez.
-                if (contadordelinea > idnum ){       
+                if (contadordelinea > idnum ){    
+               
 
                     contadordelinea = idnum;
 
@@ -4089,6 +4090,9 @@ client.get(theurl, function (response) {
                 
                 if (idnum == contadordelinea)
                 {
+
+                    
+alert(contadordelinea);
                     //MESA A SUBIR
 
 //TERMINAN POSICIONADORES
@@ -4827,7 +4831,7 @@ chilipeppr.publish(
 
       // COMIENZAN POSICIONADRES      
 
-
+alert(contadordelinea);
 
 
 //MESA A SUBIR
@@ -5159,7 +5163,7 @@ if (gcodeline.match(/\bM199\b/i)){ //funcion bajar broca
 // Final Codigo posicionadores
                         //Inicio Husillo
                         
-                        if (gcodeline.match(/\bM3\b/i)) {
+            if (gcodeline.match(/\bM3\b/i)) {
                           
                             var HttpClient = function() {
                   this.get = function(aUrl, aCallback) {
@@ -5291,7 +5295,11 @@ if (gcodeline.match(/\bM199\b/i)){ //funcion bajar broca
               });
       
   
-                       } else if (gcodeline.match(/\bM5\b/i)) {
+                       } 
+                       
+                       
+                       
+                       else if (gcodeline.match(/\bM5\b/i)) {
                         
                          
                         
@@ -5363,7 +5371,7 @@ chilipeppr.publish(
                         
                         
                         
-                        //++++++++++++++++
+                       
                         
                         
                     }
@@ -10591,7 +10599,7 @@ alert("Bajando todas las brocas");
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">J kode 0.1</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Y kode 0.1</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
