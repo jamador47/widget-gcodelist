@@ -4308,6 +4308,7 @@ alert(contadordelinea);
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
     
 
+/*************************************INICIA SWITCH ***********************/
 
                         switch (gcodeline) {
 
@@ -4364,112 +4365,179 @@ alert(contadordelinea);
          break;
 
   /*************************************FIN G612 ***********************************/
+ /**************************************INICIO G613********************************/
+
+ case (gcodeline.match(/\bG613\b/i) || {}).input :
+    // VERIFICAR SI MESA A ESTA AFUERA
+ // this.subirstopa1l1;
+ alert ("g613");
+     setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+       
+         break;
+
+  /*************************************FIN G612 ***********************************/
 
 
+ /**************************************INICIO G621********************************/
+
+ case (gcodeline.match(/\bG621\b/i) || {}).input :
+    // VERIFICAR SI MESA A ESTA AFUERA
+ // this.subirstopa2f1;
+ alert ("g621");
+     setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+       
+         break;
+
+  /*************************************FIN G621 ***********************************/
 
 
+ /**************************************INICIO G622********************************/
 
+ case (gcodeline.match(/\bG622\b/i) || {}).input :
+    // VERIFICAR SI MESA A ESTA AFUERA
+ // this.subirstopa2f2;
+ alert ("g622");
+     setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+       
+         break;
+
+  /*************************************FIN G622 ***********************************/
+ /**************************************INICIO G623********************************/
+
+ case (gcodeline.match(/\bG623\b/i) || {}).input :
+    // VERIFICAR SI MESA A ESTA AFUERA
+ // this.subirstopa2l1;
+ alert ("g623");
+     setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+       
+         break;
+
+  /*************************************FIN G623 ***********************************/
+ /**************************************INICIO G624********************************/
+
+ case (gcodeline.match(/\bG624\b/i) || {}).input :
+    // VERIFICAR SI MESA A ESTA AFUERA
+ // this.subirstopa2l2;
+ alert ("g624");
+     setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+       
+         break;
+
+  /*************************************FIN G624 ***********************************/
+ /**************************************INICIO G711********************************/
+
+ case (gcodeline.match(/\bG711\b/i) || {}).input :
+    // VERIFICAR SI MESA A ESTA AFUERA
+ //this.subirstopy1f1;
+ alert ("g711");
+     setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+       
+         break;
+
+  /*************************************FIN G711 ***********************************/
+ /**************************************INICIO G712********************************/
+
+ case (gcodeline.match(/\bG712\b/i) || {}).input :
+    // VERIFICAR SI MESA A ESTA AFUERA
+ //this.subirstopy1f2;
+ alert ("g712");
+     setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+       
+         break;
+
+  /*************************************FIN G712 ***********************************/
+ /**************************************INICIO G713********************************/
+
+ case (gcodeline.match(/\bG713\b/i) || {}).input :
+    // VERIFICAR SI MESA A ESTA AFUERA
+ // this.subirstopy1l1;
+ alert ("g713");
+     setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+       
+         break;
+
+  /*************************************FIN G712 ***********************************/
+
+
+ /**************************************INICIO G721********************************/
+
+ case (gcodeline.match(/\bG721\b/i) || {}).input :
+    // VERIFICAR SI MESA A ESTA AFUERA
+ // this.subirstopy2f1;
+ alert ("g721");
+     setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+       
+         break;
+
+  /*************************************FIN G721 ***********************************/
+
+
+ /**************************************INICIO G722********************************/
+
+ case (gcodeline.match(/\bG722\b/i) || {}).input :
+    // VERIFICAR SI MESA A ESTA AFUERA
+ // this.subirstopy2f2;
+ alert ("g722");
+     setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+       
+         break;
+
+  /*************************************FIN G722 ***********************************/
+ /**************************************INICIO G723********************************/
+
+ case (gcodeline.match(/\bG723\b/i) || {}).input :
+    // VERIFICAR SI MESA A ESTA AFUERA
+ // this.subirstopy2l1;
+ alert ("g723");
+     setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+       
+         break;
+
+  /*************************************FIN G723 ***********************************/
+ /**************************************INICIO G724********************************/
+
+ case (gcodeline.match(/\bG724\b/i) || {}).input :
+    // VERIFICAR SI MESA A ESTA AFUERA
+ // this.subirstopy2l2;
+ alert ("g724");
+     setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+       
+         break;
+
+  /*************************************FIN G724 ***********************************/
+
+
+/***************************************INICIO M57 SACAR PALETA DERECHA*********/
+
+
+case (gcodeline.match(/\bM57\b/i) || {}).input :
+    
+    // this.activarM57();
+  
+  alert ("M57");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
 
 
   /*************************** FIN SWITCH***********************/
 }
-// COMIENZAN POSICIONADORES
-
-
-
-if (gcodeline.match(/\bG613\b/i)){
-    // VERIFICAR SI MESA A ESTA AFUERA
-     this.subirstopa1l1;
-                                 setTimeout(function(){ var cmd  = "~";
-      
-       }, 1500);
-}
-if (gcodeline.match(/\bG621\b/i)){
-    // VERIFICAR SI MESA A ESTA AFUERA
-     this.subirstopa2f1;
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-}
-
-if (gcodeline.match(/\bG622\b/i)){
-    // VERIFICAR SI MESA A ESTA AFUERA
-     this.subirstopa2f2;
-                                 setTimeout(function(){ var cmd  = "~";
-      
-       }, 1500);
-}
-if (gcodeline.match(/\bG623\b/i)){
-    // VERIFICAR SI MESA A ESTA AFUERA
-     this.subirstopa2l1;
-                                 setTimeout(function(){ var cmd  = "~";
-      
-       }, 1500);
-}
-
-if (gcodeline.match(/\bG624\b/i)){
-    // VERIFICAR SI MESA A ESTA AFUERA
-     this.subirstopa2l2;
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-}
 
 
 
 
-// MESA Y SUBIR
-
-
-if (gcodeline.match(/\bG711\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-     this.subirstopy1f1;
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-}
-
-if (gcodeline.match(/\bG712\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-     this.subirstopy1f2;
-                                 setTimeout(function(){ var cmd  = "~";
-      
-       }, 1500);
-}
-if (gcodeline.match(/\bG713\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-     this.subirstopy1l1;
-                                 setTimeout(function(){ var cmd  = "~";
-      
-       }, 1500);
-}
-if (gcodeline.match(/\bG721\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-     this.subirstopy2f1;
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-}
-
-if (gcodeline.match(/\bG722\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-     this.subirstopy2f2;
-                                 setTimeout(function(){ var cmd  = "~";
-      
-       }, 1500);
-}
-if (gcodeline.match(/\bG723\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-     this.subirstopy2l1;
-                                 setTimeout(function(){ var cmd  = "~";
-      
-       }, 1500);
-}
-
-if (gcodeline.match(/\bG724\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-     this.subirstopa2l2;
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-}
-
-                    
                     
                     // SACAR PALETA DERECHA
 
@@ -5106,7 +5174,10 @@ alert(contadordelinea);
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                         //Inicio codigo taladro
                
-                        switch (gcodeline) {
+                       
+/*************************************INICIA SWITCH ***********************/
+
+switch (gcodeline) {
 
 /**************************************INICIA M3***********************/
 case (gcodeline.match(/\bM3\b/i) || {}).input :
@@ -5161,11 +5232,171 @@ alert ("g612");
      break;
 
 /*************************************FIN G612 ***********************************/
+/**************************************INICIO G613********************************/
+
+case (gcodeline.match(/\bG613\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+// this.subirstopa1l1;
+alert ("g613");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G612 ***********************************/
 
 
+/**************************************INICIO G621********************************/
+
+case (gcodeline.match(/\bG621\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+// this.subirstopa2f1;
+alert ("g621");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G621 ***********************************/
 
 
+/**************************************INICIO G622********************************/
 
+case (gcodeline.match(/\bG622\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+// this.subirstopa2f2;
+alert ("g622");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G622 ***********************************/
+/**************************************INICIO G623********************************/
+
+case (gcodeline.match(/\bG623\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+// this.subirstopa2l1;
+alert ("g623");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G623 ***********************************/
+/**************************************INICIO G624********************************/
+
+case (gcodeline.match(/\bG624\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+// this.subirstopa2l2;
+alert ("g624");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G624 ***********************************/
+/**************************************INICIO G711********************************/
+
+case (gcodeline.match(/\bG711\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+//this.subirstopy1f1;
+alert ("g711");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G711 ***********************************/
+/**************************************INICIO G712********************************/
+
+case (gcodeline.match(/\bG712\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+//this.subirstopy1f2;
+alert ("g712");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G712 ***********************************/
+/**************************************INICIO G713********************************/
+
+case (gcodeline.match(/\bG713\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+// this.subirstopy1l1;
+alert ("g713");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G712 ***********************************/
+
+
+/**************************************INICIO G721********************************/
+
+case (gcodeline.match(/\bG721\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+// this.subirstopy2f1;
+alert ("g721");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G721 ***********************************/
+
+
+/**************************************INICIO G722********************************/
+
+case (gcodeline.match(/\bG722\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+// this.subirstopy2f2;
+alert ("g722");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G722 ***********************************/
+/**************************************INICIO G723********************************/
+
+case (gcodeline.match(/\bG723\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+// this.subirstopy2l1;
+alert ("g723");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G723 ***********************************/
+/**************************************INICIO G724********************************/
+
+case (gcodeline.match(/\bG724\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+// this.subirstopy2l2;
+alert ("g724");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G724 ***********************************/
+
+
+/***************************************INICIO M57 SACAR PALETA DERECHA*********/
+
+
+case (gcodeline.match(/\bM57\b/i) || {}).input :
+
+// this.activarM57();
+
+alert ("M57");
+var cmd  = "~";
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+break;
 
 
 /*************************** FIN SWITCH***********************/
@@ -5830,6 +6061,44 @@ var HttpClient = function() {
 
      },
 
+
+
+activarM57: function(evt){
+    
+    
+    var HttpClient = function () {
+                            this.get = function (aUrl, aCallback) {
+                                var anHttpRequest = new XMLHttpRequest();
+                                anHttpRequest.onreadystatechange = function () {
+                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                        aCallback(anHttpRequest.responseText);
+                                }
+                                anHttpRequest.open("GET", aUrl, true);
+                                anHttpRequest.send(null);
+                            }
+                        }
+
+
+ var theurl = 'http://192.168.0.82/arduino/digital/46';
+                        var client = new HttpClient();
+                        client.get(theurl, function (response) {
+
+var res = response.split("Pin D46 set to ");
+
+                                            response = parseInt(res[1]);
+
+                                            if (response == 1) {
+                                                    
+                                                
+                                                this.sacarpaletaderecha;
+					
+					}
+
+});
+    
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+},
 //taladro apagado
 taladrooffBtnClick: function(evt) {
 
@@ -10922,7 +11191,7 @@ alert("Bajando todas las brocas");
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">krone code 0.1</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">trone code 0.1</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
