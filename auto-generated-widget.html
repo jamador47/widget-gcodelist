@@ -2844,7 +2844,7 @@ client.get(theurl, function (response) {
          * This gives other widgets a chance to interrupt the play event.
          */
         onPlay: function(event) {
-            this.bajartstopsBtnClick();
+       
              this.getGcode();
             console.log("got onPlay. this:", this, "event:", event);
             
@@ -2855,7 +2855,7 @@ client.get(theurl, function (response) {
             var meta = { isPlayByUser: event ? true : false };
             meta.gcodeLines = this.fileLines;
 
-            this.bajartstopsBtnClick();
+           // this.bajartstopsBtnClick();
             setTimeout(function(){
             chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
         }, 4000);
@@ -10599,7 +10599,7 @@ alert("Bajando todas las brocas");
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">J ode 0.1</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">L ode 0.1</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
