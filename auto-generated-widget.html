@@ -4100,7 +4100,15 @@ alert(contadordelinea);
                     var gcodeline = this.gcode.lines[idnum-1];
                     if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bG724\b/i)  || gcodeline.match(/\bG723\b/i)  || gcodeline.match(/\bG722\b/i)  || gcodeline.match(/\bG721\b/i)  || gcodeline.match(/\bG713\b/i)  || gcodeline.match(/\bG712\b/i)  || gcodeline.match(/\bG711\b/i) || gcodeline.match(/\bG624\b/i) || gcodeline.match(/\bG623\b/i) || gcodeline.match(/\bG622\b/i) || gcodeline.match(/\bG621\b/i) || gcodeline.match(/\bG613\b/i) || gcodeline.match(/\bG612\b/i)|| gcodeline.match(/\bG611\b/i) || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) || gcodeline.match(/\bM111\b/i) || gcodeline.match(/\bM110\b/i) || gcodeline.match(/\bM109\b/i) || gcodeline.match(/\bM108\b/i) || gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) 
 )  {
-                      
+                    
+
+switch (gcodeline) {
+
+case (gcodeline.match(/\bM3\b/i):
+alert ("M3");
+break;
+
+}
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
     
@@ -4590,7 +4598,7 @@ if (gcodeline.match(/\bM199\b/i)){ //funcion bajar broca
 
 
                         //CODIGO M3
-                        if (gcodeline.match(/\bM3\b/i)) {
+                        if (gcodeline.match(/\bM800\b/i)) {
                            
                             var HttpClient = function() {
                   this.get = function(aUrl, aCallback) {
@@ -5163,7 +5171,7 @@ if (gcodeline.match(/\bM199\b/i)){ //funcion bajar broca
 // Final Codigo posicionadores
                         //Inicio Husillo
                         
-            if (gcodeline.match(/\bM3\b/i)) {
+            if (gcodeline.match(/\bM800\b/i)) {
                           
                             var HttpClient = function() {
                   this.get = function(aUrl, aCallback) {
@@ -10599,7 +10607,7 @@ alert("Bajando todas las brocas");
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">L ode 0.1</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">P code 0.1</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
