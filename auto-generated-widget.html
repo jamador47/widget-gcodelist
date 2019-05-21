@@ -5003,12 +5003,174 @@ alert(contadordelinea);
     //TERMINAN POSICIONADORES
     if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bG724\b/i)  || gcodeline.match(/\bG723\b/i)  || gcodeline.match(/\bG722\b/i)  || gcodeline.match(/\bG721\b/i)  || gcodeline.match(/\bG713\b/i)  || gcodeline.match(/\bG712\b/i)  || gcodeline.match(/\bG711\b/i) || gcodeline.match(/\bG624\b/i) || gcodeline.match(/\bG623\b/i) || gcodeline.match(/\bG622\b/i) || gcodeline.match(/\bG621\b/i) || gcodeline.match(/\bG613\b/i) || gcodeline.match(/\bG612\b/i)|| gcodeline.match(/\bG611\b/i) || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) || gcodeline.match(/\bM111\b/i) || gcodeline.match(/\bM110\b/i) || gcodeline.match(/\bM109\b/i) || gcodeline.match(/\bM108\b/i) || gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) 
 )  {
-                            
+
+
+
+
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                         //Inicio codigo taladro
                         
+switch (gcodeline) {
 
+    case (gcodeline.match(/\bM3\b/i) || {}).input :
+    /*          
+                            var HttpClient = function() {
+                  this.get = function(aUrl, aCallback) {
+                      var anHttpRequest = new XMLHttpRequest();
+                      anHttpRequest.onreadystatechange = function() {
+                          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                              aCallback(anHttpRequest.responseText);
+                      }
+                      anHttpRequest.open("GET", aUrl, true);
+                      anHttpRequest.send(null);
+                  }
+              }
+              var theurl = 'http://192.168.0.88/arduino/analog/5';
+              var client = new HttpClient();
+              client.get(theurl, function(response) {
+           var res = response.split("Pin A5 reads analog ");
+           
+           response = parseInt(res[1]);
+       
+                  if (response > 850) {
+                      
+                      var HttpClient = function() {
+                      this.get = function(aUrl, aCallback) {
+                      var anHttpRequest = new XMLHttpRequest();
+                      anHttpRequest.onreadystatechange = function() {
+                          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                              aCallback(anHttpRequest.responseText);
+                      }
+                      anHttpRequest.open("GET", aUrl, true);
+                      anHttpRequest.send(null);
+                          }
+                      }
+                      var theurl = 'http://192.168.0.89/arduino/digital/11';
+                      var client = new HttpClient();
+                      client.get(theurl, function(response) {
+       var res = response.split("Pin D11 set to ");
+           
+           response = parseInt(res[1]);
+                          if (response == 0) {
+       var cmd  = "!";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       var HttpClient = function() {
+       this.get = function(aUrl, aCallback) {
+       var anHttpRequest = new XMLHttpRequest();
+       anHttpRequest.onreadystatechange = function() { 
+       if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+       aCallback(anHttpRequest.responseText);
+       }
+       anHttpRequest.open( "GET", aUrl, true ); 
+       anHttpRequest.send( null ); 
+       }
+       }
+       var theurl='http://192.168.0.88/arduino/digital/29/1';
+       var client = new HttpClient();
+       client.get(theurl, function(response) { 
+       var response1 = JSON.parse(response);
+       }); 
+                 
+                 
+             var HttpClient = function() {
+       this.get = function(aUrl, aCallback) {
+       var anHttpRequest = new XMLHttpRequest();
+       anHttpRequest.onreadystatechange = function() { 
+       if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+       aCallback(anHttpRequest.responseText);
+       }
+       anHttpRequest.open( "GET", aUrl, true ); 
+       anHttpRequest.send( null ); 
+       }
+       }
+       var theurl='http://192.168.0.88/arduino/digital/19/1';
+       var client = new HttpClient();
+       client.get(theurl, function(response) { 
+       var response1 = JSON.parse(response);
+       }); 
+                 
+             var HttpClient = function() {
+       this.get = function(aUrl, aCallback) {
+       var anHttpRequest = new XMLHttpRequest();
+       anHttpRequest.onreadystatechange = function() { 
+       if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+       aCallback(anHttpRequest.responseText);
+       }
+       anHttpRequest.open( "GET", aUrl, true ); 
+       anHttpRequest.send( null ); 
+       }
+       }
+       var theurl='http://192.168.0.88/arduino/digital/22/1';
+       var client = new HttpClient();
+       client.get(theurl, function(response) { 
+       var response1 = JSON.parse(response);
+       }); 
+       
+       document.getElementById("indicadorhusillo").className = "led-green";
+       chilipeppr.publish(
+                       '/com-chilipeppr-elem-flashmsg/flashmsg',
+                       "Estado del Husillo",
+                       "Husillo Activado ",
+                       2000 // show for 2 second 
+                       );
+       setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 3000);
+                              
+                              } else {
+                        $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                       chilipeppr.publish(
+                           '/com-chilipeppr-elem-flashmsg/flashmsg',
+                           "Estado del Husillo",
+                           "El husillo no está desbloqueado (I.99), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                           2000 // show for 2 second 
+                       );
+                   }
+               });
+           } 
+           else {
+            $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+               chilipeppr.publish(
+                           '/com-chilipeppr-elem-flashmsg/flashmsg',
+                           "Estado del Husillo",
+                           "El Husillo no está desocupado (I.19), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                           2000 // show for 2 second 
+                       );
+                  }
+              });
+       
+             
+
+
+
+    */
+    var cmd  = "~";
+        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+    break;
+
+
+
+        /***********************************FIN M3 *********************************/
+
+
+    case (gcodeline.match(/\bM5\b/i) || {}).input :
+    /*
+
+    */
+    alert ("M5");
+    var cmd  = "~";
+        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+    break;
+
+    /*************************************FIN M5 ***********************************/
+
+
+}
 if (gcodeline.match(/\bG611\b/i)){
     // VERIFICAR SI MESA A ESTA AFUERA
      this.subirstopa1f1;
