@@ -4246,6 +4246,8 @@ alert(contadordelinea);
     */
     var cmd  = "~";
         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+
     break;
 
 
@@ -5149,9 +5151,9 @@ switch (gcodeline) {
 
 
     */
-    var cmd  = "~";
-        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-    break;
+    setTimeout(function(){ var cmd  = "~";
+    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+    }, 1500);    break;
 
 
 
