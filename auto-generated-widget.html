@@ -4539,563 +4539,373 @@ case (gcodeline.match(/\bM57\b/i) || {}).input :
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
+  /*************************************FIN M57 ***********************************/
+  /***************************************INICIO M67 SACAR PALETA DERECHA*********/
 
 
+case (gcodeline.match(/\bM67\b/i) || {}).input :
+    
+    // this.activarM67();
+  
+  alert ("M67");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M67 ***********************************/
+/***************************************INICIO M58 Meter PALETA DERECHA*********/
+
+
+case (gcodeline.match(/\bM58\b/i) || {}).input :
+    
+    // this.activarM58();
+  
+  alert ("M58");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M57 ***********************************/
+
+  /***************************************INICIO M68 Meter PALETA DERECHA*********/
+
+
+case (gcodeline.match(/\bM68\b/i) || {}).input :
+    
+    // this.activarM68();
+  
+  alert ("M68");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M57 ***********************************/
+
+
+  
+  /***************************************INICIO M116*********/
+
+
+case (gcodeline.match(/\bM116\b/i) || {}).input :
+    
+numerobroca = "16"; 
+  
+  alert ("M116");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M116 ***********************************/
+
+  /***************************************INICIO M115*********/
+
+
+case (gcodeline.match(/\bM115\b/i) || {}).input :
+    
+    numerobroca = "15"; 
+      
+      alert ("M115");
+      var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      break;
+      /*************************************FIN M115 ***********************************/
+
+      /***************************************INICIO M114*********/
+
+
+case (gcodeline.match(/\bM114\b/i) || {}).input :
+    
+    numerobroca = "14"; 
+      
+      alert ("M114");
+      var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      break;
+      /*************************************FIN M114 ***********************************/
+
+      /***************************************INICIO M113*********/
+
+
+case (gcodeline.match(/\bM113\b/i) || {}).input :
+    
+    numerobroca = "13"; 
+      
+      alert ("M113");
+      var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      break;
+      /*************************************FIN M113 ***********************************/
+      /***************************************INICIO M112*********/
+
+
+case (gcodeline.match(/\bM112\b/i) || {}).input :
+    
+    numerobroca = "12"; 
+      
+      alert ("M112");
+      var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      break;
+      /*************************************FIN M112 ***********************************/
+
+      /***************************************INICIO M111*********/
+
+
+case (gcodeline.match(/\bM111\b/i) || {}).input :
+    
+    numerobroca = "11"; 
+      
+      alert ("M111");
+      var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      break;
+      /*************************************FIN M111 ***********************************/
+
+      /***************************************INICIO M110*********/
+
+
+case (gcodeline.match(/\bM110\b/i) || {}).input :
+    
+    numerobroca = "10"; 
+      
+      alert ("M110");
+      var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      break;
+      /*************************************FIN M110 ***********************************/
+
+
+      /***************************************INICIO M109*********/
+
+
+case (gcodeline.match(/\bM109\b/i) || {}).input :
+    
+    numerobroca = "9"; 
+      
+      alert ("M109");
+      var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      break;
+      /*************************************FIN M109 ***********************************/
+      /***************************************INICIO M108*********/
+
+
+case (gcodeline.match(/\bM108\b/i) || {}).input :
+    
+    numerobroca = "8"; 
+      
+      alert ("M108");
+      var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      break;
+      /*************************************FIN M108 ***********************************/
+
+      /***************************************INICIO M107*********/
+
+
+case (gcodeline.match(/\bM107\b/i) || {}).input :
+    
+    numerobroca = "7"; 
+      
+      alert ("M107");
+      var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      break;
+      /*************************************FIN M107 ***********************************/
+      /***************************************INICIO M106*********/
+
+
+case (gcodeline.match(/\bM106\b/i) || {}).input :
+    
+    numerobroca = "6"; 
+      
+      alert ("M106");
+      var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      break;
+      /*************************************FIN M106 ***********************************/
+
+      /***************************************INICIO M105*********/
+
+
+case (gcodeline.match(/\bM105\b/i) || {}).input :
+    
+    numerobroca = "5"; 
+      
+      alert ("M105");
+      var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      break;
+      /*************************************FIN M105 ***********************************/
+
+      /***************************************INICIO M104*********/
+
+
+case (gcodeline.match(/\bM104\b/i) || {}).input :
+    
+    numerobroca = "4"; 
+      
+      alert ("M104");
+      var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      break;
+      /*************************************FIN M104 ***********************************/
+      /***************************************INICIO M103*********/
+
+
+case (gcodeline.match(/\bM103\b/i) || {}).input :
+    
+    numerobroca = "3"; 
+      
+      alert ("M103");
+      var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      break;
+      /*************************************FIN M103 ***********************************/
+      /***************************************INICIO M102*********/
+
+
+case (gcodeline.match(/\bM102\b/i) || {}).input :
+    
+    numerobroca = "2"; 
+      
+      alert ("M102");
+      var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      break;
+      /*************************************FIN M102 ***********************************/
+      /***************************************INICIO M101*********/
+
+
+case (gcodeline.match(/\bM101\b/i) || {}).input :
+    
+    numerobroca = "1"; 
+      
+      alert ("M101");
+      var cmd  = "~";
+          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+      break;
+      /*************************************FIN M101 ***********************************/
+ /***************************************INICIO M100*********/
+
+
+ case (gcodeline.match(/\bM100\b/i) || {}).input :
+    
+ // this.subirtbrocaBtnClick;  
+      
+      alert ("M100");
+      setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 2000);
+      break;
+      /*************************************FIN M100 ***********************************/
+
+/***************************************INICIO M22*********/
+
+
+case (gcodeline.match(/\bM22\b/i) || {}).input :
+    
+    // this.taladroarribaBtnClick;  
+         
+         alert ("M22");
+         setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 2000);
+       break;
+         /*************************************FIN M22 ***********************************/
+   
+/***************************************INICIO M20*********/
+
+
+case (gcodeline.match(/\bM20\b/i) || {}).input :
+    
+    
+            // this.onM20BtnClick;
+         alert ("M20");
+                                 setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 2000);
+         
+         break;
+         /*************************************FIN M20 ***********************************/
+   
+   /***************************************INICIO M10*********/
+
+
+case (gcodeline.match(/\bM10\b/i) || {}).input :
+    
+    // this.onM10BtnClick;
+ alert ("M10");
+                         setTimeout(function(){ var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}, 2000);
+ 
+ break;
+ /*************************************FIN M10 ***********************************/
+ 
+   /***************************************INICIO M12*********/
+
+
+   case (gcodeline.match(/\bM12\b/i) || {}).input :
+    
+    // this.taladroabajoBtnClick;
+
+ alert ("M12");
+                         setTimeout(function(){ var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}, 2000);
+ 
+ break;
+ /*************************************FIN M12 ***********************************/
+
+
+   /***************************************INICIO M9*********/
+
+
+   case (gcodeline.match(/\bM9\b/i) || {}).input :
+    
+    // this.taladrooffBtnClick;
+
+ alert ("M9");
+                         setTimeout(function(){ var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}, 2000);
+ 
+ break;
+ /*************************************FIN M9***********************************/
+   /***************************************INICIO M8*********/
+
+
+   case (gcodeline.match(/\bM8\b/i) || {}).input :
+    
+    // this.taladroonBtnClick;
+
+ alert ("M8");
+                         setTimeout(function(){ var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}, 2000);
+ 
+ break;
+ /*************************************FIN M9***********************************/
+
+ /***************************************INICIO M199*********/
+
+
+ case (gcodeline.match(/\bM199\b/i) || {}).input :
+    
+    // this.activarm199;
+
+ alert ("M199");
+                         setTimeout(function(){ var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}, 2000);
+ 
+ break;
+ /*************************************FIN M199***********************************/
+
+      
+      
   /*************************** FIN SWITCH***********************/
 }
-
-
-
-
-                    
-                    // SACAR PALETA DERECHA
-
-                    
-                    //METER PALETA DERECHA
-                    
-     if (gcodeline.match(/\bM67\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-    
-    
-     var HttpClient = function () {
-                            this.get = function (aUrl, aCallback) {
-                                var anHttpRequest = new XMLHttpRequest();
-                                anHttpRequest.onreadystatechange = function () {
-                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                        aCallback(anHttpRequest.responseText);
-                                }
-                                anHttpRequest.open("GET", aUrl, true);
-                                anHttpRequest.send(null);
-                            }
-                        }
-
-
- var theurl = 'http://192.168.0.82/arduino/digital/46';
-                        var client = new HttpClient();
-                        client.get(theurl, function (response) {
-
-var res = response.split("Pin D46 set to ");
-
-                                            response = parseInt(res[1]);
-
-                                            if (response == 1) {
-                                                    
-                                                
-                                                this.meterpaletaderecha;
-					
-					}
-
-});
-    
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-}      
-
-
-                    /// MESA IZQUIERDA
-                    
-                    
- // SACAR PALETA IZQ
-
-if (gcodeline.match(/\bM58\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-    
-    
-     var HttpClient = function () {
-                            this.get = function (aUrl, aCallback) {
-                                var anHttpRequest = new XMLHttpRequest();
-                                anHttpRequest.onreadystatechange = function () {
-                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                        aCallback(anHttpRequest.responseText);
-                                }
-                                anHttpRequest.open("GET", aUrl, true);
-                                anHttpRequest.send(null);
-                            }
-                        }
-
-
- var theurl = 'http://192.168.0.82/arduino/digital/46';
-                        var client = new HttpClient();
-                        client.get(theurl, function (response) {
-
-var res = response.split("Pin D46 set to ");
-
-                                            response = parseInt(res[1]);
-
-                                            if (response == 1) {
-                                                    
-                                                
-                                                this.sacarpaletaizquierda;
-					
-					}
-
-});
-    
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-}
-                    
-                    //METER PALETA IZQ
-                    
-     if (gcodeline.match(/\bM68\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-    
-    
-     var HttpClient = function () {
-                            this.get = function (aUrl, aCallback) {
-                                var anHttpRequest = new XMLHttpRequest();
-                                anHttpRequest.onreadystatechange = function () {
-                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                        aCallback(anHttpRequest.responseText);
-                                }
-                                anHttpRequest.open("GET", aUrl, true);
-                                anHttpRequest.send(null);
-                            }
-                        }
-
-
- var theurl = 'http://192.168.0.82/arduino/digital/46';
-                        var client = new HttpClient();
-                        client.get(theurl, function (response) {
-
-var res = response.split("Pin D46 set to ");
-
-                                            response = parseInt(res[1]);
-
-                                            if (response == 1) {
-                                                    
-                                                
-                                                this.meterpaletaizquierda;
-					
-					}
-
-});
-    
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-}      
-                    
-                        //Inicio codigo taladro
-                        if (gcodeline.match(/\bM116\b/i)) {
-                        numerobroca = "16"; 
-                        var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-
-                        if (gcodeline.match(/\bM115\b/i)){ numerobroca = "15";
-                        var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM114\b/i)){ numerobroca = "14";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM113\b/i)){ numerobroca = "13";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM112\b/i)){ numerobroca = "12";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM111\b/i)){ numerobroca = "11";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM110\b/i)){ numerobroca = "10";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM109\b/i)){ numerobroca = "9";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM108\b/i)){ numerobroca = "8";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM107\b/i)){ numerobroca = "7";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM106\b/i)){ numerobroca = "6";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM105\b/i)){ numerobroca = "5";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM104\b/i)){ numerobroca = "4";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM103\b/i)){ numerobroca = "3";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM102\b/i)){ numerobroca = "2";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM101\b/i)){ numerobroca = "1";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM100\b/i)){ this.subirtbrocaBtnClick;  
-    setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000); }
-if (gcodeline.match(/\bM22\b/i)){ this.taladroarribaBtnClick;
-}
-
-if (gcodeline.match(/\bM20\b/i)){ this.onM20BtnClick;
-                                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 2000);
-}
-if (gcodeline.match(/\bM10\b/i)){ this.onM10BtnClick;
-                                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 2000);
-}
                         
-                        
-if (gcodeline.match(/\bM12\b/i)){ 
-    alert("M12");
-    this.taladroabajoBtnClick;
-}
 
 
-if (gcodeline.match(/\bM9\b/i)){ this.taladroonBtnClick;//funcion apaga taladro
-    setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 2000);}
-if (gcodeline.match(/\bM9\b/i)){ this.taladrooffBtnClick;//funcion enciende taladro
-    setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 2000);}
-if (gcodeline.match(/\bM199\b/i)){ //funcion bajar broca 
-    switch(numerobroca){
-        case "1":
-                this.bajarbroca1();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break;
-
-                case "2":
-                this.bajarbroca2();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break;
-                
-                case "3":
-                this.bajarbroca3();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break; 
-
-                case "4":
-                this.bajarbroca4();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break;
-
-                case "5":
-                this.bajarbroca5();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break;
-
-                case "6":
-                this.bajarbroca6();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break;
-
-                case "7":
-                this.bajarbroca7();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break;
-                
-                case "8":
-                this.bajarbroca8();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break;  
-                case "9":
-                this.bajarbroca9();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break;
-
-                case "10":
-                this.bajarbroca10();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break;
-                
-                case "11":
-                this.bajarbroca11();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break; 
-
-                case "12":
-                this.bajarbroca12();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break;
-
-                case "13":
-                this.bajarbroca13();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break;
-
-                case "14":
-                this.bajarbroca14();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break;
-
-                case "15":
-                this.bajarbroca15();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break;
-                
-                case "16":
-                this.bajarbroca16();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break;  
-
-    }
-}
-
-//Final codigo taladro
-
-
-                        //CODIGO M3
-                        if (gcodeline.match(/\bM800\b/i)) {
-                           
-                            var HttpClient = function() {
-                  this.get = function(aUrl, aCallback) {
-                      var anHttpRequest = new XMLHttpRequest();
-                      anHttpRequest.onreadystatechange = function() {
-                          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                              aCallback(anHttpRequest.responseText);
-                      }
-                      anHttpRequest.open("GET", aUrl, true);
-                      anHttpRequest.send(null);
-                  }
-              }
-              var theurl = 'http://192.168.0.88/arduino/analog/5';
-              var client = new HttpClient();
-              client.get(theurl, function(response) {
-           var res = response.split("Pin A5 reads analog ");
-           
-           response = parseInt(res[1]);
-       
-                  if (response > 850) {
-                      
-                      var HttpClient = function() {
-                      this.get = function(aUrl, aCallback) {
-                      var anHttpRequest = new XMLHttpRequest();
-                      anHttpRequest.onreadystatechange = function() {
-                          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                              aCallback(anHttpRequest.responseText);
-                      }
-                      anHttpRequest.open("GET", aUrl, true);
-                      anHttpRequest.send(null);
-                          }
-                      }
-                      var theurl = 'http://192.168.0.89/arduino/digital/11';
-                      var client = new HttpClient();
-                      client.get(theurl, function(response) {
-       var res = response.split("Pin D11 set to ");
-           
-           response = parseInt(res[1]);
-                          if (response == 0) {
-       var cmd  = "!";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       var HttpClient = function() {
-       this.get = function(aUrl, aCallback) {
-       var anHttpRequest = new XMLHttpRequest();
-       anHttpRequest.onreadystatechange = function() { 
-       if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-       aCallback(anHttpRequest.responseText);
-       }
-       anHttpRequest.open( "GET", aUrl, true ); 
-       anHttpRequest.send( null ); 
-       }
-       }
-       var theurl='http://192.168.0.88/arduino/digital/29/1';
-       var client = new HttpClient();
-       client.get(theurl, function(response) { 
-       var response1 = JSON.parse(response);
-       }); 
-                 
-                 
-             var HttpClient = function() {
-       this.get = function(aUrl, aCallback) {
-       var anHttpRequest = new XMLHttpRequest();
-       anHttpRequest.onreadystatechange = function() { 
-       if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-       aCallback(anHttpRequest.responseText);
-       }
-       anHttpRequest.open( "GET", aUrl, true ); 
-       anHttpRequest.send( null ); 
-       }
-       }
-       var theurl='http://192.168.0.88/arduino/digital/19/1';
-       var client = new HttpClient();
-       client.get(theurl, function(response) { 
-       var response1 = JSON.parse(response);
-       }); 
-                 
-             var HttpClient = function() {
-       this.get = function(aUrl, aCallback) {
-       var anHttpRequest = new XMLHttpRequest();
-       anHttpRequest.onreadystatechange = function() { 
-       if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-       aCallback(anHttpRequest.responseText);
-       }
-       anHttpRequest.open( "GET", aUrl, true ); 
-       anHttpRequest.send( null ); 
-       }
-       }
-       var theurl='http://192.168.0.88/arduino/digital/22/1';
-       var client = new HttpClient();
-       client.get(theurl, function(response) { 
-       var response1 = JSON.parse(response);
-       }); 
-       
-       document.getElementById("indicadorhusillo").className = "led-green";
-       chilipeppr.publish(
-                       '/com-chilipeppr-elem-flashmsg/flashmsg',
-                       "Estado del Husillo",
-                       "Husillo Activado ",
-                       2000 /* show for 2 second */
-                   );
-       setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 3000);
-                              
-                              } else {
-                        $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
-                $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
-                $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
-                       chilipeppr.publish(
-                           '/com-chilipeppr-elem-flashmsg/flashmsg',
-                           "Estado del Husillo",
-                           "El husillo no está desbloqueado (I.99), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
-                           2000 /* show for 2 second */
-                       );
-                   }
-               });
-           } 
-           else {
-            $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
-                $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
-                $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
-               chilipeppr.publish(
-                           '/com-chilipeppr-elem-flashmsg/flashmsg',
-                           "Estado del Husillo",
-                           "El Husillo no está desocupado (I.19), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
-                           2000 /* show for 2 second */
-                       );
-                  }
-              });
-       
-             
-         
-          }
-          
-          // CODIGO M5
-          else if (gcodeline.match(/\bM5\b/i)) {
-                        
-                         
-                        
-        var HttpClient = function() {
-          this.get = function(aUrl, aCallback) {
-          var anHttpRequest = new XMLHttpRequest();
-          anHttpRequest.onreadystatechange = function() { 
-          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-          aCallback(anHttpRequest.responseText);
-          }
-          anHttpRequest.open( "GET", aUrl, true ); 
-          anHttpRequest.send( null ); 
-          }
-          }
-          var theurl='http://192.168.0.88/arduino/digital/22/0';
-          var client = new HttpClient();
-          client.get(theurl, function(response) { 
-          var response1 = JSON.parse(response);
-               }); 
-                                 
-                                 
-                             var HttpClient = function() {
-          this.get = function(aUrl, aCallback) {
-          var anHttpRequest = new XMLHttpRequest();
-          anHttpRequest.onreadystatechange = function() { 
-          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-          aCallback(anHttpRequest.responseText);
-          }
-          anHttpRequest.open( "GET", aUrl, true ); 
-          anHttpRequest.send( null ); 
-          }
-          }
-          var theurl='http://192.168.0.88/arduino/digital/19/0';
-          var client = new HttpClient();
-          client.get(theurl, function(response) { 
-          var response1 = JSON.parse(response);
-               }); 
-                                 
-                             var HttpClient = function() {
-          this.get = function(aUrl, aCallback) {
-          var anHttpRequest = new XMLHttpRequest();
-          anHttpRequest.onreadystatechange = function() { 
-          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-          aCallback(anHttpRequest.responseText);
-          }
-          anHttpRequest.open( "GET", aUrl, true ); 
-          anHttpRequest.send( null ); 
-          }
-          }
-          var theurl='http://192.168.0.88/arduino/digital/29/0';
-          var client = new HttpClient();
-          client.get(theurl, function(response) { 
-          var response1 = JSON.parse(response);
-               });
-
-               document.getElementById("indicadorhusillo").className = "led-off";
-chilipeppr.publish(
-                '/com-chilipeppr-elem-flashmsg/flashmsg',
-                "Estado del Husillo",
-                "Husillo Desactivado ",
-                2000 /* show for 2 second */
-            );
-       
-        setTimeout(function(){ var cmd  = "~";
-        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-         }, 5000);
-       
-       }
-                        
-                        
-                        
-                        
                         
                         
                         
@@ -5157,6 +4967,7 @@ alert(contadordelinea);
                         //Inicio codigo taladro
                
                        
+
 /*************************************INICIA SWITCH ***********************/
 
 switch (gcodeline) {
@@ -5379,534 +5190,370 @@ alert ("M57");
 var cmd  = "~";
   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 break;
+/*************************************FIN M57 ***********************************/
+/***************************************INICIO M67 SACAR PALETA DERECHA*********/
 
 
-/*************************** FIN SWITCH***********************/
-}
-if (gcodeline.match(/\bG611\b/i)){
-    // VERIFICAR SI MESA A ESTA AFUERA
-     this.subirstopa1f1;
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-}
+case (gcodeline.match(/\bM67\b/i) || {}).input :
 
-if (gcodeline.match(/\bG612\b/i)){
-    // VERIFICAR SI MESA A ESTA AFUERA
-     this.subirstopa1f2;
-                                 setTimeout(function(){ var cmd  = "~";
-      
-       }, 1500);
-}
-if (gcodeline.match(/\bG613\b/i)){
-    // VERIFICAR SI MESA A ESTA AFUERA
-     this.subirstopa1l1;
-                                 setTimeout(function(){ var cmd  = "~";
-      
-       }, 1500);
-}
-if (gcodeline.match(/\bG621\b/i)){
-    // VERIFICAR SI MESA A ESTA AFUERA
-     this.subirstopa2f1;
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-}
+// this.activarM67();
 
-if (gcodeline.match(/\bG622\b/i)){
-    // VERIFICAR SI MESA A ESTA AFUERA
-     this.subirstopa2f2;
-                                 setTimeout(function(){ var cmd  = "~";
-      
-       }, 1500);
-}
-if (gcodeline.match(/\bG623\b/i)){
-    // VERIFICAR SI MESA A ESTA AFUERA
-     this.subirstopa2l1;
-                                 setTimeout(function(){ var cmd  = "~";
-      
-       }, 1500);
-}
-
-if (gcodeline.match(/\bG624\b/i)){
-    // VERIFICAR SI MESA A ESTA AFUERA
-     this.subirstopa2l2;
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-}
-
-
-
-
-// MESA Y SUBIR
-
-
-if (gcodeline.match(/\bG711\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-     this.subirstopy1f1;
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-}
-
-if (gcodeline.match(/\bG712\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-     this.subirstopy1f2;
-                                 setTimeout(function(){ var cmd  = "~";
-      
-       }, 1500);
-}
-if (gcodeline.match(/\bG713\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-     this.subirstopy1l1;
-                                 setTimeout(function(){ var cmd  = "~";
-      
-       }, 1500);
-}
-if (gcodeline.match(/\bG721\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-     this.subirstopy2f1;
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-}
-
-if (gcodeline.match(/\bG722\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-     this.subirstopy2f2;
-                                 setTimeout(function(){ var cmd  = "~";
-      
-       }, 1500);
-}
-if (gcodeline.match(/\bG723\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-     this.subirstopy2l1;
-                                 setTimeout(function(){ var cmd  = "~";
-      
-       }, 1500);
-}
-
-if (gcodeline.match(/\bG724\b/i)){
-    // VERIFICAR SI MESA Y ESTA AFUERA
-     this.subirstopa2l2;
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-}
-
-
-                        if (gcodeline.match(/\bM116\b/i)) {
-                        numerobroca = "16"; 
-                        var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-
-                        if (gcodeline.match(/\bM115\b/i)){ numerobroca = "15";
-                        var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM114\b/i)){ numerobroca = "14";
+alert ("M67");
 var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM113\b/i)){ numerobroca = "13";
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+break;
+/*************************************FIN M67 ***********************************/
+/***************************************INICIO M58 Meter PALETA DERECHA*********/
+
+
+case (gcodeline.match(/\bM58\b/i) || {}).input :
+
+// this.activarM58();
+
+alert ("M58");
 var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM112\b/i)){ numerobroca = "12";
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+break;
+/*************************************FIN M57 ***********************************/
+
+/***************************************INICIO M68 Meter PALETA DERECHA*********/
+
+
+case (gcodeline.match(/\bM68\b/i) || {}).input :
+
+// this.activarM68();
+
+alert ("M68");
 var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM111\b/i)){ numerobroca = "11";
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+break;
+/*************************************FIN M57 ***********************************/
+
+
+
+/***************************************INICIO M116*********/
+
+
+case (gcodeline.match(/\bM116\b/i) || {}).input :
+
+numerobroca = "16"; 
+
+alert ("M116");
 var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM110\b/i)){ numerobroca = "10";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM109\b/i)){ numerobroca = "9";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM108\b/i)){ numerobroca = "8";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM107\b/i)){ numerobroca = "7";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM106\b/i)){ numerobroca = "6";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM105\b/i)){ numerobroca = "5";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM104\b/i)){ numerobroca = "4";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM103\b/i)){ numerobroca = "3";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM102\b/i)){ numerobroca = "2";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM101\b/i)){ numerobroca = "1";
-var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
-if (gcodeline.match(/\bM100\b/i)){ this.subirtbrocaBtnClick;  
-    setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000); }
-if (gcodeline.match(/\bM22\b/i)){ this.taladroarribaBtnClick;
-}
-if (gcodeline.match(/\bM12\b/i)){
-    alert("M12");
-     this.taladroabajoBtnClick;
-}
-if (gcodeline.match(/\bM9\b/i)){ this.taladroonBtnClick;//funcion apaga taladro
-    setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 2000);}
-if (gcodeline.match(/\bM20\b/i)){ this.onM20BtnClick;
-                                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 2000);
-}
-if (gcodeline.match(/\bM10\b/i)){ this.onM10BtnClick;
-                                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 2000);
-}
-if (gcodeline.match(/\bM199\b/i)){ //funcion bajar broca 
-    switch(numerobroca){
-        case "1":
-                this.bajarbroca1();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break;
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+break;
+/*************************************FIN M116 ***********************************/
 
-                case "2":
-                this.bajarbroca2();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break;
-                
-                case "3":
-                this.bajarbroca3();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break; 
-
-                case "4":
-                this.bajarbroca4();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break;
-
-                case "5":
-                this.bajarbroca5();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break;
-
-                case "6":
-                this.bajarbroca6();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break;
-
-                case "7":
-                this.bajarbroca7();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break;
-                
-                case "8":
-                this.bajarbroca8();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break;  
-                case "9":
-                this.bajarbroca9();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break;
-
-                case "10":
-                this.bajarbroca10();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break;
-                
-                case "11":
-                this.bajarbroca11();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break; 
-
-                case "12":
-                this.bajarbroca12();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break;
-
-                case "13":
-                this.bajarbroca13();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break;
-
-                case "14":
-                this.bajarbroca14();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break;
-
-                case "15":
-                this.bajarbroca15();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-
-                break;
-                
-                case "16":
-                this.bajarbroca16();
-                setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
-                break;  
-
-    }
-}
-
-//Final codigo taladro
-
-//INICIO codigo posicionadores 
+/***************************************INICIO M115*********/
 
 
+case (gcodeline.match(/\bM115\b/i) || {}).input :
 
-
-
-// Final Codigo posicionadores
-                        //Inicio Husillo
-                        
-            if (gcodeline.match(/\bM800\b/i)) {
-                          
-                            var HttpClient = function() {
-                  this.get = function(aUrl, aCallback) {
-                      var anHttpRequest = new XMLHttpRequest();
-                      anHttpRequest.onreadystatechange = function() {
-                          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                              aCallback(anHttpRequest.responseText);
-                      }
-                      anHttpRequest.open("GET", aUrl, true);
-                      anHttpRequest.send(null);
-                  }
-              }
-              var theurl = 'http://192.168.0.88/arduino/analog/5';
-              var client = new HttpClient();
-              client.get(theurl, function(response) {
-           var res = response.split("Pin A5 reads analog ");
-           
-           response = parseInt(res[1]);
-       
-                  if (response > 850) {
-                      
-                      var HttpClient = function() {
-                      this.get = function(aUrl, aCallback) {
-                      var anHttpRequest = new XMLHttpRequest();
-                      anHttpRequest.onreadystatechange = function() {
-                          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                              aCallback(anHttpRequest.responseText);
-                      }
-                      anHttpRequest.open("GET", aUrl, true);
-                      anHttpRequest.send(null);
-                          }
-                      }
-                      var theurl = 'http://192.168.0.89/arduino/digital/11';
-                      var client = new HttpClient();
-                      client.get(theurl, function(response) {
-       var res = response.split("Pin D11 set to ");
-           
-           response = parseInt(res[1]);
-                          if (response == 0) {
-       var cmd  = "!";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       var HttpClient = function() {
-       this.get = function(aUrl, aCallback) {
-       var anHttpRequest = new XMLHttpRequest();
-       anHttpRequest.onreadystatechange = function() { 
-       if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-       aCallback(anHttpRequest.responseText);
-       }
-       anHttpRequest.open( "GET", aUrl, true ); 
-       anHttpRequest.send( null ); 
-       }
-       }
-       var theurl='http://192.168.0.88/arduino/digital/29/1';
-       var client = new HttpClient();
-       client.get(theurl, function(response) { 
-       var response1 = JSON.parse(response);
-       }); 
-                 
-                 
-             var HttpClient = function() {
-       this.get = function(aUrl, aCallback) {
-       var anHttpRequest = new XMLHttpRequest();
-       anHttpRequest.onreadystatechange = function() { 
-       if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-       aCallback(anHttpRequest.responseText);
-       }
-       anHttpRequest.open( "GET", aUrl, true ); 
-       anHttpRequest.send( null ); 
-       }
-       }
-       var theurl='http://192.168.0.88/arduino/digital/19/1';
-       var client = new HttpClient();
-       client.get(theurl, function(response) { 
-       var response1 = JSON.parse(response);
-       }); 
-                 
-             var HttpClient = function() {
-       this.get = function(aUrl, aCallback) {
-       var anHttpRequest = new XMLHttpRequest();
-       anHttpRequest.onreadystatechange = function() { 
-       if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-       aCallback(anHttpRequest.responseText);
-       }
-       anHttpRequest.open( "GET", aUrl, true ); 
-       anHttpRequest.send( null ); 
-       }
-       }
-       var theurl='http://192.168.0.88/arduino/digital/22/1';
-       var client = new HttpClient();
-       client.get(theurl, function(response) { 
-       var response1 = JSON.parse(response);
-       }); 
-       
-       document.getElementById("indicadorhusillo").className = "led-green";
-       chilipeppr.publish(
-                       '/com-chilipeppr-elem-flashmsg/flashmsg',
-                       "Estado del Husillo",
-                       "Husillo Activado ",
-                       2000 /* show for 2 second */
-                   );
-       setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 3000);
-                              
-                              } else {
-                        $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
-                $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
-                $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
-                       chilipeppr.publish(
-                           '/com-chilipeppr-elem-flashmsg/flashmsg',
-                           "Estado del Husillo",
-                           "El husillo no está desbloqueado (I.99), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
-                           2000 /* show for 2 second */
-                       );
-                   }
-               });
-           } 
-           else {
-            $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
-                $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
-                $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
-               chilipeppr.publish(
-                           '/com-chilipeppr-elem-flashmsg/flashmsg',
-                           "Estado del Husillo",
-                           "El Husillo no está desocupado (I.19), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
-                           2000 /* show for 2 second */
-                       );
-                  }
-              });
-      
+numerobroca = "15"; 
   
-                       } 
-                       
-                       
-                       
-                       else if (gcodeline.match(/\bM5\b/i)) {
-                        
-                         
-                        
-        var HttpClient = function() {
-          this.get = function(aUrl, aCallback) {
-          var anHttpRequest = new XMLHttpRequest();
-          anHttpRequest.onreadystatechange = function() { 
-          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-          aCallback(anHttpRequest.responseText);
-          }
-          anHttpRequest.open( "GET", aUrl, true ); 
-          anHttpRequest.send( null ); 
-          }
-          }
-          var theurl='http://192.168.0.88/arduino/digital/22/0';
-          var client = new HttpClient();
-          client.get(theurl, function(response) { 
-          var response1 = JSON.parse(response);
-               }); 
-                                 
-                                 
-                             var HttpClient = function() {
-          this.get = function(aUrl, aCallback) {
-          var anHttpRequest = new XMLHttpRequest();
-          anHttpRequest.onreadystatechange = function() { 
-          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-          aCallback(anHttpRequest.responseText);
-          }
-          anHttpRequest.open( "GET", aUrl, true ); 
-          anHttpRequest.send( null ); 
-          }
-          }
-          var theurl='http://192.168.0.88/arduino/digital/19/0';
-          var client = new HttpClient();
-          client.get(theurl, function(response) { 
-          var response1 = JSON.parse(response);
-               }); 
-                                 
-                             var HttpClient = function() {
-          this.get = function(aUrl, aCallback) {
-          var anHttpRequest = new XMLHttpRequest();
-          anHttpRequest.onreadystatechange = function() { 
-          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-          aCallback(anHttpRequest.responseText);
-          }
-          anHttpRequest.open( "GET", aUrl, true ); 
-          anHttpRequest.send( null ); 
-          }
-          }
-          var theurl='http://192.168.0.88/arduino/digital/29/0';
-          var client = new HttpClient();
-          client.get(theurl, function(response) { 
-          var response1 = JSON.parse(response);
-               });
+  alert ("M115");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M115 ***********************************/
 
-               document.getElementById("indicadorhusillo").className = "led-off";
-chilipeppr.publish(
-                '/com-chilipeppr-elem-flashmsg/flashmsg',
-                "Estado del Husillo",
-                "Husillo Desactivado ",
-                2000 /* show for 2 second */
-            );
-       
-        setTimeout(function(){ var cmd  = "~";
-        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-         }, 5000);
-       
-       }
-                        
-                        
-                        
+  /***************************************INICIO M114*********/
+
+
+case (gcodeline.match(/\bM114\b/i) || {}).input :
+
+numerobroca = "14"; 
+  
+  alert ("M114");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M114 ***********************************/
+
+  /***************************************INICIO M113*********/
+
+
+case (gcodeline.match(/\bM113\b/i) || {}).input :
+
+numerobroca = "13"; 
+  
+  alert ("M113");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M113 ***********************************/
+  /***************************************INICIO M112*********/
+
+
+case (gcodeline.match(/\bM112\b/i) || {}).input :
+
+numerobroca = "12"; 
+  
+  alert ("M112");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M112 ***********************************/
+
+  /***************************************INICIO M111*********/
+
+
+case (gcodeline.match(/\bM111\b/i) || {}).input :
+
+numerobroca = "11"; 
+  
+  alert ("M111");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M111 ***********************************/
+
+  /***************************************INICIO M110*********/
+
+
+case (gcodeline.match(/\bM110\b/i) || {}).input :
+
+numerobroca = "10"; 
+  
+  alert ("M110");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M110 ***********************************/
+
+
+  /***************************************INICIO M109*********/
+
+
+case (gcodeline.match(/\bM109\b/i) || {}).input :
+
+numerobroca = "9"; 
+  
+  alert ("M109");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M109 ***********************************/
+  /***************************************INICIO M108*********/
+
+
+case (gcodeline.match(/\bM108\b/i) || {}).input :
+
+numerobroca = "8"; 
+  
+  alert ("M108");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M108 ***********************************/
+
+  /***************************************INICIO M107*********/
+
+
+case (gcodeline.match(/\bM107\b/i) || {}).input :
+
+numerobroca = "7"; 
+  
+  alert ("M107");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M107 ***********************************/
+  /***************************************INICIO M106*********/
+
+
+case (gcodeline.match(/\bM106\b/i) || {}).input :
+
+numerobroca = "6"; 
+  
+  alert ("M106");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M106 ***********************************/
+
+  /***************************************INICIO M105*********/
+
+
+case (gcodeline.match(/\bM105\b/i) || {}).input :
+
+numerobroca = "5"; 
+  
+  alert ("M105");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M105 ***********************************/
+
+  /***************************************INICIO M104*********/
+
+
+case (gcodeline.match(/\bM104\b/i) || {}).input :
+
+numerobroca = "4"; 
+  
+  alert ("M104");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M104 ***********************************/
+  /***************************************INICIO M103*********/
+
+
+case (gcodeline.match(/\bM103\b/i) || {}).input :
+
+numerobroca = "3"; 
+  
+  alert ("M103");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M103 ***********************************/
+  /***************************************INICIO M102*********/
+
+
+case (gcodeline.match(/\bM102\b/i) || {}).input :
+
+numerobroca = "2"; 
+  
+  alert ("M102");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M102 ***********************************/
+  /***************************************INICIO M101*********/
+
+
+case (gcodeline.match(/\bM101\b/i) || {}).input :
+
+numerobroca = "1"; 
+  
+  alert ("M101");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M101 ***********************************/
+/***************************************INICIO M100*********/
+
+
+case (gcodeline.match(/\bM100\b/i) || {}).input :
+
+// this.subirtbrocaBtnClick;  
+  
+  alert ("M100");
+  setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+  break;
+  /*************************************FIN M100 ***********************************/
+
+/***************************************INICIO M22*********/
+
+
+case (gcodeline.match(/\bM22\b/i) || {}).input :
+
+// this.taladroarribaBtnClick;  
+     
+     alert ("M22");
+     setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   break;
+     /*************************************FIN M22 ***********************************/
+
+/***************************************INICIO M20*********/
+
+
+case (gcodeline.match(/\bM20\b/i) || {}).input :
+
+
+        // this.onM20BtnClick;
+     alert ("M20");
+                             setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+     
+     break;
+     /*************************************FIN M20 ***********************************/
+
+/***************************************INICIO M10*********/
+
+
+case (gcodeline.match(/\bM10\b/i) || {}).input :
+
+// this.onM10BtnClick;
+alert ("M10");
+                     setTimeout(function(){ var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}, 2000);
+
+break;
+/*************************************FIN M10 ***********************************/
+
+/***************************************INICIO M12*********/
+
+
+case (gcodeline.match(/\bM12\b/i) || {}).input :
+
+// this.taladroabajoBtnClick;
+
+alert ("M12");
+                     setTimeout(function(){ var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}, 2000);
+
+break;
+/*************************************FIN M12 ***********************************/
+
+
+/***************************************INICIO M9*********/
+
+
+case (gcodeline.match(/\bM9\b/i) || {}).input :
+
+// this.taladrooffBtnClick;
+
+alert ("M9");
+                     setTimeout(function(){ var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}, 2000);
+
+break;
+/*************************************FIN M9***********************************/
+/***************************************INICIO M8*********/
+
+
+case (gcodeline.match(/\bM8\b/i) || {}).input :
+
+// this.taladroonBtnClick;
+
+alert ("M8");
+                     setTimeout(function(){ var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}, 2000);
+
+break;
+/*************************************FIN M9***********************************/
+
+/***************************************INICIO M199*********/
+
+
+case (gcodeline.match(/\bM199\b/i) || {}).input :
+
+// this.activarm199;
+
+alert ("M199");
+                     setTimeout(function(){ var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}, 2000);
+
+break;
+/*************************************FIN M199***********************************/
+
+  
+  
+/*************************** FIN SWITCH***********************/
+}                    
                        
                         
                         
@@ -6044,6 +5691,239 @@ var HttpClient = function() {
      },
 
 
+activarM58: function(evt){
+    
+    // VERIFICAR SI MESA Y ESTA AFUERA
+    
+    
+    var HttpClient = function () {
+                            this.get = function (aUrl, aCallback) {
+                                var anHttpRequest = new XMLHttpRequest();
+                                anHttpRequest.onreadystatechange = function () {
+                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                        aCallback(anHttpRequest.responseText);
+                                }
+                                anHttpRequest.open("GET", aUrl, true);
+                                anHttpRequest.send(null);
+                            }
+                        }
+
+
+ var theurl = 'http://192.168.0.82/arduino/digital/46';
+                        var client = new HttpClient();
+                        client.get(theurl, function (response) {
+
+var res = response.split("Pin D46 set to ");
+
+                                            response = parseInt(res[1]);
+
+                                            if (response == 1) {
+                                                    
+                                                
+                                                this.sacarpaletaizquierda;
+					
+					}
+
+});
+    
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+},
+
+activarM199: function(evt){
+    switch(numerobroca){
+        case "1":
+                this.bajarbroca1();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+
+                case "2":
+                this.bajarbroca2();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+                
+                case "3":
+                this.bajarbroca3();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break; 
+
+                case "4":
+                this.bajarbroca4();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+
+                case "5":
+                this.bajarbroca5();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+
+                case "6":
+                this.bajarbroca6();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+
+                case "7":
+                this.bajarbroca7();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+                
+                case "8":
+                this.bajarbroca8();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;  
+                case "9":
+                this.bajarbroca9();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+
+                case "10":
+                this.bajarbroca10();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+                
+                case "11":
+                this.bajarbroca11();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break; 
+
+                case "12":
+                this.bajarbroca12();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;
+
+                case "13":
+                this.bajarbroca13();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+
+                case "14":
+                this.bajarbroca14();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+
+                case "15":
+                this.bajarbroca15();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+
+                break;
+                
+                case "16":
+                this.bajarbroca16();
+                setTimeout(function(){ var cmd  = "~";
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+       }, 1000);
+                break;  
+
+    }
+
+},
+
+activarM68: function(evt){
+
+    var HttpClient = function () {
+                            this.get = function (aUrl, aCallback) {
+                                var anHttpRequest = new XMLHttpRequest();
+                                anHttpRequest.onreadystatechange = function () {
+                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                        aCallback(anHttpRequest.responseText);
+                                }
+                                anHttpRequest.open("GET", aUrl, true);
+                                anHttpRequest.send(null);
+                            }
+                        }
+
+
+ var theurl = 'http://192.168.0.82/arduino/digital/46';
+                        var client = new HttpClient();
+                        client.get(theurl, function (response) {
+
+var res = response.split("Pin D46 set to ");
+
+                                            response = parseInt(res[1]);
+
+                                            if (response == 1) {
+                                                    
+                                                
+                                                this.meterpaletaizquierda;
+					
+					}
+
+});
+    
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+},
+activarM67: function(evt){
+    var HttpClient = function () {
+                            this.get = function (aUrl, aCallback) {
+                                var anHttpRequest = new XMLHttpRequest();
+                                anHttpRequest.onreadystatechange = function () {
+                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                        aCallback(anHttpRequest.responseText);
+                                }
+                                anHttpRequest.open("GET", aUrl, true);
+                                anHttpRequest.send(null);
+                            }
+                        }
+
+
+ var theurl = 'http://192.168.0.82/arduino/digital/46';
+                        var client = new HttpClient();
+                        client.get(theurl, function (response) {
+
+var res = response.split("Pin D46 set to ");
+
+                                            response = parseInt(res[1]);
+
+                                            if (response == 1) {
+                                                    
+                                                
+                                                this.meterpaletaderecha;
+					
+					}
+
+});
+    
+                                 setTimeout(function(){ var cmd  = "~";
+       }, 1500);
+},
 
 activarM57: function(evt){
     
@@ -11173,7 +11053,7 @@ alert("Bajando todas las brocas");
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">cfone code 0.1</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">behemoth code 0.1</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
