@@ -265,7 +265,7 @@
 
     <script type='text/javascript'>
         //variables DETECAP
-    const serialPort = "COM30";
+    const serialPort = "/dev/ttyUSB0";
      var contadordelinea = 0;
         
     //<![CDATA[
@@ -4321,593 +4321,595 @@ alert(contadordelinea);
 
 /*************************************INICIA SWITCH ***********************/
 
-                        switch (gcodeline) {
+                      
+switch (gcodeline) {
 
-    /**************************************INICIA M3***********************/
-    case (gcodeline.match(/\bM3\b/i) || {}).input :
-              
-    // this.activarm3();
-    alert ("M3");               
-    
-    var cmd  = "~";
-        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+/**************************************INICIA M3***********************/
+case (gcodeline.match(/\bM3\b/i) || {}).input :
+          
+this.activarm3();
+// alert ("M3");               
 
-    break;
+var cmd  = "~";
+    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
-
-
-        /***********************************FIN M3 *********************************/
+break;
 
 
-    /**************************************INICIO M5********************************/
 
-    case (gcodeline.match(/\bM5\b/i) || {}).input :
-    
-      // this.activarm5();
-    
-    alert ("M5");
-    var cmd  = "~";
-        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-    break;
-
-    /*************************************FIN M5 ***********************************/
- /**************************************INICIO G611********************************/
-
- case (gcodeline.match(/\bG611\b/i) || {}).input :
-    // VERIFICAR SI MESA A ESTA AFUERA
- //this.subirstopa1f1;
- alert ("g611");
-     setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-       
-         break;
-
-  /*************************************FIN G611 ***********************************/
- /**************************************INICIO G612********************************/
-
- case (gcodeline.match(/\bG612\b/i) || {}).input :
-    // VERIFICAR SI MESA A ESTA AFUERA
- //this.subirstopa1f2;
- alert ("g612");
-     setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-       
-         break;
-
-  /*************************************FIN G612 ***********************************/
- /**************************************INICIO G613********************************/
-
- case (gcodeline.match(/\bG613\b/i) || {}).input :
-    // VERIFICAR SI MESA A ESTA AFUERA
- // this.subirstopa1l1;
- alert ("g613");
-     setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-       
-         break;
-
-  /*************************************FIN G612 ***********************************/
+    /***********************************FIN M3 *********************************/
 
 
- /**************************************INICIO G621********************************/
+/**************************************INICIO M5********************************/
 
- case (gcodeline.match(/\bG621\b/i) || {}).input :
-    // VERIFICAR SI MESA A ESTA AFUERA
- // this.subirstopa2f1;
- alert ("g621");
-     setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-       
-         break;
+case (gcodeline.match(/\bM5\b/i) || {}).input :
 
-  /*************************************FIN G621 ***********************************/
+  this.activarm5();
 
+// alert ("M5");
+var cmd  = "~";
+    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+break;
 
- /**************************************INICIO G622********************************/
+/*************************************FIN M5 ***********************************/
+/**************************************INICIO G611********************************/
 
- case (gcodeline.match(/\bG622\b/i) || {}).input :
-    // VERIFICAR SI MESA A ESTA AFUERA
- // this.subirstopa2f2;
- alert ("g622");
-     setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-       
-         break;
+case (gcodeline.match(/\bG611\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+//this.subirstopa1f1;
+// alert ("g611");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
 
-  /*************************************FIN G622 ***********************************/
- /**************************************INICIO G623********************************/
+/*************************************FIN G611 ***********************************/
+/**************************************INICIO G612********************************/
 
- case (gcodeline.match(/\bG623\b/i) || {}).input :
-    // VERIFICAR SI MESA A ESTA AFUERA
- // this.subirstopa2l1;
- alert ("g623");
-     setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-       
-         break;
+case (gcodeline.match(/\bG612\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+//this.subirstopa1f2;
+// alert ("g612");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
 
-  /*************************************FIN G623 ***********************************/
- /**************************************INICIO G624********************************/
+/*************************************FIN G612 ***********************************/
+/**************************************INICIO G613********************************/
 
- case (gcodeline.match(/\bG624\b/i) || {}).input :
-    // VERIFICAR SI MESA A ESTA AFUERA
- // this.subirstopa2l2;
- alert ("g624");
-     setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-       
-         break;
+case (gcodeline.match(/\bG613\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+this.subirstopa1l1;
+// alert ("g613");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
 
-  /*************************************FIN G624 ***********************************/
- /**************************************INICIO G711********************************/
-
- case (gcodeline.match(/\bG711\b/i) || {}).input :
-    // VERIFICAR SI MESA A ESTA AFUERA
- //this.subirstopy1f1;
- alert ("g711");
-     setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-       
-         break;
-
-  /*************************************FIN G711 ***********************************/
- /**************************************INICIO G712********************************/
-
- case (gcodeline.match(/\bG712\b/i) || {}).input :
-    // VERIFICAR SI MESA A ESTA AFUERA
- //this.subirstopy1f2;
- alert ("g712");
-     setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-       
-         break;
-
-  /*************************************FIN G712 ***********************************/
- /**************************************INICIO G713********************************/
-
- case (gcodeline.match(/\bG713\b/i) || {}).input :
-    // VERIFICAR SI MESA A ESTA AFUERA
- // this.subirstopy1l1;
- alert ("g713");
-     setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-       
-         break;
-
-  /*************************************FIN G712 ***********************************/
+/*************************************FIN G612 ***********************************/
 
 
- /**************************************INICIO G721********************************/
+/**************************************INICIO G621********************************/
 
- case (gcodeline.match(/\bG721\b/i) || {}).input :
-    // VERIFICAR SI MESA A ESTA AFUERA
- // this.subirstopy2f1;
- alert ("g721");
-     setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-       
-         break;
+case (gcodeline.match(/\bG621\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+this.subirstopa2f1;
+// alert ("g621");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
 
-  /*************************************FIN G721 ***********************************/
+/*************************************FIN G621 ***********************************/
 
 
- /**************************************INICIO G722********************************/
+/**************************************INICIO G622********************************/
 
- case (gcodeline.match(/\bG722\b/i) || {}).input :
-    // VERIFICAR SI MESA A ESTA AFUERA
- // this.subirstopy2f2;
- alert ("g722");
-     setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-       
-         break;
+case (gcodeline.match(/\bG622\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+this.subirstopa2f2;
+// alert ("g622");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
 
-  /*************************************FIN G722 ***********************************/
- /**************************************INICIO G723********************************/
+/*************************************FIN G622 ***********************************/
+/**************************************INICIO G623********************************/
 
- case (gcodeline.match(/\bG723\b/i) || {}).input :
-    // VERIFICAR SI MESA A ESTA AFUERA
- // this.subirstopy2l1;
- alert ("g723");
-     setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-       
-         break;
+case (gcodeline.match(/\bG623\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+this.subirstopa2l1;
+// alert ("g623");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
 
-  /*************************************FIN G723 ***********************************/
- /**************************************INICIO G724********************************/
+/*************************************FIN G623 ***********************************/
+/**************************************INICIO G624********************************/
 
- case (gcodeline.match(/\bG724\b/i) || {}).input :
-    // VERIFICAR SI MESA A ESTA AFUERA
- // this.subirstopy2l2;
- alert ("g724");
-     setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-       
-         break;
+case (gcodeline.match(/\bG624\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+this.subirstopa2l2;
+// alert ("g624");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
 
-  /*************************************FIN G724 ***********************************/
+/*************************************FIN G624 ***********************************/
+/**************************************INICIO G711********************************/
+
+case (gcodeline.match(/\bG711\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+//this.subirstopy1f1;
+// alert ("g711");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G711 ***********************************/
+/**************************************INICIO G712********************************/
+
+case (gcodeline.match(/\bG712\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+//this.subirstopy1f2;
+// alert ("g712");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G712 ***********************************/
+/**************************************INICIO G713********************************/
+
+case (gcodeline.match(/\bG713\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+this.subirstopy1l1;
+// alert ("g713");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G712 ***********************************/
+
+
+/**************************************INICIO G721********************************/
+
+case (gcodeline.match(/\bG721\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+this.subirstopy2f1;
+// alert ("g721");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G721 ***********************************/
+
+
+/**************************************INICIO G722********************************/
+
+case (gcodeline.match(/\bG722\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+this.subirstopy2f2;
+// alert ("g722");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G722 ***********************************/
+/**************************************INICIO G723********************************/
+
+case (gcodeline.match(/\bG723\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+this.subirstopy2l1;
+// alert ("g723");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G723 ***********************************/
+/**************************************INICIO G724********************************/
+
+case (gcodeline.match(/\bG724\b/i) || {}).input :
+// VERIFICAR SI MESA A ESTA AFUERA
+this.subirstopy2l2;
+// alert ("g724");
+ setTimeout(function(){ var cmd  = "~";
+   }, 1500);
+   
+     break;
+
+/*************************************FIN G724 ***********************************/
 
 
 /***************************************INICIO M57 SACAR PALETA DERECHA*********/
 
 
 case (gcodeline.match(/\bM57\b/i) || {}).input :
-    
-    // this.activarM57();
-  
-  alert ("M57");
-  var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-  break;
-  /*************************************FIN M57 ***********************************/
-  /***************************************INICIO M67 SACAR PALETA DERECHA*********/
+
+this.activarM57();
+
+// alert ("M57");
+var cmd  = "~";
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+break;
+/*************************************FIN M57 ***********************************/
+/***************************************INICIO M67 SACAR PALETA DERECHA*********/
 
 
 case (gcodeline.match(/\bM67\b/i) || {}).input :
-    
-    // this.activarM67();
-  
-  alert ("M67");
-  var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-  break;
-  /*************************************FIN M67 ***********************************/
+
+this.activarM67();
+
+// alert ("M67");
+var cmd  = "~";
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+break;
+/*************************************FIN M67 ***********************************/
 /***************************************INICIO M58 Meter PALETA DERECHA*********/
 
 
 case (gcodeline.match(/\bM58\b/i) || {}).input :
-    
-    // this.activarM58();
-  
-  alert ("M58");
-  var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-  break;
-  /*************************************FIN M57 ***********************************/
 
-  /***************************************INICIO M68 Meter PALETA DERECHA*********/
+this.activarM58();
+
+// alert ("M58");
+var cmd  = "~";
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+break;
+/*************************************FIN M57 ***********************************/
+
+/***************************************INICIO M68 Meter PALETA DERECHA*********/
 
 
 case (gcodeline.match(/\bM68\b/i) || {}).input :
-    
-    // this.activarM68();
-  
-  alert ("M68");
-  var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-  break;
-  /*************************************FIN M57 ***********************************/
+
+this.activarM68();
+
+// alert ("M68");
+var cmd  = "~";
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+break;
+/*************************************FIN M57 ***********************************/
 
 
-  
-  /***************************************INICIO M116*********/
+
+/***************************************INICIO M116*********/
 
 
 case (gcodeline.match(/\bM116\b/i) || {}).input :
-    
-numerobroca = "16"; 
-  
-  alert ("M116");
-  var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-  break;
-  /*************************************FIN M116 ***********************************/
 
-  /***************************************INICIO M115*********/
+numerobroca = "16"; 
+
+// alert ("M116");
+var cmd  = "~";
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+break;
+/*************************************FIN M116 ***********************************/
+
+/***************************************INICIO M115*********/
 
 
 case (gcodeline.match(/\bM115\b/i) || {}).input :
-    
-    numerobroca = "15"; 
-      
-      alert ("M115");
-      var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      break;
-      /*************************************FIN M115 ***********************************/
 
-      /***************************************INICIO M114*********/
+numerobroca = "15"; 
+  
+  // alert ("M115");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M115 ***********************************/
+
+  /***************************************INICIO M114*********/
 
 
 case (gcodeline.match(/\bM114\b/i) || {}).input :
-    
-    numerobroca = "14"; 
-      
-      alert ("M114");
-      var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      break;
-      /*************************************FIN M114 ***********************************/
 
-      /***************************************INICIO M113*********/
+numerobroca = "14"; 
+  
+  // alert ("M114");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M114 ***********************************/
+
+  /***************************************INICIO M113*********/
 
 
 case (gcodeline.match(/\bM113\b/i) || {}).input :
-    
-    numerobroca = "13"; 
-      
-      alert ("M113");
-      var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      break;
-      /*************************************FIN M113 ***********************************/
-      /***************************************INICIO M112*********/
+
+numerobroca = "13"; 
+  
+  // alert ("M113");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M113 ***********************************/
+  /***************************************INICIO M112*********/
 
 
 case (gcodeline.match(/\bM112\b/i) || {}).input :
-    
-    numerobroca = "12"; 
-      
-      alert ("M112");
-      var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      break;
-      /*************************************FIN M112 ***********************************/
 
-      /***************************************INICIO M111*********/
+numerobroca = "12"; 
+  
+  // alert ("M112");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M112 ***********************************/
+
+  /***************************************INICIO M111*********/
 
 
 case (gcodeline.match(/\bM111\b/i) || {}).input :
-    
-    numerobroca = "11"; 
-      
-      alert ("M111");
-      var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      break;
-      /*************************************FIN M111 ***********************************/
 
-      /***************************************INICIO M110*********/
+numerobroca = "11"; 
+  
+  // alert ("M111");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M111 ***********************************/
+
+  /***************************************INICIO M110*********/
 
 
 case (gcodeline.match(/\bM110\b/i) || {}).input :
-    
-    numerobroca = "10"; 
-      
-      alert ("M110");
-      var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      break;
-      /*************************************FIN M110 ***********************************/
+
+numerobroca = "10"; 
+  
+  // alert ("M110");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M110 ***********************************/
 
 
-      /***************************************INICIO M109*********/
+  /***************************************INICIO M109*********/
 
 
 case (gcodeline.match(/\bM109\b/i) || {}).input :
-    
-    numerobroca = "9"; 
-      
-      alert ("M109");
-      var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      break;
-      /*************************************FIN M109 ***********************************/
-      /***************************************INICIO M108*********/
+
+numerobroca = "9"; 
+  
+  // alert ("M109");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M109 ***********************************/
+  /***************************************INICIO M108*********/
 
 
 case (gcodeline.match(/\bM108\b/i) || {}).input :
-    
-    numerobroca = "8"; 
-      
-      alert ("M108");
-      var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      break;
-      /*************************************FIN M108 ***********************************/
 
-      /***************************************INICIO M107*********/
+numerobroca = "8"; 
+  
+  // alert ("M108");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M108 ***********************************/
+
+  /***************************************INICIO M107*********/
 
 
 case (gcodeline.match(/\bM107\b/i) || {}).input :
-    
-    numerobroca = "7"; 
-      
-      alert ("M107");
-      var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      break;
-      /*************************************FIN M107 ***********************************/
-      /***************************************INICIO M106*********/
+
+numerobroca = "7"; 
+  
+  // alert ("M107");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M107 ***********************************/
+  /***************************************INICIO M106*********/
 
 
 case (gcodeline.match(/\bM106\b/i) || {}).input :
-    
-    numerobroca = "6"; 
-      
-      alert ("M106");
-      var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      break;
-      /*************************************FIN M106 ***********************************/
 
-      /***************************************INICIO M105*********/
+numerobroca = "6"; 
+  
+  // alert ("M106");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M106 ***********************************/
+
+  /***************************************INICIO M105*********/
 
 
 case (gcodeline.match(/\bM105\b/i) || {}).input :
-    
-    numerobroca = "5"; 
-      
-      alert ("M105");
-      var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      break;
-      /*************************************FIN M105 ***********************************/
 
-      /***************************************INICIO M104*********/
+numerobroca = "5"; 
+  
+  // alert ("M105");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M105 ***********************************/
+
+  /***************************************INICIO M104*********/
 
 
 case (gcodeline.match(/\bM104\b/i) || {}).input :
-    
-    numerobroca = "4"; 
-      
-      alert ("M104");
-      var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      break;
-      /*************************************FIN M104 ***********************************/
-      /***************************************INICIO M103*********/
+
+numerobroca = "4"; 
+  
+  // alert ("M104");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M104 ***********************************/
+  /***************************************INICIO M103*********/
 
 
 case (gcodeline.match(/\bM103\b/i) || {}).input :
-    
-    numerobroca = "3"; 
-      
-      alert ("M103");
-      var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      break;
-      /*************************************FIN M103 ***********************************/
-      /***************************************INICIO M102*********/
+
+numerobroca = "3"; 
+  
+  // alert ("M103");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M103 ***********************************/
+  /***************************************INICIO M102*********/
 
 
 case (gcodeline.match(/\bM102\b/i) || {}).input :
-    
-    numerobroca = "2"; 
-      
-      alert ("M102");
-      var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      break;
-      /*************************************FIN M102 ***********************************/
-      /***************************************INICIO M101*********/
+
+numerobroca = "2"; 
+  
+  // alert ("M102");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M102 ***********************************/
+  /***************************************INICIO M101*********/
 
 
 case (gcodeline.match(/\bM101\b/i) || {}).input :
-    
-    numerobroca = "1"; 
-      
-      alert ("M101");
-      var cmd  = "~";
-          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-      break;
-      /*************************************FIN M101 ***********************************/
- /***************************************INICIO M100*********/
+
+numerobroca = "1"; 
+  
+  // alert ("M101");
+  var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  break;
+  /*************************************FIN M101 ***********************************/
+/***************************************INICIO M100*********/
 
 
- case (gcodeline.match(/\bM100\b/i) || {}).input :
-    
- // this.subirtbrocaBtnClick;  
-      
-      alert ("M100");
-      setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 2000);
-      break;
-      /*************************************FIN M100 ***********************************/
+case (gcodeline.match(/\bM100\b/i) || {}).input :
+
+this.subirtbrocaBtnClick;  
+  
+  // alert ("M100");
+  setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+  break;
+  /*************************************FIN M100 ***********************************/
 
 /***************************************INICIO M22*********/
 
 
 case (gcodeline.match(/\bM22\b/i) || {}).input :
-    
-    // this.taladroarribaBtnClick;  
-         
-         alert ("M22");
-         setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 2000);
-       break;
-         /*************************************FIN M22 ***********************************/
-   
+
+this.taladroarribaBtnClick;  
+     
+     // alert ("M22");
+     setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   break;
+     /*************************************FIN M22 ***********************************/
+
 /***************************************INICIO M20*********/
 
 
 case (gcodeline.match(/\bM20\b/i) || {}).input :
-    
-    
-            // this.onM20BtnClick;
-         alert ("M20");
-                                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 2000);
-         
-         break;
-         /*************************************FIN M20 ***********************************/
-   
-   /***************************************INICIO M10*********/
+
+
+        this.onM20BtnClick;
+     // alert ("M20");
+                             setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+     
+     break;
+     /*************************************FIN M20 ***********************************/
+
+/***************************************INICIO M10*********/
 
 
 case (gcodeline.match(/\bM10\b/i) || {}).input :
-    
-    // this.onM10BtnClick;
- alert ("M10");
-                         setTimeout(function(){ var cmd  = "~";
+
+this.onM10BtnClick;
+// alert ("M10");
+                     setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }, 2000);
- 
- break;
- /*************************************FIN M10 ***********************************/
- 
-   /***************************************INICIO M12*********/
+
+break;
+/*************************************FIN M10 ***********************************/
+
+/***************************************INICIO M12*********/
 
 
-   case (gcodeline.match(/\bM12\b/i) || {}).input :
-    
-    // this.taladroabajoBtnClick;
+case (gcodeline.match(/\bM12\b/i) || {}).input :
 
- alert ("M12");
-                         setTimeout(function(){ var cmd  = "~";
+this.taladroabajoBtnClick;
+
+// alert ("M12");
+                     setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }, 2000);
- 
- break;
- /*************************************FIN M12 ***********************************/
+
+break;
+/*************************************FIN M12 ***********************************/
 
 
-   /***************************************INICIO M9*********/
+/***************************************INICIO M9*********/
 
 
-   case (gcodeline.match(/\bM9\b/i) || {}).input :
-    
-    // this.taladrooffBtnClick;
+case (gcodeline.match(/\bM9\b/i) || {}).input :
 
- alert ("M9");
-                         setTimeout(function(){ var cmd  = "~";
+this.taladrooffBtnClick;
+
+// alert ("M9");
+                     setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }, 2000);
- 
- break;
- /*************************************FIN M9***********************************/
-   /***************************************INICIO M8*********/
+
+break;
+/*************************************FIN M9***********************************/
+/***************************************INICIO M8*********/
 
 
-   case (gcodeline.match(/\bM8\b/i) || {}).input :
-    
-    // this.taladroonBtnClick;
+case (gcodeline.match(/\bM8\b/i) || {}).input :
 
- alert ("M8");
-                         setTimeout(function(){ var cmd  = "~";
+this.taladroonBtnClick;
+
+// alert ("M8");
+                     setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }, 2000);
- 
- break;
- /*************************************FIN M9***********************************/
 
- /***************************************INICIO M199*********/
+break;
+/*************************************FIN M9***********************************/
+
+/***************************************INICIO M199*********/
 
 
- case (gcodeline.match(/\bM199\b/i) || {}).input :
-    
-    // this.activarm199;
+case (gcodeline.match(/\bM199\b/i) || {}).input :
 
- alert ("M199");
-                         setTimeout(function(){ var cmd  = "~";
+this.activarm199;
+
+// alert ("M199");
+                     setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }, 2000);
- 
- break;
- /*************************************FIN M199***********************************/
 
-      
-      
-  /*************************** FIN SWITCH***********************/
-}
+break;
+/*************************************FIN M199***********************************/
+
+  
+  
+/*************************** FIN SWITCH***********************/
+}                    
+                       
                         
-
-
+                        
+                    
                         
                         
                         
@@ -4972,13 +4974,14 @@ alert(contadordelinea);
 
 /*************************************INICIA SWITCH ***********************/
 
+
 switch (gcodeline) {
 
 /**************************************INICIA M3***********************/
 case (gcodeline.match(/\bM3\b/i) || {}).input :
           
-// this.activarm3();
-alert ("M3");               
+this.activarm3();
+// alert ("M3");               
 
 var cmd  = "~";
     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -4995,9 +4998,9 @@ break;
 
 case (gcodeline.match(/\bM5\b/i) || {}).input :
 
-  // this.activarm5();
+  this.activarm5();
 
-alert ("M5");
+// alert ("M5");
 var cmd  = "~";
     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 break;
@@ -5008,7 +5011,7 @@ break;
 case (gcodeline.match(/\bG611\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
 //this.subirstopa1f1;
-alert ("g611");
+// alert ("g611");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
    
@@ -5020,7 +5023,7 @@ alert ("g611");
 case (gcodeline.match(/\bG612\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
 //this.subirstopa1f2;
-alert ("g612");
+// alert ("g612");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
    
@@ -5031,8 +5034,8 @@ alert ("g612");
 
 case (gcodeline.match(/\bG613\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-// this.subirstopa1l1;
-alert ("g613");
+this.subirstopa1l1;
+// alert ("g613");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
    
@@ -5045,8 +5048,8 @@ alert ("g613");
 
 case (gcodeline.match(/\bG621\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-// this.subirstopa2f1;
-alert ("g621");
+this.subirstopa2f1;
+// alert ("g621");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
    
@@ -5059,8 +5062,8 @@ alert ("g621");
 
 case (gcodeline.match(/\bG622\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-// this.subirstopa2f2;
-alert ("g622");
+this.subirstopa2f2;
+// alert ("g622");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
    
@@ -5071,8 +5074,8 @@ alert ("g622");
 
 case (gcodeline.match(/\bG623\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-// this.subirstopa2l1;
-alert ("g623");
+this.subirstopa2l1;
+// alert ("g623");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
    
@@ -5083,8 +5086,8 @@ alert ("g623");
 
 case (gcodeline.match(/\bG624\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-// this.subirstopa2l2;
-alert ("g624");
+this.subirstopa2l2;
+// alert ("g624");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
    
@@ -5096,7 +5099,7 @@ alert ("g624");
 case (gcodeline.match(/\bG711\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
 //this.subirstopy1f1;
-alert ("g711");
+// alert ("g711");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
    
@@ -5108,7 +5111,7 @@ alert ("g711");
 case (gcodeline.match(/\bG712\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
 //this.subirstopy1f2;
-alert ("g712");
+// alert ("g712");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
    
@@ -5119,8 +5122,8 @@ alert ("g712");
 
 case (gcodeline.match(/\bG713\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-// this.subirstopy1l1;
-alert ("g713");
+this.subirstopy1l1;
+// alert ("g713");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
    
@@ -5133,8 +5136,8 @@ alert ("g713");
 
 case (gcodeline.match(/\bG721\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-// this.subirstopy2f1;
-alert ("g721");
+this.subirstopy2f1;
+// alert ("g721");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
    
@@ -5147,8 +5150,8 @@ alert ("g721");
 
 case (gcodeline.match(/\bG722\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-// this.subirstopy2f2;
-alert ("g722");
+this.subirstopy2f2;
+// alert ("g722");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
    
@@ -5159,8 +5162,8 @@ alert ("g722");
 
 case (gcodeline.match(/\bG723\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-// this.subirstopy2l1;
-alert ("g723");
+this.subirstopy2l1;
+// alert ("g723");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
    
@@ -5171,8 +5174,8 @@ alert ("g723");
 
 case (gcodeline.match(/\bG724\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-// this.subirstopy2l2;
-alert ("g724");
+this.subirstopy2l2;
+// alert ("g724");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
    
@@ -5186,9 +5189,9 @@ alert ("g724");
 
 case (gcodeline.match(/\bM57\b/i) || {}).input :
 
-// this.activarM57();
+this.activarM57();
 
-alert ("M57");
+// alert ("M57");
 var cmd  = "~";
   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 break;
@@ -5198,9 +5201,9 @@ break;
 
 case (gcodeline.match(/\bM67\b/i) || {}).input :
 
-// this.activarM67();
+this.activarM67();
 
-alert ("M67");
+// alert ("M67");
 var cmd  = "~";
   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 break;
@@ -5210,9 +5213,9 @@ break;
 
 case (gcodeline.match(/\bM58\b/i) || {}).input :
 
-// this.activarM58();
+this.activarM58();
 
-alert ("M58");
+// alert ("M58");
 var cmd  = "~";
   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 break;
@@ -5223,9 +5226,9 @@ break;
 
 case (gcodeline.match(/\bM68\b/i) || {}).input :
 
-// this.activarM68();
+this.activarM68();
 
-alert ("M68");
+// alert ("M68");
 var cmd  = "~";
   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 break;
@@ -5240,7 +5243,7 @@ case (gcodeline.match(/\bM116\b/i) || {}).input :
 
 numerobroca = "16"; 
 
-alert ("M116");
+// alert ("M116");
 var cmd  = "~";
   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 break;
@@ -5253,7 +5256,7 @@ case (gcodeline.match(/\bM115\b/i) || {}).input :
 
 numerobroca = "15"; 
   
-  alert ("M115");
+  // alert ("M115");
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
@@ -5266,7 +5269,7 @@ case (gcodeline.match(/\bM114\b/i) || {}).input :
 
 numerobroca = "14"; 
   
-  alert ("M114");
+  // alert ("M114");
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
@@ -5279,7 +5282,7 @@ case (gcodeline.match(/\bM113\b/i) || {}).input :
 
 numerobroca = "13"; 
   
-  alert ("M113");
+  // alert ("M113");
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
@@ -5291,7 +5294,7 @@ case (gcodeline.match(/\bM112\b/i) || {}).input :
 
 numerobroca = "12"; 
   
-  alert ("M112");
+  // alert ("M112");
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
@@ -5304,7 +5307,7 @@ case (gcodeline.match(/\bM111\b/i) || {}).input :
 
 numerobroca = "11"; 
   
-  alert ("M111");
+  // alert ("M111");
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
@@ -5317,7 +5320,7 @@ case (gcodeline.match(/\bM110\b/i) || {}).input :
 
 numerobroca = "10"; 
   
-  alert ("M110");
+  // alert ("M110");
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
@@ -5331,7 +5334,7 @@ case (gcodeline.match(/\bM109\b/i) || {}).input :
 
 numerobroca = "9"; 
   
-  alert ("M109");
+  // alert ("M109");
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
@@ -5343,7 +5346,7 @@ case (gcodeline.match(/\bM108\b/i) || {}).input :
 
 numerobroca = "8"; 
   
-  alert ("M108");
+  // alert ("M108");
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
@@ -5356,7 +5359,7 @@ case (gcodeline.match(/\bM107\b/i) || {}).input :
 
 numerobroca = "7"; 
   
-  alert ("M107");
+  // alert ("M107");
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
@@ -5368,7 +5371,7 @@ case (gcodeline.match(/\bM106\b/i) || {}).input :
 
 numerobroca = "6"; 
   
-  alert ("M106");
+  // alert ("M106");
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
@@ -5381,7 +5384,7 @@ case (gcodeline.match(/\bM105\b/i) || {}).input :
 
 numerobroca = "5"; 
   
-  alert ("M105");
+  // alert ("M105");
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
@@ -5394,7 +5397,7 @@ case (gcodeline.match(/\bM104\b/i) || {}).input :
 
 numerobroca = "4"; 
   
-  alert ("M104");
+  // alert ("M104");
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
@@ -5406,7 +5409,7 @@ case (gcodeline.match(/\bM103\b/i) || {}).input :
 
 numerobroca = "3"; 
   
-  alert ("M103");
+  // alert ("M103");
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
@@ -5418,7 +5421,7 @@ case (gcodeline.match(/\bM102\b/i) || {}).input :
 
 numerobroca = "2"; 
   
-  alert ("M102");
+  // alert ("M102");
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
@@ -5430,7 +5433,7 @@ case (gcodeline.match(/\bM101\b/i) || {}).input :
 
 numerobroca = "1"; 
   
-  alert ("M101");
+  // alert ("M101");
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   break;
@@ -5440,9 +5443,9 @@ numerobroca = "1";
 
 case (gcodeline.match(/\bM100\b/i) || {}).input :
 
-// this.subirtbrocaBtnClick;  
+this.subirtbrocaBtnClick;  
   
-  alert ("M100");
+  // alert ("M100");
   setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    }, 2000);
@@ -5454,9 +5457,9 @@ case (gcodeline.match(/\bM100\b/i) || {}).input :
 
 case (gcodeline.match(/\bM22\b/i) || {}).input :
 
-// this.taladroarribaBtnClick;  
+this.taladroarribaBtnClick;  
      
-     alert ("M22");
+     // alert ("M22");
      setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    }, 2000);
@@ -5469,8 +5472,8 @@ case (gcodeline.match(/\bM22\b/i) || {}).input :
 case (gcodeline.match(/\bM20\b/i) || {}).input :
 
 
-        // this.onM20BtnClick;
-     alert ("M20");
+        this.onM20BtnClick;
+     // alert ("M20");
                              setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    }, 2000);
@@ -5483,8 +5486,8 @@ case (gcodeline.match(/\bM20\b/i) || {}).input :
 
 case (gcodeline.match(/\bM10\b/i) || {}).input :
 
-// this.onM10BtnClick;
-alert ("M10");
+this.onM10BtnClick;
+// alert ("M10");
                      setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }, 2000);
@@ -5497,9 +5500,9 @@ break;
 
 case (gcodeline.match(/\bM12\b/i) || {}).input :
 
-// this.taladroabajoBtnClick;
+this.taladroabajoBtnClick;
 
-alert ("M12");
+// alert ("M12");
                      setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }, 2000);
@@ -5513,9 +5516,9 @@ break;
 
 case (gcodeline.match(/\bM9\b/i) || {}).input :
 
-// this.taladrooffBtnClick;
+this.taladrooffBtnClick;
 
-alert ("M9");
+// alert ("M9");
                      setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }, 2000);
@@ -5527,9 +5530,9 @@ break;
 
 case (gcodeline.match(/\bM8\b/i) || {}).input :
 
-// this.taladroonBtnClick;
+this.taladroonBtnClick;
 
-alert ("M8");
+// alert ("M8");
                      setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }, 2000);
@@ -5542,9 +5545,9 @@ break;
 
 case (gcodeline.match(/\bM199\b/i) || {}).input :
 
-// this.activarm199;
+this.activarm199;
 
-alert ("M199");
+// alert ("M199");
                      setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }, 2000);
@@ -5557,6 +5560,9 @@ break;
 /*************************** FIN SWITCH***********************/
 }                    
                        
+                        
+                        
+                    
                         
                         
                     }
@@ -6474,7 +6480,7 @@ var cmd  = "G28.2 Y0 A0";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 var home = 0; 
-            
+        
     while (home = 0){
     chilipeppr.subscribe("/dev/ttyUSB0/ws/recv", this, function (msg) {
             this.onWsMessage(msg);
@@ -11061,7 +11067,7 @@ alert("Bajando todas las brocas");
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">behemoth code 0.1</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 1.1</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
