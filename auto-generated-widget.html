@@ -4293,7 +4293,7 @@ client.get(theurl, function (response) {
                 {
 
                     
-//alert(contadordelinea);
+alert(contadordelinea);
                     //MESA A SUBIR
 
 //TERMINAN POSICIONADORES
@@ -4917,7 +4917,7 @@ this.taladroabajoBtnClick;
 // alert ("M12");
                      setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-}, 2000);
+}, 5000);
 
 break;
 /*************************************FIN M12 ***********************************/
@@ -5009,7 +5009,7 @@ break;
 
       // COMIENZAN POSICIONADRES      
 
-//alert(contadordelinea);
+alert(contadordelinea);
 
 
 //MESA A SUBIR
@@ -5569,9 +5569,10 @@ case (gcodeline.match(/\bM12\b/i) || {}).input :
 this.taladroabajoBtnClick;
 
 // alert ("M12");
-                     setTimeout(function(){ var cmd  = "~";
+setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-}, 2000);
+}, 5000);
+
 
 break;
 /*************************************FIN M12 ***********************************/
@@ -11137,7 +11138,7 @@ alert("Bajando todas las brocas");
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 8</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 10</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
