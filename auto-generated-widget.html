@@ -3056,7 +3056,7 @@ client.get(theurl, function (response) {
             var meta = { isPlayByUser: event ? true : false };
             meta.gcodeLines = this.fileLines;
 
-           // this.bajartstopsBtnClick();
+            this.bajartstopsBtnClick();
             setTimeout(function(){
             chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
         }, 4000);
