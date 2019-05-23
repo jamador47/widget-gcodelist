@@ -4330,10 +4330,9 @@ case (gcodeline.match(/\bM3\b/i) || {}).input :
 this.activarm3();
 // alert ("M3");               
 
-var cmd  = "~";
-    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
 break;
 
 
@@ -4348,8 +4347,9 @@ case (gcodeline.match(/\bM5\b/i) || {}).input :
   this.activarm5();
 
 // alert ("M5");
-var cmd  = "~";
-    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
 break;
 
 /*************************************FIN M5 ***********************************/
@@ -4359,8 +4359,9 @@ case (gcodeline.match(/\bG611\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
 this.subirstopa1f1;
 // alert ("g611");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
    
      break;
 
@@ -4377,8 +4378,9 @@ else{
 
 }
 // alert ("g612");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
    
      break;
 
@@ -5048,10 +5050,9 @@ case (gcodeline.match(/\bM3\b/i) || {}).input :
 this.activarm3();
 // alert ("M3");               
 
-var cmd  = "~";
-    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
 break;
 
 
@@ -5640,10 +5641,15 @@ break;
                         
                     // continuar el procesamiento en tinyG
                     setTimeout(function(){ var cmd  = "~";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+                    var cmd  = "~";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                     var cmd  = "~";
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                    }, 3000);
-                           
+                   var cmd  = "~";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+                             
                 }
                 
                 
@@ -11130,7 +11136,7 @@ alert("Bajando todas las brocas");
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 1.2</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 1.4</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
