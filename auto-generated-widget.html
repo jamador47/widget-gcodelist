@@ -4369,7 +4369,13 @@ this.subirstopa1f1;
 
 case (gcodeline.match(/\bG612\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
+
+if (this.checkposicioncargaizq){
 this.subirstopa1f2;
+}
+else{
+
+}
 // alert ("g612");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
@@ -4381,7 +4387,12 @@ this.subirstopa1f2;
 
 case (gcodeline.match(/\bG613\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
+if (this.checkposicioncargaizq){
 this.subirstopa1l1;
+}
+else{
+
+}
 // alert ("g613");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
@@ -4395,7 +4406,12 @@ this.subirstopa1l1;
 
 case (gcodeline.match(/\bG621\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
+if (this.checkposicioncargaizq){
 this.subirstopa2f1;
+}
+else{
+
+}
 // alert ("g621");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
@@ -4409,11 +4425,16 @@ this.subirstopa2f1;
 
 case (gcodeline.match(/\bG622\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
+
+if (this.checkposicioncargaizq){
 this.subirstopa2f2;
 // alert ("g622");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
-   
+}
+else{
+
+}
      break;
 
 /*************************************FIN G622 ***********************************/
@@ -4421,7 +4442,12 @@ this.subirstopa2f2;
 
 case (gcodeline.match(/\bG623\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
+if (this.checkposicioncargaizq){
 this.subirstopa2l1;
+}
+else{
+
+}
 // alert ("g623");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
@@ -4433,7 +4459,12 @@ this.subirstopa2l1;
 
 case (gcodeline.match(/\bG624\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
+if (this.checkposicioncargaizq){
 this.subirstopa2l2;
+}
+else{
+
+}
 // alert ("g624");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
@@ -4445,7 +4476,13 @@ this.subirstopa2l2;
 
 case (gcodeline.match(/\bG711\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
+
+if (this.checkposicioncarga){
 this.subirstopy1f1;
+}
+else{
+
+}
 // alert ("g711");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
@@ -4457,7 +4494,12 @@ this.subirstopy1f1;
 
 case (gcodeline.match(/\bG712\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
+if (this.checkposicioncarga){
 this.subirstopy1f2;
+}
+else{
+
+}
 // alert ("g712");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
@@ -4469,7 +4511,12 @@ this.subirstopy1f2;
 
 case (gcodeline.match(/\bG713\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
+if (this.checkposicioncarga){
 this.subirstopy1l1;
+}
+else{
+
+}
 // alert ("g713");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
@@ -4483,7 +4530,12 @@ this.subirstopy1l1;
 
 case (gcodeline.match(/\bG721\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
+if (this.checkposicioncarga){
 this.subirstopy2f1;
+}
+else{
+
+}
 // alert ("g721");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
@@ -4497,7 +4549,12 @@ this.subirstopy2f1;
 
 case (gcodeline.match(/\bG722\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
+if (this.checkposicioncarga){
 this.subirstopy2f2;
+}
+else{
+
+}
 // alert ("g722");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
@@ -4509,7 +4566,11 @@ this.subirstopy2f2;
 
 case (gcodeline.match(/\bG723\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopy2l1;
+if (this.checkposicioncarga){
+this.subirstopy2l1;}
+else{
+
+}
 // alert ("g723");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
@@ -4521,7 +4582,11 @@ this.subirstopy2l1;
 
 case (gcodeline.match(/\bG724\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopy2l2;
+if (this.checkposicioncarga){
+this.subirstopy2l2;}
+else{
+    
+}
 // alert ("g724");
  setTimeout(function(){ var cmd  = "~";
    }, 1500);
