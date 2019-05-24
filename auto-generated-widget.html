@@ -4317,7 +4317,8 @@ alert(contadordelinea);
 
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-    
+
+
 
 /*************************************INICIA SWITCH ***********************/
 
@@ -4332,7 +4333,7 @@ this.activarm3();
 
 setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 2000);
+   }, 6000);
 break;
 
 
@@ -4349,7 +4350,7 @@ case (gcodeline.match(/\bM5\b/i) || {}).input :
 // alert ("M5");
 setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 2000);
+   }, 4000);
 break;
 
 /*************************************FIN M5 ***********************************/
@@ -4357,7 +4358,10 @@ break;
 
 case (gcodeline.match(/\bG611\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopa1f1;
+if (this.checkposicioncargaizq()){
+
+this.subirstopa1f1();
+}
 // alert ("g611");
 setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -4371,8 +4375,8 @@ setTimeout(function(){ var cmd  = "~";
 case (gcodeline.match(/\bG612\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
 
-if (this.checkposicioncargaizq){
-this.subirstopa1f2;
+if (this.checkposicioncargaizq()){
+this.subirstopa1f2();
 }
 else{
 
@@ -4389,15 +4393,17 @@ setTimeout(function(){ var cmd  = "~";
 
 case (gcodeline.match(/\bG613\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncargaizq){
-this.subirstopa1l1;
+if (this.checkposicioncargaizq()){
+this.subirstopa1l1();
 }
 else{
 
 }
 // alert ("g613");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -4408,15 +4414,17 @@ else{
 
 case (gcodeline.match(/\bG621\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncargaizq){
-this.subirstopa2f1;
+if (this.checkposicioncargaizq()){
+this.subirstopa2f1();
 }
 else{
 
 }
 // alert ("g621");
  setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -4428,11 +4436,13 @@ else{
 case (gcodeline.match(/\bG622\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
 
-if (this.checkposicioncargaizq){
-this.subirstopa2f2;
+if (this.checkposicioncargaizq()){
+this.subirstopa2f2();
 // alert ("g622");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
 }
 else{
 
@@ -4444,15 +4454,17 @@ else{
 
 case (gcodeline.match(/\bG623\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncargaizq){
-this.subirstopa2l1;
+if (this.checkposicioncargaizq()){
+this.subirstopa2l1();
 }
 else{
 
 }
 // alert ("g623");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -4461,15 +4473,17 @@ else{
 
 case (gcodeline.match(/\bG624\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncargaizq){
-this.subirstopa2l2;
+if (this.checkposicioncargaizq()){
+this.subirstopa2l2();
 }
 else{
 
 }
 // alert ("g624");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -4479,15 +4493,17 @@ else{
 case (gcodeline.match(/\bG711\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
 
-if (this.checkposicioncarga){
-this.subirstopy1f1;
+if (this.checkposicioncarga()){
+this.subirstopy1f1();
 }
 else{
 
 }
 // alert ("g711");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -4496,15 +4512,17 @@ else{
 
 case (gcodeline.match(/\bG712\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncarga){
-this.subirstopy1f2;
+if (this.checkposicioncarga()){
+this.subirstopy1f2();
 }
 else{
 
 }
 // alert ("g712");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -4513,15 +4531,17 @@ else{
 
 case (gcodeline.match(/\bG713\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncarga){
-this.subirstopy1l1;
+if (this.checkposicioncarga()){
+this.subirstopy1l1();
 }
 else{
 
 }
 // alert ("g713");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -4532,15 +4552,16 @@ else{
 
 case (gcodeline.match(/\bG721\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncarga){
-this.subirstopy2f1;
+if (this.checkposicioncarga()){
+this.subirstopy2f1();
 }
 else{
 
 }
 // alert ("g721");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
    
      break;
 
@@ -4551,15 +4572,17 @@ else{
 
 case (gcodeline.match(/\bG722\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncarga){
-this.subirstopy2f2;
+if (this.checkposicioncarga()){
+this.subirstopy2f2();
 }
 else{
 
 }
 // alert ("g722");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -4568,14 +4591,16 @@ else{
 
 case (gcodeline.match(/\bG723\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncarga){
-this.subirstopy2l1;}
+if (this.checkposicioncarga()){
+this.subirstopy2l1();}
 else{
 
 }
 // alert ("g723");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -4584,12 +4609,13 @@ else{
 
 case (gcodeline.match(/\bG724\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncarga){
-this.subirstopy2l2;}
+if (this.checkposicioncarga()){
+this.subirstopy2l2();}
 else{}
 // alert ("g724");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
    
      break;
 
@@ -4855,7 +4881,7 @@ numerobroca = "1";
 
 case (gcodeline.match(/\bM100\b/i) || {}).input :
 
-this.subirtbrocaBtnClick;  
+this.subirtbrocaBtnClick();  
   
   // alert ("M100");
   setTimeout(function(){ var cmd  = "~";
@@ -4869,12 +4895,12 @@ this.subirtbrocaBtnClick;
 
 case (gcodeline.match(/\bM22\b/i) || {}).input :
 
-this.taladroarribaBtnClick;  
+this.taladroarribaBtnClick();  
      
      // alert ("M22");
      setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 2000);
+   }, 6000);
    break;
      /*************************************FIN M22 ***********************************/
 
@@ -4884,11 +4910,11 @@ this.taladroarribaBtnClick;
 case (gcodeline.match(/\bM20\b/i) || {}).input :
 
 
-        this.onM20BtnClick;
+        this.onM20BtnClick();
      // alert ("M20");
                              setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 2000);
+   }, 4000);
      
      break;
      /*************************************FIN M20 ***********************************/
@@ -4898,11 +4924,11 @@ case (gcodeline.match(/\bM20\b/i) || {}).input :
 
 case (gcodeline.match(/\bM10\b/i) || {}).input :
 
-this.onM10BtnClick;
+this.onM10BtnClick();
 // alert ("M10");
                      setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-}, 2000);
+}, 4000);
 
 break;
 /*************************************FIN M10 ***********************************/
@@ -4912,12 +4938,12 @@ break;
 
 case (gcodeline.match(/\bM12\b/i) || {}).input :
 
-this.taladroabajoBtnClick;
+this.taladroabajoBtnClick();
 
 // alert ("M12");
                      setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-}, 5000);
+}, 4000);
 
 break;
 /*************************************FIN M12 ***********************************/
@@ -4928,12 +4954,12 @@ break;
 
 case (gcodeline.match(/\bM9\b/i) || {}).input :
 
-this.taladrooffBtnClick;
+this.taladrooffBtnClick();
 
 // alert ("M9");
                      setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-}, 2000);
+}, 4000);
 
 break;
 /*************************************FIN M9***********************************/
@@ -4942,12 +4968,12 @@ break;
 
 case (gcodeline.match(/\bM8\b/i) || {}).input :
 
-this.taladroonBtnClick;
+this.taladroonBtnClick();
 
 // alert ("M8");
                      setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-}, 2000);
+}, 6000);
 
 break;
 /*************************************FIN M9***********************************/
@@ -4957,7 +4983,7 @@ break;
 
 case (gcodeline.match(/\bM199\b/i) || {}).input :
 
-this.activarm199;
+this.activarm199();
 
 // alert ("M199");
                      setTimeout(function(){ var cmd  = "~";
@@ -4973,6 +4999,13 @@ break;
 }                    
                        
                         
+                        
+                                        
+            
+                        
+                        
+                                        
+                      
                         
                                         
                         
@@ -5036,12 +5069,10 @@ alert(contadordelinea);
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                         //Inicio codigo taladro
-               
-                       
 
 /*************************************INICIA SWITCH ***********************/
 
-
+  
 switch (gcodeline) {
 
 /**************************************INICIA M3***********************/
@@ -5052,7 +5083,7 @@ this.activarm3();
 
 setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 2000);
+   }, 6000);
 break;
 
 
@@ -5067,8 +5098,9 @@ case (gcodeline.match(/\bM5\b/i) || {}).input :
   this.activarm5();
 
 // alert ("M5");
-var cmd  = "~";
-    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 4000);
 break;
 
 /*************************************FIN M5 ***********************************/
@@ -5076,10 +5108,14 @@ break;
 
 case (gcodeline.match(/\bG611\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopa1f1;
+if (this.checkposicioncargaizq()){
+
+this.subirstopa1f1();
+}
 // alert ("g611");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
    
      break;
 
@@ -5088,10 +5124,17 @@ this.subirstopa1f1;
 
 case (gcodeline.match(/\bG612\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopa1f2;
+
+if (this.checkposicioncargaizq()){
+this.subirstopa1f2();
+}
+else{
+
+}
 // alert ("g612");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
    
      break;
 
@@ -5100,10 +5143,17 @@ this.subirstopa1f2;
 
 case (gcodeline.match(/\bG613\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopa1l1;
+if (this.checkposicioncargaizq()){
+this.subirstopa1l1();
+}
+else{
+
+}
 // alert ("g613");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -5114,10 +5164,17 @@ this.subirstopa1l1;
 
 case (gcodeline.match(/\bG621\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopa2f1;
+if (this.checkposicioncargaizq()){
+this.subirstopa2f1();
+}
+else{
+
+}
 // alert ("g621");
  setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -5128,11 +5185,18 @@ this.subirstopa2f1;
 
 case (gcodeline.match(/\bG622\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopa2f2;
+
+if (this.checkposicioncargaizq()){
+this.subirstopa2f2();
 // alert ("g622");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
    
+}
+else{
+
+}
      break;
 
 /*************************************FIN G622 ***********************************/
@@ -5140,10 +5204,17 @@ this.subirstopa2f2;
 
 case (gcodeline.match(/\bG623\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopa2l1;
+if (this.checkposicioncargaizq()){
+this.subirstopa2l1();
+}
+else{
+
+}
 // alert ("g623");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -5152,10 +5223,17 @@ this.subirstopa2l1;
 
 case (gcodeline.match(/\bG624\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopa2l2;
+if (this.checkposicioncargaizq()){
+this.subirstopa2l2();
+}
+else{
+
+}
 // alert ("g624");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -5164,10 +5242,18 @@ this.subirstopa2l2;
 
 case (gcodeline.match(/\bG711\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopy1f1;
+
+if (this.checkposicioncarga()){
+this.subirstopy1f1();
+}
+else{
+
+}
 // alert ("g711");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -5176,10 +5262,17 @@ this.subirstopy1f1;
 
 case (gcodeline.match(/\bG712\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopy1f2;
+if (this.checkposicioncarga()){
+this.subirstopy1f2();
+}
+else{
+
+}
 // alert ("g712");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -5188,10 +5281,17 @@ this.subirstopy1f2;
 
 case (gcodeline.match(/\bG713\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopy1l1;
+if (this.checkposicioncarga()){
+this.subirstopy1l1();
+}
+else{
+
+}
 // alert ("g713");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -5202,10 +5302,16 @@ this.subirstopy1l1;
 
 case (gcodeline.match(/\bG721\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopy2f1;
+if (this.checkposicioncarga()){
+this.subirstopy2f1();
+}
+else{
+
+}
 // alert ("g721");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
    
      break;
 
@@ -5216,10 +5322,17 @@ this.subirstopy2f1;
 
 case (gcodeline.match(/\bG722\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopy2f2;
+if (this.checkposicioncarga()){
+this.subirstopy2f2();
+}
+else{
+
+}
 // alert ("g722");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -5228,10 +5341,16 @@ this.subirstopy2f2;
 
 case (gcodeline.match(/\bG723\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopy2l1;
+if (this.checkposicioncarga()){
+this.subirstopy2l1();}
+else{
+
+}
 // alert ("g723");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
+   
    
      break;
 
@@ -5240,10 +5359,13 @@ this.subirstopy2l1;
 
 case (gcodeline.match(/\bG724\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-this.subirstopy2l2;
+if (this.checkposicioncarga()){
+this.subirstopy2l2();}
+else{}
 // alert ("g724");
- setTimeout(function(){ var cmd  = "~";
-   }, 1500);
+setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
    
      break;
 
@@ -5509,7 +5631,7 @@ numerobroca = "1";
 
 case (gcodeline.match(/\bM100\b/i) || {}).input :
 
-this.subirtbrocaBtnClick;  
+this.subirtbrocaBtnClick();  
   
   // alert ("M100");
   setTimeout(function(){ var cmd  = "~";
@@ -5523,12 +5645,12 @@ this.subirtbrocaBtnClick;
 
 case (gcodeline.match(/\bM22\b/i) || {}).input :
 
-this.taladroarribaBtnClick;  
+this.taladroarribaBtnClick();  
      
      // alert ("M22");
      setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 2000);
+   }, 6000);
    break;
      /*************************************FIN M22 ***********************************/
 
@@ -5538,11 +5660,11 @@ this.taladroarribaBtnClick;
 case (gcodeline.match(/\bM20\b/i) || {}).input :
 
 
-        this.onM20BtnClick;
+        this.onM20BtnClick();
      // alert ("M20");
                              setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 2000);
+   }, 4000);
      
      break;
      /*************************************FIN M20 ***********************************/
@@ -5552,11 +5674,11 @@ case (gcodeline.match(/\bM20\b/i) || {}).input :
 
 case (gcodeline.match(/\bM10\b/i) || {}).input :
 
-this.onM10BtnClick;
+this.onM10BtnClick();
 // alert ("M10");
                      setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-}, 2000);
+}, 4000);
 
 break;
 /*************************************FIN M10 ***********************************/
@@ -5566,13 +5688,12 @@ break;
 
 case (gcodeline.match(/\bM12\b/i) || {}).input :
 
-this.taladroabajoBtnClick;
+this.taladroabajoBtnClick();
 
 // alert ("M12");
-setTimeout(function(){ var cmd  = "~";
+                     setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-}, 5000);
-
+}, 4000);
 
 break;
 /*************************************FIN M12 ***********************************/
@@ -5583,12 +5704,12 @@ break;
 
 case (gcodeline.match(/\bM9\b/i) || {}).input :
 
-this.taladrooffBtnClick;
+this.taladrooffBtnClick();
 
 // alert ("M9");
                      setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-}, 2000);
+}, 4000);
 
 break;
 /*************************************FIN M9***********************************/
@@ -5597,12 +5718,12 @@ break;
 
 case (gcodeline.match(/\bM8\b/i) || {}).input :
 
-this.taladroonBtnClick;
+this.taladroonBtnClick();
 
 // alert ("M8");
                      setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-}, 2000);
+}, 6000);
 
 break;
 /*************************************FIN M9***********************************/
@@ -5612,7 +5733,7 @@ break;
 
 case (gcodeline.match(/\bM199\b/i) || {}).input :
 
-this.activarm199;
+this.activarm199();
 
 // alert ("M199");
                      setTimeout(function(){ var cmd  = "~";
@@ -5629,7 +5750,11 @@ break;
                        
                         
                         
-                               
+                                        
+                 
+                        
+                                        
+                             
                         
                         
                     
