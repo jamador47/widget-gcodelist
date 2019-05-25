@@ -4236,6 +4236,7 @@ client.get(theurl, function (response) {
         onExecute: function(data) {
             // write it to the log
            
+         alert("ENTRO");
             //console.group("gcode widget - onExecute");
             console.log("onExecute data:", data);
             console.log("onExecute lastLineMarkedExecuted:", this.lastLineMarkedExecuted,
@@ -5039,7 +5040,7 @@ break;
                          var numrestar = idnum - contadordelinea;
                         var gcodeline = this.gcode.lines[contadordelinea-numrestar];
 
-
+                       alert(contadordelinea);
       // COMIENZAN POSICIONADRES      
 
 
