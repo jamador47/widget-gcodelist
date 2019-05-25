@@ -2545,9 +2545,7 @@ activarm3: function (evt){
                        "Husillo Activado ",
                        2000 // show for 2 second 
                        );
-       setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 3000);
+     
                               
                               } else {
                         $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
@@ -2640,9 +2638,7 @@ chilipeppr.publish(
                 2000 /* show for 2 second */
             );
        
-        setTimeout(function(){ var cmd  = "~";
-        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-         }, 5000);
+       
        
 },
 
@@ -5774,8 +5770,7 @@ break;
                     var cmd  = "~";
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                    }, 3000);
-                   var cmd  = "~";
-                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+                  
                              
                 }
                 
@@ -5901,67 +5896,27 @@ var HttpClient = function() {
      },
 
 
-activarM58: function(evt){
-    
-    // VERIFICAR SI MESA Y ESTA AFUERA
-    
-    this.sacarpaletaizquierda;
-
-    var HttpClient = function () {
-                            this.get = function (aUrl, aCallback) {
-                                var anHttpRequest = new XMLHttpRequest();
-                                anHttpRequest.onreadystatechange = function () {
-                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                        aCallback(anHttpRequest.responseText);
-                                }
-                                anHttpRequest.open("GET", aUrl, true);
-                                anHttpRequest.send(null);
-                            }
-                        }
-
-
- var theurl = 'http://192.168.0.82/arduino/digital/46';
-                        var client = new HttpClient();
-                        client.get(theurl, function (response) {
-
-var res = response.split("Pin D46 set to ");
-
-                                            response = parseInt(res[1]);
-
-                                            if (response == 1) {
-                                                    
-                                                
-                                                this.sacarpaletaizquierda;
-					
-					}
-
-});
-    
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-},
-
 activarM199: function(evt){
     switch(numerobroca){
         case "1":
                 this.bajarbroca1();
                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
+       }, 2000);
                 break;
 
                 case "2":
                 this.bajarbroca2();
                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
+       }, 2000);
                 break;
                 
                 case "3":
                 this.bajarbroca3();
                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
+       }, 2000);
                 break; 
 
                 case "4":
@@ -5975,7 +5930,7 @@ activarM199: function(evt){
                 this.bajarbroca5();
                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
+       }, 2000);
 
                 break;
 
@@ -5983,7 +5938,7 @@ activarM199: function(evt){
                 this.bajarbroca6();
                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
+       }, 2000);
 
                 break;
 
@@ -5991,7 +5946,7 @@ activarM199: function(evt){
                 this.bajarbroca7();
                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
+       }, 2000);
 
                 break;
                 
@@ -5999,28 +5954,28 @@ activarM199: function(evt){
                 this.bajarbroca8();
                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
+       }, 2000);
 
                 break;  
                 case "9":
                 this.bajarbroca9();
                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
+       }, 2000);
                 break;
 
                 case "10":
                 this.bajarbroca10();
                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
+       }, 2000);
                 break;
                 
                 case "11":
                 this.bajarbroca11();
                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
+       }, 2000);
 
                 break; 
 
@@ -6028,14 +5983,14 @@ activarM199: function(evt){
                 this.bajarbroca12();
                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
+       }, 2000);
                 break;
 
                 case "13":
                 this.bajarbroca13();
                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
+       }, 2000);
 
                 break;
 
@@ -6043,7 +5998,7 @@ activarM199: function(evt){
                 this.bajarbroca14();
                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
+       }, 2000);
 
                 break;
 
@@ -6051,7 +6006,7 @@ activarM199: function(evt){
                 this.bajarbroca15();
                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
+       }, 2000);
 
                 break;
                 
@@ -6059,119 +6014,14 @@ activarM199: function(evt){
                 this.bajarbroca16();
                 setTimeout(function(){ var cmd  = "~";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-       }, 1000);
+       }, 2000);
                 break;  
 
     }
 
 },
 
-activarM68: function(evt){
 
-    var HttpClient = function () {
-                            this.get = function (aUrl, aCallback) {
-                                var anHttpRequest = new XMLHttpRequest();
-                                anHttpRequest.onreadystatechange = function () {
-                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                        aCallback(anHttpRequest.responseText);
-                                }
-                                anHttpRequest.open("GET", aUrl, true);
-                                anHttpRequest.send(null);
-                            }
-                        }
-
-
- var theurl = 'http://192.168.0.82/arduino/digital/46';
-                        var client = new HttpClient();
-                        client.get(theurl, function (response) {
-
-var res = response.split("Pin D46 set to ");
-
-                                            response = parseInt(res[1]);
-
-                                            if (response == 1) {
-                                                    
-                                                
-                                                this.meterpaletaizquierda;
-					
-					}
-
-});
-    
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-},
-activarM67: function(evt){
-    var HttpClient = function () {
-                            this.get = function (aUrl, aCallback) {
-                                var anHttpRequest = new XMLHttpRequest();
-                                anHttpRequest.onreadystatechange = function () {
-                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                        aCallback(anHttpRequest.responseText);
-                                }
-                                anHttpRequest.open("GET", aUrl, true);
-                                anHttpRequest.send(null);
-                            }
-                        }
-
-
- var theurl = 'http://192.168.0.82/arduino/digital/46';
-                        var client = new HttpClient();
-                        client.get(theurl, function (response) {
-
-var res = response.split("Pin D46 set to ");
-
-                                            response = parseInt(res[1]);
-
-                                            if (response == 1) {
-                                                    
-                                                
-                                                this.meterpaletaderecha;
-					
-					}
-
-});
-    
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-},
-
-activarM57: function(evt){
-    
-    
-    var HttpClient = function () {
-                            this.get = function (aUrl, aCallback) {
-                                var anHttpRequest = new XMLHttpRequest();
-                                anHttpRequest.onreadystatechange = function () {
-                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                        aCallback(anHttpRequest.responseText);
-                                }
-                                anHttpRequest.open("GET", aUrl, true);
-                                anHttpRequest.send(null);
-                            }
-                        }
-
-
- var theurl = 'http://192.168.0.82/arduino/digital/46';
-                        var client = new HttpClient();
-                        client.get(theurl, function (response) {
-
-var res = response.split("Pin D46 set to ");
-
-                                            response = parseInt(res[1]);
-
-                                            if (response == 1) {
-                                                    
-                                                
-                                                this.sacarpaletaderecha;
-					
-					}
-
-});
-    
-                                 setTimeout(function(){ var cmd  = "~";
-       }, 1500);
-},
 //taladro apagado
 taladrooffBtnClick: function(evt) {
 
@@ -6280,9 +6130,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
                 4000 /* show for 2 second */
             );
           
-        setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-}, 3000);
+        
             //Continúa procedimiento
                 
             }
@@ -6366,9 +6214,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
                 4000 /* show for 2 second */
             );
                 
-        setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-}, 3000);
+        
             //Continúa procedimiento
                 
             }
@@ -8110,10 +7956,9 @@ chilipeppr.publish(
         
         ////////////////// MESA IZQUIERDA ENTREGA/////////////////////////////////////////////////////////
  
-             
-// BLOQUEAR PALETA IZQUIERDA
+ // BLOQUEAR PALETA IZQUIERDA
 
-        bloquearpaletaizquierda:  function(evt){
+bloquearpaletaizquierda:  function(evt){
             
             var HttpClient = function () {
               this.get = function (aUrl, aCallback) {
@@ -8131,6 +7976,28 @@ chilipeppr.publish(
  var theurl = 'http://192.168.0.82/arduino/digital/34/1';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
+
+
+
+                            var HttpClient = function () {
+              this.get = function (aUrl, aCallback) {
+                                var anHttpRequest = new XMLHttpRequest();
+                                anHttpRequest.onreadystatechange = function () {
+                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                        aCallback(anHttpRequest.responseText);
+                                }
+                                anHttpRequest.open("GET", aUrl, true);
+                                anHttpRequest.send(null);
+                            }
+                        }
+
+
+ var theurl = 'http://192.168.0.83/arduino/digital/34/0';
+                        var client = new HttpClient();
+                        setTimeout(function(){ client.get(theurl, function (response) {});},1000)
+
+
+
                             
                               var HttpClient = function () {
               this.get = function (aUrl, aCallback) {
@@ -8275,9 +8142,10 @@ var res = response.split("Pin D37 set to ");
         },
         
         
-// SACARMESAizquierda
+// SACARMESAizquierda 8116
 sacarpaletaizquierda: function(evt){
     
+    var self = this;
     alert("Sacando paleta izquierda");
  var HttpClient = function () {
      
@@ -8553,14 +8421,14 @@ var theurl = 'http://192.168.0.85/arduino/digital/8/0';
                     var client = new HttpClient();
                     client.get(theurl, function (response) {
                         
-                     if (this.checkposicioncargaizq){
+                     if (self.checkposicioncargaizq()){
                          
-                         this.bloquearpaletaizquierda;
+                         self.bloquearpaletaizquierda();
                          
                      }  else {
                          
                          
-                         // ERROR
+                         // ERROR CARGA
                          
                          
                      } 
@@ -8765,9 +8633,9 @@ var theurl = 'http://192.168.0.85/arduino/digital/8/0';
                     var client = new HttpClient();
                     client.get(theurl, function (response) {
                         
-                                                    if (this.checkposicioncargaizq){
+                                                    if (self.checkposicioncargaizq()){
                          
-                         this.bloquearpaletaizquierda;
+                         self.bloquearpaletaizquierda();
                          
                      }   else{
                          // ERROR
@@ -8826,7 +8694,8 @@ var theurl = 'http://192.168.0.85/arduino/digital/8/0';
 // METERMESAIZQUIERDA
 meterpaletaizquierda: function(evt){
     
-alert("METIENDO PALETA IZQ");
+    var self = this;
+
      var HttpClient = function () {
                             this.get = function (aUrl, aCallback) {
                                 var anHttpRequest = new XMLHttpRequest();
@@ -8838,7 +8707,7 @@ alert("METIENDO PALETA IZQ");
                                 anHttpRequest.send(null);
                             }
                         }
-// LEER SI MESA NO ESTA EN TRABAJO
+// LEER SI MESA ESTA EN CARGA
 
  var theurl = 'http://192.168.0.82/arduino/digital/37';
                         var client = new HttpClient();
@@ -8848,7 +8717,7 @@ var res = response.split("Pin D37 set to ");
 
                                             response = parseInt(res[1]);
 
-                                            if (response == 0) {
+                                            if (response == 1) {
                                                     
                                                                             
                  // LEER SI ESTA DESBLOQUEADA                               
@@ -9092,9 +8961,9 @@ var res = response.split("Pin D38 set to ");
  var theurl = 'http://192.168.0.85/arduino/digital/8/0';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
-                                                        if (this.checkposiciontrabajoizq()){
+                                                        if (self.checkposiciontrabajoizq()){
                              
-                             this.bloquearpaletaizquierda();
+                             self.bloquearpaletaizquierda();
                              
                          }   else{
                              // ERROR
@@ -9298,9 +9167,9 @@ var res = response.split("Pin D38 set to ");
  var theurl = 'http://192.168.0.85/arduino/digital/8/0';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
-                                                     if (this.checkposiciontrabajoizq()){
+                                                     if (self.checkposiciontrabajoizq()){
                              
-                             this.bloquearpaletaizquierda();
+                             self.bloquearpaletaizquierda();
                              
                          }   else{
                              // ERROR
@@ -9363,7 +9232,7 @@ var res = response.split("Pin D38 set to ");
 // BLOQUEAR PALETA DERECHA
 
         bloquearpaletaderecha:  function(evt){
-            
+            var self = this;
             var HttpClient = function () {
               this.get = function (aUrl, aCallback) {
                                 var anHttpRequest = new XMLHttpRequest();
@@ -9394,11 +9263,31 @@ var res = response.split("Pin D38 set to ");
                         }
 
 
- var theurl = 'http://192.168.0.83/arduino/digital/42';
+ var theurl = 'http://192.168.0.83/arduino/digital/42/0';
+                        var client = new HttpClient();
+                        setTimeout(function(){ client.get(theurl, function (response) {});},1000)
+
+
+
+
+                        var HttpClient = function () {
+              this.get = function (aUrl, aCallback) {
+                                var anHttpRequest = new XMLHttpRequest();
+                                anHttpRequest.onreadystatechange = function () {
+                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                        aCallback(anHttpRequest.responseText);
+                                }
+                                anHttpRequest.open("GET", aUrl, true);
+                                anHttpRequest.send(null);
+                            }
+                        }
+
+
+                        var theurl = 'http://192.168.0.83/arduino/digital/29';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
                             
-                            var res = response.split("Pin D42 set to ");
+                            var res = response.split("Pin D29 set to ");
 
                                             response = parseInt(res[1]);
 
@@ -9527,8 +9416,8 @@ var res = response.split("Pin D31 set to ");
         
 // SACARMESADERECHA
 sacarpaletaderecha: function(evt){
-    
-        
+ 
+        var self = this;
      var HttpClient = function () {
          
          
@@ -9553,7 +9442,7 @@ var res = response.split("Pin D32 set to ");
                                             response = parseInt(res[1]);
 
                                             if (response == 1) {
-                                                    
+                                             
                                                                             
                  // LEER SI ESTA DESBLOQUEADA                               
                                                 
@@ -9579,7 +9468,7 @@ var res = response.split("Pin D30 set to ");
                                             response = parseInt(res[1]);
 // SI NO ESTA DESBLOQUEADA.... 
                                             if (response == 0) {
-                                                    
+                                                    alert("No esta desbloqueada");
                                                 var HttpClient = function () {
                             this.get = function (aUrl, aCallback) {
                                 var anHttpRequest = new XMLHttpRequest();
@@ -9637,12 +9526,17 @@ var res = response.split("Pin D30 set to ");
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
 
+                            
+                            alert(response);
+                            
 var res = response.split("Pin D30 set to ");
 
                                             response = parseInt(res[1]);
 // SI NO ESTA DESBLOQUEADA.... 
                                             if (response == 0) {
                                                 
+                                                
+                                               
                                              // INFORMA ERROR Y PARA PROCESO   
                                                 
                                             }
@@ -9707,8 +9601,8 @@ var res = response.split("Pin D30 set to ");
                                                          
         
                             
-// ACTIVAR RUN
- var theurl = 'http://192.168.0.85/arduino/digital/10/1';
+// ACTIVAR RUNhttp://192.168.0.85/arduino/digital/25/0
+ var theurl = 'http://192.168.0.85/arduino/digital/25/0';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
                             
@@ -9727,7 +9621,7 @@ var res = response.split("Pin D30 set to ");
                             }
                         }
 
- var theurl = 'http://192.168.0.85/arduino/digital/25/0';
+ var theurl = 'http://192.168.0.85/arduino/digital/10/1';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
                             
@@ -9735,7 +9629,6 @@ var res = response.split("Pin D30 set to ");
         //ESPERAR 1 SEGUNDO LEER FRENO
                             
                  setTimeout(function(){
-                     
                      
                      
                      
@@ -9754,7 +9647,7 @@ var res = response.split("Pin D30 set to ");
 
     var freno = 1;
     
-                     while (freno == 1){
+                     
  var theurl = 'http://192.168.0.83/arduino/digital/22';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
@@ -9799,13 +9692,14 @@ var res = response.split("Pin D30 set to ");
                         }
 
 // DESACTIVAR RUN
+
  var theurl = 'http://192.168.0.85/arduino/digital/10/0';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
                             
-                         if (this.checkposicioncarga){
+                         if (self.checkposicioncarga()){
                              
-                             this.bloquearpaletaderecha;
+                             self.bloquearpaletaderecha();
                              
                          }  else {
                              
@@ -9830,9 +9724,9 @@ var res = response.split("Pin D30 set to ");
                                 
                             
                         });
-                     }
                      
-                 }, 1500);    
+                     
+                 }, 3000);    
                                 
                                 
                             
@@ -9919,13 +9813,13 @@ var res = response.split("Pin D30 set to ");
                         client.get(theurl, function (response) {
                         });                      
                               
-// ACTIVAR RUN
- var theurl = 'http://192.168.0.85/arduino/digital/10/1';
+// ACTIVAR  http://192.168.0.85/arduino/digital/25/0
+ var theurl = 'http://192.168.0.85/arduino/digital/25/0';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
                             
                             
-    // DESACTIVAR FW 
+    //ACTIVAR RUN
                             
                                                                    var HttpClient = function () {
                             this.get = function (aUrl, aCallback) {
@@ -9939,7 +9833,7 @@ var res = response.split("Pin D30 set to ");
                             }
                         }
 
- var theurl = 'http://192.168.0.85/arduino/digital/25/0';
+ var theurl = 'http://192.168.0.85/arduino/digital/10/1';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
                             
@@ -9947,7 +9841,6 @@ var res = response.split("Pin D30 set to ");
         //ESPERAR 1 SEGUNDO LEER FRENO
                             
                  setTimeout(function(){
-                     
                      
                      
                      
@@ -9966,7 +9859,7 @@ var res = response.split("Pin D30 set to ");
 
     var freno = 1;
     
-                     while (freno == 1){
+                     
  var theurl = 'http://192.168.0.83/arduino/digital/22';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
@@ -10015,9 +9908,9 @@ var res = response.split("Pin D30 set to ");
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
                             
-                                                        if (this.checkposicioncarga){
+                                                        if (self.checkposicioncarga()){
                              
-                             this.bloquearpaletaderecha;
+                             self.bloquearpaletaderecha();
                              
                          }   else{
                              // ERROR
@@ -10038,9 +9931,9 @@ var res = response.split("Pin D30 set to ");
                                 
                             
                         });
-                     }
                      
-                 }, 1500);    
+                     
+                 }, 3000);    
                                 
                                 
                             
@@ -10076,6 +9969,7 @@ var res = response.split("Pin D30 set to ");
 // METERMESADERECHA
 meterpaletaderecha: function(evt){
     
+    var self = this;
 
      var HttpClient = function () {
                             this.get = function (aUrl, aCallback) {
@@ -10249,7 +10143,7 @@ var res = response.split("Pin D30 set to ");
                               
 
 // ACTIVAR RUN
- var theurl = 'http://192.168.0.85/arduino/digital/10/1';
+ var theurl = 'http://192.168.0.85/arduino/digital/25/1';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
                             
@@ -10268,7 +10162,7 @@ var res = response.split("Pin D30 set to ");
                             }
                         }
 
- var theurl = 'http://192.168.0.85/arduino/digital/25/1';
+ var theurl = 'http://192.168.0.85/arduino/digital/10/1';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
                             
@@ -10295,7 +10189,6 @@ var res = response.split("Pin D30 set to ");
 
     var freno = 1;
     
-                     while (freno == 1){
  var theurl = 'http://192.168.0.83/arduino/digital/22';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
@@ -10304,7 +10197,7 @@ var res = response.split("Pin D30 set to ");
 
                                             response = parseInt(res[1]);
 
-                                            if (response == 0) {    
+                                            
                                                 
                                                 
                                                 // APAGA RUN
@@ -10343,9 +10236,9 @@ var res = response.split("Pin D30 set to ");
  var theurl = 'http://192.168.0.85/arduino/digital/10/0';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
-                                                        if (this.checkposiciontrabajo){
+                                                        if (self.checkposiciontrabajo()){
                              
-                             this.bloquearpaletaderecha;
+                             self.bloquearpaletaderecha();
                              
                          }   else{
                              // ERROR
@@ -10360,13 +10253,13 @@ var res = response.split("Pin D30 set to ");
                                                 freno = 0;
                                                
                                                 
-                                            }
+                                            
                          
                                 
                                 
                             
                         });
-                     }
+                     
                      
                  }, 1500);    
                                 
@@ -10503,7 +10396,6 @@ var res = response.split("Pin D30 set to ");
 
     var freno = 1;
     
-                     while (freno == 1){
  var theurl = 'http://192.168.0.83/arduino/digital/22';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
@@ -10551,9 +10443,9 @@ var res = response.split("Pin D30 set to ");
  var theurl = 'http://192.168.0.85/arduino/digital/10/0';
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
-                                                     if (this.checkposiciontrabajo){
+                                                     if (self.checkposiciontrabajo()){
                              
-                             this.bloquearpaletaderecha;
+                             self.bloquearpaletaderecha();
                              
                          }   else{
                              // ERROR
@@ -10573,7 +10465,7 @@ var res = response.split("Pin D30 set to ");
                                 
                             
                         });
-                     }
+                     
                      
                  }, 1500);    
                                 
@@ -10610,6 +10502,172 @@ var res = response.split("Pin D30 set to ");
     
     
 },
+
+
+
+                 activarM58: function(evt){
+    
+
+
+    // VERIFICAR SI MESA Y ESTA AFUERA
+                
+    var self = this;
+
+    
+    var HttpClient = function () {
+                            this.get = function (aUrl, aCallback) {
+                                var anHttpRequest = new XMLHttpRequest();
+                                anHttpRequest.onreadystatechange = function () {
+                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                        aCallback(anHttpRequest.responseText);
+                                }
+                                anHttpRequest.open("GET", aUrl, true);
+                                anHttpRequest.send(null);
+                            }
+                        }
+
+
+ var theurl = 'http://192.168.0.82/arduino/digital/46';
+                        var client = new HttpClient();
+                        client.get(theurl, function (response) {
+
+var res = response.split("Pin D46 set to ");
+
+                                            response = parseInt(res[1]);
+
+                                            if (response == 1) {
+                                                    
+                                                
+                                                self.sacarpaletaizquierda();
+					
+					}
+
+});
+    
+                
+},
+
+
+
+                 activarM57: function(evt){
+
+
+                    var self = this;
+
+   var HttpClient = function () {
+       
+       
+                            this.get = function (aUrl, aCallback) {
+                                var anHttpRequest = new XMLHttpRequest();
+                                anHttpRequest.onreadystatechange = function () {
+                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                        aCallback(anHttpRequest.responseText);
+                                }
+                                anHttpRequest.open("GET", aUrl, true);
+                                anHttpRequest.send(null);
+                            }
+                        }
+
+
+ var theurl = 'http://192.168.0.82/arduino/digital/46';
+                        var client = new HttpClient();
+                        client.get(theurl, function (response) {
+
+var res = response.split("Pin D46 set to ");
+
+                                            response = parseInt(res[1]);
+
+                                            if (response == 1) {
+self.sacarpaletaderecha();
+                                 
+                
+					
+					}
+
+});
+    
+                           
+},
+
+activarM67: function(evt){
+    var self = this;
+
+    var HttpClient = function () {
+                            this.get = function (aUrl, aCallback) {
+                                var anHttpRequest = new XMLHttpRequest();
+                                anHttpRequest.onreadystatechange = function () {
+                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                        aCallback(anHttpRequest.responseText);
+                                }
+                                anHttpRequest.open("GET", aUrl, true);
+                                anHttpRequest.send(null);
+                            }
+                        }
+
+
+ var theurl = 'http://192.168.0.82/arduino/digital/46';
+                        var client = new HttpClient();
+                        client.get(theurl, function (response) {
+
+var res = response.split("Pin D46 set to ");
+
+                                            response = parseInt(res[1]);
+
+                                            if (response == 1) {
+                                                    
+                                                
+                                                self.meterpaletaderecha();
+					
+					}
+
+});
+    
+                     
+},
+
+
+activarM68: function(evt){
+
+
+    var self = this;
+
+
+
+var HttpClient = function () {
+                        this.get = function (aUrl, aCallback) {
+                            var anHttpRequest = new XMLHttpRequest();
+                            anHttpRequest.onreadystatechange = function () {
+                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                    aCallback(anHttpRequest.responseText);
+                            }
+                            anHttpRequest.open("GET", aUrl, true);
+                            anHttpRequest.send(null);
+                        }
+                    }
+
+
+var theurl = 'http://192.168.0.82/arduino/digital/46';
+                    var client = new HttpClient();
+                    client.get(theurl, function (response) {
+
+var res = response.split("Pin D46 set to ");
+
+                                        response = parseInt(res[1]);
+
+                                        if (response == 1) {
+                                                
+                                            
+                                            self.meterpaletaizquierda();
+                
+                }
+
+});
+
+                  
+},
+
+
+       
 
 //Todas brocas
 subirtbrocaBtnClick: function(evt) {
