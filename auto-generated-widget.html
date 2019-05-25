@@ -4296,6 +4296,7 @@ client.get(theurl, function (response) {
 
                     var gcodeline = this.gcode.lines[idnum-1];
                    alert(contadordelinea);
+                    alert(gcodeline);
                     if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) || gcodeline.match(/\bG724\b/i) 
      || gcodeline.match(/\bG723\b/i)  || gcodeline.match(/\bG722\b/i)  || gcodeline.match(/\bG721\b/i)  || gcodeline.match(/\bG713\b/i) || gcodeline.match(/\bM68\b/i)
       || gcodeline.match(/\bG712\b/i)  || gcodeline.match(/\bG711\b/i) || gcodeline.match(/\bG624\b/i) || gcodeline.match(/\bG623\b/i) ||
@@ -5041,6 +5042,7 @@ break;
                         var gcodeline = this.gcode.lines[contadordelinea-numrestar];
 
                        alert(contadordelinea);
+                          alert(gcodeline);
       // COMIENZAN POSICIONADRES      
 
 
