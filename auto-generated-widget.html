@@ -5066,7 +5066,7 @@ break;
           gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) 
 )  {
 
-
+setTimeout(function(){ 
     alert("Es una especial saltada");
 
                         var cmd  = "!";
@@ -5759,8 +5759,8 @@ break;
                                         
                              
                         
-setTimeout(function(){ 
-                                        alert("PASAROn 4 segundos");
+
+                                       
                    }, 4000);   
                     
                         
@@ -11325,7 +11325,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 160</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 180</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
