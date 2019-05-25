@@ -4354,10 +4354,10 @@ break;
 
 case (gcodeline.match(/\bG611\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-/*if (this.checkposicioncargaizq()){
+if (this.checkposicioncargaizq()){
 
 this.subirstopa1f1();
-}*/
+}
 // alert ("g611");
 setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -5105,11 +5105,11 @@ break;
 
 case (gcodeline.match(/\bG611\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-/*if (this.checkposicioncargaizq()){
+if (this.checkposicioncargaizq()){
 
 this.subirstopa1f1();
 }
-// alert ("g611");*/
+// alert ("g611");
 setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    }, 2000);
