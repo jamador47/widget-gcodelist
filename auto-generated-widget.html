@@ -265,7 +265,7 @@
 
     <script type='text/javascript'>
         //variables DETECAP
-    const serialPort = "/dev/ttyUSB0";
+    const serialPort = "COM30";
      var contadordelinea = 0;
         
     //<![CDATA[
@@ -4310,7 +4310,7 @@ client.get(theurl, function (response) {
 
 
 
-
+alert("Es una especial");
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
@@ -5064,7 +5064,7 @@ break;
 )  {
 
 
-
+    alert("Es una especial");
 
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
