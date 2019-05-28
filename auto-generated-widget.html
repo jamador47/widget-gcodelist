@@ -4312,7 +4312,7 @@ client.get(theurl, function (response) {
 
 
 
-alert("Es una especial");
+//alert("Es una especial");
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
@@ -4357,7 +4357,7 @@ break;
 case (gcodeline.match(/\bG611\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
 if (this.checkposicioncargaizq()){
-
+alert("ENTRO");
 this.subirstopa1f1();
 }
 // alert ("g611");
@@ -5067,7 +5067,7 @@ break;
 )  {
 
 
-    alert("Es una especial");
+    //alert("Es una especial");
 
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -5771,7 +5771,7 @@ break;
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                     var cmd  = "~";
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-                   }, 4000);
+                   }, 6000);
                      
                      }
                     
@@ -8153,7 +8153,7 @@ var res = response.split("Pin D37 set to ");
 sacarpaletaizquierda: function(evt){
     
     var self = this;
-    alert("Sacando paleta izquierda");
+    //alert("Sacando paleta izquierda");
  var HttpClient = function () {
      
      
@@ -9475,7 +9475,7 @@ var res = response.split("Pin D30 set to ");
                                             response = parseInt(res[1]);
 // SI NO ESTA DESBLOQUEADA.... 
                                             if (response == 0) {
-                                                    alert("No esta desbloqueada");
+                                                    //alert("No esta desbloqueada");
                                                 var HttpClient = function () {
                             this.get = function (aUrl, aCallback) {
                                 var anHttpRequest = new XMLHttpRequest();
@@ -11327,7 +11327,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 130</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 140</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
