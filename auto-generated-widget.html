@@ -5054,7 +5054,7 @@ break;
 
                          var numrestar = idnum - contadordelinea;
                         var gcodeline = this.gcode.lines[contadordelinea-1];
-alert(contadordelinea);
+//alert(contadordelinea);
                       // alert(contadordelinea);
                         //  alert(gcodeline);
       // COMIENZAN POSICIONADRES      
@@ -5133,8 +5133,8 @@ case (gcodeline.match(/\bG611\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
                 alert("611");
 
-             $ms = this.checkposicioncargaizq();
-        alert($ms);
+             var ms = this.checkposicioncargaizq();
+        alert(ms);
         alert("611");
 if (this.checkposicioncargaizq()){
 
@@ -5152,8 +5152,8 @@ setTimeout(function(){ var cmd  = "~";
 
 case (gcodeline.match(/\bG612\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
- $ms = this.checkposicioncargaizq();
-        alert($ms);
+ var ms = this.checkposicioncargaizq();
+        alert(ms);
         alert("611");
 if (this.checkposicioncargaizq()){
 this.subirstopa1f2();
@@ -11348,7 +11348,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 1C</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 2C</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
