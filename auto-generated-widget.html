@@ -4360,7 +4360,10 @@ break;
 /**************************************INICIO G611********************************/
 
 case (gcodeline.match(/\bG611\b/i) || {}).input :
+                alert("611");
+
 // VERIFICAR SI MESA A ESTA AFUERA
+        
         $ms = this.checkposicioncargaizq();
         alert($ms);
         alert("611");
@@ -5048,7 +5051,7 @@ break;
 
                          var numrestar = idnum - contadordelinea;
                         var gcodeline = this.gcode.lines[contadordelinea-1];
-
+alert(gcodeline);
                       // alert(contadordelinea);
                         //  alert(gcodeline);
       // COMIENZAN POSICIONADRES      
@@ -5125,6 +5128,8 @@ break;
 
 case (gcodeline.match(/\bG611\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
+                alert("611");
+
              $ms = this.checkposicioncargaizq();
         alert($ms);
         alert("611");
