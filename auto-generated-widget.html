@@ -4660,7 +4660,29 @@ setTimeout(function(){ var cmd  = "~";
 case (gcodeline.match(/\bG711\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
 
-if (this.checkposicioncarga()){
+var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function () {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+
+// LEE SI MESA ESTA EN CARGA
+var theurl = 'http://192.168.0.83/arduino/digital/31';
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+var res = response.split("Pin D31 set to ");
+
+    response = parseInt(res[1]);
+
+    if (response == 1) {
 this.subirstopy1f1();
 }
 else{
@@ -4670,7 +4692,7 @@ else{
 setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    }, 2000);
-   
+});
    
      break;
 
@@ -4679,7 +4701,29 @@ setTimeout(function(){ var cmd  = "~";
 
 case (gcodeline.match(/\bG712\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncarga()){
+var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function () {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+
+// LEE SI MESA ESTA EN CARGA
+var theurl = 'http://192.168.0.83/arduino/digital/31';
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+var res = response.split("Pin D31 set to ");
+
+    response = parseInt(res[1]);
+
+    if (response == 1) {
 this.subirstopy1f2();
 }
 else{
@@ -4689,6 +4733,7 @@ else{
 setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    }, 2000);
+});
    
    
      break;
@@ -4698,7 +4743,29 @@ setTimeout(function(){ var cmd  = "~";
 
 case (gcodeline.match(/\bG713\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncarga()){
+var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function () {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+
+// LEE SI MESA ESTA EN CARGA
+var theurl = 'http://192.168.0.83/arduino/digital/31';
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+var res = response.split("Pin D31 set to ");
+
+    response = parseInt(res[1]);
+
+    if (response == 1) {
 this.subirstopy1l1();
 }
 else{
@@ -4707,7 +4774,7 @@ else{
 // alert ("g713");
 setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 2000);
+   }, 2000);});
    
    
      break;
@@ -4719,7 +4786,29 @@ setTimeout(function(){ var cmd  = "~";
 
 case (gcodeline.match(/\bG721\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncarga()){
+var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function () {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+
+// LEE SI MESA ESTA EN CARGA
+var theurl = 'http://192.168.0.83/arduino/digital/31';
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+var res = response.split("Pin D31 set to ");
+
+    response = parseInt(res[1]);
+
+    if (response == 1) {
 this.subirstopy2f1();
 }
 else{
@@ -4728,7 +4817,7 @@ else{
 // alert ("g721");
 setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 2000);
+   }, 2000);});
    
      break;
 
@@ -4739,7 +4828,29 @@ setTimeout(function(){ var cmd  = "~";
 
 case (gcodeline.match(/\bG722\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncarga()){
+var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function () {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+
+// LEE SI MESA ESTA EN CARGA
+var theurl = 'http://192.168.0.83/arduino/digital/31';
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+var res = response.split("Pin D31 set to ");
+
+    response = parseInt(res[1]);
+
+    if (response == 1) {
 this.subirstopy2f2();
 }
 else{
@@ -4748,7 +4859,7 @@ else{
 // alert ("g722");
 setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 2000);
+   }, 2000);});
    
    
      break;
@@ -4758,7 +4869,29 @@ setTimeout(function(){ var cmd  = "~";
 
 case (gcodeline.match(/\bG723\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncarga()){
+var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function () {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+
+// LEE SI MESA ESTA EN CARGA
+var theurl = 'http://192.168.0.83/arduino/digital/31';
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+var res = response.split("Pin D31 set to ");
+
+    response = parseInt(res[1]);
+
+    if (response == 1) {
 this.subirstopy2l1();}
 else{
 
@@ -4766,7 +4899,7 @@ else{
 // alert ("g723");
 setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 2000);
+   }, 2000);});
    
    
      break;
@@ -4776,13 +4909,35 @@ setTimeout(function(){ var cmd  = "~";
 
 case (gcodeline.match(/\bG724\b/i) || {}).input :
 // VERIFICAR SI MESA A ESTA AFUERA
-if (this.checkposicioncarga()){
+var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function () {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+
+// LEE SI MESA ESTA EN CARGA
+var theurl = 'http://192.168.0.83/arduino/digital/31';
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+var res = response.split("Pin D31 set to ");
+
+    response = parseInt(res[1]);
+
+    if (response == 1) {
 this.subirstopy2l2();}
 else{}
 // alert ("g724");
 setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 2000);
+   }, 2000);});
    
      break;
 
@@ -10040,7 +10195,29 @@ var res = response.split("Pin D30 set to ");
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
                             
-                         if (self.checkposicioncarga()){
+                            var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function () {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+
+// LEE SI MESA ESTA EN CARGA
+var theurl = 'http://192.168.0.83/arduino/digital/31';
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+var res = response.split("Pin D31 set to ");
+
+    response = parseInt(res[1]);
+
+    if (response == 1) {
                              
                              self.bloquearpaletaderecha();
                              
@@ -10052,6 +10229,7 @@ var res = response.split("Pin D30 set to ");
                              
                          } 
                         
+});
                             
                         });
                             
@@ -10251,14 +10429,38 @@ var res = response.split("Pin D30 set to ");
                         var client = new HttpClient();
                         client.get(theurl, function (response) {
                             
-                                                        if (self.checkposicioncarga()){
+                            var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function () {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+
+// LEE SI MESA ESTA EN CARGA
+var theurl = 'http://192.168.0.83/arduino/digital/31';
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+var res = response.split("Pin D31 set to ");
+
+    response = parseInt(res[1]);
+
+    if (response == 1) {
                              
                              self.bloquearpaletaderecha();
+
                              
                          }   else{
                              // ERROR
                          }
                             
+});
                             
                         });
                             
