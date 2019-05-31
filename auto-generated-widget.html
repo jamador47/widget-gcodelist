@@ -8461,7 +8461,7 @@ chilipeppr.publish(
         
         ////////////////// MESA IZQUIERDA ENTREGA/////////////////////////////////////////////////////////
  
- // BLOQUEAR PALETA IZQUIERDA
+// BLOQUEAR PALETA IZQUIERDA
 
 bloquearpaletaizquierda:  function(evt){
             
@@ -8883,7 +8883,7 @@ var theurl = 'http://192.168.0.85/arduino/digital/8/1';
                     }
 
 // DESACTIVAR RUN
-var theurl = 'http://192.168.0.85/arduino/digital/12/0';
+var theurl = 'http://192.168.0.85/arduino/digital/11/0';
                     var client = new HttpClient();
                     client.get(theurl, function (response) {
                     });
@@ -9029,7 +9029,7 @@ var theurl = 'http://192.168.0.85/arduino/digital/8/0';
                         
                         
                        
-                    },2500);
+                    },3500);
                                             
                                           
                 
@@ -10385,7 +10385,7 @@ var res = response.split("Pin D30 set to ");
                             
         //ESPERAR 1 SEGUNDO LEER FRENO
                             
-
+setTimeout(function(){
     var HttpClient = function () {
                             this.get = function (aUrl, aCallback) {
                                 var anHttpRequest = new XMLHttpRequest();
@@ -10403,7 +10403,7 @@ var res = response.split("Pin D30 set to ");
                         var client = new HttpClient();
                         client.get(theurl, function (response) {});
 
-
+                    },1000)
 
 
                
@@ -10524,7 +10524,7 @@ var res = response.split("Pin D31 set to ");
                         });
                      
                      
-                 }, 7050);    
+                 }, 8750);    
                                 
                                 
                             
@@ -10547,7 +10547,7 @@ var res = response.split("Pin D31 set to ");
                             
                             
                             
-                        },1500);
+                        },2500);
                                                 
                                               
 					
@@ -10778,7 +10778,7 @@ var res = response.split("Pin D31 set to ");
                         });
                      
                      
-                 }, 7050);    
+                 }, 8750);    
                              
                                 
                                 
@@ -12295,7 +12295,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 11C</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 12C</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
