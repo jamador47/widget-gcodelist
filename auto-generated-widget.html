@@ -4952,9 +4952,7 @@ case (gcodeline.match(/\bM57\b/i) || {}).input :
 this.activarM57();
 
 // alert ("M57");
-setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 8000);
+
    break;
 /*************************************FIN M57 ***********************************/
 /***************************************INICIO M67 SACAR PALETA DERECHA*********/
@@ -4965,9 +4963,7 @@ case (gcodeline.match(/\bM67\b/i) || {}).input :
 this.activarM67();
 
 // alert ("M67");
-setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 8000);
+
    break;
 /*************************************FIN M67 ***********************************/
 /***************************************INICIO M58 Meter PALETA DERECHA*********/
@@ -4979,9 +4975,7 @@ this.activarM58();
 
 // alert ("M58");
 
-setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 8000);
+
    break;
 /*************************************FIN M57 ***********************************/
 
@@ -4993,9 +4987,7 @@ case (gcodeline.match(/\bM68\b/i) || {}).input :
 this.activarM68();
 
 // alert ("M68");
-setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 8000);
+
    break;
 /*************************************FIN M57 ***********************************/
 
@@ -5883,9 +5875,7 @@ case (gcodeline.match(/\bM57\b/i) || {}).input :
 this.activarM57();
 
 // alert ("M57");
-setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 8000);
+
    break;
 /*************************************FIN M57 ***********************************/
 /***************************************INICIO M67 SACAR PALETA DERECHA*********/
@@ -5896,9 +5886,7 @@ case (gcodeline.match(/\bM67\b/i) || {}).input :
 this.activarM67();
 
 // alert ("M67");
-setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 8000);
+
    break;
 /*************************************FIN M67 ***********************************/
 /***************************************INICIO M58 Meter PALETA DERECHA*********/
@@ -5909,9 +5897,7 @@ case (gcodeline.match(/\bM58\b/i) || {}).input :
 this.activarM58();
 
 // alert ("M58");
-setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 8000);
+
    break;
 /*************************************FIN M57 ***********************************/
 
@@ -5923,9 +5909,7 @@ case (gcodeline.match(/\bM68\b/i) || {}).input :
 this.activarM68();
 
 // alert ("M68");
-setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 8000);
+
    break;
 /*************************************FIN M57 ***********************************/
 
@@ -8501,10 +8485,12 @@ setTimeout(function(){
  var theurl = 'http://192.168.0.82/arduino/digital/34/0';
                         var client = new HttpClient();
                       client.get(theurl, function (response) {
-                          alert ("BLOQUEADO");
+                          
                       });
                     
-
+                      setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
                             
                               var HttpClient = function () {
               this.get = function (aUrl, aCallback) {
@@ -8532,6 +8518,11 @@ setTimeout(function(){
                                                // http://192.168.0.85/arduino/digital/7/0
                                             
                                                 // APAGAR LED
+
+
+                         
+
+
                                                 var HttpClient = function () {
          
          
@@ -10014,7 +10005,9 @@ var res = response.split("Pin D41 set to ");
                         var client = new HttpClient();
                        client.get(theurl, function (response) {});
 
-
+                       setTimeout(function(){ var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   }, 2000);
 
 
                         var HttpClient = function () {
