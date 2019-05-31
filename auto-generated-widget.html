@@ -4960,6 +4960,7 @@ this.activarM57();
 
 case (gcodeline.match(/\bM67\b/i) || {}).input :
 
+this.bajartstopsBtnClick();
 this.activarM67();
 
 // alert ("M67");
@@ -11596,7 +11597,7 @@ var res = response.split("Pin D46 set to ");
 
 activarM68: function(evt){
 
-
+    this.bajartstopsBtnClick();
     var self = this;
 
 
