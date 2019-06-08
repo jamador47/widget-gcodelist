@@ -3042,6 +3042,7 @@ client.get(theurl, function (response) {
          */
         onPlay: function(event) {
        
+            alert("DIO PLAY");
              this.getGcode();
             console.log("got onPlay. this:", this, "event:", event);
             
@@ -3050,6 +3051,8 @@ client.get(theurl, function (response) {
             
     //hacer cambio de herramienta previa si esta en modoh.********************************
 
+
+    var $esto = $this;
             var HttpClient = function () {
          
          this.get = function (aUrl, aCallback) {
@@ -3073,12 +3076,12 @@ client.get(theurl, function (response) {
                         if (modoh){
 
 
-                            var largodecodigo = this.fileLines.length;
+                            var largodecodigo = esto.fileLines.length;
                     var valorsiguientetool = 1000;
                     
                     for (var n=0; n<largodecodigo; n++){
 
-                        var gcodetemporal = this.fileLines[n];
+                        var gcodetemporal = esto.fileLines[n];
                         if(gcodetemporal.match(/\bM6\b/i)){
 
                             var lineatemporal = gcodelinetemporal.replace(M6, "").trim();
