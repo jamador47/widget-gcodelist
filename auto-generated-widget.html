@@ -3084,9 +3084,11 @@ client.get(theurl, function (response) {
                         var gcodetemporal = esto.fileLines[n];
                         alert(gcodetemporal);
                         if(gcodetemporal.match(/\bM6\b/i)){
-
+                            alert(entro);
                             var linean = "N"+(n+1);
+                            alert(linean);
                             var lineatemporal = gcodetemporal.replace(M6, "").trim();
+                            alert(lineatemporal);
                             lineatemporal = lineatemporal.replace(M7, "").trim();
                             lineatemporal = lineatemporal.replace(linean,"").trim();
                             valorsiguientetool = parseInt(lineatemporal);
