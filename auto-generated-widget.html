@@ -3048,10 +3048,90 @@ client.get(theurl, function (response) {
             // indicate we're starting play in the UI
             $('.com-chilipeppr-widget-gcode-startindicator').removeClass("hidden");
             
+    //hacer cambio de herramienta previa si esta en modoh.********************************
+
+            var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+                    var anHttpRequest = new XMLHttpRequest();
+                    anHttpRequest.onreadystatechange = function () {
+                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                    aCallback(anHttpRequest.responseText);
+                    }
+                    anHttpRequest.open("GET", aUrl, true);
+                    anHttpRequest.send(null);
+                    }
+                    }
+
+                    var theurl = 'http://localhost:8000/geth';
+                    var client = new HttpClient();
+                    client.get(theurl, function (response) {
+
+                        var obj = JSON.parse(response);
+                        var modoh = obj[0]['modoh'];
+                    // SI ES MODO H:
+                        if (modoh){
+
+
+                            var largodecodigo = this.fileLines.length;
+                    var valorsiguientetool = 1000;
+                    
+                    for (var n=0; n<largodecodigo; n++){
+
+                        var gcodetemporal = this.fileLines[n];
+                        if(gcodetemporal.match(/\bM6\b/i)){
+
+                            var lineatemporal = gcodelinetemporal.replace(M6, "").trim();
+                            lineatemporal = lineatemporal.replace(M7, "").trim();
+                            valorsiguientetool = parseInt(lineatemporal);
+                            n=100000;
+
+                        }
+                    }
+
+                    alert(valorsiguientetool);
+                    //si existe alguna siguiente tool hacer rotacion. si no, no hacer nada.
+
+                    if(valorsiguientetool != 1000){
+
+                    setTimeout(function(){
+
+                        cmd = "i"+valorsiguientetool;
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+                    //Cambio brazo en la tabla.
+                            var HttpClient = function () {
+                            
+                            this.get = function (aUrl, aCallback) {
+                    var anHttpRequest = new XMLHttpRequest();
+                    anHttpRequest.onreadystatechange = function () {
+                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                    aCallback(anHttpRequest.responseText);
+                    }
+                    anHttpRequest.open("GET", aUrl, true);
+                    anHttpRequest.send(null);
+                    }
+                    }
+                    var theurl = 'http://localhost:8000/rotarcar/'+valorsiguientetool;
+                    var client = new HttpClient();
+                    client.get(theurl, function (response) {
+
+                    });
+
+
+
+                    },1000);
+                        
+                    }
+
+                        }
+                    });
+            //
+
+
             // fire off pubsub signal for others to watch the play btn
             var meta = { isPlayByUser: event ? true : false };
             meta.gcodeLines = this.fileLines;
-
+            
             this.bajartstopsBtnClick();
             setTimeout(function(){
             chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
@@ -4297,7 +4377,7 @@ client.get(theurl, function (response) {
                     var gcodeline = this.gcode.lines[idnum-1];
            
              
-                    if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) || gcodeline.match(/\bG724\b/i) 
+                    if (gcodeline.match(/\bM6\b/i) || gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) || gcodeline.match(/\bG724\b/i) 
      || gcodeline.match(/\bG723\b/i)  || gcodeline.match(/\bG722\b/i)  || gcodeline.match(/\bG721\b/i)  || gcodeline.match(/\bG713\b/i) || gcodeline.match(/\bM68\b/i)
       || gcodeline.match(/\bG712\b/i)  || gcodeline.match(/\bG711\b/i) || gcodeline.match(/\bG624\b/i) || gcodeline.match(/\bG623\b/i) ||
        gcodeline.match(/\bG622\b/i) || gcodeline.match(/\bG621\b/i) || gcodeline.match(/\bG613\b/i) || gcodeline.match(/\bG612\b/i)||
@@ -4328,6 +4408,173 @@ client.get(theurl, function (response) {
   
 switch (gcodeline) {
 
+
+    /**************************************INICIA M6***********************/
+case (gcodeline.match(/\bM6\b/i) || {}).input :
+          
+        /* CONSULTA SI ESTÁ EN MODO H */ 
+                
+var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function () {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+var theurl = 'http://localhost:8000/geth';
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+    var obj = JSON.parse(response);
+    var modoh = obj[0]['modoh'];
+
+var linea = gcodeline.replace(M6, "").trim();
+	    linea = linea.replace(M7, "").trim();
+        var toolausar = parseInt(linea);
+alert(toolausar);
+
+// SI ES MODO H:
+    if (modoh){
+
+            // Loop para encontrar que pocket tiene la herramienta pedida.
+                for( var i = 0; i < 17; i++){
+
+                if (obj[i]['herramienta'] == toolausar){
+                    // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
+                    var indexher = i;
+                    var valortool = i+1;
+                }
+                 }
+
+        // CAMBIO BRAZO
+
+cmd = "T"+valortool+";"+obj[indexher]['longitud'];
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+
+
+
+ //Cambio brazo en la tabla.
+        var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function () {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+var theurl = 'http://localhost:8000/cambiobrazomodoh';
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+});
+
+  //ROTACIÓN a nueva posicion.
+
+
+  //codigo de busqueda de siguiente herramienta
+ var largodecodigo = this.gcode.lines.length;
+ var valorsiguientetool = 1000;
+  
+ for (var n=(idnum); n<largodecodigo; n++){
+
+    var gcodetemporal = this.gcode.lines[n];
+    if(gcodetemporal.match(/\bM6\b/i)){
+
+        var lineatemporal = gcodelinetemporal.replace(M6, "").trim();
+	    lineatemporal = lineatemporal.replace(M7, "").trim();
+        var valorsiguientetool = parseInt(lineatemporal);
+        n=100000;
+
+    }
+ }
+
+
+//si existe alguna siguiente tool hacer rotacion. si no, no hacer nada.
+
+if(valorsiguientetool != 1000){
+
+setTimeout(function(){
+
+    cmd = "i"+valorsiguientetool;
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+ //Cambio brazo en la tabla.
+        var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function () {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+var theurl = 'http://localhost:8000/rotarcar/'+valorsiguientetool;
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+});
+
+
+
+},15000);
+      
+}
+
+    }
+
+// SI ES MODO LINEAL:  ***********************************************************************************************
+    else{
+        var indexher = toolausar - 1;
+        var valortool = toolausar;
+
+
+var enhusillo = 100;
+
+//BUSCAR SI HAY HERRAMIENTA EN EL HUSILLO
+        for( var i = 0; i < 17; i++){
+
+if (obj[i]['enhusillo'] == 1){
+    enhusillo = 1;
+    var indexherenhusillo = i;
+    var valortoolenhusillo = i+1;
+}
+
+ }
+
+ //SI HAY: REGRESARLA A POSICIÓN ORIGINAL  Y luego cambiar nueva
+ if (enhusillo == 1){
+
+ }
+ 
+ // Si no hay cambiar nueva.
+ else{
+
+
+ }
+
+    }
+
+});
+
+
+         
+          break;
+          
+          
+          
+              /***********************************FIN M6 *********************************/
+
 /**************************************INICIA M3***********************/
 case (gcodeline.match(/\bM3\b/i) || {}).input :
           
@@ -4336,7 +4583,7 @@ this.activarm3();
 
 setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 6000);
+   }, 8000);
 break;
 
 
@@ -5385,7 +5632,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 
 
     //TERMINAN POSICIONADORES
-    if (gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) || gcodeline.match(/\bG724\b/i) 
+    if (gcodeline.match(/\bM6\b/i) || gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) || gcodeline.match(/\bG724\b/i) 
      || gcodeline.match(/\bG723\b/i)  || gcodeline.match(/\bG722\b/i)  || gcodeline.match(/\bG721\b/i)  || gcodeline.match(/\bG713\b/i) || gcodeline.match(/\bM68\b/i)
       || gcodeline.match(/\bG712\b/i)  || gcodeline.match(/\bG711\b/i) || gcodeline.match(/\bG624\b/i) || gcodeline.match(/\bG623\b/i) ||
        gcodeline.match(/\bG622\b/i) || gcodeline.match(/\bG621\b/i) || gcodeline.match(/\bG613\b/i) || gcodeline.match(/\bG612\b/i)||
@@ -5424,7 +5671,7 @@ this.activarm3();
 
 setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 6000);
+   }, 8000);
 break;
 
 
@@ -6329,7 +6576,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
                     
                     // mark to no longer update onExecuteds (we'll exit
                     // at top of this method when null) we get marked as 
-                    // an int from onPlay when we want to kick in our
+                    // an int from onPyay when we want to kick in our
                     // updates again
                     this.lastLineMarkedExecuted == null;
                 }
