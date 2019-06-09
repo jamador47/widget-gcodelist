@@ -3104,6 +3104,7 @@ client.get(theurl, function (response) {
                     setTimeout(function(){
 
                         cmd = "i"+valorsiguientetool;
+                        alert(cmd);
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
                     //Cambio brazo en la tabla.
                             var HttpClient = function () {
