@@ -4527,9 +4527,9 @@ if (parseInt(obj[i]['herramienta']) == valorstool){
 
 //si existe alguna siguiente tool hacer rotacion. si no, no hacer nada.
 
-if(valorsiguientetool != 1000){
 
 setTimeout(function(){
+    if(valorsiguientetool != 1000){
 
     cmd = "i"+valorsiguientetool;
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
@@ -4551,12 +4551,13 @@ var client = new HttpClient();
 client.get(theurl, function (response) {
 
 });
-
-
-
-},15001);
-      
+   
 }
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},15000);
+      
+
 
     }
 
@@ -4582,11 +4583,151 @@ if (obj[i]['enhusillo'] == 1){
  //SI HAY: REGRESARLA A POSICIÓN ORIGINAL  Y luego cambiar nueva
  if (enhusillo == 1){
 
+    // cambio posicion original.
+
+
+    // ROTAR EN TABLA
+            var HttpClient = function () {
+                
+                this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+        }
+        }
+        var theurl = 'http://localhost:8000/rotarcar/'+valortoolenhusillo;
+        var client = new HttpClient();
+        client.get(theurl, function (response) {
+
+           // CAMBIAR EN TABLA
+           var HttpClient = function () {
+                
+                this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+        }
+        }
+        var theurl = 'http://localhost:8000/cambiobrazomodop';
+        var client = new HttpClient();
+        client.get(theurl, function (response) {
+        });
+
+        });
+
+     
+
+    cmd = "T"+valortoolenhusillo+";"+obj[indexherenhusillo]['longitud'];
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+
+setTimeout( function(){
+
+
+    var HttpClient = function () {
+                
+                this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+        }
+        }
+        var theurl = 'http://localhost:8000/rotarcar/'+toolausar;
+        var client = new HttpClient();
+        client.get(theurl, function (response) {
+            var HttpClient = function () {
+                
+                this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+        }
+        }
+        var theurl = 'http://localhost:8000/cambiobrazomodop';
+        var client = new HttpClient();
+        client.get(theurl, function (response) {
+        });
+        });
+
+        // CAMBIAR EN TABLA
+
+    cmd = "T"+toolausar+";"+obj[(toolausar-1)]['longitud'];
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+setTimeout(function(){
+
+    var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+
+},16000);
+},7000);
+
+
  }
  
  // Si no hay cambiar nueva.
  else{
 
+
+    var HttpClient = function () {
+                
+                this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+        }
+        }
+        var theurl = 'http://localhost:8000/rotarcar/'+toolausar;
+        var client = new HttpClient();
+        client.get(theurl, function (response) {
+
+           // CAMBIAR EN TABLA
+           var HttpClient = function () {
+                
+                this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+        }
+        }
+        var theurl = 'http://localhost:8000/cambiobrazomodop';
+        var client = new HttpClient();
+        client.get(theurl, function (response) {
+        });
+        
+        });
+
+    cmd = "T"+toolausar+";"+obj[(toolausar-1)]['longitud'];
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+
+setTimeout(function(){
+
+var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+   
+},16000);
 
  }
 
@@ -5689,6 +5830,326 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 
   
 switch (gcodeline) {
+
+      /**************************************INICIA M6***********************/
+case (gcodeline.match(/\bM6\b/i) || {}).input :
+          
+          /* CONSULTA SI ESTÁ EN MODO H */ 
+       var esto = this;
+                  
+  var HttpClient = function () {
+           
+           this.get = function (aUrl, aCallback) {
+  var anHttpRequest = new XMLHttpRequest();
+  anHttpRequest.onreadystatechange = function () {
+  if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+  aCallback(anHttpRequest.responseText);
+  }
+  anHttpRequest.open("GET", aUrl, true);
+  anHttpRequest.send(null);
+  }
+  }
+  var theurl = 'http://localhost:8000/geth';
+  var client = new HttpClient();
+  client.get(theurl, function (response) {
+  
+      var obj = JSON.parse(response);
+      var modoh = obj[0]['modoh'];
+  
+  var linea = gcodeline.replace('M6', "").trim();
+          linea = linea.replace('M7', "").trim();
+          linea = linea.replace('T', "").trim();
+          var linean = "N"+(idnum);
+          linea = linea.replace(linean, "").trim();
+          var toolausar = parseInt(linea);
+  alert(toolausar);
+  
+  // SI ES MODO H:
+      if (modoh){
+  
+              // Loop para encontrar que pocket tiene la herramienta pedida.
+                  for( var i = 0; i < 17; i++){
+  
+                  if (obj[i]['herramienta'] == toolausar){
+                      // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
+                      var indexher = i;
+                      var valortool = i+1;
+                  }
+                   }
+  
+          // CAMBIO BRAZO
+  
+  cmd = "T"+valortool+";"+obj[indexher]['longitud'];
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+  
+  
+  
+   //Cambio brazo en la tabla.
+          var HttpClient = function () {
+           
+           this.get = function (aUrl, aCallback) {
+  var anHttpRequest = new XMLHttpRequest();
+  anHttpRequest.onreadystatechange = function () {
+  if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+  aCallback(anHttpRequest.responseText);
+  }
+  anHttpRequest.open("GET", aUrl, true);
+  anHttpRequest.send(null);
+  }
+  }
+  var theurl = 'http://localhost:8000/cambiobrazomodoh';
+  var client = new HttpClient();
+  client.get(theurl, function (response) {
+  
+  });
+  
+    //ROTACIÓN a nueva posicion.
+  
+  
+    //codigo de busqueda de siguiente herramienta
+   var largodecodigo = esto.gcode.lines.length;
+   var valorsiguientetool = 1000;
+    
+   for (var n=(idnum); n<largodecodigo; n++){
+  
+      var gcodetemporal = esto.gcode.lines[n];
+      if(gcodetemporal.match(/\bM6\b/i)){
+          var linean = "N"+(n+1);
+          var lineatemporal = gcodelinetemporal.replace('M6', "").trim();
+          lineatemporal = lineatemporal.replace('T', "").trim();
+          lineatemporal = lineatemporal.replace('M7', "").trim();
+          lineatemporal = lineatemporal.replace(linean, "").trim();
+  
+          var valorstool = parseInt(lineatemporal);
+                              n=100000;
+  
+                          }
+                      }
+  
+                      for( var i = 0; i < 17; i++){
+  if (parseInt(obj[i]['herramienta']) == valorstool){
+      // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
+      var indexher = i;
+     valorsiguientetool = i+1;
+  }}
+  
+  //si existe alguna siguiente tool hacer rotacion. si no, no hacer nada.
+  
+  
+  setTimeout(function(){
+      if(valorsiguientetool != 1000){
+  
+      cmd = "i"+valorsiguientetool;
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+   //Cambio brazo en la tabla.
+          var HttpClient = function () {
+           
+           this.get = function (aUrl, aCallback) {
+  var anHttpRequest = new XMLHttpRequest();
+  anHttpRequest.onreadystatechange = function () {
+  if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+  aCallback(anHttpRequest.responseText);
+  }
+  anHttpRequest.open("GET", aUrl, true);
+  anHttpRequest.send(null);
+  }
+  }
+  var theurl = 'http://localhost:8000/rotarcar/'+valorsiguientetool;
+  var client = new HttpClient();
+  client.get(theurl, function (response) {
+  
+  });
+     
+  }
+  var cmd  = "~";
+     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  },15000);
+        
+  
+  
+      }
+  
+  // SI ES MODO LINEAL:  ***********************************************************************************************
+      else{
+          var indexher = toolausar - 1;
+          var valortool = toolausar;
+  
+  
+  var enhusillo = 100;
+  
+  //BUSCAR SI HAY HERRAMIENTA EN EL HUSILLO
+          for( var i = 0; i < 17; i++){
+  
+  if (obj[i]['enhusillo'] == 1){
+      enhusillo = 1;
+      var indexherenhusillo = i;
+      var valortoolenhusillo = i+1;
+  }
+  
+   }
+  
+   //SI HAY: REGRESARLA A POSICIÓN ORIGINAL  Y luego cambiar nueva
+   if (enhusillo == 1){
+  
+      // cambio posicion original.
+  
+  
+      // ROTAR EN TABLA
+              var HttpClient = function () {
+                  
+                  this.get = function (aUrl, aCallback) {
+          var anHttpRequest = new XMLHttpRequest();
+          anHttpRequest.onreadystatechange = function () {
+          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+          aCallback(anHttpRequest.responseText);
+          }
+          anHttpRequest.open("GET", aUrl, true);
+          anHttpRequest.send(null);
+          }
+          }
+          var theurl = 'http://localhost:8000/rotarcar/'+valortoolenhusillo;
+          var client = new HttpClient();
+          client.get(theurl, function (response) {
+  
+             // CAMBIAR EN TABLA
+             var HttpClient = function () {
+                  
+                  this.get = function (aUrl, aCallback) {
+          var anHttpRequest = new XMLHttpRequest();
+          anHttpRequest.onreadystatechange = function () {
+          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+          aCallback(anHttpRequest.responseText);
+          }
+          anHttpRequest.open("GET", aUrl, true);
+          anHttpRequest.send(null);
+          }
+          }
+          var theurl = 'http://localhost:8000/cambiobrazomodop';
+          var client = new HttpClient();
+          client.get(theurl, function (response) {
+          });
+  
+          });
+  
+       
+  
+      cmd = "T"+valortoolenhusillo+";"+obj[indexherenhusillo]['longitud'];
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+  
+  setTimeout( function(){
+  
+  
+      var HttpClient = function () {
+                  
+                  this.get = function (aUrl, aCallback) {
+          var anHttpRequest = new XMLHttpRequest();
+          anHttpRequest.onreadystatechange = function () {
+          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+          aCallback(anHttpRequest.responseText);
+          }
+          anHttpRequest.open("GET", aUrl, true);
+          anHttpRequest.send(null);
+          }
+          }
+          var theurl = 'http://localhost:8000/rotarcar/'+toolausar;
+          var client = new HttpClient();
+          client.get(theurl, function (response) {
+              var HttpClient = function () {
+                  
+                  this.get = function (aUrl, aCallback) {
+          var anHttpRequest = new XMLHttpRequest();
+          anHttpRequest.onreadystatechange = function () {
+          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+          aCallback(anHttpRequest.responseText);
+          }
+          anHttpRequest.open("GET", aUrl, true);
+          anHttpRequest.send(null);
+          }
+          }
+          var theurl = 'http://localhost:8000/cambiobrazomodop';
+          var client = new HttpClient();
+          client.get(theurl, function (response) {
+          });
+          });
+  
+          // CAMBIAR EN TABLA
+  
+      cmd = "T"+toolausar+";"+obj[(toolausar-1)]['longitud'];
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+  setTimeout(function(){
+  
+      var cmd  = "~";
+     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+  
+  },16000);
+  },7000);
+  
+  
+   }
+   
+   // Si no hay cambiar nueva.
+   else{
+  
+  
+      var HttpClient = function () {
+                  
+                  this.get = function (aUrl, aCallback) {
+          var anHttpRequest = new XMLHttpRequest();
+          anHttpRequest.onreadystatechange = function () {
+          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+          aCallback(anHttpRequest.responseText);
+          }
+          anHttpRequest.open("GET", aUrl, true);
+          anHttpRequest.send(null);
+          }
+          }
+          var theurl = 'http://localhost:8000/rotarcar/'+toolausar;
+          var client = new HttpClient();
+          client.get(theurl, function (response) {
+  
+             // CAMBIAR EN TABLA
+             var HttpClient = function () {
+                  
+                  this.get = function (aUrl, aCallback) {
+          var anHttpRequest = new XMLHttpRequest();
+          anHttpRequest.onreadystatechange = function () {
+          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+          aCallback(anHttpRequest.responseText);
+          }
+          anHttpRequest.open("GET", aUrl, true);
+          anHttpRequest.send(null);
+          }
+          }
+          var theurl = 'http://localhost:8000/cambiobrazomodop';
+          var client = new HttpClient();
+          client.get(theurl, function (response) {
+          });
+          
+          });
+  
+      cmd = "T"+toolausar+";"+obj[(toolausar-1)]['longitud'];
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+  
+  setTimeout(function(){
+  
+  var cmd  = "~";
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+     
+  },16000);
+  
+   }
+  
+      }
+  
+  });
+  
+  
+           
+            break;
+            
+            
+            
+                /***********************************FIN M6 *********************************/
 
 /**************************************INICIA M3***********************/
 case (gcodeline.match(/\bM3\b/i) || {}).input :
