@@ -3149,7 +3149,7 @@ if (parseInt(obj[i]['herramienta']) == valorstool){
             this.bajartstopsBtnClick();
             setTimeout(function(){
             chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
-        }, 4000);
+        }, 8000);
         },
                 getGcode: function() {
   chilipeppr.subscribe("/com-chilipeppr-widget-gcode/recvGcode", this, this.getGcodeCallback);
