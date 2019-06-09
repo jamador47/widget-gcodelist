@@ -3098,11 +3098,11 @@ client.get(theurl, function (response) {
 
                     alert(valorstool);
                     for( var i = 0; i < 17; i++){
-                        alert(parseInt(obj[i]['herramienta']));
 if (parseInt(obj[i]['herramienta']) == valorstool){
+    alert ("ES IGUAL");
     // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
     var indexher = i;
-   valorsiguientetooltool = i+1;
+   valorsiguientetool = i+1;
 }
  }    
                     //si existe alguna siguiente tool hacer rotacion. si no, no hacer nada.
@@ -12580,7 +12580,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 70C</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 80C</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
