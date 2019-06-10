@@ -4638,6 +4638,10 @@ alert(toolausar);
                 }
                  }
 
+
+if (!(obj[indexher]['enhusillo'])){
+
+
         // CAMBIO BRAZO
 
 cmd = "T"+valortool+";"+obj[indexher]['longitud'];
@@ -4664,6 +4668,7 @@ client.get(theurl, function (response) {
 
 });
 
+}
   //ROTACIÓN a nueva posicion.
 
 
@@ -4749,6 +4754,8 @@ if (obj[i]['enhusillo'] == 1){
 
  }
 
+ if (valortoolenhusillo != valortool)
+{
  //SI HAY: REGRESARLA A POSICIÓN ORIGINAL  Y luego cambiar nueva
  if (enhusillo == 1){
 
@@ -4847,7 +4854,7 @@ setTimeout(function(){
 
 
  }
- 
+}
  // Si no hay cambiar nueva.
  else{
 
@@ -6343,7 +6350,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
   
 switch (gcodeline) {
 
-      /**************************************INICIA M6***********************/
+     /**************************************INICIA M6***********************/
 case (gcodeline.match(/\bM6\b/i) || {}).input :
           
           /* CONSULTA SI ESTÁ EN MODO H */ 
@@ -6389,6 +6396,10 @@ case (gcodeline.match(/\bM6\b/i) || {}).input :
                   }
                    }
   
+  
+  if (!(obj[indexher]['enhusillo'])){
+  
+  
           // CAMBIO BRAZO
   
   cmd = "T"+valortool+";"+obj[indexher]['longitud'];
@@ -6415,6 +6426,7 @@ case (gcodeline.match(/\bM6\b/i) || {}).input :
   
   });
   
+  }
     //ROTACIÓN a nueva posicion.
   
   
@@ -6466,7 +6478,7 @@ case (gcodeline.match(/\bM6\b/i) || {}).input :
   anHttpRequest.send(null);
   }
   }
-  var theurl = 'http://192.168.0.98/rotarcar/' +valorsiguientetool;
+  var theurl = 'http://192.168.0.98/rotarcar/'+valorsiguientetool;
   var client = new HttpClient();
   client.get(theurl, function (response) {
   
@@ -6500,6 +6512,8 @@ case (gcodeline.match(/\bM6\b/i) || {}).input :
   
    }
   
+   if (valortoolenhusillo != valortool)
+  {
    //SI HAY: REGRESARLA A POSICIÓN ORIGINAL  Y luego cambiar nueva
    if (enhusillo == 1){
   
@@ -6598,7 +6612,7 @@ case (gcodeline.match(/\bM6\b/i) || {}).input :
   
   
    }
-   
+  }
    // Si no hay cambiar nueva.
    else{
   
@@ -6662,7 +6676,6 @@ case (gcodeline.match(/\bM6\b/i) || {}).input :
             
             
                 /***********************************FIN M6 *********************************/
-
 /**************************************INICIA M3***********************/
 case (gcodeline.match(/\bM3\b/i) || {}).input :
           
