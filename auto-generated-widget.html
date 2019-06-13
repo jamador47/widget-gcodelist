@@ -3054,9 +3054,7 @@ client.get(theurl, function (response) {
                        // fire off pubsub signal for others to watch the play btn
                        var meta = { isPlayByUser: event ? true : false };
             meta.gcodeLines = this.fileLines;
-            // QUITAR ESTO;.
-chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);                
-//
+         
             
     //hacer cambio de herramienta previa si esta en modoh.********************************
 
@@ -4566,15 +4564,44 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 
                     var gcodeline = this.gcode.lines[idnum-1];
 
+                    if (gcodeline.match(/A/i) || gcodeline.match(/Y/i)) {
+                        var HttpClient = function() {
+                  this.get = function(aUrl, aCallback) {
+                      var anHttpRequest = new XMLHttpRequest();
+                      anHttpRequest.onreadystatechange = function() {
+                          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                              aCallback(anHttpRequest.responseText);
+                      }
+                      anHttpRequest.open("GET", aUrl, true);
+                      anHttpRequest.send(null);
+                  }
+              }
+              var theurl = 'http://192.168.0.98/api/estados';
+              var client = new HttpClient();
+              client.get(theurl, function(response) {
+    var obj = JSON.parse(response);
 
                     if (gcodeline.match(/A/i)) {
 
                             if(aentrabajo != 1){
                                 var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-                        alert("CHEQUEO SI A ESTA EN TRABAJO");
+                        if (parseInt(obj['I']["307"]) != 0 && parseInt(obj['I']["306"] != 0 && parseInt(obj['I']["309"]) != 0 && parseInt(obj['I']["310"]) != 0)){
                         aentrabajo = 1;
                         yentrabajo=0;
+                        var cmd  = "~";
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+                        }
+                        else{
+                            var erroresexistentes = document.getElementById("textoerrores").value;
+             
+             erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+             
+             erroresexistentes = erroresexistentes.concat("Mesa A No esta lista para ser llamada por Código G, Error de Movimiento");
+             
+             document.getElementById("textoerrores").value = erroresexistentes;
+
+                        }
                             }
 
 
@@ -4584,12 +4611,26 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
                         if(yentrabajo != 1){
                                 var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-                        alert("CHEQUEO SI Y ESTA EN TRABAJO");
-                            yentrabajo=1;
-                            aentrabajo = 0;
+                        if (parseInt(obj['I']["259"]) != 0 && parseInt(obj['I']["258"] != 0) && parseInt(obj['I']["261"] != 0 && parseInt(obj['I']["262"] != 0))){
+                        aentrabajo = 1;
+                        yentrabajo=0;
+                        var cmd  = "~";
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+                        }
+                        else{
+                            var erroresexistentes = document.getElementById("textoerrores").value;
+             
+             erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+             
+             erroresexistentes = erroresexistentes.concat("Mesa Y No esta lista para ser llamada por Código G, Error de Movimiento");
+             
+             document.getElementById("textoerrores").value = erroresexistentes;
+
+                        }
                             }
 
 
+                    }});
                     }
 
                     if (gcodeline.match(/\bM6\b/i) || gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) || gcodeline.match(/\bG724\b/i) 
