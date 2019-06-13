@@ -4562,7 +4562,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
                     var gcodeline = this.gcode.lines[idnum-1];
 
 
-                    if (gcodeline.match(/\bA/i)) {
+                    if (gcodeline.match(/A/i)) {
 
                             if(aentrabajo != 1){
                                 var cmd  = "!";
@@ -4574,7 +4574,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 
 
                     }
-                    if (gcodeline.match(/\bY/i)){
+                    if (gcodeline.match(/Y/i)){
 
                         if(yentrabajo != 1){
                                 var cmd  = "!";
