@@ -267,6 +267,8 @@
         //variables DETECAP
     const serialPort = "/dev/ttyUSB0";
      var contadordelinea = 0;
+     var aentrabajo = 0;
+     var yentrabajo = 0;
         
     //<![CDATA[
 // Load additional files via Chilipeppr's require.js
@@ -4558,8 +4560,33 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 //TERMINAN POSICIONADORES
 
                     var gcodeline = this.gcode.lines[idnum-1];
-           
-             
+
+
+                    if (gcodeline.match(/\bA/i)) {
+
+                            if(aentrabajo != 1){
+                                var cmd  = "!";
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+                        alert("CHEQUEO SI A ESTA EN TRABAJO");
+                        aentrabajo = 1;
+                        yentrabajo=0;
+                            }
+
+
+                    }
+                    if (gcodeline.match(/\bY/i)){
+
+                        if(yentrabajo != 1){
+                                var cmd  = "!";
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+                        alert("CHEQUEO SI Y ESTA EN TRABAJO");
+                            yentrabajo=1;
+                            aentrabajo = 0;
+                            }
+
+
+                    }
+
                     if (gcodeline.match(/\bM6\b/i) || gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) || gcodeline.match(/\bG724\b/i) 
      || gcodeline.match(/\bG723\b/i)  || gcodeline.match(/\bG722\b/i)  || gcodeline.match(/\bG721\b/i)  || gcodeline.match(/\bG713\b/i) || gcodeline.match(/\bM68\b/i)
       || gcodeline.match(/\bG712\b/i)  || gcodeline.match(/\bG711\b/i) || gcodeline.match(/\bG624\b/i) || gcodeline.match(/\bG623\b/i) ||
