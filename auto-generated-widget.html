@@ -4564,8 +4564,14 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 
                     var gcodeline = this.gcode.lines[idnum-1];
 
-                    if (gcodeline.match(/A/i) || gcodeline.match(/Y/i)) {
-                        var HttpClient = function() {
+         
+
+                    if (gcodeline.match(/A/i)) {
+
+                            if(aentrabajo != 1){
+                                var cmd  = "!";
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+                                var HttpClient = function() {
                   this.get = function(aUrl, aCallback) {
                       var anHttpRequest = new XMLHttpRequest();
                       anHttpRequest.onreadystatechange = function() {
@@ -4580,12 +4586,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
               var client = new HttpClient();
               client.get(theurl, function(response) {
     var obj = JSON.parse(response);
-
-                    if (gcodeline.match(/A/i)) {
-
-                            if(aentrabajo != 1){
-                                var cmd  = "!";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+                                
                         if (parseInt(obj['I']["307"]) != 0 && parseInt(obj['I']["306"] != 0 && parseInt(obj['I']["309"]) != 0 && parseInt(obj['I']["310"]) != 0)){
                         aentrabajo = 1;
                         yentrabajo=0;
@@ -4602,15 +4603,31 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
              document.getElementById("textoerrores").value = erroresexistentes;
 
                         }
-                            }
+                    });}
 
 
                     }
                     if (gcodeline.match(/Y/i)){
 
                         if(yentrabajo != 1){
-                                var cmd  = "!";
+                            var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+                            var HttpClient = function() {
+                  this.get = function(aUrl, aCallback) {
+                      var anHttpRequest = new XMLHttpRequest();
+                      anHttpRequest.onreadystatechange = function() {
+                          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                              aCallback(anHttpRequest.responseText);
+                      }
+                      anHttpRequest.open("GET", aUrl, true);
+                      anHttpRequest.send(null);
+                  }
+              }
+              var theurl = 'http://192.168.0.98/api/estados';
+              var client = new HttpClient();
+              client.get(theurl, function(response) {
+    var obj = JSON.parse(response);
+                               
                         if (parseInt(obj['I']["259"]) != 0 && parseInt(obj['I']["258"] != 0) && parseInt(obj['I']["261"] != 0 && parseInt(obj['I']["262"] != 0))){
                         aentrabajo = 1;
                         yentrabajo=0;
@@ -4627,11 +4644,12 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
              document.getElementById("textoerrores").value = erroresexistentes;
 
                         }
-                            }
+                            
+                    });}
 
 
-                    }});
                     }
+                    
 
                     if (gcodeline.match(/\bM6\b/i) || gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) || gcodeline.match(/\bG724\b/i) 
      || gcodeline.match(/\bG723\b/i)  || gcodeline.match(/\bG722\b/i)  || gcodeline.match(/\bG721\b/i)  || gcodeline.match(/\bG713\b/i) || gcodeline.match(/\bM68\b/i)
