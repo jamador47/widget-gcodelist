@@ -4566,7 +4566,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 
          
 
-                    if (gcodeline.match(/A/i)) {
+                    if (gcodeline.match(/A/i) && gcodeline.match(/G/i)) {
 
                             if(aentrabajo != 1){
                                 var cmd  = "!";
@@ -4607,7 +4607,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 
 
                     }
-                    if (gcodeline.match(/Y/i)){
+                    if (gcodeline.match(/Y/i) && gcodeline.match(/A/i)){
 
                         if(yentrabajo != 1){
                             var cmd  = "!";
