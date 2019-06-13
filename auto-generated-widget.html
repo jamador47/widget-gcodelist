@@ -3053,9 +3053,7 @@ client.get(theurl, function (response) {
             
     //hacer cambio de herramienta previa si esta en modoh.********************************
 
-// QUITAR ESTO;.
-chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);                
-//
+
 
     var esto = this;
             var HttpClient = function () {
@@ -3150,7 +3148,9 @@ if (parseInt(obj[i]['herramienta']) == valorstool){
             // fire off pubsub signal for others to watch the play btn
             var meta = { isPlayByUser: event ? true : false };
             meta.gcodeLines = this.fileLines;
-            
+            // QUITAR ESTO;.
+chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);                
+//
             this.bajartstopsBtnClick();
             setTimeout(function(){
                 var self = this;
