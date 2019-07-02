@@ -3048,6 +3048,10 @@ client.get(theurl, function (response) {
              this.getGcode();
             console.log("got onPlay. this:", this, "event:", event);
             
+
+//ELIMINARESTO
+chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
+
             // indicate we're starting play in the UI
             $('.com-chilipeppr-widget-gcode-startindicator').removeClass("hidden");
 
@@ -4566,7 +4570,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 
          
 
-                    if (gcodeline.match(/A/i) && gcodeline.match(/G/i)) {
+                 /*   if (gcodeline.match(/A/i) && gcodeline.match(/G/i)) {
 
                             if(aentrabajo != 1){
                                 var cmd  = "!";
@@ -4650,7 +4654,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 
                     }
                     
-
+*/
                     if (gcodeline.match(/\bM6\b/i) || gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) || gcodeline.match(/\bG724\b/i) 
      || gcodeline.match(/\bG723\b/i)  || gcodeline.match(/\bG722\b/i)  || gcodeline.match(/\bG721\b/i)  || gcodeline.match(/\bG713\b/i) || gcodeline.match(/\bM68\b/i)
       || gcodeline.match(/\bG712\b/i)  || gcodeline.match(/\bG711\b/i) || gcodeline.match(/\bG624\b/i) || gcodeline.match(/\bG623\b/i) ||
