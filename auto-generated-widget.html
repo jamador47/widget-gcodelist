@@ -4661,7 +4661,6 @@ document.getElementById("indicadorerrorejec").className = "led-red";
                     }
                     
 */
-alert("Ejecuto");
                     if (gcodeline.match(/\bM6\b/i) || gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) || gcodeline.match(/\bG724\b/i) 
      || gcodeline.match(/\bG723\b/i)  || gcodeline.match(/\bG722\b/i)  || gcodeline.match(/\bG721\b/i)  || gcodeline.match(/\bG713\b/i) || gcodeline.match(/\bM68\b/i)
       || gcodeline.match(/\bG712\b/i)  || gcodeline.match(/\bG711\b/i) || gcodeline.match(/\bG624\b/i) || gcodeline.match(/\bG623\b/i) ||
@@ -6403,8 +6402,9 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
                     
                  contadordelinea = contadordelinea - 1 ;
                     
-                     while(idnum>=contadordelinea){
 
+                     while(idnum>=contadordelinea){
+alert("Paso");
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
