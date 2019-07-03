@@ -6402,13 +6402,13 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
                     
                  contadordelinea = contadordelinea - 1 ;
                     
-                    alert (contadordelinea);
+                  
 
                      while(idnum>=contadordelinea){
 
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-
+  alert (contadordelinea);
                          var numrestar = idnum - contadordelinea;
                         var gcodeline = this.gcode.lines[contadordelinea-1];
 //alert(contadordelinea);
