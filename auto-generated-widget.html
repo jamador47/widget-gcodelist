@@ -7247,8 +7247,13 @@ case (gcodeline.match(/\bM57\b/i) || {}).input :
 
 this.activarM57();
 
-
-sleep(12000);
+var start = new Date().getTime();
+var i = 0; 
+  while (i < 1e7) {
+    if ((new Date().getTime() - start) > 12000){
+      break;
+    }
+  }
  var cmd  = "~";  
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
   
@@ -14251,14 +14256,7 @@ bajartbrocaBtnClick: function(evt) {
     }
 });
 
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-}
+
     </script>
 
 </head>
@@ -14268,7 +14266,7 @@ function sleep(milliseconds) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 84C</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 85C</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
