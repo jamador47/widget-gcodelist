@@ -6782,16 +6782,10 @@ case (gcodeline.match(/\bM3\b/i) || {}).input :
 this.activarm3();
 //alert ("M3");               
 
-var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) >  8000){
-      break;
-    }
-  }
+setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   
 break;
-
+   }, 8000);
 
 
     /***********************************FIN M3 *********************************/
