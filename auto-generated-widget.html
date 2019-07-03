@@ -6402,9 +6402,10 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
                     
                  contadordelinea = contadordelinea - 1 ;
                     
+                    alert (contadordelinea);
 
                      while(idnum>=contadordelinea){
-alert("Paso");
+
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
