@@ -4571,7 +4571,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 
          
 
-                 /*   if (gcodeline.match(/A/i) && gcodeline.match(/G/i)) {
+                    if (gcodeline.match(/A/i) && gcodeline.match(/G/i)) {
 
                             if(aentrabajo != 1){
                                 var cmd  = "!";
@@ -4612,10 +4612,10 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 
 
                     }
-                    if (gcodeline.match(/Y/i) && gcodeline.match(/A/i)){
+                    if (gcodeline.match(/Y/i) && gcodeline.match(/G/i)){
 
                         if(yentrabajo != 1){
-                            var cmd  = "!";
+                     /*       var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                             var HttpClient = function() {
                   this.get = function(aUrl, aCallback) {
@@ -4639,7 +4639,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
                         var cmd  = "~";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                         }
-                        else{
+                        else{*/
                             var erroresexistentes = document.getElementById("textoerrores").value;
              
              erroresexistentes = erroresexistentes.concat("\\\n\\\n");
@@ -4648,14 +4648,15 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
              
              document.getElementById("textoerrores").value = erroresexistentes;
 
-                        }
+                       // }
                             
-                    });}
+                   // });
+                   }
 
 
                     }
                     
-*/
+
                     if (gcodeline.match(/\bM6\b/i) || gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) || gcodeline.match(/\bG724\b/i) 
      || gcodeline.match(/\bG723\b/i)  || gcodeline.match(/\bG722\b/i)  || gcodeline.match(/\bG721\b/i)  || gcodeline.match(/\bG713\b/i) || gcodeline.match(/\bM68\b/i)
       || gcodeline.match(/\bG712\b/i)  || gcodeline.match(/\bG711\b/i) || gcodeline.match(/\bG624\b/i) || gcodeline.match(/\bG623\b/i) ||
