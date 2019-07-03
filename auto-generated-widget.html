@@ -7247,9 +7247,14 @@ case (gcodeline.match(/\bM57\b/i) || {}).input :
 
 this.activarM57();
 
-setTimeout(function(){ var cmd  = "~";  ocupado = 0;
+var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) >  12000){
+      break;
+    }
+  } var cmd  = "~";  
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   }, 12000);
+  
 // alert ("M57");
 
    break;
