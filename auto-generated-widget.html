@@ -3271,6 +3271,7 @@ document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
+document.getElementById("indicadorerrorejec").className = "led-red";
 
                 }});
                 
@@ -3286,6 +3287,7 @@ document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
+document.getElementById("indicadorerrorejec").className = "led-red";
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
                 }
@@ -3304,6 +3306,7 @@ document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
+document.getElementById("indicadorerrorejec").className = "led-red";
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
                 }
@@ -3321,6 +3324,7 @@ document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
+document.getElementById("indicadorerrorejec").className = "led-red";
 // MESA A NO ESTA EN POSICION DE TRABAJO
 
 }
@@ -4606,6 +4610,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
              erroresexistentes = erroresexistentes.concat("Mesa A No esta lista para ser llamada por Código G, Error de Movimiento");
              
              document.getElementById("textoerrores").value = erroresexistentes;
+                 document.getElementById("indicadorerrorejec").className = "led-red";
 
                         }
                     });}
@@ -4647,7 +4652,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
              erroresexistentes = erroresexistentes.concat("Mesa Y No esta lista para ser llamada por Código G, Error de Movimiento");
              
              document.getElementById("textoerrores").value = erroresexistentes;
-
+    document.getElementById("indicadorerrorejec").className = "led-red";
                         }
                             
                     });}
@@ -5764,7 +5769,7 @@ document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
-
+document.getElementById("indicadorerrorejec").className = "led-red";
                 }});
                 
                 } else{
@@ -5779,6 +5784,7 @@ document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
+document.getElementById("indicadorerrorejec").className = "led-red";
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
                 }
@@ -5794,7 +5800,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
@@ -5811,7 +5817,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 // MESA A NO ESTA EN POSICION DE TRABAJO
@@ -5961,7 +5967,7 @@ document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
-
+document.getElementById("indicadorerrorejec").className = "led-red";
                 }});
                 
                 } else{
@@ -5976,7 +5982,7 @@ document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
-                    // MESA A NO ESTA EN POSICION DE TRABAJO
+document.getElementById("indicadorerrorejec").className = "led-red";    // MESA A NO ESTA EN POSICION DE TRABAJO
                     
                 }
 
@@ -5993,6 +5999,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!";
+document.getElementById("indicadorerrorejec").className = "led-red";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
@@ -6008,7 +6015,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 // MESA A NO ESTA EN POSICION DE TRABAJO
@@ -7355,6 +7362,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
+document.getElementById("indicadorerrorejec").className = "led-red";
 
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
@@ -7370,7 +7378,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
@@ -7388,7 +7396,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
@@ -7405,7 +7413,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 // MESA A NO ESTA EN POSICION DE TRABAJO
@@ -7551,7 +7559,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
@@ -7566,7 +7574,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
@@ -7584,7 +7592,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
@@ -7601,7 +7609,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 // MESA A NO ESTA EN POSICION DE TRABAJO
@@ -10261,7 +10269,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Mesas A no pudo ser bloqueada, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                                 // SI NO SE BLOQUEO (ERROR)
@@ -10487,7 +10495,7 @@ var res = response.split("Pin D38 set to ");
                                     erroresexistentes = erroresexistentes.concat("Mesa A no Desbloqueada, Error de Movimiento");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
-                                
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                                             
@@ -10693,7 +10701,7 @@ var theurl = 'http://192.168.0.85/arduino/digital/8/0';
                                     erroresexistentes = erroresexistentes.concat("Mesa A no llego a Posición de Carga, Error de Movimiento");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
-                                
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
@@ -10945,7 +10953,7 @@ var HttpClient = function () {
                     erroresexistentes = erroresexistentes.concat("Mesa A no llego a Posición de Carga, Error de Movimiento");
               
                     document.getElementById("textoerrores").value = erroresexistentes;
-                
+                    document.getElementById("indicadorerrorejec").className = "led-red";
         var cmd  = "!";
         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       
@@ -11010,7 +11018,7 @@ var HttpClient = function () {
                                     erroresexistentes = erroresexistentes.concat("Mesa A no está en posición Trabajo");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
-                                
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                         }
@@ -11144,7 +11152,7 @@ setTimeout(function(){
                                                 erroresexistentes = erroresexistentes.concat("Mesa A no se pudo desbloquear, Error de Movimiento.");
                                         
                                                 document.getElementById("textoerrores").value = erroresexistentes;
-                                            
+                                                document.getElementById("indicadorerrorejec").className = "led-red";
                                     var cmd  = "!";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                                     
@@ -11363,7 +11371,7 @@ var res = response.split("Pin D41 set to ");
                                     erroresexistentes = erroresexistentes.concat("Mesa A no llego a posición Trabajo, Error de Movimiento.");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
-                                
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
@@ -11610,7 +11618,7 @@ var res = response.split("Pin D41 set to ");
                                     erroresexistentes = erroresexistentes.concat("Mesa A no llego a posición Trabajo, Error de Movimiento.");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
-                                
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
@@ -11676,7 +11684,7 @@ var res = response.split("Pin D41 set to ");
                                     erroresexistentes = erroresexistentes.concat("Mesa A no esta en posición de carga");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
-                                
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
@@ -11786,7 +11794,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Mesas derecha no pudo ser bloqueada, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                                 
@@ -12012,7 +12020,7 @@ var res = response.split("Pin D30 set to ");
                                     erroresexistentes = erroresexistentes.concat("Mesa Y no se pudo desbloquear Error de movimiento");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
-                                
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
@@ -12222,7 +12230,7 @@ var res = response.split("Pin D31 set to ");
                                     erroresexistentes = erroresexistentes.concat("Mesa Y no llego a posición de Carga, Error de movimiento");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
-                                
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
@@ -12476,7 +12484,7 @@ var res = response.split("Pin D31 set to ");
                                     erroresexistentes = erroresexistentes.concat("Mesa Y no llego a posición de Carga, Error de movimiento");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
-                                
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
@@ -12544,7 +12552,7 @@ var res = response.split("Pin D31 set to ");
                                     erroresexistentes = erroresexistentes.concat("Mesa Y no está en posición de trabajo, Error de Movimiento");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
-                                
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
@@ -12677,7 +12685,7 @@ var res = response.split("Pin D30 set to ");
                                     erroresexistentes = erroresexistentes.concat("Mesa Y no se pudo desbloquear, Error de movimiento");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
-                                
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
@@ -12876,7 +12884,7 @@ var res = response.split("Pin D32 set to ");
                                     erroresexistentes = erroresexistentes.concat("Mesa Y no llego a posición de trabajo");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
-                                
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
@@ -13126,7 +13134,7 @@ var res = response.split("Pin D32 set to ");
                                     erroresexistentes = erroresexistentes.concat("Mesa Y no llego a posición de trabajo");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
-                                
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
@@ -13192,7 +13200,7 @@ var res = response.split("Pin D32 set to ");
                                     erroresexistentes = erroresexistentes.concat("Mesa Y no esta en posición de carga. Error de movimiento");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
-                                
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
@@ -13272,7 +13280,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Mesa A No esta en cero absoluto, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
@@ -13289,6 +13297,7 @@ erroresexistentes = erroresexistentes.concat("Mesas se encuentran en modo Gantry
 document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!";
+document.getElementById("indicadorerrorejec").className = "led-red";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                         // MESA A NO ESTA EN POSICION DE TRABAJO
                         
@@ -13372,6 +13381,7 @@ erroresexistentes = erroresexistentes.concat("Mesa Y No esta en cero absoluto, E
 document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!";
+document.getElementById("indicadorerrorejec").className = "led-red";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                     }});
@@ -13384,6 +13394,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
 erroresexistentes = erroresexistentes.concat("Mesas se encuentran en modo Gantry, Error de Movimiento");
 
+document.getElementById("indicadorerrorejec").className = "led-red";
 document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!";
@@ -13460,7 +13471,7 @@ var res = response.split("Pin D41 set to ");
 erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
 erroresexistentes = erroresexistentes.concat("Mesa Y No esta en cero absoluto, Error de Movimiento");
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!";
@@ -13477,7 +13488,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Mesas se encuentran en modo Gantry, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                         // MESA A NO ESTA EN POSICION DE TRABAJO
@@ -13561,7 +13572,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Mesa A No esta en cero absoluto, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
@@ -13576,7 +13587,7 @@ erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 erroresexistentes = erroresexistentes.concat("Mesas se encuentran en modo Gantry, Error de Movimiento");
 
 document.getElementById("textoerrores").value = erroresexistentes;
-
+document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                         // MESA A NO ESTA EN POSICION DE TRABAJO
