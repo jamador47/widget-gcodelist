@@ -5024,8 +5024,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 /**************************************INICIA M3***********************/
 case (gcodeline.match(/\bM3\b/i) || {}).input :
           
-this.activarm3();
-alert ("M3Normal");               
+this.activarm3();            
 
 var start = new Date().getTime();
 var i = 0;
@@ -5034,7 +5033,6 @@ var i = 0;
         var cmd = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0;
-   alert("Ffinm3");
       break;
     }
   } 
