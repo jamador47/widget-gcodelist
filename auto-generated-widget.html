@@ -270,6 +270,7 @@
      var aentrabajo = 0;
      var yentrabajo = 0;
      var ocupado = 0;
+     var siguienteespecial = 0;
     //<![CDATA[
 // Load additional files via Chilipeppr's require.js
 requirejs.config({
@@ -6427,6 +6428,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
   //alert (contadordelinea);
                          var numrestar = idnum - contadordelinea;
                         var gcodeline = this.gcode.lines[contadordelinea];
+                        var gcodelineplus = this.gcode.lines[contadordelinea+1];
 //alert(contadordelinea);
                       // alert(contadordelinea);
                         //  alert(gcodeline);
@@ -6434,7 +6436,23 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 
 
 
-
+      if (gcodelineplus.match(/\bM6\b/i) || gcodelineplus.match(/\bM3\b/i) || gcodelineplus.match(/\bM67\b/i) || gcodelineplus.match(/\bM58\b/i) || gcodelineplus.match(/\bM57\b/i) || gcodelineplus.match(/\bG724\b/i) 
+     || gcodelineplus.match(/\bG723\b/i)  || gcodelineplus.match(/\bG722\b/i)  || gcodelineplus.match(/\bG721\b/i)  || gcodelineplus.match(/\bG713\b/i) || gcodelineplus.match(/\bM68\b/i)
+      || gcodelineplus.match(/\bG712\b/i)  || gcodelineplus.match(/\bG711\b/i) || gcodelineplus.match(/\bG624\b/i) || gcodelineplus.match(/\bG623\b/i) ||
+       gcodelineplus.match(/\bG622\b/i) || gcodelineplus.match(/\bG621\b/i) || gcodelineplus.match(/\bG613\b/i) || gcodelineplus.match(/\bG612\b/i)||
+        gcodelineplus.match(/\bG611\b/i) || gcodelineplus.match(/\bM5\b/i) || gcodelineplus.match(/\bM199\b/i) || gcodelineplus.match(/\bM116\b/i) || 
+        gcodelineplus.match(/\bM115\b/i) || gcodelineplus.match(/\bM114\b/i) || gcodelineplus.match(/\bM113\b/i) || gcodelineplus.match(/\bM112\b/i) ||
+         gcodelineplus.match(/\bM111\b/i) || gcodelineplus.match(/\bM110\b/i) || gcodelineplus.match(/\bM109\b/i) || gcodelineplus.match(/\bM108\b/i) ||
+          gcodelineplus.match(/\bM107\b/i) || gcodelineplus.match(/\bM106\b/i) || gcodelineplus.match(/\bM105\b/i) || gcodelineplus.match(/\bM104\b/i) || 
+          gcodelineplus.match(/\bM103\b/i) || gcodelineplus.match(/\bM102\b/i) || gcodelineplus.match(/\bM101\b/i) || gcodelineplus.match(/\bM100\b/i) || 
+          gcodelineplus.match(/\bM22\b/i) || gcodelineplus.match(/\bM12\b/i) || gcodelineplus.match(/\bM9\b/i) || gcodelineplus.match(/\bM8\b/i) || 
+          gcodelineplus.match(/\bM701\b/i) || gcodelineplus.match(/\bM20\b/i) || gcodelineplus.match(/\bM10\b/i) 
+)  {
+siguienteespecial = 1;
+}
+else{
+siguienteespecial = 0;
+}
 //MESA A SUBIR
 
 //alert(gcodeline);
@@ -6806,9 +6824,11 @@ var start = new Date().getTime();
   var i=0;
   while(i < 1e7) {
     if ((new Date().getTime() - start) > 8000){
+        if (!siguienteespecial){
         var cmd = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0;
+}
       break;
     }
   } 
@@ -14337,7 +14357,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode7C</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode8C</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
