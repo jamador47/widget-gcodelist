@@ -4576,7 +4576,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
          var gcodelineplus = this.gcode.lines[idnum];
 
-             if (gcodeline.match(/A/i) && gcodeline.match(/G/i)) {
+          /*   if (gcodeline.match(/A/i) && gcodeline.match(/G/i)) {
 
 
                             if(aentrabajo != 1){
@@ -4663,7 +4663,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
 
                     }
-                    
+                    */
                     
 if (gcodelineplus.match(/\bM6\b/i) || gcodelineplus.match(/\bM3\b/i) || gcodelineplus.match(/\bM67\b/i) || gcodelineplus.match(/\bM58\b/i) || gcodelineplus.match(/\bM57\b/i) || gcodelineplus.match(/\bG724\b/i) 
      || gcodelineplus.match(/\bG723\b/i)  || gcodelineplus.match(/\bG722\b/i)  || gcodelineplus.match(/\bG721\b/i)  || gcodelineplus.match(/\bG713\b/i) || gcodelineplus.match(/\bM68\b/i)
@@ -14559,7 +14559,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">GcodeC</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">GcodeC1</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
