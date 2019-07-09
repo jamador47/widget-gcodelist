@@ -6785,16 +6785,10 @@ this.activarm3();
 //alert ("M3");    
            
 
-var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > 8000){
+setTimeout(function(){ 
         var cmd = "~.";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   ocupado = 0;
-      break;
-    }
-  } 
-      
+   ocupado = 0;},8000);
 
 break;
 
