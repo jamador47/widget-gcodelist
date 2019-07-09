@@ -6798,10 +6798,9 @@ ocupado = 1;
 case (gcodeline.match(/\bM3\b/i) || {}).input :
 ocupado = 1;
 this.activarm3();
-   
+alert ("M3saltado");    
            
 
-/***********CODIGO DELAY *********************/
 var start = new Date().getTime();
   var i=0;
   while(i < 1e7) {
@@ -6809,6 +6808,7 @@ var start = new Date().getTime();
         var cmd = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0;
+   alert("Ffinm3");
       break;
     }
   } 
@@ -7965,6 +7965,7 @@ var start = new Date().getTime();
 var i=0;
 while (i < 1e7) {
     if ((new Date().getTime() - start) > 4000){
+        alert("finm12");
         var cmd = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0;
@@ -8000,12 +8001,13 @@ var cmd = "!";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 this.taladroonBtnClick();
 
- 
+ alert ("M8");
 var start = new Date().getTime();
   var i = 0;
   while (i < 1e7) {
     if ((new Date().getTime() - start) > 6000){
-        var cmd = "~";
+        alert("finm8");
+        var cmd = "~.";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0;
       break;
