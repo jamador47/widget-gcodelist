@@ -5026,16 +5026,9 @@ case (gcodeline.match(/\bM3\b/i) || {}).input :
 this.activarm3();
 // alert ("M3");               
 
-var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > 8000){
-        var cmd = "~";
+setTimeout(function(){ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   ocupado = 0;
-   alert("Ffinm3");
-      break;
-    }
-  } 
+   }, 8000);
 break;
 
 
@@ -6795,7 +6788,7 @@ this.activarm3();
 var start = new Date().getTime();
   for (var i = 0; i < 1e7; i++) {
     if ((new Date().getTime() - start) > 8000){
-        var cmd = "~";
+        var cmd = "~.";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0;
    alert("Ffinm3");
@@ -14318,7 +14311,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 28C</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 26C</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
