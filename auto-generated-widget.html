@@ -5063,7 +5063,7 @@ case (gcodeline.match(/\bM57\b/i) || {}).input :
 
 this.activarM57();
 
-
+ocupado = 0;
         var cmd = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
@@ -5260,6 +5260,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 case (gcodeline.match(/\bM58\b/i) || {}).input :
 
 this.activarM58();
+ocupado = 0;
 
 // alert ("M58");
 
@@ -6273,7 +6274,7 @@ this.activarM57();
 
         var cmd = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-
+   ocupado = 0;
 // alert ("M57");
 
    break;
@@ -6467,7 +6468,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 case (gcodeline.match(/\bM58\b/i) || {}).input :
 
 this.activarM58();
-
+ocupado = 0;
 // alert ("M58");
 
 
