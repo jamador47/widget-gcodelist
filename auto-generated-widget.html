@@ -4572,10 +4572,9 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 //TERMINAN POSICIONADORES
 
                     var gcodeline = this.gcode.lines[idnum-1];
-                    var gcodelineplus = this.gcode.lines[idnum];
 
          
-                   if (gcodelineplus.match(/A/i)) {
+                   if (gcodeline.match(/A/i)) {
 
                             if(aentrabajo != 1){
                                 var cmd  = "!mesaa";
@@ -4626,7 +4625,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
                     
 
                     
-                    if (gcodelineplus.match(/Y/i)){
+                    if (gcodeline.match(/Y/i)){
                         if(yentrabajo != 1){
                             var cmd  = "!mesay";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
