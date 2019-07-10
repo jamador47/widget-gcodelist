@@ -7035,12 +7035,11 @@ break;
                     }
                     else{
 
-if (ocupado == 0){
     //alert ("CONTINUO");
 setTimeout(function(){ var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }, 2000);   
-}
+
 
 }
                         contadordelinea = contadordelinea+1;
