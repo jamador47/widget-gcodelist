@@ -5882,6 +5882,8 @@ break;
                     }
                     else{
 
+                        temp=0;
+
                         if (ocupado == 0){
     //alert ("CONTINUO");
     if (!gcodeline.match(/A/i) && !gcodeline.match(/Y/i)) {
@@ -7227,10 +7229,8 @@ break;
                     }
                     else{
 
-               
-                        var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-
+               temp = 0;
+         
     //alert ("CONTINUO");
     if (!gcodeline.match(/A/i) && !gcodeline.match(/Y/i)) {
         var cmd  = "~";
