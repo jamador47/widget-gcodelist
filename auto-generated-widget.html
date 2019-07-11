@@ -6014,6 +6014,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
   //alert (contadordelinea);
                          var numrestar = idnum - contadordelinea;
                         var gcodeline = this.gcode.lines[contadordelinea-1];
+                        var gcodelineplus = this.gcode.lines[contadordelinea];
                         var cmd  = gcodeline;
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                        
