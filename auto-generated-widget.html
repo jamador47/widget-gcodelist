@@ -6050,7 +6050,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
 }
 
-if (gcodeline.match(/Y/i) && gcodeline.match(/A/i) ){
+if (!gcodeline.match(/Y/i) && !gcodeline.match(/A/i) ){
     var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }
@@ -6081,7 +6081,7 @@ alert(contadordelinea);*/
   //alert (contadordelinea);
                          var numrestar = idnum - contadordelinea;
                         var gcodeline = this.gcode.lines[contadordelinea-1];
-                        var gcodelineplus = this.gcode.lines[contadordelinea    ];
+                        var gcodelineplus = this.gcode.lines[contadordelinea];
 //alert(contadordelinea);
                     /*  alert("CLwhile");
                       alert(contadordelinea);*/
@@ -7569,7 +7569,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
 }
 
-if (gcodeline.match(/Y/i) && gcodeline.match(/A/i) ){
+if (!gcodeline.match(/Y/i) && !gcodeline.match(/A/i) ){
 var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }
@@ -13853,7 +13853,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode PF5</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">G1</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
