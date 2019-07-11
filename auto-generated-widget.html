@@ -5753,9 +5753,14 @@ ocupado = 1;
 this.taladroarribaBtnClick();  
      
      // alert ("M22");
-     setTimeout(function(){ var cmd  = "~";
+     var tiempo = 6000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   ocupado = 0;}, 6000);
+},temp);
+   }
    break;
      /*************************************FIN M22 ***********************************/
 
@@ -5798,10 +5803,14 @@ ocupado = 1;
 this.taladroabajoBtnClick();
 
 // alert ("M12");
-                     setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-ocupado = 0;
-}, 4000);
+var tiempo = 4000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},temp);
+   }
 
 break;
 /*************************************FIN M12 ***********************************/
@@ -5815,10 +5824,14 @@ ocupado = 1;
 this.taladrooffBtnClick();
 
 // alert ("M9");
-                     setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-ocupado = 0;
-}, 4000);
+var tiempo = 4000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},temp);
+   }
 
 break;
 /*************************************FIN M9***********************************/
@@ -5830,10 +5843,14 @@ ocupado = 1;
 this.taladroonBtnClick();
 
 // alert ("M8");
-                     setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-ocupado = 0;
-}, 6000);
+var tiempo = 6000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},temp);
+   }
 
 break;
 /*************************************FIN M9***********************************/
@@ -5886,6 +5903,7 @@ break;
                         
                     }
                     else{
+                        temp=0;
 
                         if (ocupado == 0){
     //alert ("CONTINUO");
@@ -6148,368 +6166,389 @@ if (gcodelineplus.match(/\bM6\b/i) || gcodelineplus.match(/\bM3\b/i) || gcodelin
 
 //alert(gcodeline);
     //TERMINAN POSICIONADORES
-    if (gcodeline.match(/\bM6\b/i) || gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) || gcodeline.match(/\bM68\b/i)
+    if (gcodeline.match(/\bM6\b/i) || gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) 
+                    || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) ||  gcodeline.match(/\bM68\b/i)
       || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || 
         gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) ||
          gcodeline.match(/\bM111\b/i) || gcodeline.match(/\bM110\b/i) || gcodeline.match(/\bM109\b/i) || gcodeline.match(/\bM108\b/i) ||
           gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || 
           gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || 
           gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || 
-          gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) 
-)  {
+          gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) )  {
+                    
 
+ocupado = 1;
 
-    ocupado = 1;
-
-    //alert("Es una especial");
-
+//alert("Es una especial");
                         var cmd  = "!especial";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-                        
-                        //Inicio codigo taladro
 
+  
 /*************************************INICIA SWITCH ***********************/
 
   
 switch (gcodeline) {
 
-     /**************************************INICIA M6***********************/
+
+    /**************************************INICIA M6***********************/
 case (gcodeline.match(/\bM6\b/i) || {}).input :
           
-ocupado = 1;
-          /* CONSULTA SI ESTÁ EN MODO H */ 
-       var esto = this;
-                  
-  var HttpClient = function () {
-           
-           this.get = function (aUrl, aCallback) {
-  var anHttpRequest = new XMLHttpRequest();
-  anHttpRequest.onreadystatechange = function () {
-  if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-  aCallback(anHttpRequest.responseText);
-  }
-  anHttpRequest.open("GET", aUrl, true);
-  anHttpRequest.send(null);
-  }
-  }
-  var theurl = 'http://192.168.0.98/geth';
-  var client = new HttpClient();
-  client.get(theurl, function (response) {
+        /* CONSULTA SI ESTÁ EN MODO H */ 
+     var esto = this;
+                
+var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function () {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+var theurl = 'http://192.168.0.98/geth';
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+    var obj = JSON.parse(response);
+    var modoh = obj[0]['modoh'];
+
+var linea = gcodeline.replace('M6', "").trim();
+        linea = linea.replace('M7', "").trim();
+        linea = linea.replace('T', "").trim();
+        var linean = "N"+(idnum);
+        linea = linea.replace(linean, "").trim();
+        var toolausar = parseInt(linea);
+alert(toolausar);
+
+// SI ES MODO H:
+    if (modoh){
+
+            // Loop para encontrar que pocket tiene la herramienta pedida.
+                for( var i = 0; i < 17; i++){
+
+                if (obj[i]['herramienta'] == toolausar){
+                    // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
+                    var indexher = i;
+                    var valortool = i+1;
+                }
+                 }
+
+
+if (!(obj[indexher]['enhusillo'])){
+
+
+        // CAMBIO BRAZO
+
+cmd = "T"+valortool+";"+obj[indexher]['longitud'];
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+
+
+
+ //Cambio brazo en la tabla.
+        var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function () {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+var theurl = 'http://192.168.0.98/cambiobrazomodoh';
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+});
+
+}
+  //ROTACIÓN a nueva posicion.
+
+
+  //codigo de busqueda de siguiente herramienta
+ var largodecodigo = esto.gcode.lines.length;
+ var valorsiguientetool = 1000;
   
-      var obj = JSON.parse(response);
-      var modoh = obj[0]['modoh'];
-  
-  var linea = gcodeline.replace('M6', "").trim();
-          linea = linea.replace('M7', "").trim();
-          linea = linea.replace('T', "").trim();
-          var linean = "N"+(idnum);
-          linea = linea.replace(linean, "").trim();
-          var toolausar = parseInt(linea);
-  alert(toolausar);
-  
-  // SI ES MODO H:
-      if (modoh){
-  
-              // Loop para encontrar que pocket tiene la herramienta pedida.
-                  for( var i = 0; i < 17; i++){
-  
-                  if (obj[i]['herramienta'] == toolausar){
-                      // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
-                      var indexher = i;
-                      var valortool = i+1;
-                  }
-                   }
-  
-  
-  if (!(obj[indexher]['enhusillo'])){
-  
-  
-          // CAMBIO BRAZO
-  
-  cmd = "T"+valortool+";"+obj[indexher]['longitud'];
-  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
-  
-  
-  
-   //Cambio brazo en la tabla.
-          var HttpClient = function () {
-           
-           this.get = function (aUrl, aCallback) {
-  var anHttpRequest = new XMLHttpRequest();
-  anHttpRequest.onreadystatechange = function () {
-  if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-  aCallback(anHttpRequest.responseText);
-  }
-  anHttpRequest.open("GET", aUrl, true);
-  anHttpRequest.send(null);
-  }
-  }
-  var theurl = 'http://192.168.0.98/cambiobrazomodoh';
-  var client = new HttpClient();
-  client.get(theurl, function (response) {
-  
-  });
-  
-  }
-    //ROTACIÓN a nueva posicion.
-  
-  
-    //codigo de busqueda de siguiente herramienta
-   var largodecodigo = esto.gcode.lines.length;
-   var valorsiguientetool = 1000;
-    
-   for (var n=(idnum); n<largodecodigo; n++){
-  
-      var gcodetemporal = esto.gcode.lines[n];
-      if(gcodetemporal.match(/\bM6\b/i)){
-          var linean = "N"+(n+1);
-          var lineatemporal = gcodelinetemporal.replace('M6', "").trim();
-          lineatemporal = lineatemporal.replace('T', "").trim();
-          lineatemporal = lineatemporal.replace('M7', "").trim();
-          lineatemporal = lineatemporal.replace(linean, "").trim();
-  
-          var valorstool = parseInt(lineatemporal);
-                              n=100000;
-  
-                          }
-                      }
-  
-                      for( var i = 0; i < 17; i++){
-  if (parseInt(obj[i]['herramienta']) == valorstool){
-      // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
-      var indexher = i;
-     valorsiguientetool = i+1;
-  }}
-  
-  //si existe alguna siguiente tool hacer rotacion. si no, no hacer nada.
-  
-  
-  setTimeout(function(){
-      if(valorsiguientetool != 1000){
-  
-      cmd = "i"+valorsiguientetool;
-  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
-   //Cambio brazo en la tabla.
-          var HttpClient = function () {
-           
-           this.get = function (aUrl, aCallback) {
-  var anHttpRequest = new XMLHttpRequest();
-  anHttpRequest.onreadystatechange = function () {
-  if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-  aCallback(anHttpRequest.responseText);
-  }
-  anHttpRequest.open("GET", aUrl, true);
-  anHttpRequest.send(null);
-  }
-  }
-  var theurl = 'http://192.168.0.98/rotarcar/'+valorsiguientetool;
-  var client = new HttpClient();
-  client.get(theurl, function (response) {
-  
-  });
+ for (var n=(idnum); n<largodecodigo; n++){
+
+    var gcodetemporal = esto.gcode.lines[n];
+    if(gcodetemporal.match(/\bM6\b/i)){
+        var linean = "N"+(n+1);
+        var lineatemporal = gcodelinetemporal.replace('M6', "").trim();
+        lineatemporal = lineatemporal.replace('T', "").trim();
+        lineatemporal = lineatemporal.replace('M7', "").trim();
+        lineatemporal = lineatemporal.replace(linean, "").trim();
+
+        var valorstool = parseInt(lineatemporal);
+                            n=100000;
+
+                        }
+                    }
+
+                    for( var i = 0; i < 17; i++){
+if (parseInt(obj[i]['herramienta']) == valorstool){
+    // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
+    var indexher = i;
+   valorsiguientetool = i+1;
+}}
+
+//si existe alguna siguiente tool hacer rotacion. si no, no hacer nada.
+
+
+setTimeout(function(){
+    if(valorsiguientetool != 1000){
+
+    cmd = "i"+valorsiguientetool;
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+ //Cambio brazo en la tabla.
+        var HttpClient = function () {
+         
+         this.get = function (aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function () {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+var theurl = 'http://192.168.0.98/rotarcar/'+valorsiguientetool;
+var client = new HttpClient();
+client.get(theurl, function (response) {
+
+});
+   
+}
+
+
+
+
+},15000);
+      
+
+var tiempo = 15000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},temp);
+   }
+
+    }
+
+// SI ES MODO LINEAL:  ***********************************************************************************************
+    else{
+        var indexher = toolausar - 1;
+        var valortool = toolausar;
+
+
+var enhusillo = 100;
+
+//BUSCAR SI HAY HERRAMIENTA EN EL HUSILLO
+        for( var i = 0; i < 17; i++){
+
+if (obj[i]['enhusillo'] == 1){
+    enhusillo = 1;
+    var indexherenhusillo = i;
+    var valortoolenhusillo = i+1;
+}
+
+ }
+
+ if (valortoolenhusillo != valortool)
+{
+ //SI HAY: REGRESARLA A POSICIÓN ORIGINAL  Y luego cambiar nueva
+ if (enhusillo == 1){
+
+    // cambio posicion original.
+
+
+    // ROTAR EN TABLA
+            var HttpClient = function () {
+                
+                this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+        }
+        }
+        var theurl = 'http://192.168.0.98/rotarcar/'+valortoolenhusillo;
+        var client = new HttpClient();
+        client.get(theurl, function (response) {
+
+           // CAMBIAR EN TABLA
+           var HttpClient = function () {
+                
+                this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+        }
+        }
+        var theurl = 'http://192.168.0.98/cambiobrazomodop';
+        var client = new HttpClient();
+        client.get(theurl, function (response) {
+        });
+
+        });
+
      
-  }
-  var cmd  = "~";
-     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-     ocupado = 0;},15000);
+
+    cmd = "T"+valortoolenhusillo+";"+obj[indexherenhusillo]['longitud'];
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+
+setTimeout( function(){
+
+
+    var HttpClient = function () {
+                
+                this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+        }
+        }
+        var theurl = 'http://192.168.0.98/rotarcar/'+toolausar;
+        var client = new HttpClient();
+        client.get(theurl, function (response) {
+            var HttpClient = function () {
+                
+                this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+        }
+        }
+        var theurl = 'http://192.168.0.98/cambiobrazomodop';
+        var client = new HttpClient();
+        client.get(theurl, function (response) {
+        });
+        });
+
+        // CAMBIAR EN TABLA
+
+    cmd = "T"+toolausar+";"+obj[(toolausar-1)]['longitud'];
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+setTimeout(function(){
+
+   
+},16000);
+
+var tiempo = 16000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},temp);
+   }
+
+},7000);
+
+
+ }
+}
+ // Si no hay cambiar nueva.
+ else{
+
+
+    var HttpClient = function () {
+                
+                this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+        }
+        }
+        var theurl = 'http://192.168.0.98/rotarcar/'+toolausar;
+        var client = new HttpClient();
+        client.get(theurl, function (response) {
+
+           // CAMBIAR EN TABLA
+           var HttpClient = function () {
+                
+                this.get = function (aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function () {
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+        aCallback(anHttpRequest.responseText);
+        }
+        anHttpRequest.open("GET", aUrl, true);
+        anHttpRequest.send(null);
+        }
+        }
+        var theurl = 'http://192.168.0.98/cambiobrazomodop';
+        var client = new HttpClient();
+        client.get(theurl, function (response) {
+        });
         
-  
-  
-      }
-  
-  // SI ES MODO LINEAL:  ***********************************************************************************************
-      else{
-          var indexher = toolausar - 1;
-          var valortool = toolausar;
-  
-  
-  var enhusillo = 100;
-  
-  //BUSCAR SI HAY HERRAMIENTA EN EL HUSILLO
-          for( var i = 0; i < 17; i++){
-  
-  if (obj[i]['enhusillo'] == 1){
-      enhusillo = 1;
-      var indexherenhusillo = i;
-      var valortoolenhusillo = i+1;
-  }
-  
+        });
+
+    cmd = "T"+toolausar+";"+obj[(toolausar-1)]['longitud'];
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+
+setTimeout(function(){
+
+   
+},16000);
+
+var tiempo = 16000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},temp);
    }
-  
-   if (valortoolenhusillo != valortool)
-  {
-   //SI HAY: REGRESARLA A POSICIÓN ORIGINAL  Y luego cambiar nueva
-   if (enhusillo == 1){
-  
-      // cambio posicion original.
-  
-  
-      // ROTAR EN TABLA
-              var HttpClient = function () {
-                  
-                  this.get = function (aUrl, aCallback) {
-          var anHttpRequest = new XMLHttpRequest();
-          anHttpRequest.onreadystatechange = function () {
-          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-          aCallback(anHttpRequest.responseText);
-          }
-          anHttpRequest.open("GET", aUrl, true);
-          anHttpRequest.send(null);
-          }
-          }
-          var theurl = 'http://192.168.0.98/rotarcar/'+valortoolenhusillo;
-          var client = new HttpClient();
-          client.get(theurl, function (response) {
-  
-             // CAMBIAR EN TABLA
-             var HttpClient = function () {
-                  
-                  this.get = function (aUrl, aCallback) {
-          var anHttpRequest = new XMLHttpRequest();
-          anHttpRequest.onreadystatechange = function () {
-          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-          aCallback(anHttpRequest.responseText);
-          }
-          anHttpRequest.open("GET", aUrl, true);
-          anHttpRequest.send(null);
-          }
-          }
-          var theurl = 'http://192.168.0.98/cambiobrazomodop';
-          var client = new HttpClient();
-          client.get(theurl, function (response) {
-          });
-  
-          });
-  
-       
-  
-      cmd = "T"+valortoolenhusillo+";"+obj[indexherenhusillo]['longitud'];
-  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
-  
-  setTimeout( function(){
-  
-  
-      var HttpClient = function () {
-                  
-                  this.get = function (aUrl, aCallback) {
-          var anHttpRequest = new XMLHttpRequest();
-          anHttpRequest.onreadystatechange = function () {
-          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-          aCallback(anHttpRequest.responseText);
-          }
-          anHttpRequest.open("GET", aUrl, true);
-          anHttpRequest.send(null);
-          }
-          }
-          var theurl = 'http://192.168.0.98/rotarcar/'+toolausar;
-          var client = new HttpClient();
-          client.get(theurl, function (response) {
-              var HttpClient = function () {
-                  
-                  this.get = function (aUrl, aCallback) {
-          var anHttpRequest = new XMLHttpRequest();
-          anHttpRequest.onreadystatechange = function () {
-          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-          aCallback(anHttpRequest.responseText);
-          }
-          anHttpRequest.open("GET", aUrl, true);
-          anHttpRequest.send(null);
-          }
-          }
-          var theurl = 'http://192.168.0.98/cambiobrazomodop';
-          var client = new HttpClient();
-          client.get(theurl, function (response) {
-          });
-          });
-  
-          // CAMBIAR EN TABLA
-  
-      cmd = "T"+toolausar+";"+obj[(toolausar-1)]['longitud'];
-  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
-  setTimeout(function(){
-  
-      var cmd  = "~";
-     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-     ocupado = 0;
-  },16000);
-  },7000);
-  
-  
-   }
-  }
-   // Si no hay cambiar nueva.
-   else{
-  
-  
-      var HttpClient = function () {
-                  
-                  this.get = function (aUrl, aCallback) {
-          var anHttpRequest = new XMLHttpRequest();
-          anHttpRequest.onreadystatechange = function () {
-          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-          aCallback(anHttpRequest.responseText);
-          }
-          anHttpRequest.open("GET", aUrl, true);
-          anHttpRequest.send(null);
-          }
-          }
-          var theurl = 'http://192.168.0.98/rotarcar/'+toolausar;
-          var client = new HttpClient();
-          client.get(theurl, function (response) {
-  
-             // CAMBIAR EN TABLA
-             var HttpClient = function () {
-                  
-                  this.get = function (aUrl, aCallback) {
-          var anHttpRequest = new XMLHttpRequest();
-          anHttpRequest.onreadystatechange = function () {
-          if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-          aCallback(anHttpRequest.responseText);
-          }
-          anHttpRequest.open("GET", aUrl, true);
-          anHttpRequest.send(null);
-          }
-          }
-          var theurl = 'http://192.168.0.98/cambiobrazomodop';
-          var client = new HttpClient();
-          client.get(theurl, function (response) {
-          });
+ }
+
+    }
+
+});
+
+
+         
+          break;
           
-          });
-  
-      cmd = "T"+toolausar+";"+obj[(toolausar-1)]['longitud'];
-  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
-  
-  setTimeout(function(){
-    ocupado = 0;
-  var cmd  = "~";
-  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-     
-  },16000);
-  
-   }
-  
-      }
-  
-  });
-  
-  
-           
-            break;
-            
-            
-            
-                /***********************************FIN M6 *********************************/
+          
+          
+              /***********************************FIN M6 *********************************/
+
 /**************************************INICIA M3***********************/
 case (gcodeline.match(/\bM3\b/i) || {}).input :
 ocupado = 1;
 this.activarm3();
 //alert ("M3");    
            
-
 var tiempo = 8000;
 temp = temp+tiempo;
-alert(sigespecial);
 if (!sigespecial){
     setTimeout(function(){
 var cmd  = "~";
@@ -6543,10 +6582,10 @@ case (gcodeline.match(/\bM57\b/i) || {}).input :
 
 this.activarM57();
 
-
+ocupado = 0;
         var cmd = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   ocupado = 0;
+
 // alert ("M57");
 
    break;
@@ -6668,7 +6707,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 
-var cmd  = "!pinnobajo";
+var cmd  = "!pines";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                 }});
@@ -6683,7 +6722,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pinnobajo";
+var cmd  = "!pines";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
@@ -6701,7 +6740,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pinnobajo";
+var cmd  = "!pines";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
@@ -6718,7 +6757,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pinnobajo";
+var cmd  = "!pines";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 // MESA A NO ESTA EN POSICION DE TRABAJO
 
@@ -6741,6 +6780,7 @@ case (gcodeline.match(/\bM58\b/i) || {}).input :
 
 this.activarM58();
 ocupado = 0;
+
 // alert ("M58");
 
 
@@ -6864,7 +6904,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pinnobajo";
+var cmd  = "!pines";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                 }});
@@ -6879,7 +6919,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!Pinnobajo";
+var cmd  = "!pines";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
@@ -6897,7 +6937,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pinnobajo";
+var cmd  = "!pines";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
@@ -7185,9 +7225,14 @@ ocupado = 1;
 this.taladroarribaBtnClick();  
      
      // alert ("M22");
-     setTimeout(function(){ var cmd  = "~";
+     var tiempo = 6000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   ocupado = 0;}, 6000);
+},temp);
+   }
    break;
      /*************************************FIN M22 ***********************************/
 
@@ -7230,10 +7275,14 @@ ocupado = 1;
 this.taladroabajoBtnClick();
 
 // alert ("M12");
-                     setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-ocupado = 0;
-}, 4000);
+var tiempo = 4000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},temp);
+   }
 
 break;
 /*************************************FIN M12 ***********************************/
@@ -7247,10 +7296,14 @@ ocupado = 1;
 this.taladrooffBtnClick();
 
 // alert ("M9");
-                     setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-ocupado = 0;
-}, 4000);
+var tiempo = 4000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},temp);
+   }
 
 break;
 /*************************************FIN M9***********************************/
@@ -7262,10 +7315,14 @@ ocupado = 1;
 this.taladroonBtnClick();
 
 // alert ("M8");
-                     setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-ocupado = 0;
-}, 6000);
+var tiempo = 6000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},temp);
+   }
 
 break;
 /*************************************FIN M9***********************************/
@@ -7291,25 +7348,36 @@ break;
   
 /*************************** FIN SWITCH***********************/
 } 
-                   
-                       
                         
                         
                                         
-                 
+            
+                        
                         
                                         
-                             
+                      
                         
+                                        
                         
                     
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        //++++++++++++++++
                         
                         
                     }
                     else{
 
 
-
+temp = 0;
 var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
@@ -13593,7 +13661,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode P12</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode P15</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
