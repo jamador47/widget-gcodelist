@@ -5971,7 +5971,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
                   
 
                      while(idnum>contadordelinea){
-setTimeout(function(){
+
                         var cmd  = "!contadordelinea";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                        
@@ -7279,7 +7279,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
                     
 }
                         contadordelinea = contadordelinea+1;
-                    },3000)     
+                                    
                      
                      }
                     
