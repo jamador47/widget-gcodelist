@@ -5947,6 +5947,13 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
 
 }
+
+if (gcodeline.match(/L/i)){
+    var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+
+}
+
 }
                     }
                     
