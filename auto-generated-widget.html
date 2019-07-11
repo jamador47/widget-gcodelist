@@ -5051,7 +5051,7 @@ this.activarm3();
 
 var tiempo = 8000;
 temp = temp+tiempo;
-if (!sigespecial){
+if (!sigesp){
     setTimeout(function(){
 var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -5729,7 +5729,7 @@ this.taladroarribaBtnClick();
      // alert ("M22");
      var tiempo = 6000;
 temp = temp+tiempo;
-if (!sigespecial){
+if (!sigesp){
     setTimeout(function(){
 var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -5778,7 +5778,7 @@ this.taladroabajoBtnClick();
 // alert ("M12");
 var tiempo = 4000;
 temp = temp+tiempo;
-if (!sigespecial){
+if (!sigesp){
     setTimeout(function(){
 var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -5799,7 +5799,7 @@ this.taladrooffBtnClick();
 // alert
 var tiempo = 4000;
 temp = temp+tiempo;
-if (!sigespecial){
+if (!sigesp){
     setTimeout(function(){
 var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -5818,7 +5818,7 @@ this.taladroonBtnClick();
 // alert ("M8");
 var tiempo = 6000;
 temp = temp+tiempo;
-if (!sigespecial){
+if (!sigesp){
     setTimeout(function(){
 var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -7079,7 +7079,7 @@ this.taladroarribaBtnClick();
      // alert ("M22");
      var tiempo = 6000;
 temp = temp+tiempo;
-if (!sigespecial){
+if (!sigesp){
     setTimeout(function(){
 var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -7128,8 +7128,8 @@ this.taladroabajoBtnClick();
 // alert ("M12");
 var tiempo = 4000;
 temp = temp+tiempo;
-alert(sigespecial);
-if (!sigespecial){
+alert(sigesp);
+if (!sigesp){
     setTimeout(function(){
 var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -7150,7 +7150,7 @@ this.taladrooffBtnClick();
 // alert
 var tiempo = 4000;
 temp = temp+tiempo;
-if (!sigespecial){
+if (!sigesp){
     setTimeout(function(){
 var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -7169,7 +7169,7 @@ this.taladroonBtnClick();
 // alert ("M8");
 var tiempo = 6000;
 temp = temp+tiempo;
-if (!sigespecial){
+if (!sigesp){
     setTimeout(function(){
 var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -13688,7 +13688,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">GX9</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">GX1</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
