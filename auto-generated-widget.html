@@ -270,6 +270,8 @@
      var aentrabajo = 0;
      var yentrabajo = 0;
      var ocupado = 0;
+     var temp = 0;
+     var sigesp = 0;
     //<![CDATA[
 // Load additional files via Chilipeppr's require.js
 requirejs.config({
@@ -4573,7 +4575,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 //TERMINAN POSICIONADORES
 
                     var gcodeline = this.gcode.lines[idnum-1];
-
+                    var gcodelineplus = this.gcode.lines[idnum];
          
                    if (gcodeline.match(/A/i)) {
 
@@ -4674,6 +4676,20 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
                     }
                     
+                    if (gcodelineplus.match(/\bM6\b/i) || gcodelineplus.match(/\bM3\b/i) || gcodelineplus.match(/\bM67\b/i) 
+                    || gcodelineplus.match(/\bM58\b/i) || gcodelineplus.match(/\bM57\b/i) ||  gcodelineplus.match(/\bM68\b/i)
+      || gcodelineplus.match(/\bM5\b/i) || gcodelineplus.match(/\bM199\b/i) || gcodelineplus.match(/\bM116\b/i) || 
+        gcodelineplus.match(/\bM115\b/i) || gcodelineplus.match(/\bM114\b/i) || gcodelineplus.match(/\bM113\b/i) || gcodelineplus.match(/\bM112\b/i) ||
+         gcodelineplus.match(/\bM111\b/i) || gcodelineplus.match(/\bM110\b/i) || gcodelineplus.match(/\bM109\b/i) || gcodelineplus.match(/\bM108\b/i) ||
+          gcodelineplus.match(/\bM107\b/i) || gcodelineplus.match(/\bM106\b/i) || gcodelineplus.match(/\bM105\b/i) || gcodelineplus.match(/\bM104\b/i) || 
+          gcodelineplus.match(/\bM103\b/i) || gcodelineplus.match(/\bM102\b/i) || gcodelineplus.match(/\bM101\b/i) || gcodelineplus.match(/\bM100\b/i) || 
+          gcodelineplus.match(/\bM22\b/i) || gcodelineplus.match(/\bM12\b/i) || gcodelineplus.match(/\bM9\b/i) || gcodelineplus.match(/\bM8\b/i) || 
+          gcodelineplus.match(/\bM701\b/i) || gcodelineplus.match(/\bM20\b/i) || gcodelineplus.match(/\bM10\b/i) )  {
+           sigesp = 1;         
+          }else{
+
+              sigesp = 0;
+          }
 
                     if (gcodeline.match(/\bM6\b/i) || gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) 
                     || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) ||  gcodeline.match(/\bM68\b/i)
@@ -5033,10 +5049,14 @@ this.activarm3();
 //alert ("M3");    
            
 
-setTimeout(function(){ 
-        var cmd = "~.";
+var tiempo = 8000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   ocupado = 0;},8000);
+},temp);
+   }
 
 break;
 
@@ -5707,10 +5727,14 @@ ocupado = 1;
 this.taladroarribaBtnClick();  
      
      // alert ("M22");
-     setTimeout(function(){ var cmd  = "~";
+     var tiempo = 6000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   ocupado = 0;}, 6000);
-   break;
+},temp);
+   }
      /*************************************FIN M22 ***********************************/
 
 /***************************************INICIO M20*********/
@@ -5752,10 +5776,14 @@ ocupado = 1;
 this.taladroabajoBtnClick();
 
 // alert ("M12");
-                     setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-ocupado = 0;
-}, 4000);
+var tiempo = 4000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},temp);
+   }
 
 break;
 /*************************************FIN M12 ***********************************/
@@ -5768,11 +5796,15 @@ case (gcodeline.match(/\bM9\b/i) || {}).input :
 ocupado = 1;
 this.taladrooffBtnClick();
 
-// alert ("M9");
-                     setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-ocupado = 0;
-}, 4000);
+// alert
+var tiempo = 4000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},temp);
+   }
 
 break;
 /*************************************FIN M9***********************************/
@@ -5784,10 +5816,14 @@ ocupado = 1;
 this.taladroonBtnClick();
 
 // alert ("M8");
-                     setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-ocupado = 0;
-}, 6000);
+var tiempo = 6000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},temp);
+   }
 
 break;
 /*************************************FIN M9***********************************/
@@ -5993,6 +6029,21 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
 
 //alert(gcodeline);
     //TERMINAN POSICIONADORES
+    if (gcodelineplus.match(/\bM6\b/i) || gcodelineplus.match(/\bM3\b/i) || gcodelineplus.match(/\bM67\b/i) 
+                    || gcodelineplus.match(/\bM58\b/i) || gcodelineplus.match(/\bM57\b/i) ||  gcodelineplus.match(/\bM68\b/i)
+      || gcodelineplus.match(/\bM5\b/i) || gcodelineplus.match(/\bM199\b/i) || gcodelineplus.match(/\bM116\b/i) || 
+        gcodelineplus.match(/\bM115\b/i) || gcodelineplus.match(/\bM114\b/i) || gcodelineplus.match(/\bM113\b/i) || gcodelineplus.match(/\bM112\b/i) ||
+         gcodelineplus.match(/\bM111\b/i) || gcodelineplus.match(/\bM110\b/i) || gcodelineplus.match(/\bM109\b/i) || gcodelineplus.match(/\bM108\b/i) ||
+          gcodelineplus.match(/\bM107\b/i) || gcodelineplus.match(/\bM106\b/i) || gcodelineplus.match(/\bM105\b/i) || gcodelineplus.match(/\bM104\b/i) || 
+          gcodelineplus.match(/\bM103\b/i) || gcodelineplus.match(/\bM102\b/i) || gcodelineplus.match(/\bM101\b/i) || gcodelineplus.match(/\bM100\b/i) || 
+          gcodelineplus.match(/\bM22\b/i) || gcodelineplus.match(/\bM12\b/i) || gcodelineplus.match(/\bM9\b/i) || gcodelineplus.match(/\bM8\b/i) || 
+          gcodelineplus.match(/\bM701\b/i) || gcodelineplus.match(/\bM20\b/i) || gcodelineplus.match(/\bM10\b/i) )  {
+           sigesp = 1;         
+          }else{
+
+              sigesp = 0;
+          }
+
     if (gcodeline.match(/\bM6\b/i) || gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) || gcodeline.match(/\bM68\b/i)
       || gcodeline.match(/\bM5\b/i) || gcodeline.match(/\bM199\b/i) || gcodeline.match(/\bM116\b/i) || 
         gcodeline.match(/\bM115\b/i) || gcodeline.match(/\bM114\b/i) || gcodeline.match(/\bM113\b/i) || gcodeline.match(/\bM112\b/i) ||
@@ -7025,10 +7076,14 @@ ocupado = 1;
 this.taladroarribaBtnClick();  
      
      // alert ("M22");
-     setTimeout(function(){ var cmd  = "~";
+     var tiempo = 6000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-   ocupado = 0;}, 6000);
-   break;
+},temp);
+   }
      /*************************************FIN M22 ***********************************/
 
 /***************************************INICIO M20*********/
@@ -7070,10 +7125,14 @@ ocupado = 1;
 this.taladroabajoBtnClick();
 
 // alert ("M12");
-                     setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-ocupado = 0;
-}, 4000);
+var tiempo = 4000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},temp);
+   }
 
 break;
 /*************************************FIN M12 ***********************************/
@@ -7086,11 +7145,15 @@ case (gcodeline.match(/\bM9\b/i) || {}).input :
 ocupado = 1;
 this.taladrooffBtnClick();
 
-// alert ("M9");
-                     setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-ocupado = 0;
-}, 4000);
+// alert
+var tiempo = 4000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},temp);
+   }
 
 break;
 /*************************************FIN M9***********************************/
@@ -7102,10 +7165,14 @@ ocupado = 1;
 this.taladroonBtnClick();
 
 // alert ("M8");
-                     setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-ocupado = 0;
-}, 6000);
+var tiempo = 6000;
+temp = temp+tiempo;
+if (!sigespecial){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+},temp);
+   }
 
 break;
 /*************************************FIN M9***********************************/
@@ -7125,8 +7192,8 @@ ocupado = 0;
 }, 2000);
 
 break;
-/*************************************FIN M199***********************************/
 
+/*******************FIN M199*****************************/
   
   
 /*************************** FIN SWITCH***********************/
