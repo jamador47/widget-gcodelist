@@ -5947,12 +5947,10 @@ break;
                     }
                     else{
                         temp=0;
-                        var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
-                    
+
     //alert ("CONTINUO");
 
-    /*
+    
     if (gcodeline.match(/A/i)) {
 
 if(aentrabajo != 1){
@@ -6050,8 +6048,12 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 });}
 
 
-}*/
+}
 
+if (gcodeline.match(/Y/i) && gcodeline.match(/A/i) ){
+    var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}
 
                     }
                     
@@ -7463,9 +7465,116 @@ break;
                     else{
 
 
-temp = 0;
+                        temp=0;
+
+//alert ("CONTINUO");
+
+
+if (gcodeline.match(/A/i)) {
+
+if(aentrabajo != 1){
+var cmd  = "!mesaa";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+var cmd  = "Revisando A";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+
+var cmd  = gcodeline;
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+
+var HttpClient = function() {
+this.get = function(aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function() {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+var theurl = 'http://192.168.0.98/api/estados';
+var client = new HttpClient();
+client.get(theurl, function(response) {
+var obj = JSON.parse(response);
+
+if (parseInt(obj['I']["307"]) != 0 && parseInt(obj['I']["306"]) != 0 && parseInt(obj['I']["309"]) != 0 && parseInt(obj['I']["310"]) != 0){
+aentrabajo = 1;
+yentrabajo=0;
 var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}
+else{
+var erroresexistentes = document.getElementById("textoerrores").value;
+
+erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+
+erroresexistentes = erroresexistentes.concat("Mesa A No esta lista para ser llamada por Código G, Error de Movimiento");
+
+document.getElementById("textoerrores").value = erroresexistentes;
+document.getElementById("indicadorerrorejec").className = "led-red";
+
+}
+});}
+
+
+}
+
+
+
+if (gcodeline.match(/Y/i)){
+if(yentrabajo != 1){
+var cmd  = "!mesay";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+var cmd  = "Revisando Y";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+
+var cmd  = gcodeline;
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+
+var HttpClient = function() {
+this.get = function(aUrl, aCallback) {
+var anHttpRequest = new XMLHttpRequest();
+anHttpRequest.onreadystatechange = function() {
+if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+aCallback(anHttpRequest.responseText);
+}
+anHttpRequest.open("GET", aUrl, true);
+anHttpRequest.send(null);
+}
+}
+var theurl = 'http://192.168.0.98/api/estados';
+var client = new HttpClient();
+client.get(theurl, function(response) { 
+var obj = JSON.parse(response);
+
+if ( parseInt(obj['I']["259"]) != 0 && parseInt(obj['I']["258"]) != 0 && parseInt(obj['I']["261"]) != 0 && parseInt(obj['I']["262"]) != 0){
+yentrabajo = 1;
+aentrabajo=0;
+var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}
+else{
+var erroresexistentes = document.getElementById("textoerrores").value;
+
+erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+
+erroresexistentes = erroresexistentes.concat("Mesa Y No esta lista para ser llamada por Código G, Error de Movimiento");
+
+document.getElementById("textoerrores").value = erroresexistentes;
+document.getElementById("indicadorerrorejec").className = "led-red";
+}
+
+});}
+
+
+}
+
+if (gcodeline.match(/Y/i) && gcodeline.match(/A/i) ){
+var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}
+
+                
 
 
 
@@ -13744,7 +13853,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode PF3</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode PF5</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
