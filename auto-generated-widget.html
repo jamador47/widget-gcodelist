@@ -5988,6 +5988,8 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
 
 }*/
+var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }
                     }
                     
@@ -7287,7 +7289,7 @@ break;
 if (ocupado == 0){
     //alert ("CONTINUO");
 
-    
+    /*
     if (gcodeline.match(/A/i)) {
 
 if(aentrabajo != 1){
@@ -7385,10 +7387,16 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 });}
 
 
-}
+}*/
+
+var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+
 }
 
 }
+
+
                         contadordelinea = contadordelinea+1;
                                     
                      
@@ -13664,7 +13672,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode P1</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode P2</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
