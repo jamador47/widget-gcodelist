@@ -5862,7 +5862,6 @@ break;
                     }
                     else{
 
-                        if (ocupado == 0){
                             var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
     //alert ("CONTINUO");
@@ -5965,7 +5964,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 });}
 
 
-}*/
+*/
 }
                     }
                     
@@ -7270,6 +7269,8 @@ break;
                     }
                     else{
 
+                        var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
     //alert ("CONTINUO");
 
     /*
