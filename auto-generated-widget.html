@@ -5919,7 +5919,10 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
 }
 });}
-
+else{
+    var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}
 
 }
 
@@ -5969,7 +5972,9 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 }
 
 });}
-
+else{
+ var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
 
 }
 
@@ -7333,7 +7338,10 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 }
 });}
 
-
+else{
+    var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}
 }
 
 
@@ -7382,7 +7390,10 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 }
 
 });}
-
+else{
+    var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
+}
 
 
 }
