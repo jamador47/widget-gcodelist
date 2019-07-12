@@ -266,7 +266,7 @@
 
     <script type='text/javascript'>
         //variables DETECAP
-    const serialPort = "/dev/ttyUSB0";//"COM30"; //  // //;
+    const serialPort = "COM30";//"COM30"; //  // //;
      var contadordelinea = 0;
      var aentrabajo = 0;
      var yentrabajo = 0;
@@ -4592,7 +4592,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
           else{
             sigespecial = 0;
 
-            if (gcodelineplus.match(/A/i)) {
+         /*   if (gcodelineplus.match(/A/i)) {
 
 if(aentrabajo != 1){
     var cmd  = "!mesaa";
@@ -4689,7 +4689,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 });}
 
 
-}
+}*/
                 
           }
 
@@ -5863,8 +5863,10 @@ break;
                     else{
 
                         if (ocupado == 0){
+                            var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
     //alert ("CONTINUO");
-
+/*
     
     if (gcodeline.match(/A/i)) {
 
@@ -5963,7 +5965,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 });}
 
 
-}
+}*/
 }
                     }
                     
@@ -5990,9 +5992,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
                         //alert(contadordelinea);
                         //alert(gcodeline);
-//alert(contadordelinea);
-                      // alert(contadordelinea);
-                        //  alert(gcodeline);
+
       // COMIENZAN POSICIONADRES      
 
 
@@ -6012,7 +6012,7 @@ if (gcodelineplus.match(/\bM6\b/i) || gcodelineplus.match(/\bM3\b/i) || gcodelin
           }
           else{
             sigespecial = 0;
-
+/*
             if (gcodelineplus.match(/A/i)) {
 
 if(aentrabajo != 1){
@@ -6110,7 +6110,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 });}
 
 
-}
+}*/
                 
           }
 //alert(gcodeline);
@@ -7272,7 +7272,7 @@ break;
 
     //alert ("CONTINUO");
 
-    
+    /*
     if (gcodeline.match(/A/i)) {
 
 if(aentrabajo != 1){
@@ -7371,7 +7371,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
 
 
-}
+}*/
 
 }
                         contadordelinea = contadordelinea+1;
