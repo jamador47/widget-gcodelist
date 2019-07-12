@@ -5858,13 +5858,10 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
                     // Parar el procesamiento en tinyG
 
-                    // Si el contador esta retrasado.    
-                    
-                 contadordelinea = contadordelinea - 1 ;
-                    
+                    // Si el contador esta retrasado.                        
                   
 
-                     while(idnum>=contadordelinea){
+                     while(idnum>contadordelinea){
 
                         var cmd  = "!contadordelinea";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
