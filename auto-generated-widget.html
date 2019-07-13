@@ -5865,11 +5865,10 @@ break;
                     }
                     else{
 
-                        alert(gcodeline);
+                     
 //alert(gcodeline);
              if(gcodeline.match(/^((?!(y|a)).)*$/i)){
-                 alert("entro");
-                 alert(gcodeline);
+              
         var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
     }
@@ -7285,11 +7284,10 @@ break;
                     else{
 
                         //alert("No es");
-                        alert(gcodeline);
+                       
 //alert(gcodeline);
              if(gcodeline.match(/^((?!(y|a)).)*$/i)){
-                 alert("entro");
-                 alert(gcodeline);
+               
         var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
     }
