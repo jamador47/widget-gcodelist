@@ -3056,13 +3056,25 @@ client.get(theurl, function (response) {
             meta.gcodeLines = this.fileLines;
             chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
         
+            // this.getGcode();
+            console.log("got onPlay. this:", this, "event:", event);
+            
 
+
+
+            // indicate we're starting play in the UI
+            $('.com-chilipeppr-widget-gcode-startindicator').removeClass("hidden");
+
+                       // fire off pubsub signal for others to watch the play btn
+                       var meta = { isPlayByUser: event ? true : false };
+            meta.gcodeLines = this.fileLines;
          
             
     //hacer cambio de herramienta previa si esta en modoh.********************************
 
 //ELIMINARESTO
-
+contadordelinea=0;
+    chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
 
 
     var esto = this;
@@ -13675,7 +13687,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 7s</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 5s</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
