@@ -3191,6 +3191,63 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 console.log("onExecute. seems we have an id for this item with a g. item:", item);
                 // get id
                 var idnum = item.line;
+
+                for (var markIndex = this.lastLineMarkedExecuted; markIndex < idnum; markIndex++) {
+                    //console.log("onExecute. marking metaline as executed. markIndex:", markIndex, "metaLine:", this.metaLines[markIndex]);
+                    if (this.metaLines[markIndex] == null) {
+                        //console.log("onExecute no meta data for this element yet. creating it.");
+                        this.metaLines[markIndex] = $.extend({}, this.metaObj);
+                    }
+                    
+                    // set that it is queued
+                    this.metaLines[markIndex].isExecuted = true;
+                    
+                    // update the dom if this row is showing  
+                    // send in 1-based number, not 0-based
+                    // our id is 1-based, i.e. the row number
+                    this.updateRowQueueStats(markIndex + 1);
+
+		    // Act on line, if applicable
+                    this.displayLine(markIndex, this.onChiliPepprPauseOnExecute);
+
+                    //console.log("metaLine after:", this.metaLines[markIndex]);
+                }
+                this.lastLineMarkedExecuted = markIndex;
+
+                // let user follow along on completes
+                this.gotoLine(idnum, true);
+                
+                // see if we're done sending
+                if (idnum >= this.fileLines.length) {
+                    console.log("onExecute. at end of onExecuting gcode.");
+                    chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "Gcode Sender", "Done Executing Gcode. Duration " + this.statEls.timeDur.text() + " Lines " + this.fileLines.length, 5000);
+                    
+                    if (!this.isJobDonePubSubSent) {
+                        chilipeppr.publish("/com-chilipeppr-widget-gcode/done", "Duration " + this.statEls.timeDur.text() + " Lines " + this.fileLines.length);
+                        this.isJobDonePubSubSent = true;
+                    }
+                    
+                    // also trigger stop button
+                    this.onStop({viaOnExecute: true});
+                    
+                    // mark to no longer update onExecuteds (we'll exit
+                    // at top of this method when null) we get marked as 
+                    // an int from onPyay when we want to kick in our
+                    // updates again
+                    this.lastLineMarkedExecuted == null;
+                }
+
+                // update estimated time remaining
+                this.calcEstimatedRemain(idnum - 1);
+            }
+            
+            // update duration of job
+            var dur = new Date().getTime() - this.timeStart;
+            dur = this.toHHMMSS(parseInt(dur / 1000));
+            if (this.statEls) this.statEls.timeDur.text(dur);
+            
+            
+           
                 
                // alert(idnum);
                 // Igualando en caso de que sea segunda vez.
@@ -6055,62 +6112,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
                 // many numbers beyond the last line we marked as "executed"
                 // so we have to fill in the gaps
                 
-                for (var markIndex = this.lastLineMarkedExecuted; markIndex < idnum; markIndex++) {
-                    //console.log("onExecute. marking metaline as executed. markIndex:", markIndex, "metaLine:", this.metaLines[markIndex]);
-                    if (this.metaLines[markIndex] == null) {
-                        //console.log("onExecute no meta data for this element yet. creating it.");
-                        this.metaLines[markIndex] = $.extend({}, this.metaObj);
-                    }
-                    
-                    // set that it is queued
-                    this.metaLines[markIndex].isExecuted = true;
-                    
-                    // update the dom if this row is showing  
-                    // send in 1-based number, not 0-based
-                    // our id is 1-based, i.e. the row number
-                    this.updateRowQueueStats(markIndex + 1);
-
-		    // Act on line, if applicable
-                    this.displayLine(markIndex, this.onChiliPepprPauseOnExecute);
-
-                    //console.log("metaLine after:", this.metaLines[markIndex]);
-                }
-                this.lastLineMarkedExecuted = markIndex;
-
-                // let user follow along on completes
-                this.gotoLine(idnum, true);
-                
-                // see if we're done sending
-                if (idnum >= this.fileLines.length) {
-                    console.log("onExecute. at end of onExecuting gcode.");
-                    chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "Gcode Sender", "Done Executing Gcode. Duration " + this.statEls.timeDur.text() + " Lines " + this.fileLines.length, 5000);
-                    
-                    if (!this.isJobDonePubSubSent) {
-                        chilipeppr.publish("/com-chilipeppr-widget-gcode/done", "Duration " + this.statEls.timeDur.text() + " Lines " + this.fileLines.length);
-                        this.isJobDonePubSubSent = true;
-                    }
-                    
-                    // also trigger stop button
-                    this.onStop({viaOnExecute: true});
-                    
-                    // mark to no longer update onExecuteds (we'll exit
-                    // at top of this method when null) we get marked as 
-                    // an int from onPyay when we want to kick in our
-                    // updates again
-                    this.lastLineMarkedExecuted == null;
-                }
-
-                // update estimated time remaining
-                this.calcEstimatedRemain(idnum - 1);
-            }
-            
-            // update duration of job
-            var dur = new Date().getTime() - this.timeStart;
-            dur = this.toHHMMSS(parseInt(dur / 1000));
-            if (this.statEls) this.statEls.timeDur.text(dur);
-            
-            
-            
+               
             //console.groupEnd();
         },
 
@@ -6678,7 +6680,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode X2</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode X3</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
