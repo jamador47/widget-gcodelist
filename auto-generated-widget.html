@@ -1905,7 +1905,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 $('#com-chilipeppr-widget-gcode-pause').addClass("active");
 
                 if (event && this.options.ppsOnPauseFeedhold)
-                    chilipeppr.publish("/com-chilipeppr-widget-serialport/send", "!\n");
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/send", "!");
             }
             
             // fire off pubsub signal for others to watch the pause btn
@@ -1973,7 +1973,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 // update UI?
                 
                 if (event && this.options.ppsOnStopFeedhold)
-                    chilipeppr.publish("/com-chilipeppr-widget-serialport/send", "!\n%\n");
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/send", "!");
                 
                 /*
              $('#com-chilipeppr-widget-gcode-tbl tr').each(function (i, tr) {
@@ -2488,7 +2488,7 @@ activarm3: function (evt){
            
            response = parseInt(res[1]);
                           if (response == 0) {
-       var cmd  = "!pasoporalgodelhusillo";
+       var cmd  = "!";
        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        var HttpClient = function() {
        this.get = function(aUrl, aCallback) {
@@ -3271,7 +3271,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 document.getElementById("indicadorerrorejec").className = "led-red";
 
@@ -3287,7 +3287,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 document.getElementById("indicadorerrorejec").className = "led-red";
                     // MESA A NO ESTA EN POSICION DE TRABAJO
@@ -3306,7 +3306,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 document.getElementById("indicadorerrorejec").className = "led-red";
                     // MESA A NO ESTA EN POSICION DE TRABAJO
@@ -3324,7 +3324,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 document.getElementById("indicadorerrorejec").className = "led-red";
 // MESA A NO ESTA EN POSICION DE TRABAJO
@@ -4580,7 +4580,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
                    if (gcodeline.match(/A/i)) {
 
                             if(aentrabajo != 1){
-                                var cmd  = "!mesaa";
+                                var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                         var cmd  = "Revisando A";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -4630,7 +4630,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
                     
                     if (gcodeline.match(/Y/i)){
                         if(yentrabajo != 1){
-                            var cmd  = "!mesay";
+                            var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                         var cmd  = "Revisando Y";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -4708,7 +4708,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 ocupado = 1;
 
 //alert("Es una especial");
-                        var cmd  = "!especial";
+                        var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
   
@@ -5241,7 +5241,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                 }});
@@ -5256,7 +5256,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
@@ -5274,7 +5274,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
@@ -5291,7 +5291,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 // MESA A NO ESTA EN POSICION DE TRABAJO
 
@@ -5442,7 +5442,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                 }});
@@ -5457,7 +5457,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
@@ -5475,7 +5475,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
@@ -5492,7 +5492,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 // MESA A NO ESTA EN POSICION DE TRABAJO
 
@@ -5956,7 +5956,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
     if (gcodeline.match(/A/i)) {
 
 if(aentrabajo != 1){
-    var cmd  = "!mesaa";
+    var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 var cmd  = "Revisando A";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -6006,7 +6006,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
 if (gcodeline.match(/Y/i)){
 if(yentrabajo != 1){
-var cmd  = "!mesay";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 var cmd  = "Revisando Y";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -6072,7 +6072,7 @@ alert("CL");
 alert(contadordelinea);*/
                      while((idnum-1)>contadordelinea-1){
 
-                        var cmd  = "!contadordelinea";
+                        var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                         var cmd  = this.gcode.lines[contadordelinea-1];
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -6089,7 +6089,7 @@ alert(contadordelinea);*/
       if (gcodeline.match(/A/i)) {
 
 if(aentrabajo != 1){
-    var cmd  = "!mesaa";
+    var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 var cmd  = "Revisando A";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -6139,7 +6139,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
 if (gcodeline.match(/Y/i)){
 if(yentrabajo != 1){
-var cmd  = "!mesay";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 var cmd  = "Revisando Y";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
@@ -6223,7 +6223,7 @@ if (gcodelineplus.match(/\bM6\b/i) || gcodelineplus.match(/\bM3\b/i) || gcodelin
 ocupado = 1;
 
 //alert("Es una especial");
-                        var cmd  = "!especial";
+                        var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
   
@@ -6756,7 +6756,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                 }});
@@ -6771,7 +6771,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
@@ -6789,7 +6789,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
@@ -6806,7 +6806,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 // MESA A NO ESTA EN POSICION DE TRABAJO
 
@@ -6957,7 +6957,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                 }});
@@ -6972,7 +6972,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
@@ -6990,7 +6990,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
@@ -7007,7 +7007,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!pines";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 // MESA A NO ESTA EN POSICION DE TRABAJO
 
@@ -7824,7 +7824,7 @@ var HttpClient = function() {
            // Si el brazo no está extendido
             if (parseInt(res.brazo) != 1){
                 
-                var cmd  = "!algoconbrazo";
+                var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                 
                 var cmd  = "g";
@@ -7848,7 +7848,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
            
            else{
                // Pausa la máquina y da mensaje de alerta.
-               var cmd  = "!husillo no siubi";
+               var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                     chilipeppr.publish(
                 '/com-chilipeppr-elem-flashmsg/flashmsg',
@@ -7908,7 +7908,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
            // Si el brazo no está extendido
             if (parseInt(res.brazo) != 1){
                 
-                var cmd  = "!algoconjusillo";
+                var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                 
                 var cmd  = "e";
@@ -7932,7 +7932,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
            
            else{
                // Pausa la máquina y da mensaje de alerta.
-               var cmd  = "!husillo";
+               var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                     chilipeppr.publish(
                 '/com-chilipeppr-elem-flashmsg/flashmsg',
@@ -9768,7 +9768,7 @@ erroresexistentes = erroresexistentes.concat("Mesas A no pudo ser bloqueada, Err
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!mesanosebloqueo";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                                 // SI NO SE BLOQUEO (ERROR)
                                 
@@ -9994,7 +9994,7 @@ var res = response.split("Pin D38 set to ");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
-                    	var cmd  = "!mesanodesbloqueada";
+                    	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                                             
                                         }
@@ -10200,7 +10200,7 @@ var theurl = 'http://192.168.0.85/arduino/digital/8/0';
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
-                    	var cmd  = "!mesanollegoacarga";
+                    	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                          
@@ -10452,7 +10452,7 @@ var HttpClient = function () {
               
                     document.getElementById("textoerrores").value = erroresexistentes;
                     document.getElementById("indicadorerrorejec").className = "led-red";
-        var cmd  = "!mesanollegoacarga";
+        var cmd  = "!";
         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       
          
@@ -10517,7 +10517,7 @@ var HttpClient = function () {
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
-                    	var cmd  = "!mesanoestaentrabajo";
+                    	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                         }
                     
@@ -10651,7 +10651,7 @@ setTimeout(function(){
                                         
                                                 document.getElementById("textoerrores").value = erroresexistentes;
                                                 document.getElementById("indicadorerrorejec").className = "led-red";
-                                    var cmd  = "!mesanosedesbloqueo";
+                                    var cmd  = "!";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                                     
                                                             
@@ -10870,7 +10870,7 @@ var res = response.split("Pin D41 set to ");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
-                    	var cmd  = "!mesanollegoatrabajo";
+                    	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                          }
@@ -11117,7 +11117,7 @@ var res = response.split("Pin D41 set to ");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
-                    	var cmd  = "!mesanollegoatrabajo";
+                    	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                          }
@@ -11183,7 +11183,7 @@ var res = response.split("Pin D41 set to ");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
-                    	var cmd  = "!mesanollegoacarga";
+                    	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                         }
@@ -11293,7 +11293,7 @@ erroresexistentes = erroresexistentes.concat("Mesas derecha no pudo ser bloquead
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!mesanosebloqueo";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                                 
                             }
@@ -11519,7 +11519,7 @@ var res = response.split("Pin D30 set to ");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
-                    	var cmd  = "!mesanosedesbloqueo";
+                    	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                                              // INFORMA ERROR Y PARA PROCESO   
@@ -11729,7 +11729,7 @@ var res = response.split("Pin D31 set to ");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
-                    	var cmd  = "!mesanollegoacarga";
+                    	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                              
@@ -11983,7 +11983,7 @@ var res = response.split("Pin D31 set to ");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
-                    	var cmd  = "!mesanollegoacarga";
+                    	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                              
@@ -12051,7 +12051,7 @@ var res = response.split("Pin D31 set to ");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
-                    	var cmd  = "!Mesanollegoatrabajom";
+                    	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                         }
@@ -12184,7 +12184,7 @@ var res = response.split("Pin D30 set to ");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
-                    	var cmd  = "!mesanosedesbloqueo";
+                    	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                                                 
@@ -12383,7 +12383,7 @@ var res = response.split("Pin D32 set to ");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
-                    	var cmd  = "!mesanollegoatrabajo";
+                    	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                          }
@@ -12633,7 +12633,7 @@ var res = response.split("Pin D32 set to ");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
-                    	var cmd  = "!mesanollegoatrabajo";
+                    	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                          }
@@ -12699,7 +12699,7 @@ var res = response.split("Pin D32 set to ");
                               
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
-                    	var cmd  = "!mesanollegoacarga";
+                    	var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                         }});
@@ -12776,7 +12776,7 @@ erroresexistentes = erroresexistentes.concat("Mesa A No esta en cero absoluto, E
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!mesanoencero";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                     }});
@@ -12791,7 +12791,7 @@ erroresexistentes = erroresexistentes.concat("Mesas se encuentran en modo Gantry
 
 document.getElementById("textoerrores").value = erroresexistentes;
 
-var cmd  = "!mesaengantry";
+var cmd  = "!";
 document.getElementById("indicadorerrorejec").className = "led-red";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                         // MESA A NO ESTA EN POSICION DE TRABAJO
@@ -12872,7 +12872,7 @@ erroresexistentes = erroresexistentes.concat("Mesa Y No esta en cero absoluto, E
 
 document.getElementById("textoerrores").value = erroresexistentes;
 
-var cmd  = "!mesanoencero";
+var cmd  = "!";
 document.getElementById("indicadorerrorejec").className = "led-red";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
@@ -12889,7 +12889,7 @@ erroresexistentes = erroresexistentes.concat("Mesas se encuentran en modo Gantry
 document.getElementById("indicadorerrorejec").className = "led-red";
 document.getElementById("textoerrores").value = erroresexistentes;
 
-var cmd  = "!mesaengantry";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                         // MESA A NO ESTA EN POSICION DE TRABAJO
                         
@@ -12966,7 +12966,7 @@ erroresexistentes = erroresexistentes.concat("Mesa Y No esta en cero absoluto, E
 document.getElementById("indicadorerrorejec").className = "led-red";
 document.getElementById("textoerrores").value = erroresexistentes;
 
-var cmd  = "!mesanoencero";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                     }});
@@ -12981,7 +12981,7 @@ erroresexistentes = erroresexistentes.concat("Mesas se encuentran en modo Gantry
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!mesaengantry";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                         // MESA A NO ESTA EN POSICION DE TRABAJO
                         
@@ -13065,7 +13065,7 @@ erroresexistentes = erroresexistentes.concat("Mesa A No esta en cero absoluto, E
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!mesanoencero";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                     }});
@@ -13080,7 +13080,7 @@ erroresexistentes = erroresexistentes.concat("Mesas se encuentran en modo Gantry
 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
-var cmd  = "!mesanoengantry";
+var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                         // MESA A NO ESTA EN POSICION DE TRABAJO
                         
@@ -13744,7 +13744,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode PF4</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode 5</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
