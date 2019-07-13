@@ -7367,8 +7367,8 @@ break;
 temp = 0;
 if(gcodeline.match(/^((?!(y|a)).)*$/i)){
               
-              var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+             setTimeout(function(){var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);},100);
           }
           //alert ("CONTINUO");
       
@@ -7403,9 +7403,8 @@ if(gcodeline.match(/^((?!(y|a)).)*$/i)){
       if (parseInt(obj['I']["307"]) != 0 && parseInt(obj['I']["306"]) != 0 && parseInt(obj['I']["309"]) != 0 && parseInt(obj['I']["310"]) != 0){
       aentrabajo = 1;
       yentrabajo=0;
-      var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-      }
+      setTimeout(function(){var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);},100);  }
       else{
       var erroresexistentes = document.getElementById("textoerrores").value;
       
@@ -7419,9 +7418,8 @@ if(gcodeline.match(/^((?!(y|a)).)*$/i)){
       }
       });}
       else{
-          var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-      }
+        setTimeout(function(){var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);},100); }
       
       }
       
@@ -7456,9 +7454,8 @@ if(gcodeline.match(/^((?!(y|a)).)*$/i)){
       if ( parseInt(obj['I']["259"]) != 0 && parseInt(obj['I']["258"]) != 0 && parseInt(obj['I']["261"]) != 0 && parseInt(obj['I']["262"]) != 0){
       yentrabajo = 1;
       aentrabajo=0;
-      var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-      }
+      setTimeout(function(){var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);},100); }
       else{
       var erroresexistentes = document.getElementById("textoerrores").value;
       
@@ -7472,8 +7469,8 @@ if(gcodeline.match(/^((?!(y|a)).)*$/i)){
       
       });}
       else{
-       var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
+        setTimeout(function(){var cmd  = "~";
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);},100);}
       
       }
 
@@ -13753,7 +13750,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode s7</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode X7</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
