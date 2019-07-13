@@ -2488,7 +2488,7 @@ activarm3: function (evt){
            response = parseInt(res[1]);
                           if (response == 0) {
        var cmd  = "!pasoporalgodelhusillo";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        var HttpClient = function() {
        this.get = function(aUrl, aCallback) {
        var anHttpRequest = new XMLHttpRequest();
@@ -3272,7 +3272,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!pines";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 document.getElementById("indicadorerrorejec").className = "led-red";
 
                 }});
@@ -3288,7 +3288,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!pines";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 document.getElementById("indicadorerrorejec").className = "led-red";
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
@@ -3307,7 +3307,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!pines";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 document.getElementById("indicadorerrorejec").className = "led-red";
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
@@ -3325,7 +3325,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!pines";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 document.getElementById("indicadorerrorejec").className = "led-red";
 // MESA A NO ESTA EN POSICION DE TRABAJO
 
@@ -4600,12 +4600,12 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
 if(aentrabajo != 1){
     var cmd  = "!mesaa";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 var cmd  = "Revisando A";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 var cmd  = gcodelineplus;
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
     var HttpClient = function() {
 this.get = function(aUrl, aCallback) {
@@ -4650,12 +4650,12 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 if (gcodelineplus.match(/Y/i)){
 if(yentrabajo != 1){
 var cmd  = "!mesay";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 var cmd  = "Revisando Y";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 var cmd  = gcodelineplus;
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 var HttpClient = function() {
 this.get = function(aUrl, aCallback) {
@@ -4715,7 +4715,7 @@ ocupado = 1;
 
 //alert("Es una especial");
                         var cmd  = "!especial";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
   
 /*************************************INICIA SWITCH ***********************/
@@ -4860,7 +4860,7 @@ client.get(theurl, function (response) {
    
 }
 var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 },15000);
       
 
@@ -4979,7 +4979,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyAC
 setTimeout(function(){
 
     var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 },16000);
 },7000);
@@ -5033,7 +5033,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyAC
 setTimeout(function(){
 
 var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    
 },16000);
 
@@ -5060,7 +5060,7 @@ this.activarm3();
 
 setTimeout(function(){ 
         var cmd = "~.";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0;},8000);
 
 break;
@@ -5078,7 +5078,7 @@ ocupado = 1;
 
 // alert ("M5");
 setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0; }, 4000);
 break;
 
@@ -5091,7 +5091,7 @@ this.activarM57();
 
 ocupado = 0;
         var cmd = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 // alert ("M57");
 
@@ -5215,7 +5215,7 @@ document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 
 var cmd  = "!pines";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                 }});
                 
@@ -5230,7 +5230,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!pines";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
                 }
@@ -5248,7 +5248,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!pines";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
                 }
@@ -5265,7 +5265,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!pines";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 // MESA A NO ESTA EN POSICION DE TRABAJO
 
 }
@@ -5412,7 +5412,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!pines";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                 }});
                 
@@ -5427,7 +5427,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!pines";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
                 }
@@ -5445,7 +5445,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!pines";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
                 }
@@ -5462,7 +5462,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!pines";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 // MESA A NO ESTA EN POSICION DE TRABAJO
 
 }
@@ -5491,7 +5491,7 @@ numerobroca = "16";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
 break;
 /*************************************FIN M116 ***********************************/
@@ -5506,7 +5506,7 @@ numerobroca = "15";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M115 ***********************************/
@@ -5521,7 +5521,7 @@ numerobroca = "14";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M114 ***********************************/
@@ -5536,7 +5536,7 @@ numerobroca = "13";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M113 ***********************************/
@@ -5550,7 +5550,7 @@ numerobroca = "12";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M112 ***********************************/
@@ -5565,7 +5565,7 @@ numerobroca = "11";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M111 ***********************************/
@@ -5579,7 +5579,7 @@ numerobroca = "10";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M110 ***********************************/
@@ -5594,7 +5594,7 @@ numerobroca = "9";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M109 ***********************************/
@@ -5608,7 +5608,7 @@ numerobroca = "8";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M108 ***********************************/
@@ -5623,7 +5623,7 @@ numerobroca = "7";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M107 ***********************************/
@@ -5637,7 +5637,7 @@ numerobroca = "6";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M106 ***********************************/
@@ -5652,7 +5652,7 @@ numerobroca = "5";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M105 ***********************************/
@@ -5667,7 +5667,7 @@ numerobroca = "4";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M104 ***********************************/
@@ -5680,7 +5680,7 @@ numerobroca = "3";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M103 ***********************************/
@@ -5693,7 +5693,7 @@ numerobroca = "2";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M102 ***********************************/
@@ -5706,7 +5706,7 @@ numerobroca = "1";
   
   // alert ("M101");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M101 ***********************************/
@@ -5719,7 +5719,7 @@ this.subirtbrocaBtnClick();
   
   // alert ("M100");
   setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0; }, 2000);
   break;
   /*************************************FIN M100 ***********************************/
@@ -5733,7 +5733,7 @@ this.taladroarribaBtnClick();
      
      // alert ("M22");
      setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0;}, 6000);
    break;
      /*************************************FIN M22 ***********************************/
@@ -5747,7 +5747,7 @@ ocupado = 1;
         this.onM20BtnClick();
      // alert ("M20");
                              setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0;
    }, 4000);
      
@@ -5762,7 +5762,7 @@ ocupado = 1;
 this.onM10BtnClick();
 // alert ("M10");
                      setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 ocupado = 0;
 }, 4000);
 
@@ -5778,7 +5778,7 @@ this.taladroabajoBtnClick();
 
 // alert ("M12");
                      setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 ocupado = 0;
 }, 4000);
 
@@ -5795,7 +5795,7 @@ this.taladrooffBtnClick();
 
 // alert ("M9");
                      setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 ocupado = 0;
 }, 4000);
 
@@ -5810,7 +5810,7 @@ this.taladroonBtnClick();
 
 // alert ("M8");
                      setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 ocupado = 0;
 }, 6000);
 
@@ -5827,7 +5827,7 @@ this.activarm199();
 
 // alert ("M199");
                      setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 ocupado = 0;
 }, 2000);
 
@@ -5871,7 +5871,7 @@ break;
              if(gcodeline.match(/^((?!(y|a)).)*$/i)){
               
         var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
     }
     //alert ("CONTINUO");
 
@@ -5880,12 +5880,12 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + s
 
 if(aentrabajo != 1){
     var cmd  = "!mesaa";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 var cmd  = "Revisando A";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 var cmd  = gcodeline;
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
     var HttpClient = function() {
 this.get = function(aUrl, aCallback) {
@@ -5907,7 +5907,7 @@ if (parseInt(obj['I']["307"]) != 0 && parseInt(obj['I']["306"]) != 0 && parseInt
 aentrabajo = 1;
 yentrabajo=0;
 var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }
 else{
 var erroresexistentes = document.getElementById("textoerrores").value;
@@ -5923,7 +5923,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 });}
 else{
     var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }
 
 }
@@ -5933,12 +5933,12 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + s
 if (gcodeline.match(/Y/i)){
 if(yentrabajo != 1){
 var cmd  = "!mesay";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 var cmd  = "Revisando Y";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 var cmd  = gcodeline;
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 var HttpClient = function() {
 this.get = function(aUrl, aCallback) {
@@ -5960,7 +5960,7 @@ if ( parseInt(obj['I']["259"]) != 0 && parseInt(obj['I']["258"]) != 0 && parseIn
 yentrabajo = 1;
 aentrabajo=0;
 var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }
 else{
 var erroresexistentes = document.getElementById("textoerrores").value;
@@ -5976,7 +5976,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 });}
 else{
  var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);}
 
 }
 
@@ -5995,7 +5995,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + s
                      while(idnum>contadordelinea){
 
                         var cmd  = "!contadordelinea";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                         
   //alert (contadordelinea);
                          var numrestar = idnum - contadordelinea;
@@ -6003,7 +6003,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + s
                        // alert(gcodeline);
                         var gcodelineplus = this.gcode.lines[contadordelinea];
                         var cmd  = gcodeline;
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                         //alert(contadordelinea);
                         //alert(gcodeline);
 
@@ -6031,12 +6031,12 @@ if (gcodelineplus.match(/\bM6\b/i) || gcodelineplus.match(/\bM3\b/i) || gcodelin
 
 if(aentrabajo != 1){
     var cmd  = "!mesaa";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 var cmd  = "Revisando A";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 var cmd  = gcodelineplus;
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
     var HttpClient = function() {
 this.get = function(aUrl, aCallback) {
@@ -6081,12 +6081,12 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 if (gcodelineplus.match(/Y/i)){
 if(yentrabajo != 1){
 var cmd  = "!mesay";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 var cmd  = "Revisando Y";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 var cmd  = gcodelineplus;
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 var HttpClient = function() {
 this.get = function(aUrl, aCallback) {
@@ -6145,7 +6145,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
     //alert("Es una especial");
 
                         var cmd  = "!especial";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                         
                         //Inicio codigo taladro
 
@@ -6291,7 +6291,7 @@ ocupado = 1;
      
   }
   var cmd  = "~";
-     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
      ocupado = 0;},15000);
         
   
@@ -6410,7 +6410,7 @@ ocupado = 1;
   setTimeout(function(){
   
       var cmd  = "~";
-     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
      ocupado = 0;
   },16000);
   },7000);
@@ -6464,7 +6464,7 @@ ocupado = 1;
   setTimeout(function(){
     ocupado = 0;
   var cmd  = "~";
-  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
      
   },16000);
   
@@ -6490,7 +6490,7 @@ this.activarm3();
 
 setTimeout(function(){ 
         var cmd = "~.";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0;},8000);
 
 break;
@@ -6508,7 +6508,7 @@ ocupado = 1;
 
 // alert ("M5");
 setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0; }, 4000);
 break;
 
@@ -6521,7 +6521,7 @@ this.activarM57();
 
 
         var cmd = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0;
 // alert ("M57");
 
@@ -6645,7 +6645,7 @@ document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 
 var cmd  = "!pinnobajo";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                 }});
                 
@@ -6660,7 +6660,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!pinnobajo";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
                 }
@@ -6678,7 +6678,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!pinnobajo";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
                 }
@@ -6695,7 +6695,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!pinnobajo";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 // MESA A NO ESTA EN POSICION DE TRABAJO
 
 }
@@ -6841,7 +6841,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!pinnobajo";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                 }});
                 
@@ -6856,7 +6856,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!Pinnobajo";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
                 }
@@ -6874,7 +6874,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!pinnobajo";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                     // MESA A NO ESTA EN POSICION DE TRABAJO
                     
                 }
@@ -6891,7 +6891,7 @@ erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de 
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!pines";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 // MESA A NO ESTA EN POSICION DE TRABAJO
 
 }
@@ -6920,7 +6920,7 @@ numerobroca = "16";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
 break;
 /*************************************FIN M116 ***********************************/
@@ -6935,7 +6935,7 @@ numerobroca = "15";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M115 ***********************************/
@@ -6950,7 +6950,7 @@ numerobroca = "14";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M114 ***********************************/
@@ -6965,7 +6965,7 @@ numerobroca = "13";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M113 ***********************************/
@@ -6979,7 +6979,7 @@ numerobroca = "12";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M112 ***********************************/
@@ -6994,7 +6994,7 @@ numerobroca = "11";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M111 ***********************************/
@@ -7008,7 +7008,7 @@ numerobroca = "10";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M110 ***********************************/
@@ -7023,7 +7023,7 @@ numerobroca = "9";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M109 ***********************************/
@@ -7037,7 +7037,7 @@ numerobroca = "8";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M108 ***********************************/
@@ -7052,7 +7052,7 @@ numerobroca = "7";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M107 ***********************************/
@@ -7066,7 +7066,7 @@ numerobroca = "6";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M106 ***********************************/
@@ -7081,7 +7081,7 @@ numerobroca = "5";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M105 ***********************************/
@@ -7096,7 +7096,7 @@ numerobroca = "4";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M104 ***********************************/
@@ -7109,7 +7109,7 @@ numerobroca = "3";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M103 ***********************************/
@@ -7122,7 +7122,7 @@ numerobroca = "2";
 ocupado = 1;
   // alert ("M102");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M102 ***********************************/
@@ -7135,7 +7135,7 @@ numerobroca = "1";
   
   // alert ("M101");
   var cmd  = "~";
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       ocupado = 0;
   break;
   /*************************************FIN M101 ***********************************/
@@ -7148,7 +7148,7 @@ this.subirtbrocaBtnClick();
   
   // alert ("M100");
   setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0; }, 2000);
   break;
   /*************************************FIN M100 ***********************************/
@@ -7162,7 +7162,7 @@ this.taladroarribaBtnClick();
      
      // alert ("M22");
      setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0;}, 6000);
    break;
      /*************************************FIN M22 ***********************************/
@@ -7176,7 +7176,7 @@ ocupado = 1;
         this.onM20BtnClick();
      // alert ("M20");
                              setTimeout(function(){ var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
    ocupado = 0;
    }, 4000);
      
@@ -7191,7 +7191,7 @@ ocupado = 1;
 this.onM10BtnClick();
 // alert ("M10");
                      setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 ocupado = 0;
 }, 4000);
 
@@ -7207,7 +7207,7 @@ this.taladroabajoBtnClick();
 
 // alert ("M12");
                      setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 ocupado = 0;
 }, 4000);
 
@@ -7224,7 +7224,7 @@ this.taladrooffBtnClick();
 
 // alert ("M9");
                      setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 ocupado = 0;
 }, 4000);
 
@@ -7239,7 +7239,7 @@ this.taladroonBtnClick();
 
 // alert ("M8");
                      setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 ocupado = 0;
 }, 6000);
 
@@ -7256,7 +7256,7 @@ this.activarm199();
 
 // alert ("M199");
                      setTimeout(function(){ var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 ocupado = 0;
 }, 2000);
 
@@ -7290,19 +7290,19 @@ break;
              if(gcodeline.match(/^((?!(y|a)).)*$/i)){
                
         var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
     }
     
     if (gcodeline.match(/A/i)) {
 
 if(aentrabajo != 1){
     var cmd  = "!mesaa";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 var cmd  = "Revisando A";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 var cmd  = gcodeline;
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
     var HttpClient = function() {
 this.get = function(aUrl, aCallback) {
@@ -7324,7 +7324,7 @@ if (parseInt(obj['I']["307"]) != 0 && parseInt(obj['I']["306"]) != 0 && parseInt
 aentrabajo = 1;
 yentrabajo=0;
 var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }
 else{
 var erroresexistentes = document.getElementById("textoerrores").value;
@@ -7341,7 +7341,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
 else{
     var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }
 }
 
@@ -7350,12 +7350,12 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + s
 if (gcodeline.match(/Y/i)){
 if(yentrabajo != 1){
 var cmd  = "!mesay";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 var cmd  = "Revisando Y";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 var cmd  = gcodeline;
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 var HttpClient = function() {
 this.get = function(aUrl, aCallback) {
@@ -7377,7 +7377,7 @@ if ( parseInt(obj['I']["259"]) != 0 && parseInt(obj['I']["258"]) != 0 && parseIn
 yentrabajo = 1;
 aentrabajo=0;
 var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }
 else{
 var erroresexistentes = document.getElementById("textoerrores").value;
@@ -7393,7 +7393,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 });}
 else{
     var cmd  = "~";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 }
 
 
@@ -7538,35 +7538,35 @@ activarM199: function(evt){
         case "1":
                 this.bajarbroca1();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);
                 break;
 
                 case "2":
                 this.bajarbroca2();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);
                 break;
                 
                 case "3":
                 this.bajarbroca3();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);
                 break; 
 
                 case "4":
                 this.bajarbroca4();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 1000);
                 break;
 
                 case "5":
                 this.bajarbroca5();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);
 
                 break;
@@ -7574,7 +7574,7 @@ activarM199: function(evt){
                 case "6":
                 this.bajarbroca6();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);
 
                 break;
@@ -7582,7 +7582,7 @@ activarM199: function(evt){
                 case "7":
                 this.bajarbroca7();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);
 
                 break;
@@ -7590,28 +7590,28 @@ activarM199: function(evt){
                 case "8":
                 this.bajarbroca8();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);
 
                 break;  
                 case "9":
                 this.bajarbroca9();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);
                 break;
 
                 case "10":
                 this.bajarbroca10();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);
                 break;
                 
                 case "11":
                 this.bajarbroca11();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);
 
                 break; 
@@ -7619,14 +7619,14 @@ activarM199: function(evt){
                 case "12":
                 this.bajarbroca12();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);
                 break;
 
                 case "13":
                 this.bajarbroca13();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);
 
                 break;
@@ -7634,7 +7634,7 @@ activarM199: function(evt){
                 case "14":
                 this.bajarbroca14();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);
 
                 break;
@@ -7642,7 +7642,7 @@ activarM199: function(evt){
                 case "15":
                 this.bajarbroca15();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);
 
                 break;
@@ -7650,7 +7650,7 @@ activarM199: function(evt){
                 case "16":
                 this.bajarbroca16();
                 setTimeout(function(){ var cmd  = "~";
-       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
        }, 2000);
                 break;  
 
@@ -7753,7 +7753,7 @@ var HttpClient = function() {
             if (parseInt(res.brazo) != 1){
                 
                 var cmd  = "!algoconbrazo";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                 
                 var cmd  = "g";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort2 + " " + cmd);
@@ -7777,7 +7777,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
            else{
                // Pausa la máquina y da mensaje de alerta.
                var cmd  = "!husillo no siubi";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                     chilipeppr.publish(
                 '/com-chilipeppr-elem-flashmsg/flashmsg',
                 "ALARMA",
@@ -7837,7 +7837,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + s
             if (parseInt(res.brazo) != 1){
                 
                 var cmd  = "!algoconjusillo";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                 
                 var cmd  = "e";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort2 + " " + cmd);
@@ -7861,7 +7861,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
            else{
                // Pausa la máquina y da mensaje de alerta.
                var cmd  = "!husillo";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                     chilipeppr.publish(
                 '/com-chilipeppr-elem-flashmsg/flashmsg',
                 "ALARMA",
@@ -8158,7 +8158,7 @@ var HttpClient = function() {
 
      onmjuntasBtnClick: function(evt) {
 var cmd  = "G28.2 Y0 A0";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 var home = 0; 
         
@@ -9697,7 +9697,7 @@ erroresexistentes = erroresexistentes.concat("Mesas A no pudo ser bloqueada, Err
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!mesanosebloqueo";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                                 // SI NO SE BLOQUEO (ERROR)
                                 
                                 
@@ -9923,7 +9923,7 @@ var res = response.split("Pin D38 set to ");
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!mesanodesbloqueada";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                                             
                                         }
                         else{
@@ -10129,7 +10129,7 @@ var theurl = 'http://192.168.0.85/arduino/digital/8/0';
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!mesanollegoacarga";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                          
                          
@@ -10381,7 +10381,7 @@ var HttpClient = function () {
                     document.getElementById("textoerrores").value = erroresexistentes;
                     document.getElementById("indicadorerrorejec").className = "led-red";
         var cmd  = "!mesanollegoacarga";
-        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
       
          
          
@@ -10446,7 +10446,7 @@ var HttpClient = function () {
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!mesanoestaentrabajo";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                         }
                     
                     
@@ -10580,7 +10580,7 @@ setTimeout(function(){
                                                 document.getElementById("textoerrores").value = erroresexistentes;
                                                 document.getElementById("indicadorerrorejec").className = "led-red";
                                     var cmd  = "!mesanosedesbloqueo";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                                     
                                                             
                                                         }
@@ -10799,7 +10799,7 @@ var res = response.split("Pin D41 set to ");
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!mesanollegoatrabajo";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                          }
                             
@@ -11046,7 +11046,7 @@ var res = response.split("Pin D41 set to ");
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!mesanollegoatrabajo";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                          }
                             
@@ -11112,7 +11112,7 @@ var res = response.split("Pin D41 set to ");
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!mesanollegoacarga";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                         }
                         });
@@ -11222,7 +11222,7 @@ erroresexistentes = erroresexistentes.concat("Mesas derecha no pudo ser bloquead
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!mesanosebloqueo";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                                 
                             }
                             
@@ -11448,7 +11448,7 @@ var res = response.split("Pin D30 set to ");
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!mesanosedesbloqueo";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                                              // INFORMA ERROR Y PARA PROCESO   
                                                 
@@ -11658,7 +11658,7 @@ var res = response.split("Pin D31 set to ");
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!mesanollegoacarga";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                              
                              
@@ -11912,7 +11912,7 @@ var res = response.split("Pin D31 set to ");
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!mesanollegoacarga";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                              
                              
@@ -11980,7 +11980,7 @@ var res = response.split("Pin D31 set to ");
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!Mesanollegoatrabajom";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                         }
                         
@@ -12113,7 +12113,7 @@ var res = response.split("Pin D30 set to ");
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!mesanosedesbloqueo";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                                                 
                                             }
@@ -12312,7 +12312,7 @@ var res = response.split("Pin D32 set to ");
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!mesanollegoatrabajo";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                          }
     });
@@ -12562,7 +12562,7 @@ var res = response.split("Pin D32 set to ");
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!mesanollegoatrabajo";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                          }
     });
@@ -12628,7 +12628,7 @@ var res = response.split("Pin D32 set to ");
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                     	var cmd  = "!mesanollegoacarga";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
                       
                         }});
     
@@ -12639,7 +12639,7 @@ var res = response.split("Pin D32 set to ");
 
 activarM58: function(evt){
     var cmd  = "~";
-  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+  chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd);
 
 
     // VERIFICAR SI MESA A ESTA AFUERA
@@ -12708,7 +12708,7 @@ erroresexistentes = erroresexistentes.concat("Mesa A No esta en cero absoluto, E
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!mesanoencero";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                     }});
 					
@@ -12724,7 +12724,7 @@ document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!mesaengantry";
 document.getElementById("indicadorerrorejec").className = "led-red";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                         // MESA A NO ESTA EN POSICION DE TRABAJO
                         
                     }
@@ -12805,7 +12805,7 @@ document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!mesanoencero";
 document.getElementById("indicadorerrorejec").className = "led-red";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                     }});
 					
@@ -12821,7 +12821,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!mesaengantry";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                         // MESA A NO ESTA EN POSICION DE TRABAJO
                         
                     }
@@ -12898,7 +12898,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 document.getElementById("textoerrores").value = erroresexistentes;
 
 var cmd  = "!mesanoencero";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                     }});
 					
@@ -12913,7 +12913,7 @@ erroresexistentes = erroresexistentes.concat("Mesas se encuentran en modo Gantry
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!mesaengantry";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                         // MESA A NO ESTA EN POSICION DE TRABAJO
                         
                     }
@@ -12997,7 +12997,7 @@ erroresexistentes = erroresexistentes.concat("Mesa A No esta en cero absoluto, E
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!mesanoencero";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
 
                     }});
 					
@@ -13012,7 +13012,7 @@ erroresexistentes = erroresexistentes.concat("Mesas se encuentran en modo Gantry
 document.getElementById("textoerrores").value = erroresexistentes;
 document.getElementById("indicadorerrorejec").className = "led-red";
 var cmd  = "!mesanoengantry";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort + " " + cmd); 
                         // MESA A NO ESTA EN POSICION DE TRABAJO
                         
                     }
