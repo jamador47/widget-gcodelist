@@ -1934,6 +1934,9 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
         },
         onStop: function (event) {
             
+            var cmd  = "!%";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+
             localStorage.setItem('index', 0);
             
 
