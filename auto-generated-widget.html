@@ -1881,13 +1881,13 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             if (this.isPaused) {
                 console.log("onPause. was previously paused by user, unpausing");
                 this.isPaused = false;
-                $('#com-chilipeppr-widget-gcode-pause').removeClass("active");
 
                 if (event) this.hideToolChangeDiv(true);
 
                 if (event)
                 var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
+$('#com-chilipeppr-widget-gcode-pause').removeClass("active");
 
                 if (this.isInMultiLineMode) {
                     console.log("in multi line send mode");
