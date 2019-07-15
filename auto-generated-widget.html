@@ -4757,9 +4757,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
                         var cmd  = "Revisando Y";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
-                          var cmd  = gcodeline;
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-
+                       
                             var HttpClient = function() {
                   this.get = function(aUrl, aCallback) {
                       var anHttpRequest = new XMLHttpRequest();
@@ -6072,9 +6070,7 @@ break;
       var cmd  = "Revisando A";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
       
-      var cmd  = gcodeline;
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-      
+   
           var HttpClient = function() {
       this.get = function(aUrl, aCallback) {
       var anHttpRequest = new XMLHttpRequest();
@@ -6125,9 +6121,7 @@ break;
       var cmd  = "Revisando Y";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
       
-      var cmd  = gcodeline;
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-      
+     
       var HttpClient = function() {
       this.get = function(aUrl, aCallback) {
       var anHttpRequest = new XMLHttpRequest();
@@ -6269,9 +6263,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
                         var cmd  = "Revisando Y";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
-                          var cmd  = gcodeline;
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-
+                     
                             var HttpClient = function() {
                   this.get = function(aUrl, aCallback) {
                       var anHttpRequest = new XMLHttpRequest();
@@ -7590,9 +7582,7 @@ if(gcodeline.match(/^((?!(y|a)).)*$/i)){
       var cmd  = "Revisando A";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
       
-      var cmd  = gcodeline;
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-      
+   
           var HttpClient = function() {
       this.get = function(aUrl, aCallback) {
       var anHttpRequest = new XMLHttpRequest();
@@ -7640,10 +7630,7 @@ if(gcodeline.match(/^((?!(y|a)).)*$/i)){
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
       var cmd  = "Revisando Y";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-      
-      var cmd  = gcodeline;
-      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-      
+
       var HttpClient = function() {
       this.get = function(aUrl, aCallback) {
       var anHttpRequest = new XMLHttpRequest();
@@ -13959,7 +13946,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode T3</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode A3</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
