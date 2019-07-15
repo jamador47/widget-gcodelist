@@ -4730,6 +4730,9 @@ yentrabajo=0;
 else{
 
     sigespecial = 1;
+    var cmd  = "!";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+
 var erroresexistentes = document.getElementById("textoerrores").value;
 
 erroresexistentes = erroresexistentes.concat("\\\n\\\n");
@@ -4779,6 +4782,8 @@ document.getElementById("indicadorerrorejec").className = "led-red";
                          }
                         else{
                             sigespecial=1;
+                            var cmd  = "!";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                             var erroresexistentes = document.getElementById("textoerrores").value;
              
              erroresexistentes = erroresexistentes.concat("\\\n\\\n");
