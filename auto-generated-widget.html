@@ -7720,7 +7720,6 @@ break;
 case (gcodeline.match(/\bM199\b/i) || {}).input :
 
 alert(sigespecial);
-alert(numerobroca); 
 ocupado = 1;
 this.activarm199();
 
@@ -8014,6 +8013,8 @@ var HttpClient = function() {
 
 
 activarM199: function(evt){
+    alert("M199");
+    alert(numerobroca);    
     switch(numerobroca){
         case "1":
                 this.bajarbroca1();
