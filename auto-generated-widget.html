@@ -954,7 +954,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             if (this.options.multiLineMode) {
                 if (this.options.multiLineMode == "yes") {
                     $('#com-chilipeppr-widget-gcode-option-multilinemode-yes').prop('checked', true);
-                    this.isInMultiLineMode = true;
+                    this.isInMultiLineMode = false;
                 } else {
                     $('#com-chilipeppr-widget-gcode-option-multilinemode-no').prop('checked', true);
                     this.isInMultiLineMode = false;
@@ -14477,12 +14477,12 @@ bajartbrocaBtnClick: function(evt) {
                             <div class="col-sm-10">
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="grpMultiLineMode" id="com-chilipeppr-widget-gcode-option-multilinemode-no" value="no"> Do Not Use Multi-Line Mode</input>
+                                        <input type="radio" name="grpMultiLineMode" id="com-chilipeppr-widget-gcode-option-multilinemode-no" value="yes"> Do Not Use Multi-Line Mode</input>
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="grpMultiLineMode" id="com-chilipeppr-widget-gcode-option-multilinemode-yes" value="yes" checked> Yes, Use Multi-Line Mode (Default)</input>
+                                        <input type="radio" name="grpMultiLineMode" id="com-chilipeppr-widget-gcode-option-multilinemode-yes" value="no" checked> Yes, Use Multi-Line Mode (Default)</input>
                                     </label>
                                 </div>
                             </div>
