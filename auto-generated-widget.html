@@ -1514,7 +1514,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
             $('#com-chilipeppr-widget-gcode-feedrate-val').keyup(this.feedrateAdjust.bind(this));
             //this.feedrateDisable();
             //setTimeout(this.feedrateEnable, 5000);
-            //alert("fr disable");
+            ////alert("fr disable");
         },
         feedrateDisable: function() {
         	$('#com-chilipeppr-widget-gcode-feedrate').attr('disabled', true);
@@ -3132,7 +3132,7 @@ if (parseInt(obj[i]['herramienta']) == valorstool){
                     setTimeout(function(){
 
                         cmd = "i"+valorsiguientetool;
-                        alert(cmd);
+                        //alert(cmd);
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
                     //Cambio brazo en la tabla.
                             var HttpClient = function () {
@@ -4522,7 +4522,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
         onExecute: function(data) {
             // write it to the log
            
-        // alert("ENTRO");
+        // //alert("ENTRO");
             //console.group("gcode widget - onExecute");
             console.log("onExecute data:", data);
             console.log("onExecute lastLineMarkedExecuted:", this.lastLineMarkedExecuted,
@@ -4912,7 +4912,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + s
            
 ocupado = 1;
 
-//alert("Es una especial");
+////alert("Es una especial");
 
 if (!sigespecial){
                         var cmd  = "!";
@@ -4958,7 +4958,7 @@ var linea = gcodeline.replace('M6', "").trim();
         var linean = "N"+(idnum);
         linea = linea.replace(linean, "").trim();
         var toolausar = parseInt(linea);
-alert(toolausar);
+//alert(toolausar);
 
 // SI ES MODO H:
     if (modoh){
@@ -6115,7 +6115,7 @@ this.activarM199();
 // alert ("M199");
 var tiempo = 4000;
 temp = temp+tiempo;
-alert(sigespecial);
+//alert(sigespecial);
 if (!sigespecial){
     setTimeout(function(){
 var cmd  = "~";
@@ -6281,10 +6281,10 @@ break;
                     
        /*         
                     
-                 alert("IDNUM");                
-alert(idnum);
-alert("CL");
-alert(contadordelinea);*/   
+                 //alert("IDNUM");                
+//alert(idnum);
+//alert("CL");
+//alert(contadordelinea);*/   
                      while(idnum>contadordelinea){
 
                         var cmd  = "!";
@@ -6512,7 +6512,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
 //MESA A SUBIR
 
-//alert(gcodeline);
+////alert(gcodeline);
     //TERMINAN POSICIONADORES
     if (gcodeline.match(/\bM6\b/i) || gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) 
                     || gcodeline.match(/\bM58\b/i) || gcodeline.match(/\bM57\b/i) ||  gcodeline.match(/\bM68\b/i)
@@ -6526,8 +6526,8 @@ document.getElementById("indicadorerrorejec").className = "led-red";
                     
 ocupado = 1;
 
-//alert("Es una especial");
-alert(gcodeline);
+////alert("Es una especial");
+//alert(gcodeline);
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
@@ -6569,7 +6569,7 @@ var linea = gcodeline.replace('M6', "").trim();
         var linean = "N"+(idnum);
         linea = linea.replace(linean, "").trim();
         var toolausar = parseInt(linea);
-alert(toolausar);
+//alert(toolausar);
 
 // SI ES MODO H:
     if (modoh){
@@ -7719,7 +7719,7 @@ break;
 
 case (gcodeline.match(/\bM199\b/i) || {}).input :
 
-alert(sigespecial);
+//alert(sigespecial);
 ocupado = 1;
 this.activarM199();
 
@@ -8013,8 +8013,8 @@ var HttpClient = function() {
 
 
 activarM199: function(evt){
-    alert("M199");
-    alert(numerobroca);    
+    //alert("M199");
+    //alert(numerobroca);    
     switch(numerobroca){
         case "1":
                 this.bajarbroca1();
@@ -8508,7 +8508,7 @@ var HttpClient = function() {
 //bajar taladro
 taladroabajoBtnClick: function(evt) {
 
-//alert("ENTRE");
+////alert("ENTRE");
 var HttpClient = function() {
        this.get = function(aUrl, aCallback) {
            var anHttpRequest = new XMLHttpRequest();
@@ -13505,7 +13505,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + s
 //Todas brocas
 subirtbrocaBtnClick: function(evt) {
 
-//alert("Subiendo todas las brocas");
+////alert("Subiendo todas las brocas");
 
                      var HttpClient = function () {
                         this.get = function (aUrl, aCallback) {
@@ -13546,7 +13546,7 @@ subirtbrocaBtnClick: function(evt) {
 },
 
 bajartbrocaBtnClick: function(evt) {
-//alert("Bajando todas las brocas");
+////alert("Bajando todas las brocas");
 
                   
                      var HttpClient = function () {
@@ -14153,7 +14153,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode U3</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode R3</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
