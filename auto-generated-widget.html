@@ -6160,6 +6160,8 @@ break;
               var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
           }
+
+          
           //alert ("CONTINUO");
       
           
@@ -6286,12 +6288,13 @@ alert(contadordelinea);*/
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                        
-                        var cmd  = this.gcode.lines[contadordelinea-1];
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
-                       
+                        
   //alert (contadordelinea);
                          var numrestar = idnum - contadordelinea;
                         var gcodeline = this.gcode.lines[contadordelinea-1];
+                        var cmd  = gcodeline;
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
+                       
                         var gcodelineplus = this.gcode.lines[contadordelinea];
  
 
@@ -6522,6 +6525,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 ocupado = 1;
 
 //alert("Es una especial");
+alert(gcodeline);
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
@@ -7713,14 +7717,15 @@ break;
 
 case (gcodeline.match(/\bM199\b/i) || {}).input :
 
+alert(sigespecial);
+alert("Salto"); 
 ocupado = 1;
 this.activarm199();
 
 // alert ("M199");
 var tiempo = 4000;
 temp = temp+tiempo;
-alert(sigespecial);
-alert("Salto");
+
 if (!sigespecial){
     setTimeout(function(){
 var cmd  = "~";
