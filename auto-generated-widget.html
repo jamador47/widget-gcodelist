@@ -271,6 +271,8 @@
      var aentrabajo = 0;
      var temp = 0;
      var yentrabajo = 0;
+
+     
      var ocupado = 0;
      var sigespecial  = 0;
     //<![CDATA[
@@ -6313,7 +6315,7 @@ if (gcodelineplus.match(/\bM6\b/i) || gcodelineplus.match(/\bM3\b/i) || gcodelin
           gcodelineplus.match(/\bM701\b/i) || gcodelineplus.match(/\bM20\b/i) || gcodelineplus.match(/\bM10\b/i) )  {
 
             if( gcodelineplus.match(/\bM57\b/i) ){
- 
+ aentrabajo = 0;
     var cmd  = "Revisando A";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
     var HttpClient = function() {
@@ -6360,7 +6362,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
               
               if( gcodelineplus.match(/\bM58\b/i) ){
-                
+                 yentrabajo = 0;
                             var cmd  = "Revisando Y";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
@@ -6934,6 +6936,7 @@ break;
 
 /***************************************INICIO M57 SACAR PALETA DERECHA*********/
 case (gcodeline.match(/\bM57\b/i) || {}).input :
+
 
 this.activarM57();
 
@@ -14120,7 +14123,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">CcodeA</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">DcodeA</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
