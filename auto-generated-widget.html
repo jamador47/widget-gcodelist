@@ -6110,7 +6110,7 @@ case (gcodeline.match(/\bM199\b/i) || {}).input :
 
 ocupado = 1;
 
-settimeout(function(){
+
 this.activarM199();
 
 // alert ("M199");
@@ -6123,7 +6123,7 @@ var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
-},3000)
+
 break;
 /*************************************FIN M199***********************************/
 
@@ -7720,22 +7720,21 @@ break;
 
 case (gcodeline.match(/\bM199\b/i) || {}).input :
 
+//alert(sigespecial);
 ocupado = 1;
-
-settimeout(function(){
 this.activarM199();
 
 // alert ("M199");
 var tiempo = 4000;
 temp = temp+tiempo;
-//alert(sigespecial);
+
 if (!sigespecial){
     setTimeout(function(){
 var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
-},3000)
+
 break;
 /*************************************FIN M199***********************************/
 
@@ -8016,7 +8015,7 @@ var HttpClient = function() {
 
 activarM199: function(evt){
 
-
+    setTimeout(function(){
     //alert("M199");
     //alert(numerobroca);    
     switch(numerobroca){
@@ -8141,7 +8140,7 @@ activarM199: function(evt){
 
     }
 
-
+}, 2000);
 },
 
 
