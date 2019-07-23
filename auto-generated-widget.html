@@ -4585,6 +4585,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
                     var gcodeline = this.gcode.lines[idnum-1];
                     var gcodelineplus = this.gcode.lines[idnum];
+                    var gcodelineplusp = this.gcode.lines[idnum+1];
 
          /*
                    if (gcodeline.match(/A/i)) {
@@ -4694,9 +4695,17 @@ document.getElementById("indicadorerrorejec").className = "led-red";
           gcodelineplus.match(/\bM107\b/i) || gcodelineplus.match(/\bM106\b/i) || gcodelineplus.match(/\bM105\b/i) || gcodelineplus.match(/\bM104\b/i) || 
           gcodelineplus.match(/\bM103\b/i) || gcodelineplus.match(/\bM102\b/i) || gcodelineplus.match(/\bM101\b/i) || gcodelineplus.match(/\bM100\b/i) || 
           gcodelineplus.match(/\bM22\b/i) || gcodelineplus.match(/\bM12\b/i) || gcodelineplus.match(/\bM9\b/i) || gcodelineplus.match(/\bM8\b/i) || 
-          gcodelineplus.match(/\bM701\b/i) || gcodelineplus.match(/\bM20\b/i) || gcodelineplus.match(/\bM10\b/i) )  {
+          gcodelineplus.match(/\bM701\b/i) || gcodelineplus.match(/\bM20\b/i) || gcodelineplus.match(/\bM10\b/i)|| gcodelineplusp.match(/\bM6\b/i) || gcodelineplusp.match(/\bM3\b/i) || gcodelineplusp.match(/\bM67\b/i) 
+                    || gcodelineplusp.match(/\bM58\b/i) || gcodelineplusp.match(/\bM57\b/i) ||  gcodelineplusp.match(/\bM68\b/i)
+      || gcodelineplusp.match(/\bM5\b/i) || gcodelineplusp.match(/\bM199\b/i) || gcodelineplusp.match(/\bM116\b/i) || 
+        gcodelineplusp.match(/\bM115\b/i) || gcodelineplusp.match(/\bM114\b/i) || gcodelineplusp.match(/\bM113\b/i) || gcodelineplusp.match(/\bM112\b/i) ||
+         gcodelineplusp.match(/\bM111\b/i) || gcodelineplusp.match(/\bM110\b/i) || gcodelineplusp.match(/\bM109\b/i) || gcodelineplusp.match(/\bM108\b/i) ||
+          gcodelineplusp.match(/\bM107\b/i) || gcodelineplusp.match(/\bM106\b/i) || gcodelineplusp.match(/\bM105\b/i) || gcodelineplusp.match(/\bM104\b/i) || 
+          gcodelineplusp.match(/\bM103\b/i) || gcodelineplusp.match(/\bM102\b/i) || gcodelineplusp.match(/\bM101\b/i) || gcodelineplusp.match(/\bM100\b/i) || 
+          gcodelineplusp.match(/\bM22\b/i) || gcodelineplusp.match(/\bM12\b/i) || gcodelineplusp.match(/\bM9\b/i) || gcodelineplusp.match(/\bM8\b/i) || 
+          gcodelineplusp.match(/\bM701\b/i) || gcodelineplusp.match(/\bM20\b/i) || gcodelineplusp.match(/\bM10\b/i))  {
 
-            if( gcodelineplus.match(/\bM57\b/i) ){
+            if( gcodelineplus.match(/\bM57\b/i) || gcodelineplusp.match(/\bM57\b/i)){
 
                 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
@@ -4750,7 +4759,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
 
            
-           if( gcodelineplus.match(/\bM58\b/i) ){
+           if( gcodelineplus.match(/\bM58\b/i) || gcodelineplusp.match(/\bM58\b/i)  ){
             yentrabajo = 0;
             var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
@@ -6321,7 +6330,8 @@ break;
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
                        
                         var gcodelineplus = this.gcode.lines[contadordelinea];
- 
+                        var gcodelineplusp = this.gcode.lines[contadordelinea+1];
+
    
                         if (gcodelineplus.match(/\bM6\b/i) || gcodelineplus.match(/\bM3\b/i) || gcodelineplus.match(/\bM67\b/i) 
                     || gcodelineplus.match(/\bM58\b/i) || gcodelineplus.match(/\bM57\b/i) ||  gcodelineplus.match(/\bM68\b/i)
@@ -6331,9 +6341,17 @@ break;
           gcodelineplus.match(/\bM107\b/i) || gcodelineplus.match(/\bM106\b/i) || gcodelineplus.match(/\bM105\b/i) || gcodelineplus.match(/\bM104\b/i) || 
           gcodelineplus.match(/\bM103\b/i) || gcodelineplus.match(/\bM102\b/i) || gcodelineplus.match(/\bM101\b/i) || gcodelineplus.match(/\bM100\b/i) || 
           gcodelineplus.match(/\bM22\b/i) || gcodelineplus.match(/\bM12\b/i) || gcodelineplus.match(/\bM9\b/i) || gcodelineplus.match(/\bM8\b/i) || 
-          gcodelineplus.match(/\bM701\b/i) || gcodelineplus.match(/\bM20\b/i) || gcodelineplus.match(/\bM10\b/i) )  {
+          gcodelineplus.match(/\bM701\b/i) || gcodelineplus.match(/\bM20\b/i) || gcodelineplus.match(/\bM10\b/i) || gcodelineplusp.match(/\bM6\b/i) || gcodelineplusp.match(/\bM3\b/i) || gcodelineplusp.match(/\bM67\b/i) 
+                    || gcodelineplusp.match(/\bM58\b/i) || gcodelineplusp.match(/\bM57\b/i) ||  gcodelineplusp.match(/\bM68\b/i)
+      || gcodelineplusp.match(/\bM5\b/i) || gcodelineplusp.match(/\bM199\b/i) || gcodelineplusp.match(/\bM116\b/i) || 
+        gcodelineplusp.match(/\bM115\b/i) || gcodelineplusp.match(/\bM114\b/i) || gcodelineplusp.match(/\bM113\b/i) || gcodelineplusp.match(/\bM112\b/i) ||
+         gcodelineplusp.match(/\bM111\b/i) || gcodelineplusp.match(/\bM110\b/i) || gcodelineplusp.match(/\bM109\b/i) || gcodelineplusp.match(/\bM108\b/i) ||
+          gcodelineplusp.match(/\bM107\b/i) || gcodelineplusp.match(/\bM106\b/i) || gcodelineplusp.match(/\bM105\b/i) || gcodelineplusp.match(/\bM104\b/i) || 
+          gcodelineplusp.match(/\bM103\b/i) || gcodelineplusp.match(/\bM102\b/i) || gcodelineplusp.match(/\bM101\b/i) || gcodelineplusp.match(/\bM100\b/i) || 
+          gcodelineplusp.match(/\bM22\b/i) || gcodelineplusp.match(/\bM12\b/i) || gcodelineplusp.match(/\bM9\b/i) || gcodelineplusp.match(/\bM8\b/i) || 
+          gcodelineplusp.match(/\bM701\b/i) || gcodelineplusp.match(/\bM20\b/i) || gcodelineplusp.match(/\bM10\b/i) )  {
 
-            if( gcodelineplus.match(/\bM57\b/i) ){
+            if( gcodelineplus.match(/\bM57\b/i) || gcodelineplusp.match(/\bM57\b/i) ){
 
                 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
@@ -6387,7 +6405,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
 
            
-           if( gcodelineplus.match(/\bM58\b/i) ){
+           if( gcodelineplus.match(/\bM58\b/i) || gcodelineplusp.match(/\bM58\b/i)  ){
             yentrabajo = 0;
             var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
