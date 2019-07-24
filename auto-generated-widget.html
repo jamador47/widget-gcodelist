@@ -4950,7 +4950,7 @@ if (!sigespecial){
                         var cmd  = "!";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                         var cmd  = "YOFUI EL STOP.";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
+                       // chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
                     }
             
 /*************************************INICIA SWITCH ***********************/
@@ -6327,7 +6327,7 @@ break;
                          var numrestar = idnum - contadordelinea;
                         var gcodeline = this.gcode.lines[contadordelinea-1];
                         var cmd  = gcodeline;
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
+                       // chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
                        
                         var gcodelineplus = this.gcode.lines[contadordelinea];
                         var gcodelineplusp = this.gcode.lines[contadordelinea+1];
@@ -14184,7 +14184,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">YcodeA</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">ZcodeA</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
