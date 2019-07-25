@@ -4585,7 +4585,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 
                     var gcodeline = this.gcode.lines[idnum-1];
                     var gcodelineplus = this.gcode.lines[idnum];
-                    var gcodelineplusp = this.gcode.lines[idnum];
+                    var gcodelineplusp = this.gcode.lines[idnum+1];
 
          /*
                    if (gcodeline.match(/A/i)) {
@@ -6304,9 +6304,6 @@ break;
                     
                 }
                 else{
-                    var cmd  = "!";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                       
                     
                     var gcodelineantes = this.gcode.lines[idnum-1];
 
@@ -6322,6 +6319,8 @@ break;
 //alert(contadordelinea);*/   
                      while(idnum>contadordelinea){
 
+                        var cmd  = "!";
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                        
                         
   //alert (contadordelinea);
@@ -6331,7 +6330,7 @@ break;
                        // chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
                        
                         var gcodelineplus = this.gcode.lines[contadordelinea];
-                        var gcodelineplusp = this.gcode.lines[contadordelinea];
+                        var gcodelineplusp = this.gcode.lines[contadordelinea+1];
 
    
                         if (gcodelineplus.match(/\bM6\b/i) || gcodelineplus.match(/\bM3\b/i) || gcodelineplus.match(/\bM67\b/i) 
