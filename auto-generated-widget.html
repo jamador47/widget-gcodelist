@@ -8010,30 +8010,7 @@ var HttpClient = function() {
             document.getElementById("textoalarmas").value = alarmasexistentes;
             */
             
-            
-          var HttpClient = function() {
-           this.get = function(aUrl, aCallback) {
-               var anHttpRequest = new XMLHttpRequest();
-               anHttpRequest.onreadystatechange = function() {
-                   if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                       aCallback(anHttpRequest.responseText);
-               }
-               anHttpRequest.open("GET", aUrl, true);
-               anHttpRequest.send(null);
-           }
-       }
-       var theurl = 'http://192.168.0.97/?cmd=s';
-       var client = new HttpClient();
-       client.get(theurl, function(response) {
-
-           
-           res = JSON.parse(response);
-            
-           // Validación
-           
-           // Si el brazo no está extendido
-            if (parseInt(res.brazo) != 1){
-                
+         
                 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                 
@@ -8052,40 +8029,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
         
             //Continúa procedimiento
                 
-            }
            
-           
-           
-           else{
-               // Pausa la máquina y da mensaje de alerta.
-               var cmd  = "!";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                    chilipeppr.publish(
-                '/com-chilipeppr-elem-flashmsg/flashmsg',
-                "ALARMA",
-                "Brazo extendido, Husillo no puede subir, solucione el problema y presione resumir (~) para continuar.",
-                4000 /* show for 2 second */
-            );
-               
-               
-               
-               //Codigo Alarmas
-               
-                       var alarmasexistentes = document.getElementById("textoalarmas").value;
-               document.getElementById("indicadoralarma").className = "led-yellow";
-            alarmasexistentes = alarmasexistentes.concat("\\\n\\\n");
-            
-            alarmasexistentes = alarmasexistentes.concat("Brazo extendido, Husillo no puede subir, solucione el problema y presione resumir (~) para continuar.");
-                        
-           document.getElementById("textoalarmas").value = alarmasexistentes;
-          
-           }
-           
-
-    });
-
-
-            
             
         },
         
@@ -8095,33 +8039,11 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + s
         
         onM10BtnClick : function(evt){
      
-    var HttpClient = function() {
-           this.get = function(aUrl, aCallback) {
-               var anHttpRequest = new XMLHttpRequest();
-               anHttpRequest.onreadystatechange = function() {
-                   if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                       aCallback(anHttpRequest.responseText);
-               }
-               anHttpRequest.open("GET", aUrl, true);
-               anHttpRequest.send(null);
-           }
-       }
-       var theurl = 'http://192.168.0.97/?cmd=s';
-       var client = new HttpClient();
-       client.get(theurl, function(response) {
-
-           
-           res = JSON.parse(response);
-            
-           // Validación
-           
-           // Si el brazo no está extendido
-            if (parseInt(res.brazo) != 1){
-                
+   
                 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                 
-                var cmd  = "e";
+                var cmd  = "p";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort2 + " " + cmd);
                 
                 document.getElementById("indicadorposhusillo").className = "led-green";
@@ -8134,39 +8056,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
             );
                 
         
-            //Continúa procedimiento
-                
-            }
-           
-           
-           
-           else{
-               // Pausa la máquina y da mensaje de alerta.
-               var cmd  = "!";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                    chilipeppr.publish(
-                '/com-chilipeppr-elem-flashmsg/flashmsg',
-                "ALARMA",
-                "Brazo extendido, Husillo no puede bajar, solucione el problema y presione resumir (~) para continuar.",
-                4000 /* show for 2 second */
-            );
-               
-               
-                       var alarmasexistentes = document.getElementById("textoalarmas").value;
-               document.getElementById("indicadoralarma").className = "led-yellow";
-            alarmasexistentes = alarmasexistentes.concat("\\\n\\\n");
-            
-            alarmasexistentes = alarmasexistentes.concat("Brazo extendido, Husillo no puede bajar, solucione el problema y presione resumir (~) para continuar.");
-                        
-           document.getElementById("textoalarmas").value = alarmasexistentes;
-               
-               
-               
-           }
-           
-
-    });
-
+         
 
             
             
@@ -13954,7 +13844,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode X3</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Gcode T3</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
