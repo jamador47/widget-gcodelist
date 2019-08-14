@@ -4820,7 +4820,7 @@ switch (gcodeline) {
         ocupado = 1;
         this.activarm3();    
         var tiempo = 8000;
-        temp = tiempo;
+        temp = temp + tiempo;
         setTimeout(function(){
         // HACER VALIDACIÓN SI HUSILLO SE DESOCUPÓ
         if (!sigespecial){
@@ -4842,7 +4842,7 @@ switch (gcodeline) {
         this.activarm5();
         // alert ("M5");
         var tiempo = 4000;
-        temp = tiempo;
+        temp = temp + tiempo;
       
             setTimeout(function(){
         // HACER VALIDACIÓN SI HUSILLO SE DESOCUPÓ
@@ -5131,7 +5131,7 @@ this.subirtbrocaBtnClick();
   
   // alert ("M100");
   var tiempo = 2000;
-temp = tiempo;
+temp = temp + tiempo;
 setTimeout(function(){
      if (!sigespecial){
 var cmd  = "~";
@@ -5149,7 +5149,7 @@ this.taladroarribaBtnClick();
      
      // alert ("M22");
      var tiempo = 2000;
-temp = tiempo;
+temp = temp + tiempo;
 setTimeout(function(){
      if (!sigespecial){
 var cmd  = "~";
@@ -5166,7 +5166,7 @@ case (gcodeline.match(/\bM20\b/i) || {}).input :
         ocupado = 1;
         this.onM20BtnClick();
         var tiempo = 4000;
-        temp = tiempo;
+        temp = temp + tiempo;
         setTimeout(function(){
      if (!sigespecial){
 var cmd  = "~";
@@ -5184,7 +5184,7 @@ ocupado = 1;
 this.onM10BtnClick();
 // alert ("M10");
 var tiempo = 4000;
-temp = tiempo;
+temp = temp + tiempo;
 setTimeout(function(){
      if (!sigespecial){
 var cmd  = "~";
@@ -5203,7 +5203,7 @@ this.taladroabajoBtnClick();
 
 // alert ("M12");
 var tiempo = 2000;
-temp = tiempo;
+temp = temp + tiempo;
 setTimeout(function(){
      if (!sigespecial){
 var cmd  = "~";
@@ -5223,7 +5223,7 @@ this.taladrooffBtnClick();
 
 // alert ("M9");
 var tiempo = 4000;
-temp = tiempo;
+temp = temp + tiempo;
  setTimeout(function(){
      if (!sigespecial){
 var cmd  = "~";
@@ -5241,7 +5241,7 @@ this.taladroonBtnClick();
 
 // alert ("M8");
 var tiempo = 6000;
-temp = tiempo;
+temp = temp + tiempo;
 setTimeout(function(){
      if (!sigespecial){
 var cmd  = "~";
@@ -5263,7 +5263,7 @@ this.activarM199();
 
 // alert ("M199");
 var tiempo = 4000;
-temp = tiempo;
+temp = temp + tiempo;
 //alert(sigespecial);
 
  setTimeout(function(){
@@ -5582,7 +5582,7 @@ ocupado = 1;
 this.activarm3();
 //alert ("M3");     
 var tiempo = 8000;
-temp = tiempo;
+temp = temp + tiempo;
 
     setTimeout(function(){
         // VALIDA SI HUSILLO ESTA OCUPADO. SI ESTA OCUPADO, CONTINUA. SI NO, MANDA ERROR DE MOVIMIENTO    
@@ -5611,7 +5611,7 @@ ocupado = 1;
 
 // alert ("M5");
 var tiempo = 4000;
-temp = tiempo;
+temp = temp + tiempo;
     setTimeout(function(){
         // VALIDA SI HUSILLO ESTA OCUPADO. SI NO ESTA OCUPADO, CONTINUA. SI NO, MANDA ERROR DE MOVIMIENTO    
         /* PARTE DE CODIGO SI VALIDACION PASA*/
@@ -5950,7 +5950,7 @@ this.subirtbrocaBtnClick();
 
   // alert ("M100");
   var tiempo = 2000;
-temp = tiempo;
+temp = temp + tiempo;
 if (!sigespecial){
     setTimeout(function(){
 var cmd  = "~";
@@ -5969,7 +5969,7 @@ this.taladroarribaBtnClick();
      
      // alert ("M22");
      var tiempo = 2000;
-temp = tiempo;
+temp = temp + tiempo;
 
     setTimeout(function(){
         /*VALIDAR, SI VALIDACION PASA*/
@@ -5996,7 +5996,7 @@ ocupado = 1;
         this.onM20BtnClick();
      // alert ("M20");
      var tiempo = 4000;
-temp = tiempo;
+temp = temp + tiempo;
 setTimeout(function(){
         /*VALIDAR, SI VALIDACION PASA*/
 
@@ -6021,7 +6021,7 @@ ocupado = 1;
 this.onM10BtnClick();
 // alert ("M10");
 var tiempo = 4000;
-temp = tiempo;
+temp = temp + tiempo;
 setTimeout(function(){
         /*VALIDAR, SI VALIDACION PASA*/
 
@@ -6047,7 +6047,7 @@ this.taladroabajoBtnClick();
 
 // alert ("M12");
 var tiempo = 2000;
-temp = tiempo;
+temp = temp + tiempo;
 setTimeout(function(){
         /*VALIDAR, SI VALIDACION PASA*/
 
@@ -6074,7 +6074,7 @@ this.taladrooffBtnClick();
 
 // alert ("M9");
 var tiempo = 4000;
-temp = tiempo;
+temp = temp + tiempo;
 setTimeout(function(){
         /*VALIDAR, SI VALIDACION PASA*/
 
@@ -6099,7 +6099,7 @@ this.taladroonBtnClick();
 
 // alert ("M8");
 var tiempo = 6000;
-temp = tiempo;
+temp = temp + tiempo;
 setTimeout(function(){
         /*VALIDAR, SI VALIDACION PASA*/
 
@@ -6127,7 +6127,7 @@ this.activarM199();
 
 // alert ("M199");
 var tiempo = 4000;
-temp = tiempo;
+temp = temp + tiempo;
 
 setTimeout(function(){
         /*VALIDAR, SI VALIDACION PASA*/
