@@ -5590,7 +5590,7 @@ temp = temp + tiempo;
             var cmd  = "~"; temp = 0;
             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
          }
-        contadordelinea = contadordelinea+1;
+        
         /*FIN PARTE DE CODIGO SI VALIDACION PASA*/
 },temp);
    
@@ -5618,7 +5618,7 @@ temp = temp + tiempo;
             var cmd  = "~"; temp = 0;
             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
          }
-        contadordelinea = contadordelinea+1;
+        
         /*FIN PARTE DE CODIGO SI VALIDACION PASA*/
     },temp);
    
@@ -5633,7 +5633,7 @@ case (gcodeline.match(/\bM57\b/i) || {}).input :
 this.activarM57();
 
 ocupado = 0;
-contadordelinea = contadordelinea+1;
+
 
 if (!sigespecial){
         var cmd = "~";
@@ -5647,7 +5647,7 @@ case (gcodeline.match(/\bM58\b/i) || {}).input :
 
 this.activarM58();
 ocupado = 0;
-contadordelinea = contadordelinea+1;
+
 
 if (!sigespecial){
     var cmd  = "~"; temp = 0;
@@ -5670,7 +5670,7 @@ numerobroca = "16";
 
 ocupado = 1;
   // alert ("M102");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5688,7 +5688,7 @@ numerobroca = "15";
   
 ocupado = 1;
   // alert ("M102");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5706,7 +5706,7 @@ numerobroca = "14";
   
 ocupado = 1;
   // alert ("M102");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5724,7 +5724,7 @@ numerobroca = "13";
   
 ocupado = 1;
   // alert ("M102");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5741,7 +5741,7 @@ numerobroca = "12";
   
 ocupado = 1;
   // alert ("M102");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5759,7 +5759,7 @@ numerobroca = "11";
   
 ocupado = 1;
   // alert ("M102");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5776,7 +5776,7 @@ case (gcodeline.match(/\bM110\b/i) || {}).input :
 numerobroca = "10"; 
 ocupado = 1;
   // alert ("M102");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5794,7 +5794,7 @@ case (gcodeline.match(/\bM109\b/i) || {}).input :
 numerobroca = "9"; 
 ocupado = 1;
   // alert ("M102");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5811,7 +5811,7 @@ numerobroca = "8";
   
 ocupado = 1;
   // alert ("M102");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5829,7 +5829,7 @@ numerobroca = "7";
   
 ocupado = 1;
   // alert ("M102");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5846,7 +5846,7 @@ numerobroca = "6";
   
 ocupado = 1;
   // alert ("M102");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5864,7 +5864,7 @@ numerobroca = "5";
   
 ocupado = 1;
   // alert ("M102");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5882,7 +5882,7 @@ numerobroca = "4";
   
 ocupado = 1;
   // alert ("M102");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5898,7 +5898,7 @@ case (gcodeline.match(/\bM103\b/i) || {}).input :
 numerobroca = "3"; 
 ocupado = 1;
   // alert ("M102");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5914,7 +5914,7 @@ case (gcodeline.match(/\bM102\b/i) || {}).input :
 numerobroca = "2"; 
 ocupado = 1;
   // alert ("M102");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5930,7 +5930,7 @@ ocupado = 1;
 numerobroca = "1"; 
   
   // alert ("M101");
-  contadordelinea = contadordelinea+1;
+  
 
   if (!sigespecial){
   var cmd  = "~"; temp = 0;
@@ -5945,7 +5945,7 @@ case (gcodeline.match(/\bM100\b/i) || {}).input :
 ocupado = 1;
 this.subirtbrocaBtnClick();  
   
-          contadordelinea = contadordelinea+1;
+          
 
   // alert ("M100");
   var tiempo = 2000;
@@ -5976,7 +5976,7 @@ temp = temp + tiempo;
         if (!sigespecial){
     var cmd  = "~"; temp = 0;
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
-   contadordelinea = contadordelinea+1;
+   
 
        /*VALIDAR, SI VALIDACION NO PASA, ENVIAR MENSAJE DE ERROR DE MOVIMIENTO*/
        
@@ -6002,7 +6002,7 @@ setTimeout(function(){
         if (!sigespecial){
     var cmd  = "~"; temp = 0;
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); }
-   contadordelinea = contadordelinea+1;
+   
 
        /*VALIDAR, SI VALIDACION NO PASA, ENVIAR MENSAJE DE ERROR DE MOVIMIENTO*/
        
@@ -6027,7 +6027,7 @@ setTimeout(function(){
         if (!sigespecial){
     var cmd  = "~"; temp = 0;
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
-   contadordelinea = contadordelinea+1;
+   
 
        /*VALIDAR, SI VALIDACION NO PASA, ENVIAR MENSAJE DE ERROR DE MOVIMIENTO*/
        
@@ -6053,7 +6053,7 @@ setTimeout(function(){
         if (!sigespecial){
     var cmd  = "~"; temp = 0;
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
-   contadordelinea = contadordelinea+1;
+   
 
        /*VALIDAR, SI VALIDACION NO PASA, ENVIAR MENSAJE DE ERROR DE MOVIMIENTO*/
        
@@ -6080,7 +6080,7 @@ setTimeout(function(){
         if (!sigespecial){
     var cmd  = "~"; temp = 0;
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
-   contadordelinea = contadordelinea+1;
+   
 
        /*VALIDAR, SI VALIDACION NO PASA, ENVIAR MENSAJE DE ERROR DE MOVIMIENTO*/
        
@@ -6105,7 +6105,7 @@ setTimeout(function(){
         if (!sigespecial){
     var cmd  = "~"; temp = 0;
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
-   contadordelinea = contadordelinea+1;
+   
 
        /*VALIDAR, SI VALIDACION NO PASA, ENVIAR MENSAJE DE ERROR DE MOVIMIENTO*/
        
@@ -6134,7 +6134,7 @@ setTimeout(function(){
         if (!sigespecial){
     var cmd  = "~"; temp = 0;
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
-   contadordelinea = contadordelinea+1;
+   
 
        /*VALIDAR, SI VALIDACION NO PASA, ENVIAR MENSAJE DE ERROR DE MOVIMIENTO*/
        
@@ -12304,7 +12304,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">OcodeA</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">PcodeA</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
