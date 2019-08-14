@@ -5315,7 +5315,7 @@ break;
 
                         // ACA CHEQUEO DE SI LA LINEA EN QUE CAYÓ ES A O Y Y VERIFICAR QUE ESTA EN SU LUGAR.
                 
-                     do{
+                        while(idnum>contadordelinea){
 
                         
                      
@@ -5330,7 +5330,7 @@ break;
                         var gcodelineplus = this.gcode.lines[contadordelinea];
 /*  revisa si la siguiente es especial  ono esta lista */
 
-if (contadordelinea != ultimocontador){
+
                         ultimocontador = contadordelinea;
                         if (gcodelineplus.match(/\bM6\b/i) || gcodelineplus.match(/\bM3\b/i) || gcodelineplus.match(/\bM67\b/i) 
                     || gcodelineplus.match(/\bM58\b/i) || gcodelineplus.match(/\bM57\b/i) ||  gcodelineplus.match(/\bM68\b/i)
@@ -6183,13 +6183,12 @@ break;
 
 
 
-                    }// FINAL DEL IF SI EL CONTADOR ES IGUAL AL ULTIMO CONTADOR
-                        
+                
                                     
                      
                      }
                     
-                     while(idnum>contadordelinea)
+                
                     // continuar el procesamiento en tinyG
                
                              
@@ -12304,7 +12303,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">PcodeA</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">TcodeA</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
