@@ -4800,6 +4800,10 @@ document.getElementById("indicadorerrorejec").className = "led-red";
           gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || 
           gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || 
           gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) )  {
+           
+           
+           
+            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
 
             var cmd  = "3PARO";
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
@@ -4807,7 +4811,6 @@ document.getElementById("indicadorerrorejec").className = "led-red";
                    
             var cmd  = sigespecial;
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
-                   
             var cmd  = "!";
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort+ " " + cmd);
                       
@@ -5562,6 +5565,8 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + s
           gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) )  {
                     
 ocupado = 1;
+
+chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
 
 ////alert("Es una especial");
 //alert(gcodeline);
@@ -12302,7 +12307,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">AcodeA</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">BcodeA</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
