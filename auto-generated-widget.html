@@ -4595,6 +4595,9 @@ document.getElementById("indicadorerrorejec").className = "led-red";
           gcodelineplus.match(/\bM22\b/i) || gcodelineplus.match(/\bM12\b/i) || gcodelineplus.match(/\bM9\b/i) || gcodelineplus.match(/\bM8\b/i) || 
           gcodelineplus.match(/\bM701\b/i) || gcodelineplus.match(/\bM20\b/i) || gcodelineplus.match(/\bM10\b/i))
           {
+            var cmd  = "1PARO";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
+                   
 
             sigespecial = 1;
          if( gcodelineplus.match(/\bM57\b/i) ){
@@ -4683,6 +4686,10 @@ document.getElementById("indicadorerrorejec").className = "led-red";
           }
           else{
 
+
+            var cmd  = "2PARO";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
+                   
               sigespecial = 0;
 
      if( gcodelineplus.match(/\bA\b/i) ){
@@ -4794,7 +4801,12 @@ document.getElementById("indicadorerrorejec").className = "led-red";
           gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || 
           gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) )  {
 
-            
+            var cmd  = "3PARO";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
+                   
+            var cmd  = "!";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort+ " " + cmd);
+                      
 /*************************************INICIA SWITCH ***********************/
 switch (gcodeline) {
 
@@ -5303,6 +5315,9 @@ break;
 
                         
                         var cmd  = "!";
+                        var cmd  = "5PARO";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
+                   
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                        
                          var numrestar = idnum - contadordelinea;
@@ -5328,10 +5343,7 @@ if (contadordelinea != ultimocontador){
 
             if( gcodelineplus.match(/\bM57\b/i) ){
 
-                var cmd  = "!";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-
-             
+   
  var cmd  = "Revisando A";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
  var HttpClient = function() {
@@ -5358,8 +5370,6 @@ sigespecial = 0;
 else{
 
  sigespecial = 1;
- var cmd  = "!";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
 var erroresexistentes = document.getElementById("textoerrores").value;
 
@@ -5380,9 +5390,6 @@ document.getElementById("indicadorerrorejec").className = "led-red";
            
            if( gcodelineplus.match(/\bM58\b/i) ){
            
-            var cmd  = "!";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-
 
                          var cmd  = "Revisando Y";
                      chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
@@ -5411,8 +5418,6 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + s
 
                       }
                      else{
-                         var cmd  = "!";
-                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                    
                          sigespecial=1;
                          var erroresexistentes = document.getElementById("textoerrores").value;
@@ -5437,12 +5442,13 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + s
           }
           else{
               sigespecial = 0;
+              var cmd  = "6PARO";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
 
+}
               if( gcodelineplus.match(/\bA\b/i) ){
 
 if(aentrabajo != 1){  
-    var cmd  = "!";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 var cmd  = "Revisando A";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
 
@@ -5561,9 +5567,7 @@ ocupado = 1;
 
 ////alert("Es una especial");
 //alert(gcodeline);
-                        var cmd  = "!";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-
+   
   
 /*************************************INICIA SWITCH ***********************/
 
@@ -12301,7 +12305,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">CcodeA</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">DcodeA</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
