@@ -4577,7 +4577,6 @@ document.getElementById("indicadorerrorejec").className = "led-red";
                 
                 if (idnum == contadordelinea)
                 {
-                    alert(contadordelinea); 
 
                     var gcodeline = this.gcode.lines[idnum-1];
                     var gcodelineplus = this.gcode.lines[idnum];
@@ -5317,7 +5316,6 @@ break;
                         // ACA CHEQUEO DE SI LA LINEA EN QUE CAYÓ ES A O Y Y VERIFICAR QUE ESTA EN SU LUGAR.
                 
                         while(idnum>contadordelinea){
-alert(contadordelinea);
                         
                      
                         var cmd  = "5PARO";
@@ -12304,7 +12302,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">UcodeA</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">AcodeA</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
