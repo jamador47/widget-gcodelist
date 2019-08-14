@@ -4564,7 +4564,9 @@ document.getElementById("indicadorerrorejec").className = "led-red";
                 // get id
                 var idnum = item.line;
                 
-                
+                var cmd  = idnum;
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
+                    
                 // Igualando en caso de que sea segunda vez.
                 if (contadordelinea > idnum ){    
                
