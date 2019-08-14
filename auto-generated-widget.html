@@ -4524,7 +4524,12 @@ document.getElementById("indicadorerrorejec").className = "led-red";
         
         onExecute: function(data) {
             // write it to the log
-           
+            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
+setTimeout(function(){
+    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+
+},1200);
         // //alert("ENTRO");
             //console.group("gcode widget - onExecute");
             console.log("onExecute data:", data);
