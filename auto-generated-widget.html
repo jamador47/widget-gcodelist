@@ -3838,7 +3838,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
             this.fileLines = txt.split(/\r{0,1}\n/);
             //this.fileLines = txt.split(/\n/);
             
-            // see if last line is empty and if so, drop it
+            // see if last line is empty and if so, drop ito
             if (this.fileLines[this.fileLines.length - 1].length == 0) {
                 this.fileLines.pop();
             }
@@ -4599,7 +4599,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
           gcodelineplus.match(/\bM701\b/i) || gcodelineplus.match(/\bM20\b/i) || gcodelineplus.match(/\bM10\b/i)){
 
 
-            sigespecial = 1;
+            sigespecial = 0;
 
             if( gcodelineplus.match(/\bM57\b/i)){
  var HttpClient = function() {
@@ -4627,6 +4627,7 @@ sigespecial = 0;
 }
 else{
 
+    sigespecial = 1;
 
 var erroresexistentes = document.getElementById("textoerrores").value;
 
@@ -4674,7 +4675,8 @@ document.getElementById("indicadorerrorejec").className = "led-red";
                       }
                      else{
                     
-                         
+                        sigespecial = 1;
+
                          var erroresexistentes = document.getElementById("textoerrores").value;
           
           erroresexistentes = erroresexistentes.concat("\\\n\\\n");
