@@ -4584,7 +4584,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
 //TERMINAN POSICIONADORES
 
                     var gcodeline = this.gcode.lines[idnum-1];
-                    var gcodelineplus = this.gcode.lines[idnum];
+                    var gcodelineplus = this.gcode.lines[idnum]; 
                   
 
     
@@ -5037,7 +5037,7 @@ ocupado = 1;
   var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
-  break;
+  break;   
   /*************************************FIN M107 ***********************************/
   /***************************************INICIO M106*********/
 
@@ -5444,11 +5444,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
               if( gcodelineplus.match(/\bA\b/i) ){
 
 if(aentrabajo != 1){  
-    var cmd  = "!";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-var cmd  = "Revisando A";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-
+ 
     var HttpClient = function() {
 this.get = function(aUrl, aCallback) {
 var anHttpRequest = new XMLHttpRequest();
@@ -5518,9 +5514,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
                          }
                         else{
                             sigespecial=1;
-                            var cmd  = "!";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                            var erroresexistentes = document.getElementById("textoerrores").value;
+               var erroresexistentes = document.getElementById("textoerrores").value;
              
              erroresexistentes = erroresexistentes.concat("\\\n\\\n");
              
@@ -5557,9 +5551,6 @@ ocupado = 1;
 
 ////alert("Es una especial");
 //alert(gcodeline);
-                        var cmd  = "!";
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-
   
 /*************************************INICIA SWITCH ***********************/
 
@@ -6368,42 +6359,9 @@ var HttpClient = function() {
           
         onM20BtnClick : function(evt){
          
-
             
             
-         /*   var erroresexistentes = document.getElementById("textoalarmas").value;
-            
-            alarmasexistentes = alarmasexistentes.concat("\\\n\\\n");
-            
-            alarmasexistentes = alarmasexistentes.concat("LALA");
-         
-            document.getElementById("textoalarmas").value = alarmasexistentes;
-            */
-            
-            
-          var HttpClient = function() {
-           this.get = function(aUrl, aCallback) {
-               var anHttpRequest = new XMLHttpRequest();
-               anHttpRequest.onreadystatechange = function() {
-                   if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                       aCallback(anHttpRequest.responseText);
-               }
-               anHttpRequest.open("GET", aUrl, true);
-               anHttpRequest.send(null);
-           }
-       }
-       var theurl = 'http://192.168.0.97/?cmd=s';
-       var client = new HttpClient();
-       client.get(theurl, function(response) {
-
-           
-           res = JSON.parse(response);
-            
-           // Validación
-           
-           // Si el brazo no está extendido
-            if (parseInt(res.brazo) != 1){
-                
+          
                 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                 
@@ -6421,39 +6379,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
           
         
             //Continúa procedimiento
-                
-            }
-           
-           
-           
-           else{
-               // Pausa la máquina y da mensaje de alerta.
-               var cmd  = "!";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                    chilipeppr.publish(
-                '/com-chilipeppr-elem-flashmsg/flashmsg',
-                "ALARMA",
-                "Brazo extendido, Husillo no puede subir, solucione el problema y presione resumir (~) para continuar.",
-                4000 /* show for 2 second */
-            );
-               
-               
-               
-               //Codigo Alarmas
-               
-                       var alarmasexistentes = document.getElementById("textoalarmas").value;
-               document.getElementById("indicadoralarma").className = "led-yellow";
-            alarmasexistentes = alarmasexistentes.concat("\\\n\\\n");
-            
-            alarmasexistentes = alarmasexistentes.concat("Brazo extendido, Husillo no puede subir, solucione el problema y presione resumir (~) para continuar.");
-                        
-           document.getElementById("textoalarmas").value = alarmasexistentes;
-          
-           }
-           
-
-    });
-
+         
 
             
             
@@ -6465,33 +6391,11 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + s
         
         onM10BtnClick : function(evt){
      
-    var HttpClient = function() {
-           this.get = function(aUrl, aCallback) {
-               var anHttpRequest = new XMLHttpRequest();
-               anHttpRequest.onreadystatechange = function() {
-                   if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                       aCallback(anHttpRequest.responseText);
-               }
-               anHttpRequest.open("GET", aUrl, true);
-               anHttpRequest.send(null);
-           }
-       }
-       var theurl = 'http://192.168.0.97/?cmd=s';
-       var client = new HttpClient();
-       client.get(theurl, function(response) {
-
-           
-           res = JSON.parse(response);
-            
-           // Validación
-           
-           // Si el brazo no está extendido
-            if (parseInt(res.brazo) != 1){
                 
                 var cmd  = "!";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                 
-                var cmd  = "e";
+                var cmd  = "p";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort2 + " " + cmd);
                 
                 document.getElementById("indicadorposhusillo").className = "led-green";
@@ -6506,38 +6410,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serial
         
             //Continúa procedimiento
                 
-            }
            
-           
-           
-           else{
-               // Pausa la máquina y da mensaje de alerta.
-               var cmd  = "!";
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                    chilipeppr.publish(
-                '/com-chilipeppr-elem-flashmsg/flashmsg',
-                "ALARMA",
-                "Brazo extendido, Husillo no puede bajar, solucione el problema y presione resumir (~) para continuar.",
-                4000 /* show for 2 second */
-            );
-               
-               
-                       var alarmasexistentes = document.getElementById("textoalarmas").value;
-               document.getElementById("indicadoralarma").className = "led-yellow";
-            alarmasexistentes = alarmasexistentes.concat("\\\n\\\n");
-            
-            alarmasexistentes = alarmasexistentes.concat("Brazo extendido, Husillo no puede bajar, solucione el problema y presione resumir (~) para continuar.");
-                        
-           document.getElementById("textoalarmas").value = alarmasexistentes;
-               
-               
-               
-           }
-           
-
-    });
-
-
             
             
         },
