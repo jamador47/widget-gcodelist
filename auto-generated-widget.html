@@ -5956,11 +5956,6 @@ this.onM10BtnClick();
 // alert ("M10");
 var tiempo = 4000;
 temp = temp+tiempo;
-var cmd  = temp;
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
-   var cmd  = sigespecial;
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf "  + " " + cmd);
-
 if (!sigespecial){
     setTimeout(function(){
 var cmd  = "~";
