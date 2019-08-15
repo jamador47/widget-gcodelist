@@ -4793,7 +4793,9 @@ document.getElementById("indicadorerrorejec").className = "led-red";
           gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || 
           gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) )  {
                     
-
+            var cmd  = "!";
+         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                       
            
 ocupado = 1;
 
@@ -6071,6 +6073,12 @@ break;
                     else{
 
 
+                        if (!sigespecial){
+
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+
+   }
 temp = 0;
      
       
