@@ -1890,7 +1890,7 @@ cpdefine("inline:com-chilipeppr-widget-gcode", ["chilipeppr_ready", "waypoints",
                 if (event) this.hideToolChangeDiv(true);
 
                 if (event)
-                var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                var cmd  = "~";
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
 $('#com-chilipeppr-widget-gcode-pause').removeClass("active");
 
@@ -4800,7 +4800,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
                     
             var cmd  = "!";
          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-         chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");  
+                       
            
 ocupado = 1;
 
@@ -4821,7 +4821,7 @@ var tiempo = 8000;
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -4844,7 +4844,7 @@ var tiempo = 4000;
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -4879,7 +4879,7 @@ case (gcodeline.match(/\bM58\b/i) || {}).input :
 this.activarM58();
 ocupado = 0;
 if (!sigespecial && !errora && !errory){
-    var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+    var cmd  = "~";
   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
 }
@@ -4901,7 +4901,7 @@ numerobroca = "16";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
 break;
@@ -4917,7 +4917,7 @@ numerobroca = "15";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -4933,7 +4933,7 @@ numerobroca = "14";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -4948,7 +4948,7 @@ numerobroca = "13";
   
 ocupado = 1;
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -4963,7 +4963,7 @@ numerobroca = "12";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -4979,7 +4979,7 @@ numerobroca = "11";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -4994,7 +4994,7 @@ numerobroca = "10";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5010,7 +5010,7 @@ numerobroca = "9";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5025,7 +5025,7 @@ numerobroca = "8";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5041,7 +5041,7 @@ numerobroca = "7";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;   
@@ -5056,7 +5056,7 @@ numerobroca = "6";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5072,7 +5072,7 @@ numerobroca = "5";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5088,7 +5088,7 @@ numerobroca = "4";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5102,7 +5102,7 @@ numerobroca = "3";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5116,7 +5116,7 @@ numerobroca = "2";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5130,7 +5130,7 @@ numerobroca = "1";
   
   // alert ("M101");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5147,7 +5147,7 @@ this.subirtbrocaBtnClick();
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -5166,7 +5166,7 @@ this.taladroarribaBtnClick();
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -5185,7 +5185,7 @@ ocupado = 1;
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -5204,7 +5204,7 @@ var tiempo = 4000;
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -5224,7 +5224,7 @@ var tiempo = 2000;
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -5245,7 +5245,7 @@ var tiempo = 4000;
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -5264,7 +5264,7 @@ var tiempo = 6000;
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -5288,7 +5288,7 @@ temp = temp+tiempo;
 //alert(sigespecial);
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -5337,7 +5337,7 @@ break;
 
                     var cmd  = "!";
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                       
                      while(idnum>contadordelinea){
   
                          var numrestar = idnum - contadordelinea;
@@ -5579,7 +5579,7 @@ var tiempo = 8000;
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -5602,7 +5602,7 @@ var tiempo = 4000;
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -5633,7 +5633,7 @@ case (gcodeline.match(/\bM58\b/i) || {}).input :
 this.activarM58();
 ocupado = 0;
 if (!sigespecial && !errora && !errory){
-    var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+    var cmd  = "~";
   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
 }
@@ -5655,7 +5655,7 @@ numerobroca = "16";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
 break;
@@ -5671,7 +5671,7 @@ numerobroca = "15";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5687,7 +5687,7 @@ numerobroca = "14";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5703,7 +5703,7 @@ numerobroca = "13";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5718,7 +5718,7 @@ numerobroca = "12";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5734,7 +5734,7 @@ numerobroca = "11";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5749,7 +5749,7 @@ numerobroca = "10";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5765,7 +5765,7 @@ numerobroca = "9";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5780,7 +5780,7 @@ numerobroca = "8";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5796,7 +5796,7 @@ numerobroca = "7";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5811,7 +5811,7 @@ numerobroca = "6";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5827,7 +5827,7 @@ numerobroca = "5";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5843,7 +5843,7 @@ numerobroca = "4";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5857,7 +5857,7 @@ numerobroca = "3";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5871,7 +5871,7 @@ numerobroca = "2";
 ocupado = 1;
   // alert ("M102");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5885,7 +5885,7 @@ numerobroca = "1";
   
   // alert ("M101");
   if (!sigespecial && !errora && !errory){
-  var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+  var cmd  = "~";
       chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);}
       ocupado = 0;
   break;
@@ -5902,7 +5902,7 @@ this.subirtbrocaBtnClick();
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -5921,7 +5921,7 @@ this.taladroarribaBtnClick();
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -5940,7 +5940,7 @@ ocupado = 1;
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -5959,7 +5959,7 @@ var tiempo = 4000;
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -5979,7 +5979,7 @@ var tiempo = 2000;
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -6000,7 +6000,7 @@ var tiempo = 4000;
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -6019,7 +6019,7 @@ var tiempo = 6000;
 temp = temp+tiempo;
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -6042,7 +6042,7 @@ temp = temp+tiempo;
 
 if (!sigespecial && !errora && !errory){
     setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },temp);
    }
@@ -6086,7 +6086,7 @@ break;
 
                         if (!sigespecial && !errora && !errory){
 setTimeout(function(){
-var cmd  = "~";  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },800)
    }
@@ -12216,7 +12216,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">QCODEBIEN</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">GCODEBIEN</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
