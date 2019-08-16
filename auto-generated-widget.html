@@ -5334,7 +5334,9 @@ break;
                 else{
                     
                     var gcodelineantes = this.gcode.lines[idnum-1];
-
+                    var cmd  = "!";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                 
                          
                      while(idnum>contadordelinea){
                         var cmd  = "!";
@@ -6085,11 +6087,12 @@ break;
 
 
                         if (!sigespecial && !errora && !errory){
+                            /*
 setTimeout(function(){
 var cmd  = "~";
    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 },800)
-   }
+   }*/
 temp = 0;
      
       
