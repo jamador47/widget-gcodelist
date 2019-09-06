@@ -4598,7 +4598,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
           gcodelineplus.match(/\bM107\b/i) || gcodelineplus.match(/\bM106\b/i) || gcodelineplus.match(/\bM105\b/i) || gcodelineplus.match(/\bM104\b/i) || 
           gcodelineplus.match(/\bM103\b/i) || gcodelineplus.match(/\bM102\b/i) || gcodelineplus.match(/\bM101\b/i) || gcodelineplus.match(/\bM100\b/i) || 
           gcodelineplus.match(/\bM22\b/i) || gcodelineplus.match(/\bM12\b/i) || gcodelineplus.match(/\bM9\b/i) || gcodelineplus.match(/\bM8\b/i) || 
-          gcodelineplus.match(/\bM701\b/i) || gcodelineplus.match(/\bM20\b/i) || gcodelineplus.match(/\bM10\b/i)){
+          gcodelineplus.match(/\bM701\b/i) || gcodelineplus.match(/\bM20\b/i) || gcodelineplus.match(/\bM10\b/i) ){
 
 
             sigespecial = 0;
@@ -4796,7 +4796,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
           gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || 
           gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || 
           gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || 
-          gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) )  {
+          gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i)    )  {
                     
             var cmd  = "!";
          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
@@ -5565,7 +5565,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
           gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) || 
           gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) || 
           gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) || 
-          gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) )  {
+          gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) )  {
                     
 ocupado = 1;
 
