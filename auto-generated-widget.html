@@ -4968,7 +4968,14 @@ case (gcodeline.match(/\bUTO\b/i) || {}).input :
                                                 setTimeout(function(){
                                                     var cmd = "G54";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
-
+                                                    var tiempo = 500;
+                                                    temp = temp+tiempo;
+                                                    if (!sigespecial && !errora && !errory){
+                                                        setTimeout(function(){
+                                                    var cmd  = "~";
+                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                                    },temp);
+                                                    }
                                                 },500);
 
 
@@ -5116,7 +5123,14 @@ case (gcodeline.match(/\bUTO\b/i) || {}).input :
                                                 setTimeout(function(){
                                                     var cmd = "G54";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
-
+                                                    var tiempo = 500;
+                                                    temp = temp+tiempo;
+                                                    if (!sigespecial && !errora && !errory){
+                                                        setTimeout(function(){
+                                                    var cmd  = "~";
+                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                                    },temp);
+                                                    }
                                                 },500);
 
 
@@ -6046,9 +6060,18 @@ switch (gcodeline) {
 
                                                 //alert(cmd);
                                                 setTimeout(function(){
+
+                                                    
                                                     var cmd = "G54";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
-
+                                                    var tiempo = 500;
+                                                    temp = temp+tiempo;
+                                                    if (!sigespecial && !errora && !errory){
+                                                        setTimeout(function(){
+                                                    var cmd  = "~";
+                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                                    },temp);
+                                                    }
                                                 },500);
 
 
@@ -6196,9 +6219,16 @@ switch (gcodeline) {
                                                 setTimeout(function(){
                                                     var cmd = "G54";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
-
+                                                    var tiempo = 500;
+                                                    temp = temp+tiempo;
+                                                    if (!sigespecial && !errora && !errory){
+                                                        setTimeout(function(){
+                                                    var cmd  = "~";
+                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                                    },temp);
+                                                    }
                                                 },500);
-
+                                                    
 
                                             });
 
