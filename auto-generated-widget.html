@@ -4968,8 +4968,15 @@ case (gcodeline.match(/\bUTO\b/i) || {}).input :
                                                 setTimeout(function(){
                                                     var cmd = "G54";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
-
+                                                    if (!sigespecial && !errora && !errory){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+},700);
+   }
                                                 },500);
+                                                
+     
 
 
                                             });
@@ -4985,6 +4992,22 @@ case (gcodeline.match(/\bUTO\b/i) || {}).input :
 
             
                                     case (gcodeline.match(/\bUAO\b/i) || {}).input :
+
+                                    var HttpClient = function() {
+                                                this.get = function(aUrl, aCallback) {
+                                                    var anHttpRequest = new XMLHttpRequest();
+                                                    anHttpRequest.onreadystatechange = function() {
+                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                            aCallback(anHttpRequest.responseText);
+                                                    }
+                                                    anHttpRequest.open("GET", aUrl, true);
+                                                    anHttpRequest.send(null);
+                                                }
+                                            }
+                                            var theurl = 'http://192.168.0.98/api/resetuto';
+                                            var client = new HttpClient();
+                                            client.get(theurl, function(response) {
+                                            });
                                     var coord= gcodeline.match(/UAO(.*?)*/i)[0];
                                         coord= coord.substring(4);
 
@@ -5116,7 +5139,13 @@ case (gcodeline.match(/\bUTO\b/i) || {}).input :
                                                 setTimeout(function(){
                                                     var cmd = "G54";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
-
+                              
+if (!sigespecial && !errora && !errory){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+},700);
+   }
                                                 },500);
 
 
@@ -6049,6 +6078,12 @@ switch (gcodeline) {
                                                     var cmd = "G54";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
 
+                                                    if (!sigespecial && !errora && !errory){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+},700);
+   }
                                                 },500);
 
 
@@ -6065,6 +6100,21 @@ switch (gcodeline) {
 
             
                                     case (gcodeline.match(/\bUAO\b/i) || {}).input :
+                                    var HttpClient = function() {
+                                                this.get = function(aUrl, aCallback) {
+                                                    var anHttpRequest = new XMLHttpRequest();
+                                                    anHttpRequest.onreadystatechange = function() {
+                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                            aCallback(anHttpRequest.responseText);
+                                                    }
+                                                    anHttpRequest.open("GET", aUrl, true);
+                                                    anHttpRequest.send(null);
+                                                }
+                                            }
+                                            var theurl = 'http://192.168.0.98/api/resetuto';
+                                            var client = new HttpClient();
+                                            client.get(theurl, function(response) {
+                                            });
                                     var coord= gcodeline.match(/UAO(.*?)*/i)[0];
                                         coord= coord.substring(4);
 
@@ -6196,7 +6246,13 @@ switch (gcodeline) {
                                                 setTimeout(function(){
                                                     var cmd = "G54";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
-
+                                         
+if (!sigespecial && !errora && !errory){
+    setTimeout(function(){
+var cmd  = "~";
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+},700);
+   }
                                                 },500);
 
 
