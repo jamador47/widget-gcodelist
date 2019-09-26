@@ -265,8 +265,8 @@
 
     <script type='text/javascript'>
         //variables DETECAP
-    const serialPort =  "/dev/ttyUSB0";  // 
-    const serialPort2 =  "/dev/ttyACM0";  // 
+    const serialPort =  "COM3";  // 
+    const serialPort2 =  "COM4";  // 
      var contadordelinea = 0;
      var aentrabajo = 0;
      var temp = 0;
@@ -3138,7 +3138,7 @@ if (parseInt(obj[i]['herramienta']) == valorstool){
 
                         cmd = "i"+valorsiguientetool;
                         //alert(cmd);
-                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send /dev/ttyACM0 " + cmd + "\n");
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd + "\n");
                     //Cambio brazo en la tabla.
                             var HttpClient = function () {
                             
@@ -7401,7 +7401,7 @@ chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + s
 var home = 0; 
         
     while (home = 0){
-    chilipeppr.subscribe("/dev/ttyUSB0/ws/recv", this, function (msg) {
+    chilipeppr.subscribe("COM3/ws/recv", this, function (msg) {
             this.onWsMessage(msg);
         });
 
