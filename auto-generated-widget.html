@@ -4815,7 +4815,7 @@ switch (gcodeline) {
 /********** INICIO CAMBIO HERRAMIENTA ******/
 case (gcodeline.match(/\bM6\b/i) || {}).input:
 
-
+alert("OOOO");
 
 
 var HttpClient = function() {
@@ -6345,6 +6345,7 @@ switch (gcodeline) {
 
 
     case (gcodeline.match(/\bM6\b/i) || {}).input :
+    alert("OOOO");
     var HttpClient = function() {
                             this.get = function(aUrl, aCallback) {
                                 var anHttpRequest = new XMLHttpRequest();
