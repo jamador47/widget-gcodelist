@@ -4895,8 +4895,10 @@ var HttpClient = function() {
 
 
 var linea = gcodeline.replace('M6', "").trim();
+        alert(linea);
         linea = linea.replace('M7', "").trim();
         linea = linea.replace('T', "").trim();
+        alert(linea);
         var linean = "N"+(idnum);
         linea = linea.replace(linean, "").trim();
         var toolausar = parseInt(linea);
@@ -6426,8 +6428,11 @@ switch (gcodeline) {
 
 
 var linea = gcodeline.replace('M6', "").trim();
+alert(linea);
         linea = linea.replace('M7', "").trim();
         linea = linea.replace('T', "").trim();
+        alert(linea);
+
         var linean = "N"+(contadordelinea);
         linea = linea.replace(linean, "").trim();
         var toolausar = parseInt(linea);
