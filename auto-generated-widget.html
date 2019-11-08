@@ -4810,8 +4810,8 @@ TERMINA COMENTARIO */
           gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i)    )  {
                     
             var cmd  = "!";
-         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-
+    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause');
+    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                   
            
 ocupado = 1;
@@ -6354,7 +6354,9 @@ TERMINA COMENT *****/
           gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) )  {
                     
 ocupado = 1;
-
+var cmd  = "!";
+    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause');
+    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 ////alert("Es una especial");
 //alert(gcodeline);
   
@@ -6365,11 +6367,7 @@ switch (gcodeline) {
 
 
     case (gcodeline.match(/\bM6\b/i) || {}).input :
-    var cmd  = "!";
-
-    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + "ESTE FUE. " + cmd);
-
+    \
 alert("OOOO");
     var HttpClient = function() {
                             this.get = function(aUrl, aCallback) {
