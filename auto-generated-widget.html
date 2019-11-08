@@ -6428,7 +6428,7 @@ switch (gcodeline) {
 var linea = gcodeline.replace('M6', "").trim();
         linea = linea.replace('M7', "").trim();
         linea = linea.replace('T', "").trim();
-        var linean = "N"+(idnum);
+        var linean = "N"+(contadordelinea);
         linea = linea.replace(linean, "").trim();
         var toolausar = parseInt(linea);
                                                                 
