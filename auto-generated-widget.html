@@ -4412,7 +4412,7 @@ document.getElementById("indicadorerrorejec").className = "led-red";
                         chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "Gcode Sender", "Done sending all Gcode into the CNC controller. This may not mean it's done executing yet as the controller typically has a planner buffer.", 6000);
                         
                         // also trigger stop button
-                        this.onStop({viaOnComplete: true});
+                        //this.onStop({viaOnComplete: true});
                         
                         if (!this.isJobDonePubSubSent) {
                             chilipeppr.publish("/com-chilipeppr-widget-gcode/done", "Duration " + this.statEls.timeDur.text() + " Lines " + this.fileLines.length);
