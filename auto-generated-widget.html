@@ -4827,9 +4827,11 @@ switch (gcodeline) {
 case (gcodeline.match(/\bM6\b/i) || {}).input:
 var cmd  = "!";
          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + "ESTE FUE. " + cmd);
 
-alert("OOOO");
+
+         this.activarm5();
+setTimeout(() => {
+    
 
 
 var HttpClient = function() {
@@ -5241,7 +5243,7 @@ var linea = gcodeline.replace('M6', "").trim();
                                         
                                     });
                                         
-
+                                },6000);
 
 
 
@@ -6368,7 +6370,11 @@ switch (gcodeline) {
 
     case (gcodeline.match(/\bM6\b/i) || {}).input :
     
-alert("OOOO");
+
+
+
+setTimeout(() => {
+    
     var HttpClient = function() {
                             this.get = function(aUrl, aCallback) {
                                 var anHttpRequest = new XMLHttpRequest();
@@ -6782,7 +6788,7 @@ alert(linea);
                                     });
                                         
 
-
+                                },6000);
 
 
 
