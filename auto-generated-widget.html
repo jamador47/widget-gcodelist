@@ -4904,7 +4904,7 @@ var linea = gcodeline.replace('M6', "").trim();
         linea = linea.replace('M7', "").trim();
         linea = linea.replace('T', "").trim();
         alert(linea);
-        var linean = "N"+(idnum-1);
+        var linean = "N"+(idnum);
         alert(linean);
         linea = linea.replace(linean, "").trim();
         var toolausar = parseInt(linea);
@@ -6446,7 +6446,7 @@ alert(linea);
         linea = linea.replace('T', "").trim();
         alert(linea);
 
-        var linean = "N"+(contadordelinea-1);
+        var linean = "N"+(contadordelinea);
         alert(linean);
         linea = linea.replace(linean, "").trim();
         var toolausar = parseInt(linea);
