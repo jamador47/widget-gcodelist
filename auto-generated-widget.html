@@ -4823,6 +4823,13 @@ ocupado = 1;
   
 switch (gcodeline) {
 
+    case (gcodeline.match(/\bM30\b/i) || {}).input:
+    var cmd  = "~";
+         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+         
+
+    break;
+
 /********** INICIO CAMBIO HERRAMIENTA ******/
 case (gcodeline.match(/\bM6\b/i) || {}).input:
 var cmd  = "!";
