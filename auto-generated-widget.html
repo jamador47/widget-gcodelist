@@ -8591,9 +8591,11 @@ temp = 0;
                 
                 // see if we're done sending
                 if (idnum >= this.fileLines.length) {
+                    var serialPort = "COM3";
                     console.log("onExecute. at end of onExecuting gcode.");
                     chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "Gcode Sender", "Done Executing Gcode. Duration " + this.statEls.timeDur.text() + " Lines " + this.fileLines.length, 5000);
-                    
+                    var cmd  = "~";
+chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd); 
                     if (!this.isJobDonePubSubSent) {
                         chilipeppr.publish("/com-chilipeppr-widget-gcode/done", "Duration " + this.statEls.timeDur.text() + " Lines " + this.fileLines.length);
                         this.isJobDonePubSubSent = true;
@@ -14668,7 +14670,7 @@ bajartbrocaBtnClick: function(evt) {
     <!--Put HTML Contents of Widget Here-->
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">oTGO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">oPSWGO</span></div>
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
                     <span disabled="true" class="plannerpauseindicator glyphicon glyphicon glyphicon-time btn btn-sm"></span>
