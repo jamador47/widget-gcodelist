@@ -6051,7 +6051,7 @@ setTimeout(function(){
 var cmd  = "~";
 
 
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
 
 },1000);
 },temp);
@@ -6442,7 +6442,7 @@ if (!sigespecial && !errora && !errory){
 var cmd  = "~";
 chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume');
 
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
 },temp);
    }
 
@@ -8035,7 +8035,7 @@ if (!sigespecial && !errora && !errory){
         setTimeout(function(){
 
 var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + cmd);
 },1000);
 
 },temp);
@@ -8426,7 +8426,7 @@ if (!sigespecial && !errora && !errory){
         setTimeout(function(){
 
 var cmd  = "~";
-   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+   chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
 
 
 },3000);
