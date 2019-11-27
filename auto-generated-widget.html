@@ -4810,7 +4810,7 @@ TERMINA COMENTARIO */
           gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i)    )  {
                     
             var cmd  = "!";
-    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
                   
            
 ocupado = 1;
@@ -6806,7 +6806,9 @@ switch (gcodeline) {
 
     case (gcodeline.match(/\bM6\b/i) || {}).input :
     var cmd  = "!";
-
+alert(
+"entre salto"
+);
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + cmd);
 
 this.activarm5();
@@ -14657,7 +14659,7 @@ bajartbrocaBtnClick: function(evt) {
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">oPSWGO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">oFSWGO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
