@@ -6806,9 +6806,7 @@ switch (gcodeline) {
 
     case (gcodeline.match(/\bM6\b/i) || {}).input :
     var cmd  = "!";
-alert(
-"entre salto"
-);
+
 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + cmd);
 
 this.activarm5();
