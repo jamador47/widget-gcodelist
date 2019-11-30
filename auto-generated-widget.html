@@ -4831,7 +4831,6 @@ switch (gcodeline) {
 
 /********** INICIO CAMBIO HERRAMIENTA ******/
 case (gcodeline.match(/\bM6\b/i) || {}).input:
-alert("ENTRE");
 var cmd  = "!";
          chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
          this.activarm5();
@@ -4945,18 +4944,77 @@ var linea = gcodeline.replace('M6', "").trim();
                                                                             // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                                                             var indexher = i;
                                                                             var valortool = i+1;
+                                                                            var longitud = parseFloat(obj[i]['longitud']);
+                                                                            var enhusillo = parseInt(obj[i]['enhusillo']);
                                                                         }
                                                                         }
                                                         
-                                                       //if (!parseInt(obj[indexher]['enhusillo'])){
+
+                                                       if (!parseInt(obj[indexher]['enhusillo'])){
                                                         
                                                         
                                                                 // CAMBIO BRAZO
+                                                                var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/sigherramienta/'+toolausar;
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+                                                                });
                                                         
                                                         cmd = "q"+valortool+";1";
                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
                                                         
                                                         
+                                                        //COMPENSACION
+                                                        var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/api/origenesactivos/';
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+
+                                                                    var obj = JSON.parse(response);
+           
+                                                                    var valorx = obj['x'];
+                                                                    var valory = obj['y'];
+                                                                    var valorz = parseFloat(obj['z']);
+                                                                    var valora = obj['a'];
+
+                                                                    valorz = valorz + longitud;
+                                                                    valorz = valorz.toString();
+                                                                    alert(valorz);
+                                                                    var cmd = "G10 L2 P1 X"+valorx+" Y"+valory+" A"+valora+" Z"+valorz;
+                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + cmd); 
+
+                                                                    
+
+                                                                });
+                                                        
+
+
+
+
+                                                        //FIN COMPENSACION
+
                                                         
                                                         //Cambio brazo en la tabla.
                                                                 var HttpClient = function () {
@@ -4976,72 +5034,15 @@ var linea = gcodeline.replace('M6', "").trim();
                                                         client.get(theurl, function (response) {
                                                         
                                                         });
-                                                        
-                                                       // }
-                                                        //ROTACIÓN a nueva posicion.
-                                                        
-                                                        
-                                                        //codigo de busqueda de siguiente herramienta -- SOLO EN GCODE.
-                                                
-                                                /*       var largodecodigo = esto.gcode.lines.length;
-                                                        var valorsiguientetool = 1000;
-                                                        
-                                                        for (var n=(idnum); n<largodecodigo; n++){
-                                                        
-                                                            var gcodetemporal = esto.gcode.lines[n];
-                                                            if(gcodetemporal.match(/\bM6\b/i)){
-                                                                var linean = "N"+(n+1);
-                                                                var lineatemporal = gcodelinetemporal.replace('M6', "").trim();
-                                                                lineatemporal = lineatemporal.replace('T', "").trim();
-                                                                lineatemporal = lineatemporal.replace('M7', "").trim();
-                                                                lineatemporal = lineatemporal.replace(linean, "").trim();
-                                                        
-                                                                var valorstool = parseInt(lineatemporal);
-                                                                                    n=100000;
-                                                        
-                                                                                }
-                                                                            }
-                                                        
-                                                                            for( var i = 0; i < 17; i++){
-                                                        if (parseInt(obj[i]['herramienta']) == valorstool){
-                                                            // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
-                                                            var indexher = i;
-                                                        valorsiguientetool = i+1;
-                                                        }}
-                                                        
-                                                        //si existe alguna siguiente tool hacer rotacion. si no, no hacer nada.
-                                                        
-                                                        
-                                                        setTimeout(function(){
-                                                            if(valorsiguientetool != 1000){
-                                                        
-                                                            cmd = "i"+valorsiguientetool;
-                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
-                                                        //Cambio brazo en la tabla.
-                                                                var HttpClient = function () {
-                                                                
-                                                                this.get = function (aUrl, aCallback) {
-                                                        var anHttpRequest = new XMLHttpRequest();
-                                                        anHttpRequest.onreadystatechange = function () {
-                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                        aCallback(anHttpRequest.responseText);
-                                                        }
-                                                        anHttpRequest.open("GET", aUrl, true);
-                                                        anHttpRequest.send(null);
-                                                        }
-                                                        }
-                                                        var theurl = 'http://192.168.0.98/rotarcar/'+valorsiguientetool;
-                                                        var client = new HttpClient();
-                                                        client.get(theurl, function (response) {
-                                                        
-                                                        });
-                                                        
-                                                        }
-                                                        var cmd  = "~";
-                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + this.serialPort + " " + cmd);
-                                                        },15000);
-                                                        */      
-                                                        
+                                                       }
+
+                                                       else{
+
+                                                                                                                    //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
+
+
+
+                                                       }
                                                         
                                                             }
                                                         
@@ -5049,8 +5050,70 @@ var linea = gcodeline.replace('M6', "").trim();
                                                             else{
                                                                 var indexher = toolausar - 1;
                                                                 var valortool = toolausar;
+
+
+
+                                                                
+                                                                var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/sigherramienta/'+toolausar;
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+                                                                });
                                                         
                                                         var enhusillo = 100;
+
+
+                                                                                             
+                                                        //COMPENSACION MODO LINEAL
+                                                        var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/api/origenesactivos/';
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+
+                                                                    var obj = JSON.parse(response);
+           
+                                                                    var valorx = obj['x'];
+                                                                    var valory = obj['y'];
+                                                                    var valorz = parseFloat(obj['z']);
+                                                                    var valora = obj['a'];
+
+                                                                    valorz = valorz + parseFloat(obj[valortool-1]['longitud']);
+                                                                    valorz = valorz.toString();
+                                                                    alert(valorz);
+                                                                    var cmd = "G10 L2 P1 X"+valorx+" Y"+valory+" A"+valora+" Z"+valorz;
+                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + cmd); 
+
+                                                                    
+
+                                                                });
+                                                        
+
+
+
+
+                                                        //FIN COMPENSACION
                                         
                                                         var valortoolenhusillo = valortool;
                                                         
@@ -5064,11 +5127,15 @@ var linea = gcodeline.replace('M6', "").trim();
                                                         }
                                                         
                                                         }
+
+
+                                                        
                                                         
                                                         if (valortoolenhusillo != valortool)
                                                         {
                                                         //SI HAY: REGRESARLA A POSICIÓN ORIGINAL  Y luego cambiar nueva
                                                         if (enhusillo == 1){
+                                                            
                                                         
                                                             // cambio posicion original.
                                                         
@@ -5186,6 +5253,8 @@ var linea = gcodeline.replace('M6', "").trim();
                                                         // Si la herramienta en el husillo es la herramienta que se pidió.
                                                         else{
                                                         
+
+                                                            if (enhusillo != 1){
                                                         
                                                             var HttpClient = function () {
                                                                         
@@ -5226,7 +5295,16 @@ var linea = gcodeline.replace('M6', "").trim();
                                                             cmd = "q"+toolausar+";"+obj[(toolausar-1)]['longitud'];
                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
                                                         
+                                                        
                                                         }
+                                                        else{
+
+                                                            //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
+
+                                                        }
+                                                        
+                                                        }
+
                                                         
                                                             }
                                                         
@@ -5357,18 +5435,76 @@ var linea = gcodeline.replace('M6', "").trim();
                                                                             // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                                                             var indexher = i;
                                                                             var valortool = i+1;
+                                                                            var longitud = obj[i]['longitud'];
                                                                         }
                                                                         }
                                                         
-                                                                                  //if (!parseInt(obj[indexher]['enhusillo'])){
+                                                                                  if (!parseInt(obj[indexher]['enhusillo'])){
                                                         
                                                         
                                                                 // CAMBIO BRAZO
                                                         
+                                                                var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/sigherramienta/'+valortool;
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+                                                                });
+                                                                
+
                                                         cmd = "q"+valortool+";1";
                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
                                                         
                                                         
+                                                                                                                //COMPENSACION
+                                                                                                                var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/api/origenesactivos/';
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+
+                                                                    var obj = JSON.parse(response);
+           
+                                                                    var valorx = obj['x'];
+                                                                    var valory = obj['y'];
+                                                                    var valorz = parseFloat(obj['z']);
+                                                                    var valora = obj['a'];
+
+                                                                    valorz = valorz + longitud;
+                                                                    valorz = valorz.toString();
+                                                                    alert(valorz);
+                                                                    var cmd = "G10 L2 P1 X"+valorx+" Y"+valory+" A"+valora+" Z"+valorz;
+                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + cmd); 
+
+                                                                    
+
+                                                                });
+                                                        
+
+
+
+
+                                                        //FIN COMPENSACION
                                                         
                                                         //Cambio brazo en la tabla.
                                                                 var HttpClient = function () {
@@ -5452,7 +5588,12 @@ var linea = gcodeline.replace('M6', "").trim();
                                                         var cmd  = "~";
                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + this.serialPort + " " + cmd);
                                                         },15000);
-                                                        */      
+                                                        */    
+                                                                                  }
+                                                                                  else{
+                                                                                                                                                  //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
+
+                                                                                  }  
                                                         
                                                         
                                                             }
@@ -5461,8 +5602,67 @@ var linea = gcodeline.replace('M6', "").trim();
                                                             else{
                                                                 var indexher = toolausar - 1;
                                                                 var valortool = toolausar;
+
+                                                                
+
+                                                                var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/sigherramienta/'+toolausar;
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+                                                                });
                                                         
                                                         var enhusillo = 100;
+
+                                                         //COMPENSACION MODO LINEAL
+                                                         var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/api/origenesactivos/';
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+
+                                                                    var obj = JSON.parse(response);
+           
+                                                                    var valorx = obj['x'];
+                                                                    var valory = obj['y'];
+                                                                    var valorz = parseFloat(obj['z']);
+                                                                    var valora = obj['a'];
+
+                                                                    valorz = valorz + parseFloat(obj[valortool-1]['longitud']);
+                                                                    valorz = valorz.toString();
+                                                                    alert(valorz);
+                                                                    var cmd = "G10 L2 P1 X"+valorx+" Y"+valory+" A"+valora+" Z"+valorz;
+                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + cmd); 
+
+                                                                    
+
+                                                                });
+                                                        
+
+
+
+
+                                                        //FIN COMPENSACION
                                         
                                                         var valortoolenhusillo = valortool;
                                                         
@@ -5528,22 +5728,7 @@ var linea = gcodeline.replace('M6', "").trim();
                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
                                         
                                         
-                                                        var HttpClient = function () {
-                                                                        
-                                                                        this.get = function (aUrl, aCallback) {
-                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                anHttpRequest.onreadystatechange = function () {
-                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                aCallback(anHttpRequest.responseText);
-                                                                }
-                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                anHttpRequest.send(null);
-                                                                }
-                                                                }
-                                                                var theurl = 'http://192.168.0.98/sigherramienta/'+toolausar;
-                                                                var client = new HttpClient();
-                                                                client.get(theurl, function (response) {
-                                                                });
+                                                 
                                                         
                                                     /* ESTO TENDRIA QUE IR EN EL FINAL De la cadena de X.
                                         
@@ -5598,6 +5783,8 @@ var linea = gcodeline.replace('M6', "").trim();
                                                         // Si la herramienta en el husillo es la herramienta que se pidió.
                                                         else{
                                                         
+
+                                                            if (enhusillo != 1){
                                                         
                                                             var HttpClient = function () {
                                                                         
@@ -5639,6 +5826,14 @@ var linea = gcodeline.replace('M6', "").trim();
                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
                                                         
                                                         }
+                                                        else{ 
+
+                                                            //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
+                                                        }
+                                                        }
+
+
+                                                    
                                                         
                                                             }
                                                         
@@ -6804,12 +6999,12 @@ var cmd  = "!";
 switch (gcodeline) {
 
 
-    case (gcodeline.match(/\bM6\b/i) || {}).input :
-    var cmd  = "!";
-
-chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + cmd);
-
-this.activarm5();
+   
+/********** INICIO CAMBIO HERRAMIENTA ******/
+case (gcodeline.match(/\bM6\b/i) || {}).input:
+var cmd  = "!";
+         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+         this.activarm5();
 
   
     
@@ -6904,7 +7099,7 @@ var linea = gcodeline.replace('M6', "").trim();
         linea = linea.replace('M7', "").trim();
         linea = linea.replace('T', "").trim();
 
-        var linean = "N"+(contadordelinea-1);
+        var linean = "N"+idnum;
         linea = linea.replace(linean, "").trim();
         var toolausar = parseInt(linea);
                                                                 
@@ -6920,18 +7115,77 @@ var linea = gcodeline.replace('M6', "").trim();
                                                                             // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                                                             var indexher = i;
                                                                             var valortool = i+1;
+                                                                            var longitud = parseFloat(obj[i]['longitud']);
+                                                                            var enhusillo = parseInt(obj[i]['enhusillo']);
                                                                         }
                                                                         }
                                                         
-                                                                         //if (!parseInt(obj[indexher]['enhusillo'])){
+
+                                                       if (!parseInt(obj[indexher]['enhusillo'])){
                                                         
                                                         
                                                                 // CAMBIO BRAZO
+                                                                var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/sigherramienta/'+toolausar;
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+                                                                });
                                                         
                                                         cmd = "q"+valortool+";1";
                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
                                                         
                                                         
+                                                        //COMPENSACION
+                                                        var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/api/origenesactivos/';
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+
+                                                                    var obj = JSON.parse(response);
+           
+                                                                    var valorx = obj['x'];
+                                                                    var valory = obj['y'];
+                                                                    var valorz = parseFloat(obj['z']);
+                                                                    var valora = obj['a'];
+
+                                                                    valorz = valorz + longitud;
+                                                                    valorz = valorz.toString();
+                                                                    alert(valorz);
+                                                                    var cmd = "G10 L2 P1 X"+valorx+" Y"+valory+" A"+valora+" Z"+valorz;
+                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + cmd); 
+
+                                                                    
+
+                                                                });
+                                                        
+
+
+
+
+                                                        //FIN COMPENSACION
+
                                                         
                                                         //Cambio brazo en la tabla.
                                                                 var HttpClient = function () {
@@ -6951,72 +7205,15 @@ var linea = gcodeline.replace('M6', "").trim();
                                                         client.get(theurl, function (response) {
                                                         
                                                         });
-                                                        
-                                                       // }
-                                                        //ROTACIÓN a nueva posicion.
-                                                        
-                                                        
-                                                        //codigo de busqueda de siguiente herramienta -- SOLO EN GCODE.
-                                                
-                                                /*       var largodecodigo = esto.gcode.lines.length;
-                                                        var valorsiguientetool = 1000;
-                                                        
-                                                        for (var n=(idnum); n<largodecodigo; n++){
-                                                        
-                                                            var gcodetemporal = esto.gcode.lines[n];
-                                                            if(gcodetemporal.match(/\bM6\b/i)){
-                                                                var linean = "N"+(n+1);
-                                                                var lineatemporal = gcodelinetemporal.replace('M6', "").trim();
-                                                                lineatemporal = lineatemporal.replace('T', "").trim();
-                                                                lineatemporal = lineatemporal.replace('M7', "").trim();
-                                                                lineatemporal = lineatemporal.replace(linean, "").trim();
-                                                        
-                                                                var valorstool = parseInt(lineatemporal);
-                                                                                    n=100000;
-                                                        
-                                                                                }
-                                                                            }
-                                                        
-                                                                            for( var i = 0; i < 17; i++){
-                                                        if (parseInt(obj[i]['herramienta']) == valorstool){
-                                                            // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
-                                                            var indexher = i;
-                                                        valorsiguientetool = i+1;
-                                                        }}
-                                                        
-                                                        //si existe alguna siguiente tool hacer rotacion. si no, no hacer nada.
-                                                        
-                                                        
-                                                        setTimeout(function(){
-                                                            if(valorsiguientetool != 1000){
-                                                        
-                                                            cmd = "i"+valorsiguientetool;
-                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
-                                                        //Cambio brazo en la tabla.
-                                                                var HttpClient = function () {
-                                                                
-                                                                this.get = function (aUrl, aCallback) {
-                                                        var anHttpRequest = new XMLHttpRequest();
-                                                        anHttpRequest.onreadystatechange = function () {
-                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                        aCallback(anHttpRequest.responseText);
-                                                        }
-                                                        anHttpRequest.open("GET", aUrl, true);
-                                                        anHttpRequest.send(null);
-                                                        }
-                                                        }
-                                                        var theurl = 'http://192.168.0.98/rotarcar/'+valorsiguientetool;
-                                                        var client = new HttpClient();
-                                                        client.get(theurl, function (response) {
-                                                        
-                                                        });
-                                                        
-                                                        }
-                                                        var cmd  = "~";
-                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + this.serialPort + " " + cmd);
-                                                        },15000);
-                                                        */      
-                                                        
+                                                       }
+
+                                                       else{
+
+                                                                                                                    //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
+
+
+
+                                                       }
                                                         
                                                             }
                                                         
@@ -7024,8 +7221,70 @@ var linea = gcodeline.replace('M6', "").trim();
                                                             else{
                                                                 var indexher = toolausar - 1;
                                                                 var valortool = toolausar;
+
+
+
+                                                                
+                                                                var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/sigherramienta/'+toolausar;
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+                                                                });
                                                         
                                                         var enhusillo = 100;
+
+
+                                                                                             
+                                                        //COMPENSACION MODO LINEAL
+                                                        var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/api/origenesactivos/';
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+
+                                                                    var obj = JSON.parse(response);
+           
+                                                                    var valorx = obj['x'];
+                                                                    var valory = obj['y'];
+                                                                    var valorz = parseFloat(obj['z']);
+                                                                    var valora = obj['a'];
+
+                                                                    valorz = valorz + parseFloat(obj[valortool-1]['longitud']);
+                                                                    valorz = valorz.toString();
+                                                                    alert(valorz);
+                                                                    var cmd = "G10 L2 P1 X"+valorx+" Y"+valory+" A"+valora+" Z"+valorz;
+                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + cmd); 
+
+                                                                    
+
+                                                                });
+                                                        
+
+
+
+
+                                                        //FIN COMPENSACION
                                         
                                                         var valortoolenhusillo = valortool;
                                                         
@@ -7039,11 +7298,15 @@ var linea = gcodeline.replace('M6', "").trim();
                                                         }
                                                         
                                                         }
+
+
+                                                        
                                                         
                                                         if (valortoolenhusillo != valortool)
                                                         {
                                                         //SI HAY: REGRESARLA A POSICIÓN ORIGINAL  Y luego cambiar nueva
                                                         if (enhusillo == 1){
+                                                            
                                                         
                                                             // cambio posicion original.
                                                         
@@ -7161,6 +7424,8 @@ var linea = gcodeline.replace('M6', "").trim();
                                                         // Si la herramienta en el husillo es la herramienta que se pidió.
                                                         else{
                                                         
+
+                                                            if (enhusillo != 1){
                                                         
                                                             var HttpClient = function () {
                                                                         
@@ -7201,7 +7466,16 @@ var linea = gcodeline.replace('M6', "").trim();
                                                             cmd = "q"+toolausar+";"+obj[(toolausar-1)]['longitud'];
                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
                                                         
+                                                        
                                                         }
+                                                        else{
+
+                                                            //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
+
+                                                        }
+                                                        
+                                                        }
+
                                                         
                                                             }
                                                         
@@ -7316,7 +7590,7 @@ var linea = gcodeline.replace('M6', "").trim();
         linea = linea.replace('M7', "").trim();
         linea = linea.replace('T', "").trim();
 
-        var linean = "N"+(contadordelinea-1);
+        var linean = "N"+(idnum);
         linea = linea.replace(linean, "").trim();
         var toolausar = parseInt(linea);
                                                                 
@@ -7332,18 +7606,76 @@ var linea = gcodeline.replace('M6', "").trim();
                                                                             // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                                                             var indexher = i;
                                                                             var valortool = i+1;
+                                                                            var longitud = obj[i]['longitud'];
                                                                         }
                                                                         }
                                                         
-                                                        //if (!parseInt(obj[indexher]['enhusillo'])){
+                                                                                  if (!parseInt(obj[indexher]['enhusillo'])){
                                                         
                                                         
                                                                 // CAMBIO BRAZO
                                                         
+                                                                var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/sigherramienta/'+valortool;
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+                                                                });
+                                                                
+
                                                         cmd = "q"+valortool+";1";
                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
                                                         
                                                         
+                                                                                                                //COMPENSACION
+                                                                                                                var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/api/origenesactivos/';
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+
+                                                                    var obj = JSON.parse(response);
+           
+                                                                    var valorx = obj['x'];
+                                                                    var valory = obj['y'];
+                                                                    var valorz = parseFloat(obj['z']);
+                                                                    var valora = obj['a'];
+
+                                                                    valorz = valorz + longitud;
+                                                                    valorz = valorz.toString();
+                                                                    alert(valorz);
+                                                                    var cmd = "G10 L2 P1 X"+valorx+" Y"+valory+" A"+valora+" Z"+valorz;
+                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + cmd); 
+
+                                                                    
+
+                                                                });
+                                                        
+
+
+
+
+                                                        //FIN COMPENSACION
                                                         
                                                         //Cambio brazo en la tabla.
                                                                 var HttpClient = function () {
@@ -7428,7 +7760,12 @@ var linea = gcodeline.replace('M6', "").trim();
                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + this.serialPort + " " + cmd);
                                                         },15000);
                                                         */      
-                                                        
+                                                                                  }
+                                                                                  else{
+
+                                                                                                                      //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
+
+                                                                                  }
                                                         
                                                             }
                                                         
@@ -7436,8 +7773,67 @@ var linea = gcodeline.replace('M6', "").trim();
                                                             else{
                                                                 var indexher = toolausar - 1;
                                                                 var valortool = toolausar;
+
+                                                                
+
+                                                                var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/sigherramienta/'+toolausar;
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+                                                                });
                                                         
                                                         var enhusillo = 100;
+
+                                                         //COMPENSACION MODO LINEAL
+                                                         var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/api/origenesactivos/';
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+
+                                                                    var obj = JSON.parse(response);
+           
+                                                                    var valorx = obj['x'];
+                                                                    var valory = obj['y'];
+                                                                    var valorz = parseFloat(obj['z']);
+                                                                    var valora = obj['a'];
+
+                                                                    valorz = valorz + parseFloat(obj[valortool-1]['longitud']);
+                                                                    valorz = valorz.toString();
+                                                                    alert(valorz);
+                                                                    var cmd = "G10 L2 P1 X"+valorx+" Y"+valory+" A"+valora+" Z"+valorz;
+                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + cmd); 
+
+                                                                    
+
+                                                                });
+                                                        
+
+
+
+
+                                                        //FIN COMPENSACION
                                         
                                                         var valortoolenhusillo = valortool;
                                                         
@@ -7503,22 +7899,7 @@ var linea = gcodeline.replace('M6', "").trim();
                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
                                         
                                         
-                                                        var HttpClient = function () {
-                                                                        
-                                                                        this.get = function (aUrl, aCallback) {
-                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                anHttpRequest.onreadystatechange = function () {
-                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                aCallback(anHttpRequest.responseText);
-                                                                }
-                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                anHttpRequest.send(null);
-                                                                }
-                                                                }
-                                                                var theurl = 'http://192.168.0.98/sigherramienta/'+toolausar;
-                                                                var client = new HttpClient();
-                                                                client.get(theurl, function (response) {
-                                                                });
+                                                 
                                                         
                                                     /* ESTO TENDRIA QUE IR EN EL FINAL De la cadena de X.
                                         
@@ -7573,6 +7954,8 @@ var linea = gcodeline.replace('M6', "").trim();
                                                         // Si la herramienta en el husillo es la herramienta que se pidió.
                                                         else{
                                                         
+
+                                                            if (enhusillo != 1){
                                                         
                                                             var HttpClient = function () {
                                                                         
@@ -7614,6 +7997,14 @@ var linea = gcodeline.replace('M6', "").trim();
                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
                                                         
                                                         }
+                                                        else{ 
+
+                                                            //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
+                                                        }
+                                                        }
+
+
+                                                    
                                                         
                                                             }
                                                         
@@ -7658,8 +8049,8 @@ var linea = gcodeline.replace('M6', "").trim();
 }
                         })
 
-break;
 
+break;
 
 
 /*********FIN CAMBIO DE HERRAMIENTA******/
