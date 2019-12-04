@@ -8045,7 +8045,6 @@ TERMINA COMENT *****/
 
                                                                             var obj = JSON.parse(response);
                                                                             window.objetodah = obj;
-
                                                                             var modoh = parseInt(obj[0]['modoh']);
 
 
@@ -8113,8 +8112,6 @@ TERMINA COMENT *****/
 
                                                                             } else {
 
-
-
                                                                                 // SI ES MODO H:
                                                                                 if (modoh == 1) {
 
@@ -8129,7 +8126,6 @@ TERMINA COMENT *****/
                                                                                             var enhusillo = parseInt(window.objetodah[i]['enhusillo']);
                                                                                         }
                                                                                     }
-
 
                                                                                     //COMPENSACION
                                                                                     var HttpClient = function() {
@@ -8172,7 +8168,7 @@ TERMINA COMENT *****/
                                                                                     //FIN COMPENSACION
 
 
-                                                                                    if (!parseInt(obj[indexher]['enhusillo'])) {
+                                                                                    if (!parseInt(window.objetodah[indexher]['enhusillo'])) {
 
 
                                                                                         // CAMBIO BRAZO
@@ -8217,6 +8213,7 @@ TERMINA COMENT *****/
 
                                                                                         });
                                                                                     } else {
+
                                                                                         var cmd = "p";
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send  COM4" + " " + cmd);
 
@@ -8351,6 +8348,8 @@ TERMINA COMENT *****/
 
                                                                                         }, 10000);
 
+
+
                                                                                         //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
 
 
@@ -8363,10 +8362,8 @@ TERMINA COMENT *****/
                                                                                 else {
                                                                                     var indexher = window.toolausar - 1;
                                                                                     var valortool = window.toolausar;
-                                                                                    alert(toolausar);
-                                                                                    alert(window.toolausar);
-                                                                                    var longitud = parseFloat(window.objetodah[(window.toolausar - 1)]['longitud']);
 
+                                                                                    var longitud = parseFloat(window.objetodah[(window.toolausar - 1)]['longitud']);
 
 
                                                                                     var HttpClient = function() {
@@ -8919,7 +8916,6 @@ TERMINA COMENT *****/
 
                                                                         } else {
 
-
                                                                             // SI ES MODO H:
                                                                             if (modoh == 1) {
 
@@ -8974,7 +8970,6 @@ TERMINA COMENT *****/
 
 
                                                                                 //FIN COMPENSACION
-
                                                                                 if (!parseInt(obj[indexher]['enhusillo'])) {
 
 
@@ -8999,6 +8994,7 @@ TERMINA COMENT *****/
 
                                                                                     cmd = "q" + valortool + ";1";
                                                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
+
 
 
                                                                                     //Cambio brazo en la tabla.
@@ -9085,7 +9081,6 @@ TERMINA COMENT *****/
                                                                                             },15000);
                                                                                             */
                                                                                 } else {
-
                                                                                     var cmd = "p";
                                                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send  COM4" + " " + cmd);
 
@@ -9224,16 +9219,20 @@ TERMINA COMENT *****/
 
                                                                                 }
 
+
                                                                             }
 
                                                                             // SI ES MODO LINEAL:  ***********************************************************************************************
                                                                             else {
-                                                                                var indexher = window.toolausar - 1;
-                                                                                var valortool = window.toolausar;
-                                                                                var longitud = parseFloat(window.objetodah[(window.toolausar - 1)]['longitud']);
-
                                                                                 alert(toolausar);
                                                                                 alert(window.toolausar);
+                                                                                var longitud = parseFloat(window.objetodah[(window.toolausar - 1)]['longitud']);
+
+                                                                                var indexher = window.toolausar - 1;
+                                                                                var valortool = window.toolausar;
+
+
+
                                                                                 var HttpClient = function() {
 
                                                                                     this.get = function(aUrl, aCallback) {
@@ -9636,6 +9635,7 @@ TERMINA COMENT *****/
 
 
                                             break;
+
 
 
                                             /*********FIN CAMBIO DE HERRAMIENTA******/
@@ -16624,7 +16624,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">SEAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">YEAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
