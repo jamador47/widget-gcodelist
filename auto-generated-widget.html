@@ -8115,15 +8115,12 @@ TERMINA COMENT *****/
 
 
                                                                             var linea = gcodeline.replace('M6', "").trim();
-                                                                            alert(linea);
-                                                                            alert(contadordelinea);
                                                                             linea = linea.replace('M7', "").trim();
                                                                             linea = linea.replace('T', "").trim();
 
                                                                             var linean = "N" + contadordelinea;
                                                                             linea = linea.replace(linean, "").trim();
                                                                             window.toolausar = parseInt(linea);
-                                                                            alert(window.toolausar);
 
                                                                             if (window.toolausar == 0) {
                                                                                 for (var i = 0; i < 17; i++) {
@@ -8943,14 +8940,14 @@ TERMINA COMENT *****/
 
                                                                         var linea = gcodeline.replace('M6', "").trim();
                                                                         alert(linea);
-                                                                        alert(contadordelinea);
                                                                         linea = linea.replace('M7', "").trim();
                                                                         linea = linea.replace('T', "").trim();
 
-                                                                        var linean = "N" + contadordelinea;
+                                                                        var linean = "N" + (contadordelinea);
                                                                         linea = linea.replace(linean, "").trim();
                                                                         window.toolausar = parseInt(linea);
-                                                                        alert(window.toolausar);
+                                                                        alert("ACA SE ASIGNO");
+
 
                                                                         if (window.toolausar == 0) {
                                                                             for (var i = 0; i < 17; i++) {
