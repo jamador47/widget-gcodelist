@@ -5234,9 +5234,9 @@
 
                                                                         var linean = "N" + idnum;
                                                                         linea = linea.replace(linean, "").trim();
-                                                                        this.toolausar = parseInt(linea);
+                                                                        window.toolausar = parseInt(linea);
 
-                                                                        if (this.toolausar == 0) {
+                                                                        if (window.toolausar == 0) {
                                                                             for (var i = 0; i < 17; i++) {
 
                                                                                 if (parseInt(obj[i]['enhusillo'])) {
@@ -5297,7 +5297,7 @@
                                                                                 // Loop para encontrar que pocket tiene la herramienta pedida.
                                                                                 for (var i = 0; i < 17; i++) {
 
-                                                                                    if (obj[i]['herramienta'] == this.toolausar) {
+                                                                                    if (obj[i]['herramienta'] == window.toolausar) {
                                                                                         // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                                                                         var indexher = i;
                                                                                         var valortool = i + 1;
@@ -5363,7 +5363,7 @@
                                                                                             anHttpRequest.send(null);
                                                                                         }
                                                                                     }
-                                                                                    var theurl = 'http://192.168.0.98/sigherramienta/' + this.toolausar;
+                                                                                    var theurl = 'http://192.168.0.98/sigherramienta/' + window.toolausar;
                                                                                     var client = new HttpClient();
                                                                                     client.get(theurl, function(response) {});
 
@@ -5413,8 +5413,8 @@
 
                                                                             // SI ES MODO LINEAL:  ***********************************************************************************************
                                                                             else {
-                                                                                var indexher = this.toolausar - 1;
-                                                                                var valortool = this.toolausar;
+                                                                                var indexher = window.toolausar - 1;
+                                                                                var valortool = window.toolausar;
 
 
 
@@ -5431,7 +5431,7 @@
                                                                                         anHttpRequest.send(null);
                                                                                     }
                                                                                 }
-                                                                                var theurl = 'http://192.168.0.98/sigherramienta/' + this.toolausar;
+                                                                                var theurl = 'http://192.168.0.98/sigherramienta/' + window.toolausar;
                                                                                 var client = new HttpClient();
                                                                                 client.get(theurl, function(response) {});
 
@@ -5463,7 +5463,7 @@
                                                                                     var valorz = parseFloat(obj['z']);
                                                                                     var valora = obj['a'];
 
-                                                                                    valorz = valorz + parseFloat(obj[this.toolausar - 1]['longitud']);
+                                                                                    valorz = valorz + parseFloat(obj[window.toolausar - 1]['longitud']);
                                                                                     valorz = valorz.toString();
                                                                                     alert(valorz);
                                                                                     var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
@@ -5557,7 +5557,7 @@
                                                                                                 anHttpRequest.send(null);
                                                                                             }
                                                                                         }
-                                                                                        var theurl = 'http://192.168.0.98/sigherramienta/' + this.toolausar;
+                                                                                        var theurl = 'http://192.168.0.98/sigherramienta/' + window.toolausar;
                                                                                         var client = new HttpClient();
                                                                                         client.get(theurl, function(response) {});
 
@@ -5629,7 +5629,7 @@
                                                                                                 anHttpRequest.send(null);
                                                                                             }
                                                                                         }
-                                                                                        var theurl = 'http://192.168.0.98/rotarcar/' + this.toolausar;
+                                                                                        var theurl = 'http://192.168.0.98/rotarcar/' + window.toolausar;
                                                                                         var client = new HttpClient();
                                                                                         client.get(theurl, function(response) {
 
@@ -5652,7 +5652,7 @@
 
                                                                                         });
 
-                                                                                        cmd = "q" + this.toolausar + ";" + obj[(this.toolausar - 1)]['longitud'];
+                                                                                        cmd = "q" + window.toolausar + ";" + obj[(window.toolausar - 1)]['longitud'];
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
 
@@ -5784,9 +5784,9 @@
 
                                                                     var linean = "N" + (idnum);
                                                                     linea = linea.replace(linean, "").trim();
-                                                                    this.toolausar = parseInt(linea);
+                                                                    window.toolausar = parseInt(linea);
 
-                                                                    if (this.toolausar == 0) {
+                                                                    if (window.toolausar == 0) {
                                                                         for (var i = 0; i < 17; i++) {
 
                                                                             if (parseInt(obj[i]['enhusillo'])) {
@@ -5847,7 +5847,7 @@
                                                                             // Loop para encontrar que pocket tiene la herramienta pedida.
                                                                             for (var i = 0; i < 17; i++) {
 
-                                                                                if (obj[i]['herramienta'] == this.toolausar) {
+                                                                                if (obj[i]['herramienta'] == window.toolausar) {
                                                                                     // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                                                                     var indexher = i;
                                                                                     var valortool = i + 1;
@@ -6024,10 +6024,10 @@
                                                                         // SI ES MODO LINEAL:  ***********************************************************************************************
                                                                         else {
                                                                             alert(toolausar);
-                                                                            alert(this.toolausar);
+                                                                            alert(window.toolausar);
 
-                                                                            var indexher = this.toolausar - 1;
-                                                                            var valortool = this.toolausar;
+                                                                            var indexher = window.toolausar - 1;
+                                                                            var valortool = window.toolausar;
 
 
 
@@ -6043,7 +6043,7 @@
                                                                                     anHttpRequest.send(null);
                                                                                 }
                                                                             }
-                                                                            var theurl = 'http://192.168.0.98/sigherramienta/' + this.toolausar;
+                                                                            var theurl = 'http://192.168.0.98/sigherramienta/' + window.toolausar;
                                                                             var client = new HttpClient();
                                                                             client.get(theurl, function(response) {});
 
@@ -6073,7 +6073,7 @@
                                                                                 var valorz = parseFloat(obj['z']);
                                                                                 var valora = obj['a'];
 
-                                                                                valorz = valorz + parseFloat(obj[this.toolausar - 1]['longitud']);
+                                                                                valorz = valorz + parseFloat(obj[window.toolausar - 1]['longitud']);
                                                                                 valorz = valorz.toString();
                                                                                 alert(valorz);
                                                                                 var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
@@ -6221,7 +6221,7 @@
                                                                                             anHttpRequest.send(null);
                                                                                         }
                                                                                     }
-                                                                                    var theurl = 'http://192.168.0.98/rotarcar/' + this.toolausar;
+                                                                                    var theurl = 'http://192.168.0.98/rotarcar/' + window.toolausar;
                                                                                     var client = new HttpClient();
                                                                                     client.get(theurl, function(response) {
 
@@ -6244,7 +6244,7 @@
 
                                                                                     });
 
-                                                                                    cmd = "q" + this.toolausar + ";" + obj[(this.toolausar - 1)]['longitud'];
+                                                                                    cmd = "q" + window.toolausar + ";" + obj[(window.toolausar - 1)]['longitud'];
                                                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
                                                                                 } else {
@@ -7544,9 +7544,9 @@ TERMINA COMENT *****/
 
                                                                             var linean = "N" + idnum;
                                                                             linea = linea.replace(linean, "").trim();
-                                                                            this.toolausar = parseInt(linea);
+                                                                            window.toolausar = parseInt(linea);
 
-                                                                            if (this.toolausar == 0) {
+                                                                            if (window.toolausar == 0) {
                                                                                 for (var i = 0; i < 17; i++) {
 
                                                                                     if (parseInt(obj[i]['enhusillo'])) {
@@ -7609,7 +7609,7 @@ TERMINA COMENT *****/
                                                                                     // Loop para encontrar que pocket tiene la herramienta pedida.
                                                                                     for (var i = 0; i < 17; i++) {
 
-                                                                                        if (obj[i]['herramienta'] == this.toolausar) {
+                                                                                        if (obj[i]['herramienta'] == window.toolausar) {
                                                                                             // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                                                                             var indexher = i;
                                                                                             var valortool = i + 1;
@@ -7676,7 +7676,7 @@ TERMINA COMENT *****/
                                                                                                 anHttpRequest.send(null);
                                                                                             }
                                                                                         }
-                                                                                        var theurl = 'http://192.168.0.98/sigherramienta/' + this.toolausar;
+                                                                                        var theurl = 'http://192.168.0.98/sigherramienta/' + window.toolausar;
                                                                                         var client = new HttpClient();
                                                                                         client.get(theurl, function(response) {});
 
@@ -7724,10 +7724,10 @@ TERMINA COMENT *****/
 
                                                                                 // SI ES MODO LINEAL:  ***********************************************************************************************
                                                                                 else {
-                                                                                    var indexher = this.toolausar - 1;
-                                                                                    var valortool = this.toolausar;
+                                                                                    var indexher = window.toolausar - 1;
+                                                                                    var valortool = window.toolausar;
                                                                                     alert(toolausar);
-                                                                                    alert(this.toolausar);
+                                                                                    alert(window.toolausar);
 
 
 
@@ -7743,7 +7743,7 @@ TERMINA COMENT *****/
                                                                                             anHttpRequest.send(null);
                                                                                         }
                                                                                     }
-                                                                                    var theurl = 'http://192.168.0.98/sigherramienta/' + this.toolausar;
+                                                                                    var theurl = 'http://192.168.0.98/sigherramienta/' + window.toolausar;
                                                                                     var client = new HttpClient();
                                                                                     client.get(theurl, function(response) {});
 
@@ -7775,7 +7775,7 @@ TERMINA COMENT *****/
                                                                                         var valorz = parseFloat(obj['z']);
                                                                                         var valora = obj['a'];
 
-                                                                                        valorz = valorz + parseFloat(obj[this.toolausar - 1]['longitud']);
+                                                                                        valorz = valorz + parseFloat(obj[window.toolausar - 1]['longitud']);
                                                                                         valorz = valorz.toString();
                                                                                         alert(valorz);
                                                                                         var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
@@ -7869,7 +7869,7 @@ TERMINA COMENT *****/
                                                                                                     anHttpRequest.send(null);
                                                                                                 }
                                                                                             }
-                                                                                            var theurl = 'http://192.168.0.98/sigherramienta/' + this.toolausar;
+                                                                                            var theurl = 'http://192.168.0.98/sigherramienta/' + window.toolausar;
                                                                                             var client = new HttpClient();
                                                                                             client.get(theurl, function(response) {});
 
@@ -7941,7 +7941,7 @@ TERMINA COMENT *****/
                                                                                                     anHttpRequest.send(null);
                                                                                                 }
                                                                                             }
-                                                                                            var theurl = 'http://192.168.0.98/rotarcar/' + this.toolausar;
+                                                                                            var theurl = 'http://192.168.0.98/rotarcar/' + window.toolausar;
                                                                                             var client = new HttpClient();
                                                                                             client.get(theurl, function(response) {
 
@@ -7964,7 +7964,7 @@ TERMINA COMENT *****/
 
                                                                                             });
 
-                                                                                            cmd = "q" + this.toolausar + ";" + obj[(this.toolausar - 1)]['longitud'];
+                                                                                            cmd = "q" + window.toolausar + ";" + obj[(window.toolausar - 1)]['longitud'];
                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
 
@@ -8096,9 +8096,9 @@ TERMINA COMENT *****/
 
                                                                         var linean = "N" + (idnum);
                                                                         linea = linea.replace(linean, "").trim();
-                                                                        this.toolausar = parseInt(linea);
+                                                                        window.toolausar = parseInt(linea);
 
-                                                                        if (this.toolausar == 0) {
+                                                                        if (window.toolausar == 0) {
                                                                             for (var i = 0; i < 17; i++) {
 
                                                                                 if (parseInt(obj[i]['enhusillo'])) {
@@ -8160,7 +8160,7 @@ TERMINA COMENT *****/
                                                                                 // Loop para encontrar que pocket tiene la herramienta pedida.
                                                                                 for (var i = 0; i < 17; i++) {
 
-                                                                                    if (obj[i]['herramienta'] == this.toolausar) {
+                                                                                    if (obj[i]['herramienta'] == window.toolausar) {
                                                                                         // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                                                                         var indexher = i;
                                                                                         var valortool = i + 1;
@@ -8336,12 +8336,12 @@ TERMINA COMENT *****/
 
                                                                             // SI ES MODO LINEAL:  ***********************************************************************************************
                                                                             else {
-                                                                                var indexher = this.toolausar - 1;
-                                                                                var valortool = this.toolausar;
+                                                                                var indexher = window.toolausar - 1;
+                                                                                var valortool = window.toolausar;
 
 
                                                                                 alert(toolausar);
-                                                                                alert(this.toolausar);
+                                                                                alert(window.toolausar);
                                                                                 var HttpClient = function() {
 
                                                                                     this.get = function(aUrl, aCallback) {
@@ -8354,7 +8354,7 @@ TERMINA COMENT *****/
                                                                                         anHttpRequest.send(null);
                                                                                     }
                                                                                 }
-                                                                                var theurl = 'http://192.168.0.98/sigherramienta/' + this.toolausar;
+                                                                                var theurl = 'http://192.168.0.98/sigherramienta/' + window.toolausar;
                                                                                 var client = new HttpClient();
                                                                                 client.get(theurl, function(response) {});
 
@@ -8384,7 +8384,7 @@ TERMINA COMENT *****/
                                                                                     var valorz = parseFloat(obj['z']);
                                                                                     var valora = obj['a'];
 
-                                                                                    valorz = valorz + parseFloat(obj[this.toolausar - 1]['longitud']);
+                                                                                    valorz = valorz + parseFloat(obj[window.toolausar - 1]['longitud']);
                                                                                     valorz = valorz.toString();
                                                                                     alert(valorz);
                                                                                     var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
@@ -8532,7 +8532,7 @@ TERMINA COMENT *****/
                                                                                                 anHttpRequest.send(null);
                                                                                             }
                                                                                         }
-                                                                                        var theurl = 'http://192.168.0.98/rotarcar/' + this.toolausar;
+                                                                                        var theurl = 'http://192.168.0.98/rotarcar/' + window.toolausar;
                                                                                         var client = new HttpClient();
                                                                                         client.get(theurl, function(response) {
 
@@ -8555,7 +8555,7 @@ TERMINA COMENT *****/
 
                                                                                         });
 
-                                                                                        cmd = "q" + this.toolausar + ";" + obj[(this.toolausar - 1)]['longitud'];
+                                                                                        cmd = "q" + window.toolausar + ";" + obj[(window.toolausar - 1)]['longitud'];
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
                                                                                     } else {
@@ -15606,7 +15606,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">PRUABO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">PRAEBO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
