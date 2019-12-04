@@ -8120,7 +8120,7 @@ TERMINA COMENT *****/
                                                                             linea = linea.replace('M7', "").trim();
                                                                             linea = linea.replace('T', "").trim();
 
-                                                                            var linean = "N" + contadordelinea - 1;
+                                                                            var linean = "N" + (contadordelinea - 1);
                                                                             linea = linea.replace(linean, "").trim();
                                                                             window.toolausar = parseInt(linea);
 
@@ -16736,7 +16736,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">SMFAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">RMFAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
