@@ -5224,6 +5224,7 @@
                                                                     client.get(theurl, function(response) {
 
                                                                         var obj = JSON.parse(response);
+                                                                        window.objetotodah = obj;
                                                                         var modoh = parseInt(obj[0]['modoh']);
 
 
@@ -5297,12 +5298,12 @@
                                                                                 // Loop para encontrar que pocket tiene la herramienta pedida.
                                                                                 for (var i = 0; i < 17; i++) {
 
-                                                                                    if (obj[i]['herramienta'] == window.toolausar) {
+                                                                                    if (window.objetodah[i]['herramienta'] == window.toolausar) {
                                                                                         // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                                                                         var indexher = i;
                                                                                         var valortool = i + 1;
-                                                                                        var longitud = parseFloat(obj[i]['longitud']);
-                                                                                        var enhusillo = parseInt(obj[i]['enhusillo']);
+                                                                                        var longitud = parseFloat(window.objetodah[i]['longitud']);
+                                                                                        var enhusillo = parseInt(window.objetodah[i]['enhusillo']);
                                                                                     }
                                                                                 }
 
@@ -5347,7 +5348,7 @@
                                                                                 //FIN COMPENSACION
 
 
-                                                                                if (!parseInt(obj[indexher]['enhusillo'])) {
+                                                                                if (!parseInt(window.objetodah[indexher]['enhusillo'])) {
 
 
                                                                                     // CAMBIO BRAZO
@@ -5416,7 +5417,7 @@
                                                                                 var indexher = window.toolausar - 1;
                                                                                 var valortool = window.toolausar;
 
-                                                                                var longitud = parseFloat(obj[(window.toolausar - 1)]['longitud']);
+                                                                                var longitud = parseFloat(window.objetodah[(window.toolausar - 1)]['longitud']);
 
 
                                                                                 var HttpClient = function() {
@@ -5652,7 +5653,7 @@
 
                                                                                         });
 
-                                                                                        cmd = "q" + window.toolausar + ";" + obj[(window.toolausar - 1)]['longitud'];
+                                                                                        cmd = "q" + window.toolausar + ";1";
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
 
@@ -5847,11 +5848,11 @@
                                                                             // Loop para encontrar que pocket tiene la herramienta pedida.
                                                                             for (var i = 0; i < 17; i++) {
 
-                                                                                if (obj[i]['herramienta'] == window.toolausar) {
+                                                                                if (window.objetodah[i]['herramienta'] == window.toolausar) {
                                                                                     // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                                                                     var indexher = i;
                                                                                     var valortool = i + 1;
-                                                                                    var longitud = obj[i]['longitud'];
+                                                                                    var longitud = window.objetodah[i]['longitud'];
                                                                                 }
                                                                             }
 
@@ -6025,7 +6026,7 @@
                                                                         else {
                                                                             alert(toolausar);
                                                                             alert(window.toolausar);
-                                                                            var longitud = parseFloat(obj[(window.toolausar - 1)]['longitud']);
+                                                                            var longitud = parseFloat(window.objetodah[(window.toolausar - 1)]['longitud']);
 
                                                                             var indexher = window.toolausar - 1;
                                                                             var valortool = window.toolausar;
@@ -6245,7 +6246,7 @@
 
                                                                                     });
 
-                                                                                    cmd = "q" + window.toolausar + ";" + obj[(window.toolausar - 1)]['longitud'];
+                                                                                    cmd = "q" + window.toolausar + ";1";
                                                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
                                                                                 } else {
@@ -7610,12 +7611,12 @@ TERMINA COMENT *****/
                                                                                     // Loop para encontrar que pocket tiene la herramienta pedida.
                                                                                     for (var i = 0; i < 17; i++) {
 
-                                                                                        if (obj[i]['herramienta'] == window.toolausar) {
+                                                                                        if (window.objetodah[i]['herramienta'] == window.toolausar) {
                                                                                             // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                                                                             var indexher = i;
                                                                                             var valortool = i + 1;
-                                                                                            var longitud = parseFloat(obj[i]['longitud']);
-                                                                                            var enhusillo = parseInt(obj[i]['enhusillo']);
+                                                                                            var longitud = parseFloat(window.objetodah[i]['longitud']);
+                                                                                            var enhusillo = parseInt(window.objetodah[i]['enhusillo']);
                                                                                         }
                                                                                     }
 
@@ -7729,7 +7730,7 @@ TERMINA COMENT *****/
                                                                                     var valortool = window.toolausar;
                                                                                     alert(toolausar);
                                                                                     alert(window.toolausar);
-                                                                                    var longitud = parseFloat(obj[(window.toolausar - 1)]['longitud']);
+                                                                                    var longitud = parseFloat(window.objetodah[(window.toolausar - 1)]['longitud']);
 
 
 
@@ -7966,7 +7967,7 @@ TERMINA COMENT *****/
 
                                                                                             });
 
-                                                                                            cmd = "q" + window.toolausar + ";" + obj[(window.toolausar - 1)]['longitud'];
+                                                                                            cmd = "q" + window.toolausar + ";1";
                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
 
@@ -8162,11 +8163,11 @@ TERMINA COMENT *****/
                                                                                 // Loop para encontrar que pocket tiene la herramienta pedida.
                                                                                 for (var i = 0; i < 17; i++) {
 
-                                                                                    if (obj[i]['herramienta'] == window.toolausar) {
+                                                                                    if (window.objetodah[i]['herramienta'] == window.toolausar) {
                                                                                         // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                                                                         var indexher = i;
                                                                                         var valortool = i + 1;
-                                                                                        var longitud = obj[i]['longitud'];
+                                                                                        var longitud = window.objetodah[i]['longitud'];
                                                                                     }
                                                                                 }
 
@@ -8340,7 +8341,7 @@ TERMINA COMENT *****/
                                                                             else {
                                                                                 var indexher = window.toolausar - 1;
                                                                                 var valortool = window.toolausar;
-                                                                                var longitud = parseFloat(obj[(window.toolausar - 1)]['longitud']);
+                                                                                var longitud = parseFloat(window.objetodah[(window.toolausar - 1)]['longitud']);
 
                                                                                 alert(toolausar);
                                                                                 alert(window.toolausar);
@@ -8557,7 +8558,7 @@ TERMINA COMENT *****/
 
                                                                                         });
 
-                                                                                        cmd = "q" + window.toolausar + ";" + obj[(window.toolausar - 1)]['longitud'];
+                                                                                        cmd = "q" + window.toolausar + ";1";
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
                                                                                     } else {
@@ -15608,7 +15609,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">PEEBO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">PAEBO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
