@@ -5463,7 +5463,7 @@
                                                                                     var valorz = parseFloat(obj['z']);
                                                                                     var valora = obj['a'];
 
-                                                                                    valorz = valorz + parseFloat(obj[valortool - 1]['longitud']);
+                                                                                    valorz = valorz + parseFloat(obj[this.toolausar - 1]['longitud']);
                                                                                     valorz = valorz.toString();
                                                                                     alert(valorz);
                                                                                     var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
@@ -6073,7 +6073,7 @@
                                                                                 var valorz = parseFloat(obj['z']);
                                                                                 var valora = obj['a'];
 
-                                                                                valorz = valorz + parseFloat(obj[valortool - 1]['longitud']);
+                                                                                valorz = valorz + parseFloat(obj[this.toolausar - 1]['longitud']);
                                                                                 valorz = valorz.toString();
                                                                                 alert(valorz);
                                                                                 var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
@@ -7775,7 +7775,7 @@ TERMINA COMENT *****/
                                                                                         var valorz = parseFloat(obj['z']);
                                                                                         var valora = obj['a'];
 
-                                                                                        valorz = valorz + parseFloat(obj[valortool - 1]['longitud']);
+                                                                                        valorz = valorz + parseFloat(obj[this.toolausar - 1]['longitud']);
                                                                                         valorz = valorz.toString();
                                                                                         alert(valorz);
                                                                                         var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
@@ -8384,7 +8384,7 @@ TERMINA COMENT *****/
                                                                                     var valorz = parseFloat(obj['z']);
                                                                                     var valora = obj['a'];
 
-                                                                                    valorz = valorz + parseFloat(obj[valortool - 1]['longitud']);
+                                                                                    valorz = valorz + parseFloat(obj[this.toolausar - 1]['longitud']);
                                                                                     valorz = valorz.toString();
                                                                                     alert(valorz);
                                                                                     var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
@@ -15606,7 +15606,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">PRUEBO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">PRUABO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
