@@ -3391,6 +3391,25 @@
                         var modoh = obj[0]['modoh'];
                         // SI ES MODO H:
                         if (modoh) {
+                            var HttpClient = function() {
+
+                                this.get = function(aUrl, aCallback) {
+                                    var anHttpRequest = new XMLHttpRequest();
+                                    anHttpRequest.onreadystatechange = function() {
+                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                            aCallback(anHttpRequest.responseText);
+                                    }
+                                    anHttpRequest.open("GET", aUrl, true);
+                                    anHttpRequest.send(null);
+                                }
+                            }
+                            var theurl = 'http://192.168.0.98/geth';
+                            var client = new HttpClient();
+                            client.get(theurl, function(response) {
+
+                                var obj = JSON.parse(response);
+                                window.objetodah = obj;
+                            });
 
 
                             var largodecodigo = esto.fileLines.length;
@@ -5297,6 +5316,26 @@
                                                                             // SI ES MODO H:
                                                                             if (modoh == 1) {
 
+                                                                                var HttpClient = function() {
+
+                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                        }
+                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                        anHttpRequest.send(null);
+                                                                                    }
+                                                                                }
+                                                                                var theurl = 'http://192.168.0.98/geth';
+                                                                                var client = new HttpClient();
+                                                                                client.get(theurl, function(response) {
+
+                                                                                    var obj = JSON.parse(response);
+                                                                                    window.objetodah = obj;
+                                                                                });
+
                                                                                 // Loop para encontrar que pocket tiene la herramienta pedida.
                                                                                 for (var i = 0; i < 17; i++) {
 
@@ -6101,6 +6140,25 @@
                                                                         // SI ES MODO H:
                                                                         if (modoh == 1) {
 
+                                                                            var HttpClient = function() {
+
+                                                                                this.get = function(aUrl, aCallback) {
+                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                    }
+                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                    anHttpRequest.send(null);
+                                                                                }
+                                                                            }
+                                                                            var theurl = 'http://192.168.0.98/geth';
+                                                                            var client = new HttpClient();
+                                                                            client.get(theurl, function(response) {
+
+                                                                                var obj = JSON.parse(response);
+                                                                                window.objetodah = obj;
+                                                                            });
                                                                             // Loop para encontrar que pocket tiene la herramienta pedida.
                                                                             for (var i = 0; i < 17; i++) {
 
@@ -8114,7 +8172,25 @@ TERMINA COMENT *****/
 
                                                                                 // SI ES MODO H:
                                                                                 if (modoh == 1) {
+                                                                                    var HttpClient = function() {
 
+                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                            }
+                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                            anHttpRequest.send(null);
+                                                                                        }
+                                                                                    }
+                                                                                    var theurl = 'http://192.168.0.98/geth';
+                                                                                    var client = new HttpClient();
+                                                                                    client.get(theurl, function(response) {
+
+                                                                                        var obj = JSON.parse(response);
+                                                                                        window.objetodah = obj;
+                                                                                    });
                                                                                     // Loop para encontrar que pocket tiene la herramienta pedida.
                                                                                     for (var i = 0; i < 17; i++) {
 
@@ -8918,6 +8994,25 @@ TERMINA COMENT *****/
 
                                                                             // SI ES MODO H:
                                                                             if (modoh == 1) {
+                                                                                var HttpClient = function() {
+
+                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                        }
+                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                        anHttpRequest.send(null);
+                                                                                    }
+                                                                                }
+                                                                                var theurl = 'http://192.168.0.98/geth';
+                                                                                var client = new HttpClient();
+                                                                                client.get(theurl, function(response) {
+
+                                                                                    var obj = JSON.parse(response);
+                                                                                    window.objetodah = obj;
+                                                                                });
 
                                                                                 // Loop para encontrar que pocket tiene la herramienta pedida.
                                                                                 for (var i = 0; i < 17; i++) {
