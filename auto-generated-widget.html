@@ -6355,6 +6355,10 @@ var cmd  = "~";
                                                 }
 
 
+                                                var theurl = 'http://192.168.0.98/api/uto/'+coord+"/"+xcambiar+"/"+ycambiar+"/"+acambiar+"/"+zcambiar;
+                                var client = new HttpClient();
+                                client.get(theurl, function(response) {
+                                });
 
                                                 var cmd = "G10 L2 P1 X"+xcambiar+" Y"+ycambiar+" A"+acambiar+" Z"+zcambiar;
                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd); 
@@ -8679,6 +8683,10 @@ var cmd  = "~";
                                                 }
 
 
+                                                var theurl = 'http://192.168.0.98/api/uto/'+coord+"/"+xcambiar+"/"+ycambiar+"/"+acambiar+"/"+zcambiar;
+                                var client = new HttpClient();
+                                client.get(theurl, function(response) {
+                                });
 
                                                 var cmd = "G10 L2 P1 X"+xcambiar+" Y"+ycambiar+" A"+acambiar+" Z"+zcambiar;
                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd); 
