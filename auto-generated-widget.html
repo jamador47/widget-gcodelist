@@ -5256,6 +5256,7 @@
 
                                                                         var linea = gcodeline.replace('M6', "").trim();
                                                                         alert(linea);
+                                                                        alert(contadordelinea);
                                                                         linea = linea.replace('M7', "").trim();
                                                                         linea = linea.replace('T', "").trim();
 
@@ -5263,6 +5264,7 @@
                                                                         linea = linea.replace(linean, "").trim();
                                                                         window.toolausar = parseInt(linea);
                                                                         alert("ACA SE ASIGNO");
+                                                                        alert(window.toolausar);
 
 
                                                                         if (window.toolausar == 0) {
@@ -8115,12 +8117,17 @@ TERMINA COMENT *****/
 
 
                                                                             var linea = gcodeline.replace('M6', "").trim();
+                                                                            alert(linea);
+                                                                            alert(contadordelinea);
                                                                             linea = linea.replace('M7', "").trim();
                                                                             linea = linea.replace('T', "").trim();
 
-                                                                            var linean = "N" + contadordelinea;
+                                                                            var linean = "N" + (contadordelinea);
                                                                             linea = linea.replace(linean, "").trim();
                                                                             window.toolausar = parseInt(linea);
+                                                                            alert("ACA SE ASIGNO");
+                                                                            alert(window.toolausar);
+
 
                                                                             if (window.toolausar == 0) {
                                                                                 for (var i = 0; i < 17; i++) {
@@ -8940,6 +8947,7 @@ TERMINA COMENT *****/
 
                                                                         var linea = gcodeline.replace('M6', "").trim();
                                                                         alert(linea);
+                                                                        alert(contadordelinea);
                                                                         linea = linea.replace('M7', "").trim();
                                                                         linea = linea.replace('T', "").trim();
 
@@ -8947,6 +8955,7 @@ TERMINA COMENT *****/
                                                                         linea = linea.replace(linean, "").trim();
                                                                         window.toolausar = parseInt(linea);
                                                                         alert("ACA SE ASIGNO");
+                                                                        alert(window.toolausar);
 
 
                                                                         if (window.toolausar == 0) {
@@ -16733,7 +16742,8 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">JMFAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title"></span>JSFAO</span>
+            </div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
