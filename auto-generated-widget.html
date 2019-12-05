@@ -3344,6 +3344,7 @@
                  */
                 onPlay: function(event) {
                     var cmd = "!%";
+                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
 
                     this.getGcode();
