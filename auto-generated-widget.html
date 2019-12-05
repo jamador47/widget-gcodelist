@@ -4855,10 +4855,9 @@
                     // write it to the log
                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
-                    setTimeout(() => {
+                    setTimeout(function() {
                         chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-
-                    }, 1000);
+                    }, 5000);
                     // //alert("ENTRO");
                     //console.group("gcode widget - onExecute");
                     console.log("onExecute data:", data);
@@ -16741,7 +16740,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">EEAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">AEEAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
