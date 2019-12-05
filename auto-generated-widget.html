@@ -5452,6 +5452,8 @@
                                                                                     setTimeout(() => {
                                                                                         var cmd = "~";
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
 
                                                                                     }, 10000);
 
@@ -5719,6 +5721,7 @@
                                                                                         setTimeout(() => {
                                                                                             var cmd = "~";
                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
                                                                                         }, 10000);
 
@@ -6090,6 +6093,7 @@
                                                                                 setTimeout(() => {
                                                                                     var cmd = "~";
                                                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
                                                                                 }, 10000);
 
@@ -6336,6 +6340,7 @@
                                                                                     setTimeout(() => {
                                                                                         var cmd = "~";
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
                                                                                     }, 10000);
 
@@ -7813,6 +7818,7 @@ TERMINA COMENT *****/
                                                                                         setTimeout(() => {
                                                                                             var cmd = "~";
                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
                                                                                         }, 10000);
 
@@ -8082,6 +8088,7 @@ TERMINA COMENT *****/
                                                                                             setTimeout(() => {
                                                                                                 var cmd = "~";
                                                                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
                                                                                             }, 10000);
 
@@ -8457,6 +8464,7 @@ TERMINA COMENT *****/
                                                                                     setTimeout(() => {
                                                                                         var cmd = "~";
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
                                                                                     }, 10000);
 
@@ -8705,6 +8713,7 @@ TERMINA COMENT *****/
                                                                                         setTimeout(() => {
                                                                                             var cmd = "~";
                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
                                                                                         }, 10000);
 
@@ -15189,7 +15198,12 @@ TERMINA COMENT *****/
                 // so don't forget
                 updateRowQueueStats: function(linenum) {
 
-                    alert(this.fileLines[linenum - 1]);
+                    alert();
+                    var linea = this.fileLines[linenum - 1];
+                    //ACA TRABAJO AHORITA.
+                    if (linea.match(/\bM6\b/i)) {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    }
                     // We will update the checkmark based on the underlying meta data for
                     // the line. Lines are stored in this.fileLines and meta data is in
                     // this.metaLines. They have equal indexes.
@@ -15749,7 +15763,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">yEAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">TEAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
@@ -16287,4 +16301,4 @@ TERMINA COMENT *****/
 
 </body>
 
-</html>f
+</html>
