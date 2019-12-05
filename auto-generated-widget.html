@@ -5266,87 +5266,6 @@
 
 
                                                                         if (window.toolausar == 0) {
-                                                                            //COMPENSACION
-                                                                            var HttpClient = function() {
-
-                                                                                this.get = function(aUrl, aCallback) {
-                                                                                    var anHttpRequest = new XMLHttpRequest();
-                                                                                    anHttpRequest.onreadystatechange = function() {
-                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                            aCallback(anHttpRequest.responseText);
-                                                                                    }
-                                                                                    anHttpRequest.open("GET", aUrl, true);
-                                                                                    anHttpRequest.send(null);
-                                                                                }
-                                                                            }
-                                                                            var theurl = 'http://192.168.0.98/api/origenesactivos/';
-                                                                            var client = new HttpClient();
-                                                                            client.get(theurl, function(response) {
-
-                                                                                var obj = JSON.parse(response);
-
-                                                                                var valorx = obj['x'];
-                                                                                var valory = obj['y'];
-                                                                                var valorz = parseFloat(obj['z']);
-                                                                                var valora = obj['a'];
-
-                                                                                valorz = valorz.toString();
-
-                                                                                var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
-                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
-
-
-
-                                                                            });
-
-
-
-
-
-                                                                            //FIN COMPENSACION
-
-
-                                                                            //COMPENSACION
-                                                                            var HttpClient = function() {
-
-                                                                                this.get = function(aUrl, aCallback) {
-                                                                                    var anHttpRequest = new XMLHttpRequest();
-                                                                                    anHttpRequest.onreadystatechange = function() {
-                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                            aCallback(anHttpRequest.responseText);
-                                                                                    }
-                                                                                    anHttpRequest.open("GET", aUrl, true);
-                                                                                    anHttpRequest.send(null);
-                                                                                }
-                                                                            }
-                                                                            var theurl = 'http://192.168.0.98/api/origenesactivos/';
-                                                                            var client = new HttpClient();
-                                                                            client.get(theurl, function(response) {
-
-                                                                                var obj = JSON.parse(response);
-
-                                                                                var valorx = obj['x'];
-                                                                                var valory = obj['y'];
-                                                                                var valorz = parseFloat(obj['z']);
-                                                                                var valora = obj['a'];
-
-                                                                                valorz = valorz.toString();
-
-                                                                                var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
-                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
-
-
-
-                                                                            });
-
-
-
-
-
-                                                                            //FIN COMPENSACION
-
-
-
                                                                             for (var i = 0; i < 17; i++) {
 
                                                                                 if (parseInt(obj[i]['enhusillo'])) {
@@ -6171,46 +6090,6 @@
                                                                     window.toolausar = parseInt(linea);
 
                                                                     if (window.toolausar == 0) {
-
-
-                                                                        //COMPENSACION
-                                                                        var HttpClient = function() {
-
-                                                                            this.get = function(aUrl, aCallback) {
-                                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                                anHttpRequest.onreadystatechange = function() {
-                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                        aCallback(anHttpRequest.responseText);
-                                                                                }
-                                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                                anHttpRequest.send(null);
-                                                                            }
-                                                                        }
-                                                                        var theurl = 'http://192.168.0.98/api/origenesactivos/';
-                                                                        var client = new HttpClient();
-                                                                        client.get(theurl, function(response) {
-
-                                                                            var obj = JSON.parse(response);
-
-                                                                            var valorx = obj['x'];
-                                                                            var valory = obj['y'];
-                                                                            var valorz = parseFloat(obj['z']);
-                                                                            var valora = obj['a'];
-
-                                                                            valorz = valorz.toString();
-
-                                                                            var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
-                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
-
-
-
-                                                                        });
-
-
-
-
-
-                                                                        //FIN COMPENSACION
                                                                         for (var i = 0; i < 17; i++) {
 
                                                                             if (parseInt(obj[i]['enhusillo'])) {
@@ -8246,45 +8125,6 @@ TERMINA COMENT *****/
                                                                             window.toolausar = parseInt(linea);
 
                                                                             if (window.toolausar == 0) {
-
-                                                                                //COMPENSACION
-                                                                                var HttpClient = function() {
-
-                                                                                    this.get = function(aUrl, aCallback) {
-                                                                                        var anHttpRequest = new XMLHttpRequest();
-                                                                                        anHttpRequest.onreadystatechange = function() {
-                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                aCallback(anHttpRequest.responseText);
-                                                                                        }
-                                                                                        anHttpRequest.open("GET", aUrl, true);
-                                                                                        anHttpRequest.send(null);
-                                                                                    }
-                                                                                }
-                                                                                var theurl = 'http://192.168.0.98/api/origenesactivos/';
-                                                                                var client = new HttpClient();
-                                                                                client.get(theurl, function(response) {
-
-                                                                                    var obj = JSON.parse(response);
-
-                                                                                    var valorx = obj['x'];
-                                                                                    var valory = obj['y'];
-                                                                                    var valorz = parseFloat(obj['z']);
-                                                                                    var valora = obj['a'];
-
-                                                                                    valorz = valorz.toString();
-
-                                                                                    var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
-                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
-
-
-
-                                                                                });
-
-
-
-
-
-                                                                                //FIN COMPENSACION
                                                                                 for (var i = 0; i < 17; i++) {
 
                                                                                     if (parseInt(obj[i]['enhusillo'])) {
@@ -9113,45 +8953,6 @@ TERMINA COMENT *****/
 
 
                                                                         if (window.toolausar == 0) {
-
-                                                                            //COMPENSACION
-                                                                            var HttpClient = function() {
-
-                                                                                this.get = function(aUrl, aCallback) {
-                                                                                    var anHttpRequest = new XMLHttpRequest();
-                                                                                    anHttpRequest.onreadystatechange = function() {
-                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                            aCallback(anHttpRequest.responseText);
-                                                                                    }
-                                                                                    anHttpRequest.open("GET", aUrl, true);
-                                                                                    anHttpRequest.send(null);
-                                                                                }
-                                                                            }
-                                                                            var theurl = 'http://192.168.0.98/api/origenesactivos/';
-                                                                            var client = new HttpClient();
-                                                                            client.get(theurl, function(response) {
-
-                                                                                var obj = JSON.parse(response);
-
-                                                                                var valorx = obj['x'];
-                                                                                var valory = obj['y'];
-                                                                                var valorz = parseFloat(obj['z']);
-                                                                                var valora = obj['a'];
-
-                                                                                valorz = valorz.toString();
-
-                                                                                var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
-                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
-
-
-
-                                                                            });
-
-
-
-
-
-                                                                            //FIN COMPENSACION
                                                                             for (var i = 0; i < 17; i++) {
 
                                                                                 if (parseInt(obj[i]['enhusillo'])) {
