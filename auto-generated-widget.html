@@ -4856,7 +4856,7 @@
                     // write it to the log
 
                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                    setTimeout(() => {
+                    setTimeout(function() {
                         chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
 
                     }, 1000);
