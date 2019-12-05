@@ -3694,7 +3694,6 @@
                     // line numbers. this will get set back to true on the first
                     // onExecuted() encountered, so we're safe putting this to false
                     // on each play
-
                     this.isInExecuteScrollToMode = false;
 
                     // set back to false so we get job done pubsub
@@ -4854,12 +4853,6 @@
 
                 onExecute: function(data) {
                     // write it to the log
-
-                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                    setTimeout(() => {
-                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-
-                    }, 1000);
 
                     // //alert("ENTRO");
                     //console.group("gcode widget - onExecute");
