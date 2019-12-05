@@ -408,7 +408,8 @@
 
             var testPlannerPause = function() {
                     setTimeout(function() {
-                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        chilipeppr.
+                        publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                     }, 5000);
                     setTimeout(function() {
                         chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
@@ -4855,9 +4856,8 @@
                     // write it to the log
                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
-                    setTimeout(function() {
-                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                    }, 5000);
+                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+
                     // //alert("ENTRO");
                     //console.group("gcode widget - onExecute");
                     console.log("onExecute data:", data);
