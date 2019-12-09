@@ -5452,76 +5452,74 @@
 
                                                                                     esto.activarm3();
                                                                                     //ENCENDERHUSILLO
-                                                                                    //ENCENDERHUSILLO
-                                                                                    setTimeout(() => {
-                                                                                        var HttpClient = function() {
-                                                                                            this.get = function(aUrl, aCallback) {
-                                                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                                                anHttpRequest.onreadystatechange = function() {
-                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                        aCallback(anHttpRequest.responseText);
-                                                                                                }
-                                                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                                                anHttpRequest.send(null);
-                                                                                            }
-                                                                                        }
-                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                        var client = new HttpClient();
-                                                                                        client.get(theurl, function(response) {
+                                                                  //ENCENDERHUSILLO
+                                                                  setTimeout(() => {
+                                                                                                                            var HttpClient = function() {
+                                                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                                                    }
+                                                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                    anHttpRequest.send(null);
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                            var client = new HttpClient();
+                                                                                                                            client.get(theurl, function(response) {
 
-                                                                                            var res = response.split("Pin A5 reads analog ");
+                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                            response = parseInt(res[1]);
+                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                            if (response > 900) {
-                                                                                                var cmd = "~";
-                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                            } else {
+                                                                                                                                    if (response > 900) {
+                                                                                                                                        var cmd = "~";
+                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                    } else {
 
-                                                                                                setTimeout(() => {
-                                                                                                    var HttpClient = function() {
-                                                                                                        this.get = function(aUrl, aCallback) {
-                                                                                                            var anHttpRequest = new XMLHttpRequest();
-                                                                                                            anHttpRequest.onreadystatechange = function() {
-                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                                    aCallback(anHttpRequest.responseText);
-                                                                                                            }
-                                                                                                            anHttpRequest.open("GET", aUrl, true);
-                                                                                                            anHttpRequest.send(null);
-                                                                                                        }
-                                                                                                    }
-                                                                                                    var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                                    var client = new HttpClient();
-                                                                                                    client.get(theurl, function(response) {
+                                                                                                                                        setTimeout(() => {
+                                                                                                                                                var HttpClient = function() {
+                                                                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                                                                        }
+                                                                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                                        anHttpRequest.send(null);
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                                                var client = new HttpClient();
+                                                                                                                                                client.get(theurl, function(response) {
 
-                                                                                                        var res = response.split("Pin A5 reads analog ");
+                                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                                        response = parseInt(res[1]);
+                                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                                        if (response > 900) {
-                                                                                                            var cmd = "~";
-                                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                                        } else {
-                                                                                                            var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                                                                    if (response > 900) {
+                                                                                                                                                        var cmd = "~";
+                                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                                    } else {
+                                                                                                                                                        var erroresexistentes = document.getElementById("textoerrores").value;
 
-                                                                                                            erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                                                                                            erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
 
-                                                                                                            document.getElementById("textoerrores").value = erroresexistentes;
-                                                                                                            document.getElementById("indicadorerrorejec").className = "led-red";
-                                                                                                        }
+                                                                                                                                                        document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                                                                        document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                                                                    }
 
-                                                                                                    });
-                                                                                                }, 10000);
-
+                                                                                                                                                }, 10000);
 
 
-                                                                                            }
-                                                                                        });
-                                                                                    }, 10000);
+                                                                                                                                            }
+
+                                                                                                                                        }, 10000);
 
 
 
@@ -5785,75 +5783,76 @@
 
                                                                                         esto.activarm3();
                                                                                         //ENCENDERHUSILLO
+                                                                                        //ENCENDERHUSILLO
                                                                                         setTimeout(() => {
-                                                                                            var HttpClient = function() {
-                                                                                                this.get = function(aUrl, aCallback) {
-                                                                                                    var anHttpRequest = new XMLHttpRequest();
-                                                                                                    anHttpRequest.onreadystatechange = function() {
-                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                            aCallback(anHttpRequest.responseText);
-                                                                                                    }
-                                                                                                    anHttpRequest.open("GET", aUrl, true);
-                                                                                                    anHttpRequest.send(null);
-                                                                                                }
-                                                                                            }
-                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                            var client = new HttpClient();
-                                                                                            client.get(theurl, function(response) {
+                                                                                                                            var HttpClient = function() {
+                                                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                                                    }
+                                                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                    anHttpRequest.send(null);
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                            var client = new HttpClient();
+                                                                                                                            client.get(theurl, function(response) {
 
-                                                                                                var res = response.split("Pin A5 reads analog ");
+                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                                response = parseInt(res[1]);
+                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                                if (response > 900) {
-                                                                                                    var cmd = "~";
-                                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                                } else {
+                                                                                                                                    if (response > 900) {
+                                                                                                                                        var cmd = "~";
+                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                    } else {
 
-                                                                                                    setTimeout(() => {
-                                                                                                        var HttpClient = function() {
-                                                                                                            this.get = function(aUrl, aCallback) {
-                                                                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                                                                anHttpRequest.onreadystatechange = function() {
-                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                                        aCallback(anHttpRequest.responseText);
-                                                                                                                }
-                                                                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                                                                anHttpRequest.send(null);
-                                                                                                            }
-                                                                                                        }
-                                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                                        var client = new HttpClient();
-                                                                                                        client.get(theurl, function(response) {
+                                                                                                                                        setTimeout(() => {
+                                                                                                                                                var HttpClient = function() {
+                                                                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                                                                        }
+                                                                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                                        anHttpRequest.send(null);
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                                                var client = new HttpClient();
+                                                                                                                                                client.get(theurl, function(response) {
 
-                                                                                                            var res = response.split("Pin A5 reads analog ");
+                                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                                            response = parseInt(res[1]);
+                                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                                            if (response > 900) {
-                                                                                                                var cmd = "~";
-                                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                                            } else {
-                                                                                                                var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                                                                    if (response > 900) {
+                                                                                                                                                        var cmd = "~";
+                                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                                    } else {
+                                                                                                                                                        var erroresexistentes = document.getElementById("textoerrores").value;
 
-                                                                                                                erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                                                                                                erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
 
-                                                                                                                document.getElementById("textoerrores").value = erroresexistentes;
-                                                                                                                document.getElementById("indicadorerrorejec").className = "led-red";
-                                                                                                            }
+                                                                                                                                                        document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                                                                        document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                                                                    }
 
-                                                                                                        });
-                                                                                                    }, 10000);
-
+                                                                                                                                                }, 10000);
 
 
-                                                                                                }
-                                                                                            });
-                                                                                        }, 10000);
+                                                                                                                                            }
+
+                                                                                                                                        }, 10000);
+
+
                                                                                         //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
 
                                                                                     }
@@ -6219,75 +6218,74 @@
 
                                                                                 esto.activarm3();
                                                                                 //ENCENDERHUSILLO
-                                                                                setTimeout(() => {
-                                                                                    var HttpClient = function() {
-                                                                                        this.get = function(aUrl, aCallback) {
-                                                                                            var anHttpRequest = new XMLHttpRequest();
-                                                                                            anHttpRequest.onreadystatechange = function() {
-                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                    aCallback(anHttpRequest.responseText);
-                                                                                            }
-                                                                                            anHttpRequest.open("GET", aUrl, true);
-                                                                                            anHttpRequest.send(null);
-                                                                                        }
-                                                                                    }
-                                                                                    var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                    var client = new HttpClient();
-                                                                                    client.get(theurl, function(response) {
+                                                                            //ENCENDERHUSILLO
+                                                                            setTimeout(() => {
+                                                                                                                            var HttpClient = function() {
+                                                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                                                    }
+                                                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                    anHttpRequest.send(null);
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                            var client = new HttpClient();
+                                                                                                                            client.get(theurl, function(response) {
 
-                                                                                        var res = response.split("Pin A5 reads analog ");
+                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                        response = parseInt(res[1]);
+                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                        if (response > 900) {
-                                                                                            var cmd = "~";
-                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                        } else {
+                                                                                                                                    if (response > 900) {
+                                                                                                                                        var cmd = "~";
+                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                    } else {
 
-                                                                                            setTimeout(() => {
-                                                                                                var HttpClient = function() {
-                                                                                                    this.get = function(aUrl, aCallback) {
-                                                                                                        var anHttpRequest = new XMLHttpRequest();
-                                                                                                        anHttpRequest.onreadystatechange = function() {
-                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                                aCallback(anHttpRequest.responseText);
-                                                                                                        }
-                                                                                                        anHttpRequest.open("GET", aUrl, true);
-                                                                                                        anHttpRequest.send(null);
-                                                                                                    }
-                                                                                                }
-                                                                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                                var client = new HttpClient();
-                                                                                                client.get(theurl, function(response) {
+                                                                                                                                        setTimeout(() => {
+                                                                                                                                                var HttpClient = function() {
+                                                                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                                                                        }
+                                                                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                                        anHttpRequest.send(null);
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                                                var client = new HttpClient();
+                                                                                                                                                client.get(theurl, function(response) {
 
-                                                                                                    var res = response.split("Pin A5 reads analog ");
+                                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                                    response = parseInt(res[1]);
+                                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                                    if (response > 900) {
-                                                                                                        var cmd = "~";
-                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                                    } else {
-                                                                                                        var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                                                                    if (response > 900) {
+                                                                                                                                                        var cmd = "~";
+                                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                                    } else {
+                                                                                                                                                        var erroresexistentes = document.getElementById("textoerrores").value;
 
-                                                                                                        erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                                                                                        erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
 
-                                                                                                        document.getElementById("textoerrores").value = erroresexistentes;
-                                                                                                        document.getElementById("indicadorerrorejec").className = "led-red";
-                                                                                                    }
+                                                                                                                                                        document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                                                                        document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                                                                    }
 
-                                                                                                });
-                                                                                            }, 10000);
-
+                                                                                                                                                }, 10000);
 
 
-                                                                                        }
-                                                                                    });
-                                                                                }, 10000);
+                                                                                                                                            }
+
+                                                                                                                                        }, 10000);
 
                                                                                 //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
 
@@ -6530,75 +6528,74 @@
 
                                                                                     esto.activarm3();
                                                                                     //ENCENDERHUSILLO
-                                                                                    setTimeout(() => {
-                                                                                        var HttpClient = function() {
-                                                                                            this.get = function(aUrl, aCallback) {
-                                                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                                                anHttpRequest.onreadystatechange = function() {
-                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                        aCallback(anHttpRequest.responseText);
-                                                                                                }
-                                                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                                                anHttpRequest.send(null);
-                                                                                            }
-                                                                                        }
-                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                        var client = new HttpClient();
-                                                                                        client.get(theurl, function(response) {
+                                                                                  //ENCENDERHUSILLO
+                                                                                  setTimeout(() => {
+                                                                                                                            var HttpClient = function() {
+                                                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                                                    }
+                                                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                    anHttpRequest.send(null);
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                            var client = new HttpClient();
+                                                                                                                            client.get(theurl, function(response) {
 
-                                                                                            var res = response.split("Pin A5 reads analog ");
+                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                            response = parseInt(res[1]);
+                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                            if (response > 900) {
-                                                                                                var cmd = "~";
-                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                            } else {
+                                                                                                                                    if (response > 900) {
+                                                                                                                                        var cmd = "~";
+                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                    } else {
 
-                                                                                                setTimeout(() => {
-                                                                                                    var HttpClient = function() {
-                                                                                                        this.get = function(aUrl, aCallback) {
-                                                                                                            var anHttpRequest = new XMLHttpRequest();
-                                                                                                            anHttpRequest.onreadystatechange = function() {
-                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                                    aCallback(anHttpRequest.responseText);
-                                                                                                            }
-                                                                                                            anHttpRequest.open("GET", aUrl, true);
-                                                                                                            anHttpRequest.send(null);
-                                                                                                        }
-                                                                                                    }
-                                                                                                    var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                                    var client = new HttpClient();
-                                                                                                    client.get(theurl, function(response) {
+                                                                                                                                        setTimeout(() => {
+                                                                                                                                                var HttpClient = function() {
+                                                                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                                                                        }
+                                                                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                                        anHttpRequest.send(null);
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                                                var client = new HttpClient();
+                                                                                                                                                client.get(theurl, function(response) {
 
-                                                                                                        var res = response.split("Pin A5 reads analog ");
+                                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                                        response = parseInt(res[1]);
+                                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                                        if (response > 900) {
-                                                                                                            var cmd = "~";
-                                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                                        } else {
-                                                                                                            var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                                                                    if (response > 900) {
+                                                                                                                                                        var cmd = "~";
+                                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                                    } else {
+                                                                                                                                                        var erroresexistentes = document.getElementById("textoerrores").value;
 
-                                                                                                            erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                                                                                            erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
 
-                                                                                                            document.getElementById("textoerrores").value = erroresexistentes;
-                                                                                                            document.getElementById("indicadorerrorejec").className = "led-red";
-                                                                                                        }
+                                                                                                                                                        document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                                                                        document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                                                                    }
 
-                                                                                                    });
-                                                                                                }, 10000);
-
+                                                                                                                                                }, 10000);
 
 
-                                                                                            }
-                                                                                        });
-                                                                                    }, 10000);
+                                                                                                                                            }
+
+                                                                                                                                        }, 10000);
 
                                                                                     //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
                                                                                 }
@@ -8071,75 +8068,75 @@ TERMINA COMENT *****/
 
                                                                                         esto.activarm3();
                                                                                         //ENCENDERHUSILLO
-                                                                                        setTimeout(() => {
-                                                                                            var HttpClient = function() {
-                                                                                                this.get = function(aUrl, aCallback) {
-                                                                                                    var anHttpRequest = new XMLHttpRequest();
-                                                                                                    anHttpRequest.onreadystatechange = function() {
-                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                            aCallback(anHttpRequest.responseText);
-                                                                                                    }
-                                                                                                    anHttpRequest.open("GET", aUrl, true);
-                                                                                                    anHttpRequest.send(null);
-                                                                                                }
-                                                                                            }
-                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                            var client = new HttpClient();
-                                                                                            client.get(theurl, function(response) {
+                                                                                      //ENCENDERHUSILLO
+                                                                                      setTimeout(() => {
+                                                                                                                            var HttpClient = function() {
+                                                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                                                    }
+                                                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                    anHttpRequest.send(null);
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                            var client = new HttpClient();
+                                                                                                                            client.get(theurl, function(response) {
 
-                                                                                                var res = response.split("Pin A5 reads analog ");
+                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                                response = parseInt(res[1]);
+                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                                if (response > 900) {
-                                                                                                    var cmd = "~";
-                                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                                } else {
+                                                                                                                                    if (response > 900) {
+                                                                                                                                        var cmd = "~";
+                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                    } else {
 
-                                                                                                    setTimeout(() => {
-                                                                                                        var HttpClient = function() {
-                                                                                                            this.get = function(aUrl, aCallback) {
-                                                                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                                                                anHttpRequest.onreadystatechange = function() {
-                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                                        aCallback(anHttpRequest.responseText);
-                                                                                                                }
-                                                                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                                                                anHttpRequest.send(null);
-                                                                                                            }
-                                                                                                        }
-                                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                                        var client = new HttpClient();
-                                                                                                        client.get(theurl, function(response) {
+                                                                                                                                        setTimeout(() => {
+                                                                                                                                                var HttpClient = function() {
+                                                                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                                                                        }
+                                                                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                                        anHttpRequest.send(null);
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                                                var client = new HttpClient();
+                                                                                                                                                client.get(theurl, function(response) {
 
-                                                                                                            var res = response.split("Pin A5 reads analog ");
+                                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                                            response = parseInt(res[1]);
+                                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                                            if (response > 900) {
-                                                                                                                var cmd = "~";
-                                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                                            } else {
-                                                                                                                var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                                                                    if (response > 900) {
+                                                                                                                                                        var cmd = "~";
+                                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                                    } else {
+                                                                                                                                                        var erroresexistentes = document.getElementById("textoerrores").value;
 
-                                                                                                                erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                                                                                                erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
 
-                                                                                                                document.getElementById("textoerrores").value = erroresexistentes;
-                                                                                                                document.getElementById("indicadorerrorejec").className = "led-red";
-                                                                                                            }
+                                                                                                                                                        document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                                                                        document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                                                                    }
 
-                                                                                                        });
-                                                                                                    }, 10000);
-
+                                                                                                                                                }, 10000);
 
 
-                                                                                                }
-                                                                                            });
-                                                                                        }, 10000);
+                                                                                                                                            }
+
+                                                                                                                                        }, 10000);
+
 
 
 
@@ -8405,75 +8402,74 @@ TERMINA COMENT *****/
 
                                                                                             esto.activarm3();
                                                                                             //ENCENDERHUSILLO
-                                                                                            setTimeout(() => {
-                                                                                                var HttpClient = function() {
-                                                                                                    this.get = function(aUrl, aCallback) {
-                                                                                                        var anHttpRequest = new XMLHttpRequest();
-                                                                                                        anHttpRequest.onreadystatechange = function() {
-                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                                aCallback(anHttpRequest.responseText);
-                                                                                                        }
-                                                                                                        anHttpRequest.open("GET", aUrl, true);
-                                                                                                        anHttpRequest.send(null);
-                                                                                                    }
-                                                                                                }
-                                                                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                                var client = new HttpClient();
-                                                                                                client.get(theurl, function(response) {
+                                                                                      //ENCENDERHUSILLO
+                                                                                      setTimeout(() => {
+                                                                                                                            var HttpClient = function() {
+                                                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                                                    }
+                                                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                    anHttpRequest.send(null);
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                            var client = new HttpClient();
+                                                                                                                            client.get(theurl, function(response) {
 
-                                                                                                    var res = response.split("Pin A5 reads analog ");
+                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                                    response = parseInt(res[1]);
+                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                                    if (response > 900) {
-                                                                                                        var cmd = "~";
-                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                                    } else {
+                                                                                                                                    if (response > 900) {
+                                                                                                                                        var cmd = "~";
+                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                    } else {
 
-                                                                                                        setTimeout(() => {
-                                                                                                            var HttpClient = function() {
-                                                                                                                this.get = function(aUrl, aCallback) {
-                                                                                                                    var anHttpRequest = new XMLHttpRequest();
-                                                                                                                    anHttpRequest.onreadystatechange = function() {
-                                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                                            aCallback(anHttpRequest.responseText);
-                                                                                                                    }
-                                                                                                                    anHttpRequest.open("GET", aUrl, true);
-                                                                                                                    anHttpRequest.send(null);
-                                                                                                                }
-                                                                                                            }
-                                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                                            var client = new HttpClient();
-                                                                                                            client.get(theurl, function(response) {
+                                                                                                                                        setTimeout(() => {
+                                                                                                                                                var HttpClient = function() {
+                                                                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                                                                        }
+                                                                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                                        anHttpRequest.send(null);
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                                                var client = new HttpClient();
+                                                                                                                                                client.get(theurl, function(response) {
 
-                                                                                                                var res = response.split("Pin A5 reads analog ");
+                                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                                                response = parseInt(res[1]);
+                                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                                                if (response > 900) {
-                                                                                                                    var cmd = "~";
-                                                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                                                } else {
-                                                                                                                    var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                                                                    if (response > 900) {
+                                                                                                                                                        var cmd = "~";
+                                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                                    } else {
+                                                                                                                                                        var erroresexistentes = document.getElementById("textoerrores").value;
 
-                                                                                                                    erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                                                                                                    erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
 
-                                                                                                                    document.getElementById("textoerrores").value = erroresexistentes;
-                                                                                                                    document.getElementById("indicadorerrorejec").className = "led-red";
-                                                                                                                }
+                                                                                                                                                        document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                                                                        document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                                                                    }
 
-                                                                                                            });
-                                                                                                        }, 10000);
-
+                                                                                                                                                }, 10000);
 
 
-                                                                                                    }
-                                                                                                });
-                                                                                            }, 10000);
+                                                                                                                                            }
+
+                                                                                                                                        }, 10000);
 
                                                                                             //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
 
@@ -8845,75 +8841,75 @@ TERMINA COMENT *****/
                                                                                     esto.
                                                                                     esto.activarm3();
                                                                                     //ENCENDERHUSILLO
-                                                                                    setTimeout(() => {
-                                                                                        var HttpClient = function() {
-                                                                                            this.get = function(aUrl, aCallback) {
-                                                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                                                anHttpRequest.onreadystatechange = function() {
-                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                        aCallback(anHttpRequest.responseText);
-                                                                                                }
-                                                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                                                anHttpRequest.send(null);
-                                                                                            }
-                                                                                        }
-                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                        var client = new HttpClient();
-                                                                                        client.get(theurl, function(response) {
+                                                                                  //ENCENDERHUSILLO
+                                                                                  setTimeout(() => {
+                                                                                                                            var HttpClient = function() {
+                                                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                                                    }
+                                                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                    anHttpRequest.send(null);
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                            var client = new HttpClient();
+                                                                                                                            client.get(theurl, function(response) {
 
-                                                                                            var res = response.split("Pin A5 reads analog ");
+                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                            response = parseInt(res[1]);
+                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                            if (response > 900) {
-                                                                                                var cmd = "~";
-                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                            } else {
+                                                                                                                                    if (response > 900) {
+                                                                                                                                        var cmd = "~";
+                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                    } else {
 
-                                                                                                setTimeout(() => {
-                                                                                                    var HttpClient = function() {
-                                                                                                        this.get = function(aUrl, aCallback) {
-                                                                                                            var anHttpRequest = new XMLHttpRequest();
-                                                                                                            anHttpRequest.onreadystatechange = function() {
-                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                                    aCallback(anHttpRequest.responseText);
-                                                                                                            }
-                                                                                                            anHttpRequest.open("GET", aUrl, true);
-                                                                                                            anHttpRequest.send(null);
-                                                                                                        }
-                                                                                                    }
-                                                                                                    var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                                    var client = new HttpClient();
-                                                                                                    client.get(theurl, function(response) {
+                                                                                                                                        setTimeout(() => {
+                                                                                                                                                var HttpClient = function() {
+                                                                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                                                                        }
+                                                                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                                        anHttpRequest.send(null);
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                                                var client = new HttpClient();
+                                                                                                                                                client.get(theurl, function(response) {
 
-                                                                                                        var res = response.split("Pin A5 reads analog ");
+                                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                                        response = parseInt(res[1]);
+                                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                                        if (response > 900) {
-                                                                                                            var cmd = "~";
-                                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                                        } else {
-                                                                                                            var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                                                                    if (response > 900) {
+                                                                                                                                                        var cmd = "~";
+                                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                                    } else {
+                                                                                                                                                        var erroresexistentes = document.getElementById("textoerrores").value;
 
-                                                                                                            erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                                                                                            erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
 
-                                                                                                            document.getElementById("textoerrores").value = erroresexistentes;
-                                                                                                            document.getElementById("indicadorerrorejec").className = "led-red";
-                                                                                                        }
+                                                                                                                                                        document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                                                                        document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                                                                    }
 
-                                                                                                    });
-                                                                                                }, 10000);
-
+                                                                                                                                                }, 10000);
 
 
-                                                                                            }
-                                                                                        });
-                                                                                    }, 10000);
+                                                                                                                                            }
+
+                                                                                                                                        }, 10000);
+
 
                                                                                     //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
 
@@ -9158,75 +9154,75 @@ TERMINA COMENT *****/
 
                                                                                         esto.activarm3();
                                                                                         //ENCENDERHUSILLO
-                                                                                        setTimeout(() => {
-                                                                                            var HttpClient = function() {
-                                                                                                this.get = function(aUrl, aCallback) {
-                                                                                                    var anHttpRequest = new XMLHttpRequest();
-                                                                                                    anHttpRequest.onreadystatechange = function() {
-                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                            aCallback(anHttpRequest.responseText);
-                                                                                                    }
-                                                                                                    anHttpRequest.open("GET", aUrl, true);
-                                                                                                    anHttpRequest.send(null);
-                                                                                                }
-                                                                                            }
-                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                            var client = new HttpClient();
-                                                                                            client.get(theurl, function(response) {
+                                                                                     //ENCENDERHUSILLO
+                                                                                     setTimeout(() => {
+                                                                                                                            var HttpClient = function() {
+                                                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                                                    }
+                                                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                    anHttpRequest.send(null);
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                            var client = new HttpClient();
+                                                                                                                            client.get(theurl, function(response) {
 
-                                                                                                var res = response.split("Pin A5 reads analog ");
+                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                                response = parseInt(res[1]);
+                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                                if (response > 900) {
-                                                                                                    var cmd = "~";
-                                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                                } else {
+                                                                                                                                    if (response > 900) {
+                                                                                                                                        var cmd = "~";
+                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                    } else {
 
-                                                                                                    setTimeout(() => {
-                                                                                                        var HttpClient = function() {
-                                                                                                            this.get = function(aUrl, aCallback) {
-                                                                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                                                                anHttpRequest.onreadystatechange = function() {
-                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                                        aCallback(anHttpRequest.responseText);
-                                                                                                                }
-                                                                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                                                                anHttpRequest.send(null);
-                                                                                                            }
-                                                                                                        }
-                                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                                        var client = new HttpClient();
-                                                                                                        client.get(theurl, function(response) {
+                                                                                                                                        setTimeout(() => {
+                                                                                                                                                var HttpClient = function() {
+                                                                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                                                                        }
+                                                                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                                                                        anHttpRequest.send(null);
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                                                var client = new HttpClient();
+                                                                                                                                                client.get(theurl, function(response) {
 
-                                                                                                            var res = response.split("Pin A5 reads analog ");
+                                                                                                                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                                                                            response = parseInt(res[1]);
+                                                                                                                                                    response = parseInt(res[1]);
 
-                                                                                                            if (response > 900) {
-                                                                                                                var cmd = "~";
-                                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                                            } else {
-                                                                                                                var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                                                                    if (response > 900) {
+                                                                                                                                                        var cmd = "~";
+                                                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                                                    } else {
+                                                                                                                                                        var erroresexistentes = document.getElementById("textoerrores").value;
 
-                                                                                                                erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                                                                                                erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                                                                        erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
 
-                                                                                                                document.getElementById("textoerrores").value = erroresexistentes;
-                                                                                                                document.getElementById("indicadorerrorejec").className = "led-red";
-                                                                                                            }
+                                                                                                                                                        document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                                                                        document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                                                                    }
 
-                                                                                                        });
-                                                                                                    }, 10000);
-
+                                                                                                                                                }, 10000);
 
 
-                                                                                                }
-                                                                                            });
-                                                                                        }, 10000);
+                                                                                                                                            }
+
+                                                                                                                                        }, 10000);
+
 
                                                                                         //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
                                                                                     }
