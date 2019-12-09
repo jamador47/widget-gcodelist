@@ -3344,7 +3344,6 @@
                  */
                 onPlay: function(event) {
                     var cmd = "!%";
-                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
 
                     this.getGcode();
@@ -4855,9 +4854,6 @@
                 onExecute: function(data) {
                     // write it to the log
 
-
-
-
                     // //alert("ENTRO");
                     //console.group("gcode widget - onExecute");
                     console.log("onExecute data:", data);
@@ -5164,7 +5160,7 @@
                                         var cmd = "!";
                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                         this.activarm5();
-                                        var esto = this;
+
 
 
                                         var HttpClient = function() {
@@ -5234,7 +5230,7 @@
 
 
                                                                     // COMIENZA CH
-
+                                                                    var esto = this;
                                                                     var HttpClient = function() {
 
                                                                         this.get = function(aUrl, aCallback) {
@@ -5449,14 +5445,134 @@
                                                                                     var cmd = "p";
                                                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
+                                                                                    var HttpClient = function() {
+                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                            }
+                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                            anHttpRequest.send(null);
+                                                                                        }
+                                                                                    }
+                                                                                    var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                    var client = new HttpClient();
+                                                                                    client.get(theurl, function(response) {
+                                                                                        var res = response.split("Pin A5 reads analog ");
 
-                                                                                    esto.activarm3();
-                                                                                    //ENCENDERHUSILLO
+                                                                                        response = parseInt(res[1]);
+
+                                                                                        if (response > 850) {
+
+                                                                                            var HttpClient = function() {
+                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                    }
+                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                    anHttpRequest.send(null);
+                                                                                                }
+                                                                                            }
+                                                                                            var theurl = 'http://192.168.0.80/arduino/digital/11';
+                                                                                            var client = new HttpClient();
+                                                                                            client.get(theurl, function(response) {
+                                                                                                var res = response.split("Pin D11 set to ");
+
+                                                                                                response = parseInt(res[1]);
+                                                                                                if (response == 0) {
+                                                                                                    var cmd = "!";
+                                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                    var HttpClient = function() {
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.88/arduino/digital/29/1';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {
+                                                                                                        var response1 = JSON.parse(response);
+                                                                                                    });
+
+
+                                                                                                    var HttpClient = function() {
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.88/arduino/digital/19/1';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {
+                                                                                                        var response1 = JSON.parse(response);
+                                                                                                    });
+
+                                                                                                    var HttpClient = function() {
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.88/arduino/digital/22/1';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {
+                                                                                                        var response1 = JSON.parse(response);
+                                                                                                    });
+
+                                                                                                    document.getElementById("indicadorhusillo").className = "led-green";
+                                                                                                    chilipeppr.publish(
+                                                                                                        '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                        "Estado del Husillo",
+                                                                                                        "Husillo Activado ",
+                                                                                                        2000 // show for 2 second 
+                                                                                                    );
+
+
+                                                                                                } else {
+                                                                                                    $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                                    $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                                    $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                                    chilipeppr.publish(
+                                                                                                        '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                        "Estado del Husillo",
+                                                                                                        "El husillo no está desbloqueado (I.99), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                                        2000 // show for 2 second 
+                                                                                                    );
+                                                                                                }
+                                                                                            });
+                                                                                        } else {
+                                                                                            $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                            $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                            $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                            chilipeppr.publish(
+                                                                                                '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                "Estado del Husillo",
+                                                                                                "El Husillo no está desocupado (I.19), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                                2000 // show for 2 second 
+                                                                                            );
+                                                                                        }
+                                                                                    });
                                                                                     setTimeout(() => {
                                                                                         var cmd = "~";
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-
 
                                                                                     }, 10000);
 
@@ -5720,12 +5836,134 @@
                                                                                         var cmd = "p";
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
-                                                                                        esto.activarm3();
-                                                                                        //ENCENDERHUSILLO
+                                                                                        var HttpClient = function() {
+                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                }
+                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                anHttpRequest.send(null);
+                                                                                            }
+                                                                                        }
+                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                        var client = new HttpClient();
+                                                                                        client.get(theurl, function(response) {
+                                                                                            var res = response.split("Pin A5 reads analog ");
+
+                                                                                            response = parseInt(res[1]);
+
+                                                                                            if (response > 850) {
+
+                                                                                                var HttpClient = function() {
+                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                        }
+                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                        anHttpRequest.send(null);
+                                                                                                    }
+                                                                                                }
+                                                                                                var theurl = 'http://192.168.0.80/arduino/digital/11';
+                                                                                                var client = new HttpClient();
+                                                                                                client.get(theurl, function(response) {
+                                                                                                    var res = response.split("Pin D11 set to ");
+
+                                                                                                    response = parseInt(res[1]);
+                                                                                                    if (response == 0) {
+                                                                                                        var cmd = "!";
+                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                        var HttpClient = function() {
+                                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                                }
+                                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                                anHttpRequest.send(null);
+                                                                                                            }
+                                                                                                        }
+                                                                                                        var theurl = 'http://192.168.0.88/arduino/digital/29/1';
+                                                                                                        var client = new HttpClient();
+                                                                                                        client.get(theurl, function(response) {
+                                                                                                            var response1 = JSON.parse(response);
+                                                                                                        });
+
+
+                                                                                                        var HttpClient = function() {
+                                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                                }
+                                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                                anHttpRequest.send(null);
+                                                                                                            }
+                                                                                                        }
+                                                                                                        var theurl = 'http://192.168.0.88/arduino/digital/19/1';
+                                                                                                        var client = new HttpClient();
+                                                                                                        client.get(theurl, function(response) {
+                                                                                                            var response1 = JSON.parse(response);
+                                                                                                        });
+
+                                                                                                        var HttpClient = function() {
+                                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                                }
+                                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                                anHttpRequest.send(null);
+                                                                                                            }
+                                                                                                        }
+                                                                                                        var theurl = 'http://192.168.0.88/arduino/digital/22/1';
+                                                                                                        var client = new HttpClient();
+                                                                                                        client.get(theurl, function(response) {
+                                                                                                            var response1 = JSON.parse(response);
+                                                                                                        });
+
+                                                                                                        document.getElementById("indicadorhusillo").className = "led-green";
+                                                                                                        chilipeppr.publish(
+                                                                                                            '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                            "Estado del Husillo",
+                                                                                                            "Husillo Activado ",
+                                                                                                            2000 // show for 2 second 
+                                                                                                        );
+
+
+                                                                                                    } else {
+                                                                                                        $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                                        $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                                        $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                                        chilipeppr.publish(
+                                                                                                            '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                            "Estado del Husillo",
+                                                                                                            "El husillo no está desbloqueado (I.99), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                                            2000 // show for 2 second 
+                                                                                                        );
+                                                                                                    }
+                                                                                                });
+                                                                                            } else {
+                                                                                                $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                                $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                                $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                                chilipeppr.publish(
+                                                                                                    '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                    "Estado del Husillo",
+                                                                                                    "El Husillo no está desocupado (I.19), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                                    2000 // show for 2 second 
+                                                                                                );
+                                                                                            }
+                                                                                        });
                                                                                         setTimeout(() => {
                                                                                             var cmd = "~";
                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
                                                                                         }, 10000);
 
@@ -5819,6 +6057,7 @@
 
 
                                                                 // COMIENZA CH
+                                                                var esto = this;
                                                                 var HttpClient = function() {
 
                                                                     this.get = function(aUrl, aCallback) {
@@ -6092,12 +6331,134 @@
                                                                                 var cmd = "p";
                                                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
-                                                                                esto.activarm3();
-                                                                                //ENCENDERHUSILLO
+                                                                                var HttpClient = function() {
+                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                        }
+                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                        anHttpRequest.send(null);
+                                                                                    }
+                                                                                }
+                                                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                var client = new HttpClient();
+                                                                                client.get(theurl, function(response) {
+                                                                                    var res = response.split("Pin A5 reads analog ");
+
+                                                                                    response = parseInt(res[1]);
+
+                                                                                    if (response > 850) {
+
+                                                                                        var HttpClient = function() {
+                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                }
+                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                anHttpRequest.send(null);
+                                                                                            }
+                                                                                        }
+                                                                                        var theurl = 'http://192.168.0.80/arduino/digital/11';
+                                                                                        var client = new HttpClient();
+                                                                                        client.get(theurl, function(response) {
+                                                                                            var res = response.split("Pin D11 set to ");
+
+                                                                                            response = parseInt(res[1]);
+                                                                                            if (response == 0) {
+                                                                                                var cmd = "!";
+                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                var HttpClient = function() {
+                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                        }
+                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                        anHttpRequest.send(null);
+                                                                                                    }
+                                                                                                }
+                                                                                                var theurl = 'http://192.168.0.88/arduino/digital/29/1';
+                                                                                                var client = new HttpClient();
+                                                                                                client.get(theurl, function(response) {
+                                                                                                    var response1 = JSON.parse(response);
+                                                                                                });
+
+
+                                                                                                var HttpClient = function() {
+                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                        }
+                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                        anHttpRequest.send(null);
+                                                                                                    }
+                                                                                                }
+                                                                                                var theurl = 'http://192.168.0.88/arduino/digital/19/1';
+                                                                                                var client = new HttpClient();
+                                                                                                client.get(theurl, function(response) {
+                                                                                                    var response1 = JSON.parse(response);
+                                                                                                });
+
+                                                                                                var HttpClient = function() {
+                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                        }
+                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                        anHttpRequest.send(null);
+                                                                                                    }
+                                                                                                }
+                                                                                                var theurl = 'http://192.168.0.88/arduino/digital/22/1';
+                                                                                                var client = new HttpClient();
+                                                                                                client.get(theurl, function(response) {
+                                                                                                    var response1 = JSON.parse(response);
+                                                                                                });
+
+                                                                                                document.getElementById("indicadorhusillo").className = "led-green";
+                                                                                                chilipeppr.publish(
+                                                                                                    '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                    "Estado del Husillo",
+                                                                                                    "Husillo Activado ",
+                                                                                                    2000 // show for 2 second 
+                                                                                                );
+
+
+                                                                                            } else {
+                                                                                                $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                                $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                                $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                                chilipeppr.publish(
+                                                                                                    '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                    "Estado del Husillo",
+                                                                                                    "El husillo no está desbloqueado (I.99), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                                    2000 // show for 2 second 
+                                                                                                );
+                                                                                            }
+                                                                                        });
+                                                                                    } else {
+                                                                                        $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                        $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                        $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                        chilipeppr.publish(
+                                                                                            '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                            "Estado del Husillo",
+                                                                                            "El Husillo no está desocupado (I.19), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                            2000 // show for 2 second 
+                                                                                        );
+                                                                                    }
+                                                                                });
                                                                                 setTimeout(() => {
                                                                                     var cmd = "~";
                                                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
                                                                                 }, 10000);
 
@@ -6340,12 +6701,134 @@
                                                                                     var cmd = "p";
                                                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
-                                                                                    esto.activarm3();
-                                                                                    //ENCENDERHUSILLO
+                                                                                    var HttpClient = function() {
+                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                            }
+                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                            anHttpRequest.send(null);
+                                                                                        }
+                                                                                    }
+                                                                                    var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                    var client = new HttpClient();
+                                                                                    client.get(theurl, function(response) {
+                                                                                        var res = response.split("Pin A5 reads analog ");
+
+                                                                                        response = parseInt(res[1]);
+
+                                                                                        if (response > 850) {
+
+                                                                                            var HttpClient = function() {
+                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                    }
+                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                    anHttpRequest.send(null);
+                                                                                                }
+                                                                                            }
+                                                                                            var theurl = 'http://192.168.0.80/arduino/digital/11';
+                                                                                            var client = new HttpClient();
+                                                                                            client.get(theurl, function(response) {
+                                                                                                var res = response.split("Pin D11 set to ");
+
+                                                                                                response = parseInt(res[1]);
+                                                                                                if (response == 0) {
+                                                                                                    var cmd = "!";
+                                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                    var HttpClient = function() {
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.88/arduino/digital/29/1';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {
+                                                                                                        var response1 = JSON.parse(response);
+                                                                                                    });
+
+
+                                                                                                    var HttpClient = function() {
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.88/arduino/digital/19/1';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {
+                                                                                                        var response1 = JSON.parse(response);
+                                                                                                    });
+
+                                                                                                    var HttpClient = function() {
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.88/arduino/digital/22/1';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {
+                                                                                                        var response1 = JSON.parse(response);
+                                                                                                    });
+
+                                                                                                    document.getElementById("indicadorhusillo").className = "led-green";
+                                                                                                    chilipeppr.publish(
+                                                                                                        '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                        "Estado del Husillo",
+                                                                                                        "Husillo Activado ",
+                                                                                                        2000 // show for 2 second 
+                                                                                                    );
+
+
+                                                                                                } else {
+                                                                                                    $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                                    $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                                    $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                                    chilipeppr.publish(
+                                                                                                        '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                        "Estado del Husillo",
+                                                                                                        "El husillo no está desbloqueado (I.99), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                                        2000 // show for 2 second 
+                                                                                                    );
+                                                                                                }
+                                                                                            });
+                                                                                        } else {
+                                                                                            $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                            $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                            $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                            chilipeppr.publish(
+                                                                                                '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                "Estado del Husillo",
+                                                                                                "El Husillo no está desocupado (I.19), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                                2000 // show for 2 second 
+                                                                                            );
+                                                                                        }
+                                                                                    });
                                                                                     setTimeout(() => {
                                                                                         var cmd = "~";
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
                                                                                     }, 10000);
 
@@ -7540,7 +8023,7 @@ TERMINA COMENT *****/
                                             var cmd = "!";
                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                             this.activarm5();
-                                            var esto = this;
+
 
 
                                             var HttpClient = function() {
@@ -7608,6 +8091,7 @@ TERMINA COMENT *****/
 
 
                                                                         // COMIENZA CH
+                                                                        var esto = this;
                                                                         var HttpClient = function() {
 
                                                                             this.get = function(aUrl, aCallback) {
@@ -7818,12 +8302,134 @@ TERMINA COMENT *****/
                                                                                         var cmd = "p";
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
-                                                                                        esto.activarm3();
-                                                                                        //ENCENDERHUSILLO
+                                                                                        var HttpClient = function() {
+                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                }
+                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                anHttpRequest.send(null);
+                                                                                            }
+                                                                                        }
+                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                        var client = new HttpClient();
+                                                                                        client.get(theurl, function(response) {
+                                                                                            var res = response.split("Pin A5 reads analog ");
+
+                                                                                            response = parseInt(res[1]);
+
+                                                                                            if (response > 850) {
+
+                                                                                                var HttpClient = function() {
+                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                        }
+                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                        anHttpRequest.send(null);
+                                                                                                    }
+                                                                                                }
+                                                                                                var theurl = 'http://192.168.0.80/arduino/digital/11';
+                                                                                                var client = new HttpClient();
+                                                                                                client.get(theurl, function(response) {
+                                                                                                    var res = response.split("Pin D11 set to ");
+
+                                                                                                    response = parseInt(res[1]);
+                                                                                                    if (response == 0) {
+                                                                                                        var cmd = "!";
+                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                        var HttpClient = function() {
+                                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                                }
+                                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                                anHttpRequest.send(null);
+                                                                                                            }
+                                                                                                        }
+                                                                                                        var theurl = 'http://192.168.0.88/arduino/digital/29/1';
+                                                                                                        var client = new HttpClient();
+                                                                                                        client.get(theurl, function(response) {
+                                                                                                            var response1 = JSON.parse(response);
+                                                                                                        });
+
+
+                                                                                                        var HttpClient = function() {
+                                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                                }
+                                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                                anHttpRequest.send(null);
+                                                                                                            }
+                                                                                                        }
+                                                                                                        var theurl = 'http://192.168.0.88/arduino/digital/19/1';
+                                                                                                        var client = new HttpClient();
+                                                                                                        client.get(theurl, function(response) {
+                                                                                                            var response1 = JSON.parse(response);
+                                                                                                        });
+
+                                                                                                        var HttpClient = function() {
+                                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                                }
+                                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                                anHttpRequest.send(null);
+                                                                                                            }
+                                                                                                        }
+                                                                                                        var theurl = 'http://192.168.0.88/arduino/digital/22/1';
+                                                                                                        var client = new HttpClient();
+                                                                                                        client.get(theurl, function(response) {
+                                                                                                            var response1 = JSON.parse(response);
+                                                                                                        });
+
+                                                                                                        document.getElementById("indicadorhusillo").className = "led-green";
+                                                                                                        chilipeppr.publish(
+                                                                                                            '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                            "Estado del Husillo",
+                                                                                                            "Husillo Activado ",
+                                                                                                            2000 // show for 2 second 
+                                                                                                        );
+
+
+                                                                                                    } else {
+                                                                                                        $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                                        $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                                        $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                                        chilipeppr.publish(
+                                                                                                            '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                            "Estado del Husillo",
+                                                                                                            "El husillo no está desbloqueado (I.99), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                                            2000 // show for 2 second 
+                                                                                                        );
+                                                                                                    }
+                                                                                                });
+                                                                                            } else {
+                                                                                                $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                                $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                                $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                                chilipeppr.publish(
+                                                                                                    '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                    "Estado del Husillo",
+                                                                                                    "El Husillo no está desocupado (I.19), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                                    2000 // show for 2 second 
+                                                                                                );
+                                                                                            }
+                                                                                        });
                                                                                         setTimeout(() => {
                                                                                             var cmd = "~";
                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
                                                                                         }, 10000);
 
@@ -8089,12 +8695,134 @@ TERMINA COMENT *****/
                                                                                             var cmd = "p";
                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
-                                                                                            esto.activarm3();
-                                                                                            //ENCENDERHUSILLO
+                                                                                            var HttpClient = function() {
+                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                    }
+                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                    anHttpRequest.send(null);
+                                                                                                }
+                                                                                            }
+                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                            var client = new HttpClient();
+                                                                                            client.get(theurl, function(response) {
+                                                                                                var res = response.split("Pin A5 reads analog ");
+
+                                                                                                response = parseInt(res[1]);
+
+                                                                                                if (response > 850) {
+
+                                                                                                    var HttpClient = function() {
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.80/arduino/digital/11';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {
+                                                                                                        var res = response.split("Pin D11 set to ");
+
+                                                                                                        response = parseInt(res[1]);
+                                                                                                        if (response == 0) {
+                                                                                                            var cmd = "!";
+                                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                            var HttpClient = function() {
+                                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                                    }
+                                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                                    anHttpRequest.send(null);
+                                                                                                                }
+                                                                                                            }
+                                                                                                            var theurl = 'http://192.168.0.88/arduino/digital/29/1';
+                                                                                                            var client = new HttpClient();
+                                                                                                            client.get(theurl, function(response) {
+                                                                                                                var response1 = JSON.parse(response);
+                                                                                                            });
+
+
+                                                                                                            var HttpClient = function() {
+                                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                                    }
+                                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                                    anHttpRequest.send(null);
+                                                                                                                }
+                                                                                                            }
+                                                                                                            var theurl = 'http://192.168.0.88/arduino/digital/19/1';
+                                                                                                            var client = new HttpClient();
+                                                                                                            client.get(theurl, function(response) {
+                                                                                                                var response1 = JSON.parse(response);
+                                                                                                            });
+
+                                                                                                            var HttpClient = function() {
+                                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                                    }
+                                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                                    anHttpRequest.send(null);
+                                                                                                                }
+                                                                                                            }
+                                                                                                            var theurl = 'http://192.168.0.88/arduino/digital/22/1';
+                                                                                                            var client = new HttpClient();
+                                                                                                            client.get(theurl, function(response) {
+                                                                                                                var response1 = JSON.parse(response);
+                                                                                                            });
+
+                                                                                                            document.getElementById("indicadorhusillo").className = "led-green";
+                                                                                                            chilipeppr.publish(
+                                                                                                                '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                                "Estado del Husillo",
+                                                                                                                "Husillo Activado ",
+                                                                                                                2000 // show for 2 second 
+                                                                                                            );
+
+
+                                                                                                        } else {
+                                                                                                            $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                                            $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                                            $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                                            chilipeppr.publish(
+                                                                                                                '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                                "Estado del Husillo",
+                                                                                                                "El husillo no está desbloqueado (I.99), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                                                2000 // show for 2 second 
+                                                                                                            );
+                                                                                                        }
+                                                                                                    });
+                                                                                                } else {
+                                                                                                    $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                                    $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                                    $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                                    chilipeppr.publish(
+                                                                                                        '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                        "Estado del Husillo",
+                                                                                                        "El Husillo no está desocupado (I.19), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                                        2000 // show for 2 second 
+                                                                                                    );
+                                                                                                }
+                                                                                            });
                                                                                             setTimeout(() => {
                                                                                                 var cmd = "~";
                                                                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
                                                                                             }, 10000);
 
@@ -8188,6 +8916,7 @@ TERMINA COMENT *****/
 
 
                                                                     // COMIENZA CH
+                                                                    var esto = this;
                                                                     var HttpClient = function() {
 
                                                                         this.get = function(aUrl, aCallback) {
@@ -8465,13 +9194,134 @@ TERMINA COMENT *****/
                                                                                     var cmd = "p";
                                                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
-                                                                                    esto.
-                                                                                    esto.activarm3();
-                                                                                    //ENCENDERHUSILLO
+                                                                                    var HttpClient = function() {
+                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                            }
+                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                            anHttpRequest.send(null);
+                                                                                        }
+                                                                                    }
+                                                                                    var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                    var client = new HttpClient();
+                                                                                    client.get(theurl, function(response) {
+                                                                                        var res = response.split("Pin A5 reads analog ");
+
+                                                                                        response = parseInt(res[1]);
+
+                                                                                        if (response > 850) {
+
+                                                                                            var HttpClient = function() {
+                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                    }
+                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                    anHttpRequest.send(null);
+                                                                                                }
+                                                                                            }
+                                                                                            var theurl = 'http://192.168.0.80/arduino/digital/11';
+                                                                                            var client = new HttpClient();
+                                                                                            client.get(theurl, function(response) {
+                                                                                                var res = response.split("Pin D11 set to ");
+
+                                                                                                response = parseInt(res[1]);
+                                                                                                if (response == 0) {
+                                                                                                    var cmd = "!";
+                                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                    var HttpClient = function() {
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.88/arduino/digital/29/1';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {
+                                                                                                        var response1 = JSON.parse(response);
+                                                                                                    });
+
+
+                                                                                                    var HttpClient = function() {
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.88/arduino/digital/19/1';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {
+                                                                                                        var response1 = JSON.parse(response);
+                                                                                                    });
+
+                                                                                                    var HttpClient = function() {
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.88/arduino/digital/22/1';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {
+                                                                                                        var response1 = JSON.parse(response);
+                                                                                                    });
+
+                                                                                                    document.getElementById("indicadorhusillo").className = "led-green";
+                                                                                                    chilipeppr.publish(
+                                                                                                        '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                        "Estado del Husillo",
+                                                                                                        "Husillo Activado ",
+                                                                                                        2000 // show for 2 second 
+                                                                                                    );
+
+
+                                                                                                } else {
+                                                                                                    $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                                    $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                                    $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                                    chilipeppr.publish(
+                                                                                                        '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                        "Estado del Husillo",
+                                                                                                        "El husillo no está desbloqueado (I.99), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                                        2000 // show for 2 second 
+                                                                                                    );
+                                                                                                }
+                                                                                            });
+                                                                                        } else {
+                                                                                            $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                            $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                            $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                            chilipeppr.publish(
+                                                                                                '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                "Estado del Husillo",
+                                                                                                "El Husillo no está desocupado (I.19), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                                2000 // show for 2 second 
+                                                                                            );
+                                                                                        }
+                                                                                    });
                                                                                     setTimeout(() => {
                                                                                         var cmd = "~";
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
                                                                                     }, 10000);
 
@@ -8716,12 +9566,134 @@ TERMINA COMENT *****/
                                                                                         var cmd = "p";
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
-                                                                                        esto.activarm3();
-                                                                                        //ENCENDERHUSILLO
+                                                                                        var HttpClient = function() {
+                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                }
+                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                anHttpRequest.send(null);
+                                                                                            }
+                                                                                        }
+                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                        var client = new HttpClient();
+                                                                                        client.get(theurl, function(response) {
+                                                                                            var res = response.split("Pin A5 reads analog ");
+
+                                                                                            response = parseInt(res[1]);
+
+                                                                                            if (response > 850) {
+
+                                                                                                var HttpClient = function() {
+                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                        }
+                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                        anHttpRequest.send(null);
+                                                                                                    }
+                                                                                                }
+                                                                                                var theurl = 'http://192.168.0.80/arduino/digital/11';
+                                                                                                var client = new HttpClient();
+                                                                                                client.get(theurl, function(response) {
+                                                                                                    var res = response.split("Pin D11 set to ");
+
+                                                                                                    response = parseInt(res[1]);
+                                                                                                    if (response == 0) {
+                                                                                                        var cmd = "!";
+                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                        var HttpClient = function() {
+                                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                                }
+                                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                                anHttpRequest.send(null);
+                                                                                                            }
+                                                                                                        }
+                                                                                                        var theurl = 'http://192.168.0.88/arduino/digital/29/1';
+                                                                                                        var client = new HttpClient();
+                                                                                                        client.get(theurl, function(response) {
+                                                                                                            var response1 = JSON.parse(response);
+                                                                                                        });
+
+
+                                                                                                        var HttpClient = function() {
+                                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                                }
+                                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                                anHttpRequest.send(null);
+                                                                                                            }
+                                                                                                        }
+                                                                                                        var theurl = 'http://192.168.0.88/arduino/digital/19/1';
+                                                                                                        var client = new HttpClient();
+                                                                                                        client.get(theurl, function(response) {
+                                                                                                            var response1 = JSON.parse(response);
+                                                                                                        });
+
+                                                                                                        var HttpClient = function() {
+                                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                                }
+                                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                                anHttpRequest.send(null);
+                                                                                                            }
+                                                                                                        }
+                                                                                                        var theurl = 'http://192.168.0.88/arduino/digital/22/1';
+                                                                                                        var client = new HttpClient();
+                                                                                                        client.get(theurl, function(response) {
+                                                                                                            var response1 = JSON.parse(response);
+                                                                                                        });
+
+                                                                                                        document.getElementById("indicadorhusillo").className = "led-green";
+                                                                                                        chilipeppr.publish(
+                                                                                                            '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                            "Estado del Husillo",
+                                                                                                            "Husillo Activado ",
+                                                                                                            2000 // show for 2 second 
+                                                                                                        );
+
+
+                                                                                                    } else {
+                                                                                                        $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                                        $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                                        $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                                        chilipeppr.publish(
+                                                                                                            '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                            "Estado del Husillo",
+                                                                                                            "El husillo no está desbloqueado (I.99), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                                            2000 // show for 2 second 
+                                                                                                        );
+                                                                                                    }
+                                                                                                });
+                                                                                            } else {
+                                                                                                $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
+                                                                                                $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
+                                                                                                $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
+                                                                                                chilipeppr.publish(
+                                                                                                    '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                                                                    "Estado del Husillo",
+                                                                                                    "El Husillo no está desocupado (I.19), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
+                                                                                                    2000 // show for 2 second 
+                                                                                                );
+                                                                                            }
+                                                                                        });
                                                                                         setTimeout(() => {
                                                                                             var cmd = "~";
                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
                                                                                         }, 10000);
 
@@ -15205,13 +16177,6 @@ TERMINA COMENT *****/
                 // linenum is 1-based since visually gcode starts at line 1, this.fileLines is 0-based
                 // so don't forget
                 updateRowQueueStats: function(linenum) {
-
-
-                    var linea = this.fileLines[linenum - 1];
-                    //ACA TRABAJO AHORITA.
-                    if (linea.match(/\bM6\b/i)) {
-                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                    }
                     // We will update the checkmark based on the underlying meta data for
                     // the line. Lines are stored in this.fileLines and meta data is in
                     // this.metaLines. They have equal indexes.
@@ -15771,7 +16736,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">SEAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">CMFAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
@@ -16309,4 +17274,4 @@ TERMINA COMENT *****/
 
 </body>
 
-</html>
+</html>f
