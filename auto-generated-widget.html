@@ -5453,9 +5453,66 @@
                                                                                     esto.activarm3();
                                                                                     //ENCENDERHUSILLO
                                                                                     setTimeout(() => {
-                                                                                        var cmd = "~";
-                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                        var HttpClient = function() {
+                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                }
+                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                anHttpRequest.send(null);
+                                                                                            }
+                                                                                        }
+                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                        var client = new HttpClient();
+                                                                                        client.get(theurl, function(response) {
+
+                                                                                            if (response > 900) {
+                                                                                                var cmd = "~";
+                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                            } else {
+
+
+                                                                                                setTimeout(function() {
+
+                                                                                                    var HttpClient = function() {
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {
+
+                                                                                                        if (response > 900) {
+                                                                                                            var cmd = "~";
+                                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                        } else {
+
+                                                                                                            var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                            erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                            erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                            document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                            document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                        }
+
+
+                                                                                                    });
+
+                                                                                                }, 10000)
+
+                                                                                            }
+
+                                                                                        });
 
 
                                                                                     }, 10000);
@@ -5723,9 +5780,66 @@
                                                                                         esto.activarm3();
                                                                                         //ENCENDERHUSILLO
                                                                                         setTimeout(() => {
-                                                                                            var cmd = "~";
-                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                            var HttpClient = function() {
+                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                    }
+                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                    anHttpRequest.send(null);
+                                                                                                }
+                                                                                            }
+                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                            var client = new HttpClient();
+                                                                                            client.get(theurl, function(response) {
+
+                                                                                                if (response > 900) {
+                                                                                                    var cmd = "~";
+                                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                } else {
+
+
+                                                                                                    setTimeout(function() {
+
+                                                                                                        var HttpClient = function() {
+                                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                                }
+                                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                                anHttpRequest.send(null);
+                                                                                                            }
+                                                                                                        }
+                                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                        var client = new HttpClient();
+                                                                                                        client.get(theurl, function(response) {
+
+                                                                                                            if (response > 900) {
+                                                                                                                var cmd = "~";
+                                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                            } else {
+
+                                                                                                                var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                                erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                                erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                                document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                                document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                            }
+
+
+                                                                                                        });
+
+                                                                                                    }, 10000)
+
+                                                                                                }
+
+                                                                                            });
 
                                                                                         }, 10000);
 
@@ -6095,10 +6209,66 @@
                                                                                 esto.activarm3();
                                                                                 //ENCENDERHUSILLO
                                                                                 setTimeout(() => {
-                                                                                    var cmd = "~";
-                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                    var HttpClient = function() {
+                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                            }
+                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                            anHttpRequest.send(null);
+                                                                                        }
+                                                                                    }
+                                                                                    var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                    var client = new HttpClient();
+                                                                                    client.get(theurl, function(response) {
 
+                                                                                        if (response > 900) {
+                                                                                            var cmd = "~";
+                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                        } else {
+
+
+                                                                                            setTimeout(function() {
+
+                                                                                                var HttpClient = function() {
+                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                        }
+                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                        anHttpRequest.send(null);
+                                                                                                    }
+                                                                                                }
+                                                                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                var client = new HttpClient();
+                                                                                                client.get(theurl, function(response) {
+
+                                                                                                    if (response > 900) {
+                                                                                                        var cmd = "~";
+                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                    } else {
+
+                                                                                                        var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                        erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                        erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                        document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                        document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                    }
+
+
+                                                                                                });
+
+                                                                                            }, 10000)
+
+                                                                                        }
+
+                                                                                    });
                                                                                 }, 10000);
 
                                                                                 //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
@@ -6343,9 +6513,66 @@
                                                                                     esto.activarm3();
                                                                                     //ENCENDERHUSILLO
                                                                                     setTimeout(() => {
-                                                                                        var cmd = "~";
-                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                        var HttpClient = function() {
+                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                }
+                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                anHttpRequest.send(null);
+                                                                                            }
+                                                                                        }
+                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                        var client = new HttpClient();
+                                                                                        client.get(theurl, function(response) {
+
+                                                                                            if (response > 900) {
+                                                                                                var cmd = "~";
+                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                            } else {
+
+
+                                                                                                setTimeout(function() {
+
+                                                                                                    var HttpClient = function() {
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {
+
+                                                                                                        if (response > 900) {
+                                                                                                            var cmd = "~";
+                                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                        } else {
+
+                                                                                                            var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                            erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                            erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                            document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                            document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                        }
+
+
+                                                                                                    });
+
+                                                                                                }, 10000)
+
+                                                                                            }
+
+                                                                                        });
 
                                                                                     }, 10000);
 
@@ -7821,10 +8048,66 @@ TERMINA COMENT *****/
                                                                                         esto.activarm3();
                                                                                         //ENCENDERHUSILLO
                                                                                         setTimeout(() => {
-                                                                                            var cmd = "~";
-                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                            var HttpClient = function() {
+                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                    }
+                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                    anHttpRequest.send(null);
+                                                                                                }
+                                                                                            }
+                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                            var client = new HttpClient();
+                                                                                            client.get(theurl, function(response) {
 
+                                                                                                if (response > 900) {
+                                                                                                    var cmd = "~";
+                                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                } else {
+
+
+                                                                                                    setTimeout(function() {
+
+                                                                                                        var HttpClient = function() {
+                                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                                }
+                                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                                anHttpRequest.send(null);
+                                                                                                            }
+                                                                                                        }
+                                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                        var client = new HttpClient();
+                                                                                                        client.get(theurl, function(response) {
+
+                                                                                                            if (response > 900) {
+                                                                                                                var cmd = "~";
+                                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                            } else {
+
+                                                                                                                var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                                erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                                erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                                document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                                document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                            }
+
+
+                                                                                                        });
+
+                                                                                                    }, 10000)
+
+                                                                                                }
+
+                                                                                            });
                                                                                         }, 10000);
 
 
@@ -8092,9 +8375,66 @@ TERMINA COMENT *****/
                                                                                             esto.activarm3();
                                                                                             //ENCENDERHUSILLO
                                                                                             setTimeout(() => {
-                                                                                                var cmd = "~";
-                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                var HttpClient = function() {
+                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                        }
+                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                        anHttpRequest.send(null);
+                                                                                                    }
+                                                                                                }
+                                                                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                var client = new HttpClient();
+                                                                                                client.get(theurl, function(response) {
+
+                                                                                                    if (response > 900) {
+                                                                                                        var cmd = "~";
+                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                    } else {
+
+
+                                                                                                        setTimeout(function() {
+
+                                                                                                            var HttpClient = function() {
+                                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                                    }
+                                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                                    anHttpRequest.send(null);
+                                                                                                                }
+                                                                                                            }
+                                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                            var client = new HttpClient();
+                                                                                                            client.get(theurl, function(response) {
+
+                                                                                                                if (response > 900) {
+                                                                                                                    var cmd = "~";
+                                                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                } else {
+
+                                                                                                                    var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                                    erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                                    erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                                    document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                                    document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                                }
+
+
+                                                                                                            });
+
+                                                                                                        }, 10000)
+
+                                                                                                    }
+
+                                                                                                });
 
                                                                                             }, 10000);
 
@@ -8469,10 +8809,66 @@ TERMINA COMENT *****/
                                                                                     esto.activarm3();
                                                                                     //ENCENDERHUSILLO
                                                                                     setTimeout(() => {
-                                                                                        var cmd = "~";
-                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                        var HttpClient = function() {
+                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                }
+                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                anHttpRequest.send(null);
+                                                                                            }
+                                                                                        }
+                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                        var client = new HttpClient();
+                                                                                        client.get(theurl, function(response) {
 
+                                                                                            if (response > 900) {
+                                                                                                var cmd = "~";
+                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                            } else {
+
+
+                                                                                                setTimeout(function() {
+
+                                                                                                    var HttpClient = function() {
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {
+
+                                                                                                        if (response > 900) {
+                                                                                                            var cmd = "~";
+                                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                        } else {
+
+                                                                                                            var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                            erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                            erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                            document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                            document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                        }
+
+
+                                                                                                    });
+
+                                                                                                }, 10000)
+
+                                                                                            }
+
+                                                                                        });
                                                                                     }, 10000);
 
                                                                                     //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
@@ -8719,9 +9115,66 @@ TERMINA COMENT *****/
                                                                                         esto.activarm3();
                                                                                         //ENCENDERHUSILLO
                                                                                         setTimeout(() => {
-                                                                                            var cmd = "~";
-                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                            var HttpClient = function() {
+                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                    }
+                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                    anHttpRequest.send(null);
+                                                                                                }
+                                                                                            }
+                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                            var client = new HttpClient();
+                                                                                            client.get(theurl, function(response) {
+
+                                                                                                if (response > 900) {
+                                                                                                    var cmd = "~";
+                                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                } else {
+
+
+                                                                                                    setTimeout(function() {
+
+                                                                                                        var HttpClient = function() {
+                                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                                }
+                                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                                anHttpRequest.send(null);
+                                                                                                            }
+                                                                                                        }
+                                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                        var client = new HttpClient();
+                                                                                                        client.get(theurl, function(response) {
+
+                                                                                                            if (response > 900) {
+                                                                                                                var cmd = "~";
+                                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                            } else {
+
+                                                                                                                var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                                erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                                erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                                document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                                document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                            }
+
+
+                                                                                                        });
+
+                                                                                                    }, 10000)
+
+                                                                                                }
+
+                                                                                            });
 
                                                                                         }, 10000);
 
@@ -15771,7 +16224,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">TEAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">PEAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
