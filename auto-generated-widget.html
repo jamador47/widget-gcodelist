@@ -3348,6 +3348,7 @@
                 salirpausa: function(event) {
 
                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                    document.getElementById("salirpausa").style = " background-color:gray"
 
                     document.getElementById("salirpausa").disabled = true;
 
@@ -5172,6 +5173,8 @@
                                     case (gcodeline.match(/\bPAUSA\b/i) || {}).input:
 
                                         document.getElementById("salirpausa").disabled = false;
+                                        document.getElementById("salirpausa").style = "background-color: greenyellow";
+
 
                                         break;
 
@@ -7793,6 +7796,8 @@ TERMINA COMENT *****/
 
                                         case (gcodeline.match(/\bPAUSA\b/i) || {}).input:
                                             document.getElementById("salirpausa").disabled = false;
+                                            document.getElementById("salirpausa").style = "background-color: greenyellow";
+
 
                                             break;
 
@@ -16331,7 +16336,7 @@ TERMINA COMENT *****/
                         Tool Changes
                         <span class="caret"></span>
                     </button>
-                    <button type="button" id="salirpausa" style="background-color:greenyellow" disabled> 
+                    <button type="button" id="salirpausa" style="background-color:gray" disabled> 
                         SALIR DE PAUSA
                     </button>
                     <ul class="dropdown-menu xdropdown-menu-right com-chilipeppr-widget-gcode-menuToolChange" role="menu">
