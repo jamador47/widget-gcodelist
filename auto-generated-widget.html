@@ -1663,6 +1663,8 @@
 
                     // setup buttons
                     $('#com-chilipeppr-widget-gcode-play').click(this.onPlay.bind(this));
+                    $('#salirpausa').click(this.salirpausa.bind(this));
+
                     $('#com-chilipeppr-widget-gcode-pause').click(this.onPause.bind(this));
                     $('#com-chilipeppr-widget-gcode-stop').click(this.onStop.bind(this));
                     $('#com-chilipeppr-widget-gcode-stepback').click(this.onStepBack.bind(this));
@@ -3342,6 +3344,20 @@
                  * /onPlay publish event at the lowest priority so that it can play as the last step in the pubsub chain.
                  * This gives other widgets a chance to interrupt the play event.
                  */
+
+                salirpausa: function(event) {
+
+                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
+                    document.getElementById("salirpausa").disabled = true;
+
+                    var cmd = "~";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
+
+
+                },
+
+
                 onPlay: function(event) {
                     var cmd = "!%";
                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
@@ -5151,6 +5167,14 @@
 
 
                                 switch (gcodeline) {
+
+
+                                    case (gcodeline.match(/\bPAUSA\b/i) || {}).input:
+
+                                        document.getElementById("salirpausa").disabled = false;
+
+                                        break;
+
 
                                     case (gcodeline.match(/\bM30\b/i) || {}).input:
                                         var cmd = "~";
@@ -7767,8 +7791,14 @@ TERMINA COMENT *****/
                                     switch (gcodeline) {
 
 
+                                        case (gcodeline.match(/\bPAUSA\b/i) || {}).input:
+                                            document.getElementById("salirpausa").disabled = false;
 
-                                        /********** INICIO CAMBIO HERRAMIENTA ******/
+                                            break;
+
+
+
+                                            /********** INICIO CAMBIO HERRAMIENTA ******/
                                         case (gcodeline.match(/\bM6\b/i) || {}).input:
                                             var cmd = "!";
                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
@@ -16300,6 +16330,9 @@ TERMINA COMENT *****/
                     <button type="button" id="" class="btn btn-default btn-xs dropdown-toggle com-chilipeppr-widget-gcode-btnToolChange" data-toggle="dropdown"> 
                         Tool Changes
                         <span class="caret"></span>
+                    </button>
+                    <button type="button" id="salirpausa" style="color:greenyellow" disabled> 
+                        SALIR DE PAUSA
                     </button>
                     <ul class="dropdown-menu xdropdown-menu-right com-chilipeppr-widget-gcode-menuToolChange" role="menu">
                         <li role="presentation" class="dropdown-header com-chilipeppr-widget-gcode-toolchanges-hdr">(No Tool Changes in Gcode)</li>
