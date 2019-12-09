@@ -5137,7 +5137,7 @@
                                 gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) ||
                                 gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) ||
                                 gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) ||
-                                gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i)) {
+                                gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
 
                                 var cmd = "!";
                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
@@ -6789,6 +6789,7 @@
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
                                                     if (!sigespecial && !errora && !errory) {
                                                         setTimeout(function() {
+                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
                                                             var cmd = "~";
                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
                                                         }, 700);
@@ -6963,6 +6964,8 @@
 
                                                 if (!sigespecial && !errora && !errory) {
                                                     setTimeout(function() {
+                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
                                                         var cmd = "~";
                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
                                                     }, 700);
@@ -7023,6 +7026,7 @@
 
                                         ocupado = 0;
                                         if (!sigespecial && !errora && !errory) {
+                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
                                             var cmd = "~";
                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
                                         }
@@ -7043,6 +7047,8 @@
                                         this.activarM58();
                                         ocupado = 0;
                                         if (!sigespecial && !errora && !errory) {
+                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
                                             var cmd = "~";
                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
 
@@ -7746,7 +7752,7 @@ TERMINA COMENT *****/
                                     gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) ||
                                     gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) ||
                                     gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) ||
-                                    gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i)) {
+                                    gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
 
                                     ocupado = 1;
                                     var cmd = "!";
@@ -9393,6 +9399,8 @@ TERMINA COMENT *****/
 
                                                         if (!sigespecial && !errora && !errory) {
                                                             setTimeout(function() {
+                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
                                                                 var cmd = "~";
                                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
                                                             }, 700);
@@ -9564,6 +9572,8 @@ TERMINA COMENT *****/
 
                                                     if (!sigespecial && !errora && !errory) {
                                                         setTimeout(function() {
+                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
                                                             var cmd = "~";
                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
                                                         }, 700);
@@ -9627,6 +9637,8 @@ TERMINA COMENT *****/
 
                                             ocupado = 0;
                                             if (!sigespecial && !errora && !errory) {
+                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
                                                 var cmd = "~";
                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
                                             }
@@ -9642,6 +9654,8 @@ TERMINA COMENT *****/
                                             this.activarM58();
                                             ocupado = 0;
                                             if (!sigespecial && !errora && !errory) {
+                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
                                                 var cmd = "~";
                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
 
@@ -15665,6 +15679,21 @@ TERMINA COMENT *****/
                     if (linea.match(/\bM6\b/i)) {
                         chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                     }
+                    if (linea.match(/\bM57\b/i)) {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    }
+                    if (linea.match(/\bM58\b/i)) {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    }
+                    if (linea.match(/\bPAUSA\b/i)) {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    }
+                    if (linea.match(/\bUTO\b/i)) {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    }
+                    if (linea.match(/\bUAO\b/i)) {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    }
                     // We will update the checkmark based on the underlying meta data for
                     // the line. Lines are stored in this.fileLines and meta data is in
                     // this.metaLines. They have equal indexes.
@@ -16224,7 +16253,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">PEAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">CEAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
