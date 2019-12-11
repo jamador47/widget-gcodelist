@@ -5494,12 +5494,12 @@
                                                                                         var theurl = 'http://192.168.0.88/arduino/analog/5';
                                                                                         var client = new HttpClient();
                                                                                         client.get(theurl, function(response) {
-                                                                                            alert(response);
-                                                                                            response = response.split("Pin A5 reads analog ");
-                                                                                            alert(response);
 
-                                                                                            response = parseInt(response);
-                                                                                            alert(response);
+                                                                                            response = response.split("Pin A5 reads analog ");
+
+
+                                                                                            response = parseInt(response[1]);
+
                                                                                             if (response < 900) {
                                                                                                 var cmd = "~";
                                                                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
@@ -5523,12 +5523,12 @@
                                                                                                     var theurl = 'http://192.168.0.88/arduino/analog/5';
                                                                                                     var client = new HttpClient();
                                                                                                     client.get(theurl, function(response) {
-                                                                                                        alert(response);
-                                                                                                        response = response.split("Pin A5 reads analog ");
-                                                                                                        alert(response);
 
-                                                                                                        response = parseInt(response);
-                                                                                                        alert(response);
+                                                                                                        response = response.split("Pin A5 reads analog ");
+
+
+                                                                                                        response = parseInt(response[1]);
+
                                                                                                         if (response < 900) {
                                                                                                             var cmd = "~";
                                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
@@ -5832,12 +5832,12 @@
                                                                                             var client = new HttpClient();
                                                                                             client.get(theurl, function(response) {
 
-                                                                                                alert(response);
+
                                                                                                 response = response.split("Pin A5 reads analog ");
-                                                                                                alert(response);
+
 
                                                                                                 response = parseInt(response);
-                                                                                                alert(response);
+
                                                                                                 if (response < 900) {
                                                                                                     var cmd = "~";
                                                                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
@@ -5862,12 +5862,12 @@
                                                                                                         var client = new HttpClient();
                                                                                                         client.get(theurl, function(response) {
 
-                                                                                                            alert(response);
-                                                                                                            response = response.split("Pin A5 reads analog ");
-                                                                                                            alert(response);
 
-                                                                                                            response = parseInt(response);
-                                                                                                            alert(response);
+                                                                                                            response = response.split("Pin A5 reads analog ");
+
+
+                                                                                                            response = parseInt(response[1]);
+
                                                                                                             if (response < 900) {
                                                                                                                 var cmd = "~";
                                                                                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
@@ -6272,12 +6272,12 @@
                                                                                     var theurl = 'http://192.168.0.88/arduino/analog/5';
                                                                                     var client = new HttpClient();
                                                                                     client.get(theurl, function(response) {
-                                                                                        alert(response);
+
                                                                                         response = response.split("Pin A5 reads analog ");
-                                                                                        alert(response);
+
 
                                                                                         response = parseInt(response);
-                                                                                        alert(response);
+
                                                                                         if (response < 900) {
                                                                                             var cmd = "~";
                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
@@ -6584,12 +6584,12 @@
                                                                                         var client = new HttpClient();
                                                                                         client.get(theurl, function(response) {
 
-                                                                                            alert(response);
+
                                                                                             response = response.split("Pin A5 reads analog ");
-                                                                                            alert(response);
+
 
                                                                                             response = parseInt(response);
-                                                                                            alert(response);
+
                                                                                             if (response < 900) {
                                                                                                 var cmd = "~";
                                                                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
@@ -6614,12 +6614,12 @@
                                                                                                     var client = new HttpClient();
                                                                                                     client.get(theurl, function(response) {
 
-                                                                                                        alert(response);
-                                                                                                        response = response.split("Pin A5 reads analog ");
-                                                                                                        alert(response);
 
-                                                                                                        response = parseInt(response);
-                                                                                                        alert(response);
+                                                                                                        response = response.split("Pin A5 reads analog ");
+
+
+                                                                                                        response = parseInt(response[1]);
+
                                                                                                         if (response < 900) {
                                                                                                             var cmd = "~";
                                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
@@ -8173,7 +8173,7 @@ TERMINA COMENT *****/
                                                                                                         client.get(theurl, function(response) {
 
                                                                                                             response = response.split("Pin A5 reads analog ");
-                                                                                                            response = parseInt(response);
+                                                                                                            response = parseInt(response[1]);
                                                                                                             if (response < 900) {
                                                                                                                 var cmd = "~";
                                                                                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
@@ -8505,7 +8505,7 @@ TERMINA COMENT *****/
                                                                                                             client.get(theurl, function(response) {
 
                                                                                                                 response = response.split("Pin A5 reads analog ");
-                                                                                                                response = parseInt(response);
+                                                                                                                response = parseInt(response[1]);
                                                                                                                 if (response < 900) {
                                                                                                                     var cmd = "~";
                                                                                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
@@ -8944,7 +8944,7 @@ TERMINA COMENT *****/
                                                                                                     client.get(theurl, function(response) {
 
                                                                                                         response = response.split("Pin A5 reads analog ");
-                                                                                                        response = parseInt(response);
+                                                                                                        response = parseInt(response[1]);
                                                                                                         if (response < 900) {
                                                                                                             var cmd = "~";
                                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
@@ -9255,7 +9255,7 @@ TERMINA COMENT *****/
                                                                                                         client.get(theurl, function(response) {
 
                                                                                                             response = response.split("Pin A5 reads analog ");
-                                                                                                            response = parseInt(response);
+                                                                                                            response = parseInt(response[1]);
                                                                                                             if (response < 900) {
                                                                                                                 var cmd = "~";
                                                                                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
@@ -16349,7 +16349,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">TSEAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">RSEAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
