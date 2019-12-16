@@ -6896,7 +6896,8 @@
                                         var client = new HttpClient();
                                         client.get(theurl, function(response) {});
                                         var coord = gcodeline.match(/UAO(.*?)*/i)[0];
-                                        coord = coord.substring(4);
+                                        
+                                        coord = coord.substring(7);
 
                                         var HttpClient = function() {
                                             this.get = function(aUrl, aCallback) {
@@ -9532,7 +9533,7 @@ TERMINA COMENT *****/
                                             var client = new HttpClient();
                                             client.get(theurl, function(response) {});
                                             var coord = gcodeline.match(/UAO(.*?)*/i)[0];
-                                            coord = coord.substring(4);
+                                            coord = coord.substring(7);
 
                                             var HttpClient = function() {
                                                 this.get = function(aUrl, aCallback) {
