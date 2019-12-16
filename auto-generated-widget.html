@@ -330,7 +330,6 @@
         var toolausar = 0;
         var objetodah = 0;
         var numuao = 0;
-        var arrayuao = [];
         var ocupado = 0;
         var sigespecial = 0;
         //<![CDATA[
@@ -3383,17 +3382,19 @@
 
                     var largodecodigo = this.fileLines.length;
                     var contadorarray = 0;
+                    var arrayuao = [];
+
 
                             for (var n = 0; n < largodecodigo; n++) {
                                 var gcodetemporal = esto.fileLines[n];
 if (gcodetemporal.match(/\bUAO\b/i) || gcodetemporal.match(/\bUTO\b/i)){
-alert(this.arrayuao);
-    esto.arrayuao[contadorarray] = n;
+alert(arrayuao);
+    arrayuao[contadorarray] = n;
     contadorarray ++
 }}
 
 
-esto.arrayuao.forEach(function(valor, indice, array) {
+arrayuao.forEach(function(valor, indice, array) {
     var gcodetemporal = esto.fileLines[valor];
     if (gcodetemporal.match(/\bUAO\b/i)) {
     //alert(n);
@@ -16687,7 +16688,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">ANEAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">ATEAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
