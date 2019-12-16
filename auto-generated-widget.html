@@ -3386,7 +3386,7 @@
                             
                                 var gcodetemporal = esto.fileLines[n];
 
-if (gcodetemporal.match(/\bUAO\b/i)) {
+                                if (gcodetemporal.match(/\bUAO\b/i)) {
     var HttpClient = function() {
                                             this.get = function(aUrl, aCallback) {
                                                 var anHttpRequest = new XMLHttpRequest();
@@ -3401,7 +3401,7 @@ if (gcodetemporal.match(/\bUAO\b/i)) {
                                         var theurl = 'http://192.168.0.98/api/resetuto';
                                         var client = new HttpClient();
                                         client.get(theurl, function(response) {});
-                                        var coord = gcodeline.match(/UAO(.*?)*/i)[0];
+                                        var coord = gcodetemporal.match(/UAO(.*?)*/i)[0];
                                         
                                         coord = coord.substring(7);
 
@@ -3537,11 +3537,11 @@ if (gcodetemporal.match(/\bUAO\b/i)) {
 }
 
 if (gcodetemporal.match(/\bUTO\b/i)) {
-    var numeroorigen = gcodeline.match(/UTO (.*?) /i)[1];
-                                        var utox = gcodeline.match(/X(.*?) /i)[1];
-                                        var utoy = gcodeline.match(/Y(.*?) /i)[1];
-                                        var utoa = gcodeline.match(/A(.*?) /i)[1];
-                                        var utoz = gcodeline.match(/Z(.*?)*/i)[0];
+    var numeroorigen = gcodetemporal.match(/UTO (.*?) /i)[1];
+                                        var utox = gcodetemporal.match(/X(.*?) /i)[1];
+                                        var utoy = gcodetemporal.match(/Y(.*?) /i)[1];
+                                        var utoa = gcodetemporal.match(/A(.*?) /i)[1];
+                                        var utoz = gcodetemporal.match(/Z(.*?)*/i)[0];
                                         utoz = utoz.substring(1);
 
                                         var HttpClient = function() {
@@ -16675,7 +16675,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">AYEAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">ATEAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
