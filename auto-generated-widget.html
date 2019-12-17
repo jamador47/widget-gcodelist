@@ -329,7 +329,7 @@
         var errory = 0;
         var toolausar = 0;
         var objetodah = 0;
-        var siguientepausa = 0;
+
         var ocupado = 0;
         var sigespecial = 0;
         //<![CDATA[
@@ -4925,10 +4925,6 @@
                         }
 
                         // Si el contador va bien
-
-                        if (contadordelinea == (this.siguientepausa - 1)){
-                            idnum = this.siguientepausa;
-                        }
 
                         if (idnum == contadordelinea) {
 
@@ -15793,16 +15789,13 @@ TERMINA COMENT *****/
                         }
 
                         if (linea.match(/\bUTO\b/i)) {
-                            this.siguientepausa = linea;
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
                         if (linea.match(/\bUAO\b/i)) {
-                            this.siguientepausa = linea;
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
 
                         if (lineaantes.match(/\bPAUSA\b/i)) {
-                            this.siguientepausa = linea;
 
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
@@ -16366,7 +16359,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">TFCEAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">TCEAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
