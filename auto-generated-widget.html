@@ -15794,17 +15794,16 @@ TERMINA COMENT *****/
                         }
 
                         if (linea.match(/\bUTO\b/i)) {
-                            siguientepausa = linenum;
+                            siguientepausa = linea;
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
                         if (linea.match(/\bUAO\b/i)) {
-                            siguientepausa = linenum;
-                            alert(siguientepausa);
+                            siguientepausa = linea;
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
 
                         if (lineaantes.match(/\bPAUSA\b/i)) {
-                            siguientepausa = linenum;
+                            siguientepausa = linea;
 
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
