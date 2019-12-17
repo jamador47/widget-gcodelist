@@ -15773,13 +15773,14 @@ TERMINA COMENT *****/
                     var linea = this.fileLines[linenum - 1];
 
                     //ACA TRABAJO AHORITA.
-                    if (linea.match(/\bM6\b/i)) {
-                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                    }
+          
 
                     if (linenum > 1) {
                         var lineaantes = this.fileLines[linenum - 2];
-                    
+                       
+                        if (lineaantes.match(/\bM6\b/i)) {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    }
                         if (linea.match(/\bM57\b/i)) {
                             //  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
@@ -16358,7 +16359,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">JCEAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">JTEAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
