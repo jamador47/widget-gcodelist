@@ -329,6 +329,7 @@
         var errory = 0;
         var toolausar = 0;
         var objetodah = 0;
+        var ultimopausa = 0;
 
         var ocupado = 0;
         var sigespecial = 0;
@@ -15773,13 +15774,14 @@ TERMINA COMENT *****/
                     var linea = this.fileLines[linenum - 1];
 
                     //ACA TRABAJO AHORITA.
-          
-
+                    alert(ultimopausa);
+if (ultimopausa != linenum){
                     if (linenum > 1) {
                         var lineaantes = this.fileLines[linenum - 2];
                        
                         if (lineaantes.match(/\bM6\b/i)) {
                         chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    ultimopausa = linenum;
                     }
                         if (linea.match(/\bM57\b/i)) {
                             //  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
@@ -15790,16 +15792,22 @@ TERMINA COMENT *****/
 
                         if (lineaantes.match(/\bUTO\b/i)) {
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                            ultimopausa = linenum;
+
                         }
                         if (lineaantes.match(/\bUAO\b/i)) {
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                            ultimopausa = linenum;
+
                         }
 
                         if (lineaantes.match(/\bPAUSA\b/i)) {
+                            ultimopausa = linenum;
 
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
-                    }
+
+                    }}
                     // We will update the checkmark based on the underlying meta data for
                     // the line. Lines are stored in this.fileLines and meta data is in
                     // this.metaLines. They have equal indexes.
@@ -16359,7 +16367,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">JTEAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">JBEAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
