@@ -3530,9 +3530,8 @@
                                             client.get(theurl, function(response) {});
 
                                             var cmd = "G10 L2 P1 X" + xcambiar + " Y" + ycambiar + " A" + acambiar + " Z" + zcambiar;
-                                           alert(esto.fileLines[n]);
+                                           alert(cmd);
                                             esto.fileLines[n] = cmd;
-                                            alert(esto.fileLines[n]);
                                         });
                                         
 }
@@ -3687,9 +3686,8 @@ if (gcodetemporal.match(/\bUTO\b/i)) {
                                                 var cmd = "G10 L2 P1 X" + xcambiar + " Y" + ycambiar + " A" + acambiar + " Z" + zcambiar;
 
 
-                                                alert(esto.fileLines[n]);
+    alert(cmd);
                                             esto.fileLines[n] = cmd;
-                                            alert(esto.fileLines[n]);
                                         });
 
 });
@@ -16677,7 +16675,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">ATEAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">ABEAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
