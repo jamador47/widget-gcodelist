@@ -3602,7 +3602,7 @@
                                                         chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
                                                     } else {
 
-                                                        // MESA A NO ESTA EN POSICION CERO ABSOLUTTO
+                                                        // MESA A NO ESTA EN POSICION CERO ABSOLUTO
                                                         var erroresexistentes = document.getElementById("textoerrores").value;
 
                                                         erroresexistentes = erroresexistentes.concat("\\\n\\\n");
@@ -5154,7 +5154,7 @@
                                 gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) ||
                                 gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) ||
                                 gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) ||
-                                gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTTO\b/i) || gcodeline.match(/\bUAAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
+                                gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
 
                                 var cmd = "!";
                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
@@ -6699,10 +6699,10 @@
 
                                         /*********FIN CAMBIO DE HERRAMIENTA******/
 
-                                        /*************INICIO UTTO***********************/
-                                    case (gcodeline.match(/\bUTTO\b/i) || {}).input:
+                                        /*************INICIO UTO***********************/
+                                    case (gcodeline.match(/\bUTO\b/i) || {}).input:
 
-                                        var numeroorigen = gcodeline.match(/UTTO (.*?) /i)[1];
+                                        var numeroorigen = gcodeline.match(/UTO (.*?) /i)[1];
                                         var utox = gcodeline.match(/X(.*?) /i)[1];
                                         var utoy = gcodeline.match(/Y(.*?) /i)[1];
                                         var utoa = gcodeline.match(/A(.*?) /i)[1];
@@ -6846,26 +6846,40 @@
 
                                                 }
 
-                                                if (!sigespecial && !errora && !errory) {
 
-                                                    var cmd = "~";
+
+                                                var cmd = "G10 L2 P1 X" + xcambiar + " Y" + ycambiar + " A" + acambiar + " Z" + zcambiar;
+                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+
+                                                //alert(cmd);
+                                                setTimeout(function() {
+                                                    var cmd = "G54";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                    if (!sigespecial && !errora && !errory) {
+                                                        setTimeout(function() {
+                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                            var cmd = "~";
+                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                        }, 700);
+                                                    }
+                                                }, 500);
 
-                                                }
+
+
 
                                             });
 
                                         });
                                         break;
-                                        /**********************************************FIN UTTO***********************************/
+                                        /**********************************************FIN UTO***********************************/
 
 
 
 
-                                        /**********************************************INICIO UAAO***********************************/
+                                        /**********************************************INICIO UAO***********************************/
 
 
-                                    case (gcodeline.match(/\bUAAO\b/i) || {}).input:
+                                    case (gcodeline.match(/\bUAO\b/i) || {}).input:
 
                                         var HttpClient = function() {
                                             this.get = function(aUrl, aCallback) {
@@ -6881,7 +6895,7 @@
                                         var theurl = 'http://192.168.0.98/api/resetuto';
                                         var client = new HttpClient();
                                         client.get(theurl, function(response) {});
-                                        var coord = gcodeline.match(/UAAO(.*?)*/i)[0];
+                                        var coord = gcodeline.match(/UAO(.*?)*/i)[0];
                                         coord = coord.substring(4);
 
                                         var HttpClient = function() {
@@ -7007,12 +7021,24 @@
                                             var theurl = 'http://192.168.0.98/api/actualizarorigenusado/' + coord;
                                             var client = new HttpClient();
                                             client.get(theurl, function(response) {});
-                                            if (!sigespecial && !errora && !errory) {
 
-                                                var cmd = "~";
+                                            var cmd = "G10 L2 P1 X" + xcambiar + " Y" + ycambiar + " A" + acambiar + " Z" + zcambiar;
+                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+
+                                            // alert(cmd);
+                                            setTimeout(function() {
+                                                var cmd = "G54";
                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
 
-                                            }
+                                                if (!sigespecial && !errora && !errory) {
+                                                    setTimeout(function() {
+                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
+                                                        var cmd = "~";
+                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                    }, 700);
+                                                }
+                                            }, 500);
 
 
                                         });
@@ -7020,7 +7046,7 @@
                                         break;
 
 
-                                        /********************************FIN UAAO************************************************/
+                                        /********************************FIN UAO************************************************/
                                         /**************************************INICIA M3***********************/
                                     case (gcodeline.match(/\bM3\b/i) || {}).input:
                                         ocupado = 1;
@@ -7794,7 +7820,7 @@ TERMINA COMENT *****/
                                     gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) ||
                                     gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) ||
                                     gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) ||
-                                    gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTTO\b/i) || gcodeline.match(/\bUAAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
+                                    gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
 
                                     ocupado = 1;
                                     var cmd = "!";
@@ -9310,10 +9336,10 @@ TERMINA COMENT *****/
                                             /*********FIN CAMBIO DE HERRAMIENTA******/
 
 
-                                            /************************INICIO UTTO**************************/
-                                        case (gcodeline.match(/\bUTTO\b/i) || {}).input:
+                                            /************************INICIO UTO**************************/
+                                        case (gcodeline.match(/\bUTO\b/i) || {}).input:
 
-                                            var numeroorigen = gcodeline.match(/UTTO (.*?) /i)[1];
+                                            var numeroorigen = gcodeline.match(/UTO (.*?) /i)[1];
                                             var utox = gcodeline.match(/X(.*?) /i)[1];
                                             var utoy = gcodeline.match(/Y(.*?) /i)[1];
                                             var utoa = gcodeline.match(/A(.*?) /i)[1];
@@ -9457,28 +9483,40 @@ TERMINA COMENT *****/
 
                                                     }
 
-                                                    if (!sigespecial && !errora && !errory) {
 
-                                                        var cmd = "~";
+
+                                                    var cmd = "G10 L2 P1 X" + xcambiar + " Y" + ycambiar + " A" + acambiar + " Z" + zcambiar;
+                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+
+                                                    //alert(cmd);
+                                                    setTimeout(function() {
+                                                        var cmd = "G54";
                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
 
-                                                    }
+                                                        if (!sigespecial && !errora && !errory) {
+                                                            setTimeout(function() {
+                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
+                                                                var cmd = "~";
+                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                            }, 700);
+                                                        }
+                                                    }, 500);
 
 
                                                 });
 
                                             });
                                             break;
-                                            /**********************************************FIN UTTO***********************************/
+                                            /**********************************************FIN UTO***********************************/
 
 
 
 
-                                            /**********************************************INICIO UAAO***********************************/
+                                            /**********************************************INICIO UAO***********************************/
 
 
-                                        case (gcodeline.match(/\bUAAO\b/i) || {}).input:
+                                        case (gcodeline.match(/\bUAO\b/i) || {}).input:
                                             var HttpClient = function() {
                                                 this.get = function(aUrl, aCallback) {
                                                     var anHttpRequest = new XMLHttpRequest();
@@ -9493,7 +9531,7 @@ TERMINA COMENT *****/
                                             var theurl = 'http://192.168.0.98/api/resetuto';
                                             var client = new HttpClient();
                                             client.get(theurl, function(response) {});
-                                            var coord = gcodeline.match(/UAAO(.*?)*/i)[0];
+                                            var coord = gcodeline.match(/UAO(.*?)*/i)[0];
                                             coord = coord.substring(4);
 
                                             var HttpClient = function() {
@@ -9619,19 +9657,32 @@ TERMINA COMENT *****/
                                                 var theurl = 'http://192.168.0.98/api/actualizarorigenusado/' + coord;
                                                 var client = new HttpClient();
                                                 client.get(theurl, function(response) {});
-                                                if (!sigespecial && !errora && !errory) {
 
-                                                    var cmd = "~";
+                                                var cmd = "G10 L2 P1 X" + xcambiar + " Y" + ycambiar + " A" + acambiar + " Z" + zcambiar;
+                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+
+                                                // alert(cmd);
+                                                setTimeout(function() {
+                                                    var cmd = "G54";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
 
-                                                }
+                                                    if (!sigespecial && !errora && !errory) {
+                                                        setTimeout(function() {
+                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
+                                                            var cmd = "~";
+                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                        }, 700);
+                                                    }
+                                                }, 500);
+
 
                                             });
 
                                             break;
 
 
-                                            /********************************FIN UAAO************************************************/
+                                            /********************************FIN UAO************************************************/
 
                                             /**************************************INICIA M3***********************/
                                         case (gcodeline.match(/\bM3\b/i) || {}).input:
@@ -15296,12 +15347,12 @@ TERMINA COMENT *****/
 
                                 } else {
 
-                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTTO
+                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTO
                                     var erroresexistentes = document.getElementById("textoerrores").value;
 
                                     erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                    erroresexistentes = erroresexistentes.concat("Mesa A No esta en cero absolUTTO, Error de Movimiento");
+                                    erroresexistentes = erroresexistentes.concat("Mesa A No esta en cero absoluto, Error de Movimiento");
 
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
@@ -15393,12 +15444,12 @@ TERMINA COMENT *****/
 
                                 } else {
 
-                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTTO
+                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTO
                                     var erroresexistentes = document.getElementById("textoerrores").value;
 
                                     erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                    erroresexistentes = erroresexistentes.concat("Mesa Y No esta en cero absolUTTO, Error de Movimiento");
+                                    erroresexistentes = erroresexistentes.concat("Mesa Y No esta en cero absoluto, Error de Movimiento");
 
                                     document.getElementById("textoerrores").value = erroresexistentes;
 
@@ -15488,12 +15539,12 @@ TERMINA COMENT *****/
 
                                 } else {
 
-                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTTO
+                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTO
                                     var erroresexistentes = document.getElementById("textoerrores").value;
 
                                     erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                    erroresexistentes = erroresexistentes.concat("Mesa Y No esta en cero absolUTTO, Error de Movimiento");
+                                    erroresexistentes = erroresexistentes.concat("Mesa Y No esta en cero absoluto, Error de Movimiento");
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                                     document.getElementById("textoerrores").value = erroresexistentes;
 
@@ -15588,12 +15639,12 @@ TERMINA COMENT *****/
 
                                 } else {
 
-                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTTO
+                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTO
                                     var erroresexistentes = document.getElementById("textoerrores").value;
 
                                     erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                    erroresexistentes = erroresexistentes.concat("Mesa A No esta en cero absolUTTO, Error de Movimiento");
+                                    erroresexistentes = erroresexistentes.concat("Mesa A No esta en cero absoluto, Error de Movimiento");
 
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
@@ -15736,7 +15787,12 @@ TERMINA COMENT *****/
                             // chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
 
-
+                        if (linea.match(/\bUTO\b/i)) {
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
+                        if (linea.match(/\bUAO\b/i)) {
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
 
                         if (lineaantes.match(/\bPAUSA\b/i)) {
 
@@ -16353,7 +16409,7 @@ TERMINA COMENT *****/
                     <button type="button" id="salirpausa" style="background-color:gray" disabled> 
                         SALIR DE PAUSA
                     </button>
-                    <ul class="dropdown-menu xdropdown-menu-right com-chilipeppr-widget-gcode-menutoolChange" role="menu">
+                    <ul class="dropdown-menu xdropdown-menu-right com-chilipeppr-widget-gcode-menuToolChange" role="menu">
                         <li role="presentation" class="dropdown-header com-chilipeppr-widget-gcode-toolchanges-hdr">(No Tool Changes in Gcode)</li>
                         <!--<li><a href="" class="standalone" target="_blank">View Widget Standalone</a></li>-->
                         <!--<li><a href="" class="fork" target="_blank">Fork Widget</a></li>-->
