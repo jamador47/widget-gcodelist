@@ -3382,11 +3382,10 @@
 
                     var largodecodigo = this.fileLines.length;
 
-                            for (var n = 0; n < largodecodigo; n) {
+                            for (var n = 0; n < largodecodigo; n++) {
                             
                                 var gcodetemporal = esto.fileLines[n];
 esto.numuao = n;
-if (gcodetemporal.match(/\bUAO\b/i) || gcodetemporal.match(/\bUTO\b/i)) {
                                 if (gcodetemporal.match(/\bUAO\b/i)) {
     alert(n);
     var HttpClient = function() {
@@ -3535,8 +3534,6 @@ if (gcodetemporal.match(/\bUAO\b/i) || gcodetemporal.match(/\bUTO\b/i)) {
                                            alert(esto.fileLines[esto.numuao]);
                                             esto.fileLines[esto.numuao] = cmd;
                                             alert(esto.fileLines[esto.numuao]);
-                                                                                        alert(esto.fileLines[n]);
-                                        esto.numuao++;
                                         });
                                         
 }
@@ -3694,21 +3691,14 @@ if (gcodetemporal.match(/\bUTO\b/i)) {
                                                 alert(esto.fileLines[n]);
                                             esto.fileLines[n] = cmd;
                                             alert(esto.fileLines[n]);
-                                            esto.numuao++;
                                         });
 
 });
                             
                             
                             }
-                            n = esto.numuao;
-                            }
-                            else{
-                                 n++;
                             }
 
-                            }
-                    
                     //hacer cambio de herramienta previa si esta en modoh.********************************
 
                     //ELIMINARESTO
@@ -16688,7 +16678,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">AREAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">A(EAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
