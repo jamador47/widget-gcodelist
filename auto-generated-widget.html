@@ -330,7 +330,6 @@
         var toolausar = 0;
         var objetodah = 0;
         var numuao = 0;
-        var arrayuao = [];
         var ocupado = 0;
         var sigespecial = 0;
         //<![CDATA[
@@ -3382,21 +3381,13 @@
                     meta.gcodeLines = this.fileLines;
 
                     var largodecodigo = this.fileLines.length;
-                    var contadorarray = 0;
 
                             for (var n = 0; n < largodecodigo; n) {
+                            
                                 var gcodetemporal = esto.fileLines[n];
 esto.numuao = n;
 if (gcodetemporal.match(/\bUAO\b/i) || gcodetemporal.match(/\bUTO\b/i)) {
-
-    esto.arrayuao[contadorarray] = esto.numuao;
-    contadorarray ++
-}}
-
-
-esto.arrayuao.forEach(function(valor, indice, array) {
-    var gcodetemporal = esto.fileLines[valor];
-    if (gcodetemporal.match(/\bUAO\b/i)) {
+                                if (gcodetemporal.match(/\bUAO\b/i)) {
     //alert(n);
     var HttpClient = function() {
                                             this.get = function(aUrl, aCallback) {
@@ -3541,8 +3532,11 @@ esto.arrayuao.forEach(function(valor, indice, array) {
                                             client.get(theurl, function(response) {});
 
                                             var cmd = "G10 L2 P1 X" + xcambiar + " Y" + ycambiar + " A" + acambiar + " Z" + zcambiar;
-                                            esto.fileLines[valor] = cmd;
-                 
+                                           alert(esto.fileLines[esto.numuao]);
+                                            esto.fileLines[esto.numuao] = cmd;
+                                            alert(esto.fileLines[esto.numuao]);
+                                                                                        alert(esto.fileLines[n]);
+                                        esto.numuao++;
                                         });
                                         
 }
@@ -3696,19 +3690,25 @@ if (gcodetemporal.match(/\bUTO\b/i)) {
 
                                                 var cmd = "G10 L2 P1 X" + xcambiar + " Y" + ycambiar + " A" + acambiar + " Z" + zcambiar;
 
-                                                esto.fileLines[valor] = cmd;
 
+                                                alert(esto.fileLines[n]);
+                                            esto.fileLines[n] = cmd;
+                                            alert(esto.fileLines[n]);
+                                            esto.numuao++;
                                         });
 
 });
                             
                             
                             }
-   
-});
-                               
-                     
-                     
+                            n = esto.numuao;
+                            }
+                            else{
+                                 n++;
+                            }
+
+                            }
+                    
                     //hacer cambio de herramienta previa si esta en modoh.********************************
 
                     //ELIMINARESTO
@@ -16688,7 +16688,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">AMEAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">AGEAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
