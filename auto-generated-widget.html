@@ -329,7 +329,7 @@
         var errory = 0;
         var toolausar = 0;
         var objetodah = 0;
-        var numuao = 0;
+
         var ocupado = 0;
         var sigespecial = 0;
         //<![CDATA[
@@ -3385,7 +3385,7 @@
                             for (var n = 0; n < largodecodigo; n++) {
                             
                                 var gcodetemporal = esto.fileLines[n];
-esto.numuao = n;
+
                                 if (gcodetemporal.match(/\bUAO\b/i)) {
     alert(n);
     var HttpClient = function() {
@@ -3531,9 +3531,9 @@ esto.numuao = n;
                                             client.get(theurl, function(response) {});
 
                                             var cmd = "G10 L2 P1 X" + xcambiar + " Y" + ycambiar + " A" + acambiar + " Z" + zcambiar;
-                                           alert(esto.fileLines[esto.numuao]);
-                                            esto.fileLines[esto.numuao] = cmd;
-                                            alert(esto.fileLines[esto.numuao]);
+                                           alert(esto.fileLines[n]);
+                                            esto.fileLines[n] = cmd;
+                                            alert(esto.fileLines[n]);
                                         });
                                         
 }
