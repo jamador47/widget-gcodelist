@@ -4648,7 +4648,7 @@
                     }
 
                     if (linea.match(/\bG4\b/i)) {
-                         chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                         //chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
                         if (linea.match(/\bM57\b/i)) {
                             //  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
@@ -4664,12 +4664,12 @@
                         }
                         if (lineaantes.match(/\bUAO\b/i)) {
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                            ultimopausa = linenum;
+                           
 
                         }
 
                         if (lineaantes.match(/\bPAUSA\b/i)) {
-                            ultimopausa = linenum;
+                           
 
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
@@ -15835,7 +15835,7 @@ if (ultimopausa != linenum){
                     }
 
                     if (linea.match(/\bG4\b/i)) {
-                         chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                         //chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
                         if (linea.match(/\bM57\b/i)) {
                             //  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
