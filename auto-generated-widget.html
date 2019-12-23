@@ -7857,7 +7857,8 @@ TERMINA COMENT *****/
 
 
                                             /********** INICIO CAMBIO HERRAMIENTA ******/
-                                        case (gcodeline.match(/\bM6\b/i) || {}).input:
+                                            case (gcodeline.match(/\bM6\b/i) || {}).input:
+                                           var lineacodigog = gcodeline;
                                             var cmd = "!";
                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                             this.activarm5();
@@ -8857,7 +8858,7 @@ TERMINA COMENT *****/
                                                                                                 var gcodetemporal = esto.gcode.lines[n];
                                                                                                 if(gcodetemporal.match(/\bM6\b/i)){
                                                                                                     var linean = "N"+(n+1);
-                                                                                                    var lineatemporal = gcodelinetemporal.replace('M6', "").trim();
+                                                                                                    var lineatemporal = gcodetemporal.replace('M6', "").trim();
                                                                                                     lineatemporal = lineatemporal.replace('T', "").trim();
                                                                                                     lineatemporal = lineatemporal.replace('M7', "").trim();
                                                                                                     lineatemporal = lineatemporal.replace(linean, "").trim();
@@ -16384,7 +16385,7 @@ if (ultimopausa != linenum){
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">TFYAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">TtYAO</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
