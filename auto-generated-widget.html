@@ -4638,8 +4638,40 @@
                         this.metaLines[idnum - 1].isQueued = true;
                         
                         var linea = this.fileLines[idnum - 1];
+                        var lineaantes = this.fileLines[idnum - 2];
                         if (linea.match(/\bG4\b/i)) {
                          chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
+                        if (lineaantes.match(/\bM6\b/i)) {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    ultimopausa = linenum;
+                    }
+
+                    if (linea.match(/\bG4\b/i)) {
+                         chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
+                        if (linea.match(/\bM57\b/i)) {
+                            //  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
+                        if (linea.match(/\bM58\b/i)) {
+                            // chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
+
+                        if (lineaantes.match(/\bUTO\b/i)) {
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                            ultimopausa = linenum;
+
+                        }
+                        if (lineaantes.match(/\bUAO\b/i)) {
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                            ultimopausa = linenum;
+
+                        }
+
+                        if (lineaantes.match(/\bPAUSA\b/i)) {
+                            ultimopausa = linenum;
+
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
 
                         // update the dom if this row is showing  
