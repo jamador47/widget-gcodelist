@@ -3945,6 +3945,7 @@
                     }
 
                     console.log("this.currentLine:", this.currentLine);
+                    alert(this.currentLine);
                     var ctr = this.currentLine != null ? this.currentLine : 0;
                     localStorage.setItem('currentLine', ctr);
                     if (ctr >= this.fileLines.length) {
