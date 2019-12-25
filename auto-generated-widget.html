@@ -329,6 +329,7 @@
         var errory = 0;
         var toolausar = 0;
         var objetodah = 0;
+        var ultimopausa = 0;
 
         var ocupado = 0;
         var sigespecial = 0;
@@ -3346,14 +3347,15 @@
                  */
 
                 salirpausa: function(event) {
+                    
+                    var cmd = "~";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
+
 
                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
                     document.getElementById("salirpausa").style = " background-color:gray"
 
                     document.getElementById("salirpausa").disabled = true;
-
-                    var cmd = "~";
-                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
 
 
                 },
@@ -3602,7 +3604,7 @@
                                                         chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
                                                     } else {
 
-                                                        // MESA A NO ESTA EN POSICION CERO ABSOLUTTO
+                                                        // MESA A NO ESTA EN POSICION CERO ABSOLUTO
                                                         var erroresexistentes = document.getElementById("textoerrores").value;
 
                                                         erroresexistentes = erroresexistentes.concat("\\\n\\\n");
@@ -4590,7 +4592,10 @@
 
                             // set that it is queued
                             this.metaLines[idnum - 1].isSent = true;
-
+                           var linea = this.fileLines[idnum - 1];
+                            if (linea.match(/\bG4\b/i)) {
+                         chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
                             // update the dom if this row is showing  
                             // send in 1-based number, not 0-based
                             // our id is 1-based, i.e. the row number
@@ -4609,6 +4614,8 @@
 
                     var item = data;
                     var msgEl;
+
+                 
                     // check that id string is not null/empty and starts with
                     // a g, cuz we make all our id's start with g
                     // otherwise this callback is not for us
@@ -4629,6 +4636,43 @@
 
                         // set that it is queued
                         this.metaLines[idnum - 1].isQueued = true;
+                        
+                        var linea = this.fileLines[idnum - 1];
+                        var lineaantes = this.fileLines[idnum - 2];
+                        if (linea.match(/\bG4\b/i)) {
+                         chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
+                        if (lineaantes.match(/\bM6\b/i)) {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    ultimopausa = linenum;
+                    }
+
+                    if (linea.match(/\bG4\b/i)) {
+                         //chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
+                        if (linea.match(/\bM57\b/i)) {
+                            //  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
+                        if (linea.match(/\bM58\b/i)) {
+                            // chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
+
+                        if (lineaantes.match(/\bUTO\b/i)) {
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                            ultimopausa = linenum;
+
+                        }
+                        if (lineaantes.match(/\bUAO\b/i)) {
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                           
+
+                        }
+
+                        if (lineaantes.match(/\bPAUSA\b/i)) {
+                           
+
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
 
                         // update the dom if this row is showing  
                         // send in 1-based number, not 0-based
@@ -5154,7 +5198,7 @@
                                 gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) ||
                                 gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) ||
                                 gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) ||
-                                gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTTO\b/i) || gcodeline.match(/\bUAAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
+                                gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
 
                                 var cmd = "!";
                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
@@ -6699,10 +6743,10 @@
 
                                         /*********FIN CAMBIO DE HERRAMIENTA******/
 
-                                        /*************INICIO UTTO***********************/
-                                    case (gcodeline.match(/\bUTTO\b/i) || {}).input:
+                                        /*************INICIO UTO***********************/
+                                    case (gcodeline.match(/\bUTO\b/i) || {}).input:
 
-                                        var numeroorigen = gcodeline.match(/UTTO (.*?) /i)[1];
+                                        var numeroorigen = gcodeline.match(/UTO (.*?) /i)[1];
                                         var utox = gcodeline.match(/X(.*?) /i)[1];
                                         var utoy = gcodeline.match(/Y(.*?) /i)[1];
                                         var utoa = gcodeline.match(/A(.*?) /i)[1];
@@ -6846,26 +6890,40 @@
 
                                                 }
 
-                                                if (!sigespecial && !errora && !errory) {
 
-                                                    var cmd = "~";
+
+                                                var cmd = "G10 L2 P1 X" + xcambiar + " Y" + ycambiar + " A" + acambiar + " Z" + zcambiar;
+                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+
+                                                //alert(cmd);
+                                                setTimeout(function() {
+                                                    var cmd = "G54";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                    if (!sigespecial && !errora && !errory) {
+                                                        setTimeout(function() {
+                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                            var cmd = "~";
+                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                        }, 700);
+                                                    }
+                                                }, 500);
 
-                                                }
+
+
 
                                             });
 
                                         });
                                         break;
-                                        /**********************************************FIN UTTO***********************************/
+                                        /**********************************************FIN UTO***********************************/
 
 
 
 
-                                        /**********************************************INICIO UAAO***********************************/
+                                        /**********************************************INICIO UAO***********************************/
 
 
-                                    case (gcodeline.match(/\bUAAO\b/i) || {}).input:
+                                    case (gcodeline.match(/\bUAO\b/i) || {}).input:
 
                                         var HttpClient = function() {
                                             this.get = function(aUrl, aCallback) {
@@ -6881,7 +6939,7 @@
                                         var theurl = 'http://192.168.0.98/api/resetuto';
                                         var client = new HttpClient();
                                         client.get(theurl, function(response) {});
-                                        var coord = gcodeline.match(/UAAO(.*?)*/i)[0];
+                                        var coord = gcodeline.match(/UAO(.*?)*/i)[0];
                                         coord = coord.substring(4);
 
                                         var HttpClient = function() {
@@ -7007,12 +7065,24 @@
                                             var theurl = 'http://192.168.0.98/api/actualizarorigenusado/' + coord;
                                             var client = new HttpClient();
                                             client.get(theurl, function(response) {});
-                                            if (!sigespecial && !errora && !errory) {
 
-                                                var cmd = "~";
+                                            var cmd = "G10 L2 P1 X" + xcambiar + " Y" + ycambiar + " A" + acambiar + " Z" + zcambiar;
+                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+
+                                            // alert(cmd);
+                                            setTimeout(function() {
+                                                var cmd = "G54";
                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
 
-                                            }
+                                                if (!sigespecial && !errora && !errory) {
+                                                    setTimeout(function() {
+                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
+                                                        var cmd = "~";
+                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                    }, 700);
+                                                }
+                                            }, 500);
 
 
                                         });
@@ -7020,7 +7090,7 @@
                                         break;
 
 
-                                        /********************************FIN UAAO************************************************/
+                                        /********************************FIN UAO************************************************/
                                         /**************************************INICIA M3***********************/
                                     case (gcodeline.match(/\bM3\b/i) || {}).input:
                                         ocupado = 1;
@@ -7794,7 +7864,7 @@ TERMINA COMENT *****/
                                     gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) ||
                                     gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) ||
                                     gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) ||
-                                    gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTTO\b/i) || gcodeline.match(/\bUAAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
+                                    gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
 
                                     ocupado = 1;
                                     var cmd = "!";
@@ -7819,7 +7889,10 @@ TERMINA COMENT *****/
 
 
                                             /********** INICIO CAMBIO HERRAMIENTA ******/
-                                        case (gcodeline.match(/\bM6\b/i) || {}).input:
+                                            case (gcodeline.match(/\bM6\b/i) || {}).input:
+                                           var lineacodigog = gcodeline;
+                                           var toolqueseusara = 0;
+                                           var contador2 = contadordelinea;
                                             var cmd = "!";
                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                             this.activarm5();
@@ -7913,17 +7986,18 @@ TERMINA COMENT *****/
 
 
 
-                                                                            var linea = gcodeline.replace('M6', "").trim();
+                                                                            var linea = lineacodigog.replace('M6', "").trim();
                                                                             alert(linea);
-                                                                            alert(contadordelinea);
-                                                                            linea = linea.replace('M7', "").trim();
+                                                                            alert(contador2);                                                                    linea = linea.replace('M7', "").trim();
                                                                             linea = linea.replace('T', "").trim();
+                                                                            alert(linea)
+            
 
-                                                                            var linean = "N" + (contadordelinea - 1);
+                                                                            var linean = "N" + (contador2);
                                                                             linea = linea.replace(linean, "").trim();
-                                                                            window.toolausar = parseInt(linea);
-
-                                                                            if (window.toolausar == 0) {
+                                                                            toolqueseusara = parseInt(linea);
+alert("estaeslatool");
+alert(toolqueseusara);                                                                            if (toolqueseusara == 0) {
                                                                                 for (var i = 0; i < 17; i++) {
 
                                                                                     if (parseInt(obj[i]['enhusillo'])) {
@@ -7976,7 +8050,8 @@ TERMINA COMENT *****/
 
 
 
-                                                                            } else {
+                                                                            } 
+                                                                            else {
 
                                                                                 // SI ES MODO H:
                                                                                 if (modoh == 1) {
@@ -8002,7 +8077,7 @@ TERMINA COMENT *****/
                                                                                     // Loop para encontrar que pocket tiene la herramienta pedida.
                                                                                     for (var i = 0; i < 17; i++) {
 
-                                                                                        if (window.objetodah[i]['herramienta'] == window.toolausar) {
+                                                                                        if (window.objetodah[i]['herramienta'] == toolqueseusara) {
                                                                                             // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                                                                             var indexher = i;
                                                                                             var valortool = i + 1;
@@ -8068,7 +8143,7 @@ TERMINA COMENT *****/
                                                                                                 anHttpRequest.send(null);
                                                                                             }
                                                                                         }
-                                                                                        var theurl = 'http://192.168.0.98/sigherramienta/' + window.toolausar;
+                                                                                        var theurl = 'http://192.168.0.98/sigherramienta/' + toolqueseusara;
                                                                                         var client = new HttpClient();
                                                                                         client.get(theurl, function(response) {});
 
@@ -8183,12 +8258,12 @@ TERMINA COMENT *****/
 
                                                                                 // SI ES MODO LINEAL:  ***********************************************************************************************
                                                                                 else {
-                                                                                    var indexher = window.toolausar - 1;
-                                                                                    var valortool = window.toolausar;
+                                                                                    var indexher = toolqueseusara - 1;
+                                                                                    var valortool = toolqueseusara;
                                                                                     alert("ENTRE");
                                                                                     alert(valortool);
 
-                                                                                    var longitud = parseFloat(window.objetodah[(window.toolausar - 1)]['longitud']);
+                                                                                    var longitud = parseFloat(window.objetodah[(toolqueseusara - 1)]['longitud']);
 
 
                                                                                     var HttpClient = function() {
@@ -8203,7 +8278,7 @@ TERMINA COMENT *****/
                                                                                             anHttpRequest.send(null);
                                                                                         }
                                                                                     }
-                                                                                    var theurl = 'http://192.168.0.98/sigherramienta/' + window.toolausar;
+                                                                                    var theurl = 'http://192.168.0.98/sigherramienta/' + toolqueseusara;
                                                                                     var client = new HttpClient();
                                                                                     client.get(theurl, function(response) {});
 
@@ -8329,7 +8404,7 @@ TERMINA COMENT *****/
                                                                                                     anHttpRequest.send(null);
                                                                                                 }
                                                                                             }
-                                                                                            var theurl = 'http://192.168.0.98/sigherramienta/' + window.toolausar;
+                                                                                            var theurl = 'http://192.168.0.98/sigherramienta/' + toolqueseusara;
                                                                                             var client = new HttpClient();
                                                                                             client.get(theurl, function(response) {});
 
@@ -8401,7 +8476,7 @@ TERMINA COMENT *****/
                                                                                                     anHttpRequest.send(null);
                                                                                                 }
                                                                                             }
-                                                                                            var theurl = 'http://192.168.0.98/rotarcar/' + window.toolausar;
+                                                                                            var theurl = 'http://192.168.0.98/rotarcar/' + toolqueseusara;
                                                                                             var client = new HttpClient();
                                                                                             client.get(theurl, function(response) {
 
@@ -8424,7 +8499,7 @@ TERMINA COMENT *****/
 
                                                                                             });
 
-                                                                                            cmd = "q" + window.toolausar + ";1";
+                                                                                            cmd = "q" + toolqueseusara + ";1";
                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
 
@@ -8617,19 +8692,21 @@ TERMINA COMENT *****/
 
 
 
-                                                                        var linea = gcodeline.replace('M6', "").trim();
+                                                                        var linea = lineacodigog.replace('M6', "").trim();
                                                                         alert(linea);
-                                                                        alert(contadordelinea);
+                                                                        alert(contador2);
                                                                         linea = linea.replace('M7', "").trim();
                                                                         linea = linea.replace('T', "").trim();
 
-                                                                        var linean = "N" + (contadordelinea - 1);
+                                                                        var linean = "N" + (contador2);
                                                                         linea = linea.replace(linean, "").trim();
-                                                                        window.toolausar = parseInt(linea);
+                                                                        toolqueseusara = parseInt(linea);
+                                                                        alert("estaeslatool");
+alert(toolqueseusara);  
 
 
 
-                                                                        if (window.toolausar == 0) {
+                                                                        if (toolqueseusara == 0) {
                                                                             for (var i = 0; i < 17; i++) {
 
                                                                                 if (parseInt(obj[i]['enhusillo'])) {
@@ -8709,7 +8786,7 @@ TERMINA COMENT *****/
                                                                                 // Loop para encontrar que pocket tiene la herramienta pedida.
                                                                                 for (var i = 0; i < 17; i++) {
 
-                                                                                    if (window.objetodah[i]['herramienta'] == window.toolausar) {
+                                                                                    if (window.objetodah[i]['herramienta'] == toolqueseusara) {
                                                                                         // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                                                                         var indexher = i;
                                                                                         var valortool = i + 1;
@@ -8817,7 +8894,7 @@ TERMINA COMENT *****/
                                                                                                 var gcodetemporal = esto.gcode.lines[n];
                                                                                                 if(gcodetemporal.match(/\bM6\b/i)){
                                                                                                     var linean = "N"+(n+1);
-                                                                                                    var lineatemporal = gcodelinetemporal.replace('M6', "").trim();
+                                                                                                    var lineatemporal = gcodetemporal.replace('M6', "").trim();
                                                                                                     lineatemporal = lineatemporal.replace('T', "").trim();
                                                                                                     lineatemporal = lineatemporal.replace('M7', "").trim();
                                                                                                     lineatemporal = lineatemporal.replace(linean, "").trim();
@@ -8952,12 +9029,12 @@ TERMINA COMENT *****/
                                                                             // SI ES MODO LINEAL:  ***********************************************************************************************
                                                                             else {
                                                                                 alert(toolausar);
-                                                                                alert(window.toolausar);
+                                                                                alert(toolqueseusara);
 
-                                                                                var longitud = parseFloat(window.objetodah[(window.toolausar - 1)]['longitud']);
+                                                                                var longitud = parseFloat(window.objetodah[(toolqueseusara - 1)]['longitud']);
 
-                                                                                var indexher = window.toolausar - 1;
-                                                                                var valortool = window.toolausar;
+                                                                                var indexher = toolqueseusara - 1;
+                                                                                var valortool = toolqueseusara;
                                                                                 alert("ENTRE");
                                                                                 alert(valortool);
 
@@ -8974,7 +9051,7 @@ TERMINA COMENT *****/
                                                                                         anHttpRequest.send(null);
                                                                                     }
                                                                                 }
-                                                                                var theurl = 'http://192.168.0.98/sigherramienta/' + window.toolausar;
+                                                                                var theurl = 'http://192.168.0.98/sigherramienta/' + toolqueseusara;
                                                                                 var client = new HttpClient();
                                                                                 client.get(theurl, function(response) {});
 
@@ -9152,7 +9229,7 @@ TERMINA COMENT *****/
                                                                                                 anHttpRequest.send(null);
                                                                                             }
                                                                                         }
-                                                                                        var theurl = 'http://192.168.0.98/rotarcar/' + window.toolausar;
+                                                                                        var theurl = 'http://192.168.0.98/rotarcar/' + toolqueseusara;
                                                                                         var client = new HttpClient();
                                                                                         client.get(theurl, function(response) {
 
@@ -9175,7 +9252,7 @@ TERMINA COMENT *****/
 
                                                                                         });
 
-                                                                                        cmd = "q" + window.toolausar + ";1";
+                                                                                        cmd = "q" + toolqueseusara + ";1";
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
                                                                                     } else {
@@ -9310,10 +9387,10 @@ TERMINA COMENT *****/
                                             /*********FIN CAMBIO DE HERRAMIENTA******/
 
 
-                                            /************************INICIO UTTO**************************/
-                                        case (gcodeline.match(/\bUTTO\b/i) || {}).input:
+                                            /************************INICIO UTO**************************/
+                                        case (gcodeline.match(/\bUTO\b/i) || {}).input:
 
-                                            var numeroorigen = gcodeline.match(/UTTO (.*?) /i)[1];
+                                            var numeroorigen = gcodeline.match(/UTO (.*?) /i)[1];
                                             var utox = gcodeline.match(/X(.*?) /i)[1];
                                             var utoy = gcodeline.match(/Y(.*?) /i)[1];
                                             var utoa = gcodeline.match(/A(.*?) /i)[1];
@@ -9457,28 +9534,40 @@ TERMINA COMENT *****/
 
                                                     }
 
-                                                    if (!sigespecial && !errora && !errory) {
 
-                                                        var cmd = "~";
+
+                                                    var cmd = "G10 L2 P1 X" + xcambiar + " Y" + ycambiar + " A" + acambiar + " Z" + zcambiar;
+                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+
+                                                    //alert(cmd);
+                                                    setTimeout(function() {
+                                                        var cmd = "G54";
                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
 
-                                                    }
+                                                        if (!sigespecial && !errora && !errory) {
+                                                            setTimeout(function() {
+                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
+                                                                var cmd = "~";
+                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                            }, 700);
+                                                        }
+                                                    }, 500);
 
 
                                                 });
 
                                             });
                                             break;
-                                            /**********************************************FIN UTTO***********************************/
+                                            /**********************************************FIN UTO***********************************/
 
 
 
 
-                                            /**********************************************INICIO UAAO***********************************/
+                                            /**********************************************INICIO UAO***********************************/
 
 
-                                        case (gcodeline.match(/\bUAAO\b/i) || {}).input:
+                                        case (gcodeline.match(/\bUAO\b/i) || {}).input:
                                             var HttpClient = function() {
                                                 this.get = function(aUrl, aCallback) {
                                                     var anHttpRequest = new XMLHttpRequest();
@@ -9493,7 +9582,7 @@ TERMINA COMENT *****/
                                             var theurl = 'http://192.168.0.98/api/resetuto';
                                             var client = new HttpClient();
                                             client.get(theurl, function(response) {});
-                                            var coord = gcodeline.match(/UAAO(.*?)*/i)[0];
+                                            var coord = gcodeline.match(/UAO(.*?)*/i)[0];
                                             coord = coord.substring(4);
 
                                             var HttpClient = function() {
@@ -9619,19 +9708,32 @@ TERMINA COMENT *****/
                                                 var theurl = 'http://192.168.0.98/api/actualizarorigenusado/' + coord;
                                                 var client = new HttpClient();
                                                 client.get(theurl, function(response) {});
-                                                if (!sigespecial && !errora && !errory) {
 
-                                                    var cmd = "~";
+                                                var cmd = "G10 L2 P1 X" + xcambiar + " Y" + ycambiar + " A" + acambiar + " Z" + zcambiar;
+                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+
+                                                // alert(cmd);
+                                                setTimeout(function() {
+                                                    var cmd = "G54";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
 
-                                                }
+                                                    if (!sigespecial && !errora && !errory) {
+                                                        setTimeout(function() {
+                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
+                                                            var cmd = "~";
+                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                        }, 700);
+                                                    }
+                                                }, 500);
+
 
                                             });
 
                                             break;
 
 
-                                            /********************************FIN UAAO************************************************/
+                                            /********************************FIN UAO************************************************/
 
                                             /**************************************INICIA M3***********************/
                                         case (gcodeline.match(/\bM3\b/i) || {}).input:
@@ -15296,12 +15398,12 @@ TERMINA COMENT *****/
 
                                 } else {
 
-                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTTO
+                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTO
                                     var erroresexistentes = document.getElementById("textoerrores").value;
 
                                     erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                    erroresexistentes = erroresexistentes.concat("Mesa A No esta en cero absolUTTO, Error de Movimiento");
+                                    erroresexistentes = erroresexistentes.concat("Mesa A No esta en cero absoluto, Error de Movimiento");
 
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
@@ -15393,12 +15495,12 @@ TERMINA COMENT *****/
 
                                 } else {
 
-                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTTO
+                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTO
                                     var erroresexistentes = document.getElementById("textoerrores").value;
 
                                     erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                    erroresexistentes = erroresexistentes.concat("Mesa Y No esta en cero absolUTTO, Error de Movimiento");
+                                    erroresexistentes = erroresexistentes.concat("Mesa Y No esta en cero absoluto, Error de Movimiento");
 
                                     document.getElementById("textoerrores").value = erroresexistentes;
 
@@ -15488,12 +15590,12 @@ TERMINA COMENT *****/
 
                                 } else {
 
-                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTTO
+                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTO
                                     var erroresexistentes = document.getElementById("textoerrores").value;
 
                                     erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                    erroresexistentes = erroresexistentes.concat("Mesa Y No esta en cero absolUTTO, Error de Movimiento");
+                                    erroresexistentes = erroresexistentes.concat("Mesa Y No esta en cero absoluto, Error de Movimiento");
                                     document.getElementById("indicadorerrorejec").className = "led-red";
                                     document.getElementById("textoerrores").value = erroresexistentes;
 
@@ -15588,12 +15690,12 @@ TERMINA COMENT *****/
 
                                 } else {
 
-                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTTO
+                                    // MESA A NO ESTA EN POSICION CERO ABSOLUTO
                                     var erroresexistentes = document.getElementById("textoerrores").value;
 
                                     erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
-                                    erroresexistentes = erroresexistentes.concat("Mesa A No esta en cero absolUTTO, Error de Movimiento");
+                                    erroresexistentes = erroresexistentes.concat("Mesa A No esta en cero absoluto, Error de Movimiento");
 
                                     document.getElementById("textoerrores").value = erroresexistentes;
                                     document.getElementById("indicadorerrorejec").className = "led-red";
@@ -15722,13 +15824,19 @@ TERMINA COMENT *****/
                     var linea = this.fileLines[linenum - 1];
 
                     //ACA TRABAJO AHORITA.
-                    if (linea.match(/\bM6\b/i)) {
-                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                    }
-
+                   // alert(ultimopausa);
+if (ultimopausa != linenum){
                     if (linenum > 1) {
                         var lineaantes = this.fileLines[linenum - 2];
+                       
+                        if (lineaantes.match(/\bM6\b/i)) {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    ultimopausa = linenum;
+                    }
 
+                    if (linea.match(/\bG4\b/i)) {
+                         //chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
                         if (linea.match(/\bM57\b/i)) {
                             //  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
@@ -15736,13 +15844,24 @@ TERMINA COMENT *****/
                             // chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
 
+                        if (lineaantes.match(/\bUTO\b/i)) {
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                            ultimopausa = linenum;
 
+                        }
+                        if (lineaantes.match(/\bUAO\b/i)) {
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                            ultimopausa = linenum;
+
+                        }
 
                         if (lineaantes.match(/\bPAUSA\b/i)) {
+                            ultimopausa = linenum;
 
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
-                    }
+
+                    }}
                     // We will update the checkmark based on the underlying meta data for
                     // the line. Lines are stored in this.fileLines and meta data is in
                     // this.metaLines. They have equal indexes.
@@ -16302,7 +16421,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">ACEAO</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">yuiosa</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
@@ -16353,7 +16472,7 @@ TERMINA COMENT *****/
                     <button type="button" id="salirpausa" style="background-color:gray" disabled> 
                         SALIR DE PAUSA
                     </button>
-                    <ul class="dropdown-menu xdropdown-menu-right com-chilipeppr-widget-gcode-menutoolChange" role="menu">
+                    <ul class="dropdown-menu xdropdown-menu-right com-chilipeppr-widget-gcode-menuToolChange" role="menu">
                         <li role="presentation" class="dropdown-header com-chilipeppr-widget-gcode-toolchanges-hdr">(No Tool Changes in Gcode)</li>
                         <!--<li><a href="" class="standalone" target="_blank">View Widget Standalone</a></li>-->
                         <!--<li><a href="" class="fork" target="_blank">Fork Widget</a></li>-->
