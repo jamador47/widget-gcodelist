@@ -2132,7 +2132,7 @@
                         this.isPausedByPlanner = false;
                         if (this.isInMultiLineMode) {
                             console.log("in multi line send mode");
-                            this.onPlayMultiLine();
+                            this.onPlayNextLine();
                         } else {
                             // do single line mode
                             this.onPlayNextLine();
@@ -2184,7 +2184,7 @@
 
                         if (this.isInMultiLineMode) {
                             console.log("in multi line send mode");
-                            this.onPlayMultiLine();
+                            this.onPlayNextLine();
                         } else if (this.preUploadRemainder > 0) {
                             this.onPreUpload(this.preUploadRemainder);
                         } else {
@@ -3772,7 +3772,7 @@
 
                     if (this.isInMultiLineMode) {
                         console.log("in multi line send mode");
-                        this.onPlayMultiLine();
+                        this.onPlayNextLine();
                     } else {
                         // do single line mode
                         this.onPlayNextLine();
@@ -3826,7 +3826,7 @@
                     this.onPreUpload(numToUpload);
 
                     // Just use the delayPerLine setting for now. Could make this a seperate setting
-                    setTimeout(this.onPlayMultiLine.bind(this), this.delayPerLine);
+                    setTimeout(this.onPlayNextLine.bind(this), this.delayPerLine);
                 },
                 onPreUpload: function(numToUpload) {
                     console.log("inside onPreUpload. user wants N lines uploaded:", numToUpload);
