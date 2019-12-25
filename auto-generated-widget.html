@@ -3347,7 +3347,7 @@
                  */
 
                 salirpausa: function(event) {
-                    
+
                     var cmd = "~";
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
 
@@ -3947,7 +3947,53 @@
                     }
 
                     console.log("this.currentLine:", this.currentLine);
-                    alert(this.currentLine);
+                    // ACA SE ESTA TRABAJANDO
+
+
+                    var linea = this.fileLines[this.currentLine - 1];
+                    var lineaantes = this.fileLines[this.currentLine - 2];
+                    if (linea.match(/\bG4\b/i)) {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    }
+                    if (lineaantes.match(/\bM6\b/i)) {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        ultimopausa = linenum;
+                    }
+
+                    if (linea.match(/\bG4\b/i)) {
+                        //chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    }
+                    if (linea.match(/\bM57\b/i)) {
+                        //  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    }
+                    if (linea.match(/\bM58\b/i)) {
+                        // chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    }
+
+                    if (lineaantes.match(/\bUTO\b/i)) {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        ultimopausa = linenum;
+
+                    }
+                    if (lineaantes.match(/\bUAO\b/i)) {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+
+
+                    }
+
+                    if (lineaantes.match(/\bPAUSA\b/i)) {
+
+
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                    }
+
+
+
+                    // FIN SE ESTA TRABAJANDO
+
+
+
+                    alert(linea);
                     var ctr = this.currentLine != null ? this.currentLine : 0;
                     localStorage.setItem('currentLine', ctr);
                     if (ctr >= this.fileLines.length) {
@@ -4593,10 +4639,10 @@
 
                             // set that it is queued
                             this.metaLines[idnum - 1].isSent = true;
-                           var linea = this.fileLines[idnum - 1];
+                            var linea = this.fileLines[idnum - 1];
                             if (linea.match(/\bG4\b/i)) {
-                         chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                        }
+                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                            }
                             // update the dom if this row is showing  
                             // send in 1-based number, not 0-based
                             // our id is 1-based, i.e. the row number
@@ -4616,7 +4662,7 @@
                     var item = data;
                     var msgEl;
 
-                 
+
                     // check that id string is not null/empty and starts with
                     // a g, cuz we make all our id's start with g
                     // otherwise this callback is not for us
@@ -4637,19 +4683,19 @@
 
                         // set that it is queued
                         this.metaLines[idnum - 1].isQueued = true;
-                        
+
                         var linea = this.fileLines[idnum - 1];
                         var lineaantes = this.fileLines[idnum - 2];
                         if (linea.match(/\bG4\b/i)) {
-                         chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
                         if (lineaantes.match(/\bM6\b/i)) {
-                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                    ultimopausa = linenum;
-                    }
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                            ultimopausa = linenum;
+                        }
 
-                    if (linea.match(/\bG4\b/i)) {
-                         //chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        if (linea.match(/\bG4\b/i)) {
+                            //chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
                         if (linea.match(/\bM57\b/i)) {
                             //  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
@@ -4665,12 +4711,12 @@
                         }
                         if (lineaantes.match(/\bUAO\b/i)) {
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                           
+
 
                         }
 
                         if (lineaantes.match(/\bPAUSA\b/i)) {
-                           
+
 
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
@@ -7890,10 +7936,10 @@ TERMINA COMENT *****/
 
 
                                             /********** INICIO CAMBIO HERRAMIENTA ******/
-                                            case (gcodeline.match(/\bM6\b/i) || {}).input:
-                                           var lineacodigog = gcodeline;
-                                           var toolqueseusara = 0;
-                                           var contador2 = contadordelinea;
+                                        case (gcodeline.match(/\bM6\b/i) || {}).input:
+                                            var lineacodigog = gcodeline;
+                                            var toolqueseusara = 0;
+                                            var contador2 = contadordelinea;
                                             var cmd = "!";
                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                             this.activarm5();
@@ -7989,16 +8035,18 @@ TERMINA COMENT *****/
 
                                                                             var linea = lineacodigog.replace('M6', "").trim();
                                                                             alert(linea);
-                                                                            alert(contador2);                                                                    linea = linea.replace('M7', "").trim();
+                                                                            alert(contador2);
+                                                                            linea = linea.replace('M7', "").trim();
                                                                             linea = linea.replace('T', "").trim();
                                                                             alert(linea)
-            
+
 
                                                                             var linean = "N" + (contador2);
                                                                             linea = linea.replace(linean, "").trim();
                                                                             toolqueseusara = parseInt(linea);
-alert("estaeslatool");
-alert(toolqueseusara);                                                                            if (toolqueseusara == 0) {
+                                                                            alert("estaeslatool");
+                                                                            alert(toolqueseusara);
+                                                                            if (toolqueseusara == 0) {
                                                                                 for (var i = 0; i < 17; i++) {
 
                                                                                     if (parseInt(obj[i]['enhusillo'])) {
@@ -8051,8 +8099,7 @@ alert(toolqueseusara);                                                          
 
 
 
-                                                                            } 
-                                                                            else {
+                                                                            } else {
 
                                                                                 // SI ES MODO H:
                                                                                 if (modoh == 1) {
@@ -8703,7 +8750,7 @@ alert(toolqueseusara);                                                          
                                                                         linea = linea.replace(linean, "").trim();
                                                                         toolqueseusara = parseInt(linea);
                                                                         alert("estaeslatool");
-alert(toolqueseusara);  
+                                                                        alert(toolqueseusara);
 
 
 
@@ -15825,44 +15872,45 @@ alert(toolqueseusara);
                     var linea = this.fileLines[linenum - 1];
 
                     //ACA TRABAJO AHORITA.
-                   // alert(ultimopausa);
-if (ultimopausa != linenum){
-                    if (linenum > 1) {
-                        var lineaantes = this.fileLines[linenum - 2];
-                       
-                        if (lineaantes.match(/\bM6\b/i)) {
-                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                    ultimopausa = linenum;
+                    // alert(ultimopausa);
+                    if (ultimopausa != linenum) {
+                        if (linenum > 1) {
+                            var lineaantes = this.fileLines[linenum - 2];
+
+                            if (lineaantes.match(/\bM6\b/i)) {
+                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                                ultimopausa = linenum;
+                            }
+
+                            if (linea.match(/\bG4\b/i)) {
+                                //chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                            }
+                            if (linea.match(/\bM57\b/i)) {
+                                //  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                            }
+                            if (linea.match(/\bM58\b/i)) {
+                                // chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                            }
+
+                            if (lineaantes.match(/\bUTO\b/i)) {
+                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                                ultimopausa = linenum;
+
+                            }
+                            if (lineaantes.match(/\bUAO\b/i)) {
+                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                                ultimopausa = linenum;
+
+                            }
+
+                            if (lineaantes.match(/\bPAUSA\b/i)) {
+                                ultimopausa = linenum;
+
+                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                            }
+
+                        }
                     }
-
-                    if (linea.match(/\bG4\b/i)) {
-                         //chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                        }
-                        if (linea.match(/\bM57\b/i)) {
-                            //  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                        }
-                        if (linea.match(/\bM58\b/i)) {
-                            // chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                        }
-
-                        if (lineaantes.match(/\bUTO\b/i)) {
-                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                            ultimopausa = linenum;
-
-                        }
-                        if (lineaantes.match(/\bUAO\b/i)) {
-                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                            ultimopausa = linenum;
-
-                        }
-
-                        if (lineaantes.match(/\bPAUSA\b/i)) {
-                            ultimopausa = linenum;
-
-                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                        }
-
-                    }}
                     // We will update the checkmark based on the underlying meta data for
                     // the line. Lines are stored in this.fileLines and meta data is in
                     // this.metaLines. They have equal indexes.
