@@ -3950,15 +3950,33 @@
                     // ACA SE ESTA TRABAJANDO
 
 
-                    var linea = this.fileLines[this.currentLine];
-                    /*  var lineaantes = this.fileLines[this.currentLine - 2];
-                      if (linea.match(/\bG4\b/i)) {
-                          chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                      }
-                      if (lineaantes.match(/\bM6\b/i)) {
-                          chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                          ultimopausa = linenum;
-                      }
+                    if (this.currentLine > 0) {
+                        var linea = this.fileLines[this.currentLine - 1];
+
+
+                    }
+                    if (this.currentLine > 1) {
+                        var lineaantes = this.fileLines[this.currentLine - 2];
+
+                        if (lineaantes.match(/\bM6\b/i)) {
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
+                        if (lineaantes.match(/\bUTO\b/i)) {
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+
+                        }
+                        if (lineaantes.match(/\bUAO\b/i)) {
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
+
+                        if (lineaantes.match(/\bPAUSA\b/i)) {
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
+
+                    }
+                    /*  
+                     
+                      
 
                       if (linea.match(/\bG4\b/i)) {
                           //chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
@@ -3970,22 +3988,7 @@
                           // chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                       }
 
-                      if (lineaantes.match(/\bUTO\b/i)) {
-                          chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                          ultimopausa = linenum;
-
-                      }
-                      if (lineaantes.match(/\bUAO\b/i)) {
-                          chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-
-
-                      }
-
-                      if (lineaantes.match(/\bPAUSA\b/i)) {
-
-
-                          chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                      }*/
+                     */
 
 
 
@@ -3993,7 +3996,7 @@
 
 
 
-                    alert(linea);
+
                     var ctr = this.currentLine != null ? this.currentLine : 0;
                     localStorage.setItem('currentLine', ctr);
                     if (ctr >= this.fileLines.length) {
