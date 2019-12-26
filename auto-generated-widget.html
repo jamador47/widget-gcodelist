@@ -3962,17 +3962,16 @@
                         if (linea.match(/\bM6\b/i)) {
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
+                        if (linea.match(/\bPAUSA\b/i)) {
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
                         
 
                     }
                     if (this.currentLine > 1) {
                         var lineaantes = this.fileLines[this.currentLine];
 
-                        if (lineaantes.match(/\bG4\b/i)) {
-                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                        }
-       
-
+         
                     }
                     /*  
                      
