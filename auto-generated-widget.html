@@ -4643,9 +4643,7 @@
                             // set that it is queued
                             this.metaLines[idnum - 1].isSent = true;
                             var linea = this.fileLines[idnum - 1];
-                            if (linea.match(/\bG4\b/i)) {
-                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                            }
+                            
                             // update the dom if this row is showing  
                             // send in 1-based number, not 0-based
                             // our id is 1-based, i.e. the row number
@@ -4687,43 +4685,7 @@
                         // set that it is queued
                         this.metaLines[idnum - 1].isQueued = true;
 
-                        var linea = this.fileLines[idnum - 1];
-                        var lineaantes = this.fileLines[idnum - 2];
-                        if (linea.match(/\bG4\b/i)) {
-                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                        }
-                        if (lineaantes.match(/\bM6\b/i)) {
-                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                            ultimopausa = linenum;
-                        }
-
-                        if (linea.match(/\bG4\b/i)) {
-                            //chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                        }
-                        if (linea.match(/\bM57\b/i)) {
-                            //  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                        }
-                        if (linea.match(/\bM58\b/i)) {
-                            // chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                        }
-
-                        if (lineaantes.match(/\bUTO\b/i)) {
-                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                            ultimopausa = linenum;
-
-                        }
-                        if (lineaantes.match(/\bUAO\b/i)) {
-                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-
-
-                        }
-
-                        if (lineaantes.match(/\bPAUSA\b/i)) {
-
-
-                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                        }
-
+                        
                         // update the dom if this row is showing  
                         // send in 1-based number, not 0-based
                         // our id is 1-based, i.e. the row number
@@ -16475,7 +16437,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">Hiosa</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">Riosa</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
