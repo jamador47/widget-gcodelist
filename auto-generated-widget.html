@@ -5238,13 +5238,7 @@
                                         break;
 
 
-                                    case (gcodeline.match(/\bM30\b/i) || {}).input:
-                                        var cmd = "~";
-                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-
-
-                                        break;
-
+                                   
                                         /********** INICIO CAMBIO HERRAMIENTA ******/
                                     case (gcodeline.match(/\bM6\b/i) || {}).input:
                                         var cmd = "!";
