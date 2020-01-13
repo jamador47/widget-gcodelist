@@ -11459,23 +11459,13 @@ chilipeppr.publish(
 bajarcampana:  function(evt){
     
                     var theurl = 'http://192.168.0.80/arduino/digital/3/1';
-                    var client = new HttpClient();
+                    var client = new this.HttpClient();
                     client.get(theurl, function(response) {
                         setTimeout(function(){
 
-                            var HttpClient = function() {
-                        this.get = function(aUrl, aCallback) {
-                            var anHttpRequest = new XMLHttpRequest();
-                            anHttpRequest.onreadystatechange = function() {
-                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                    aCallback(anHttpRequest.responseText);
-                            }
-                            anHttpRequest.open("GET", aUrl, true);
-                            anHttpRequest.send(null);
-                        }
-                    }
+                         
                     var theurl = 'http://192.168.0.80/arduino/digital/3/0';
-                    var client = new HttpClient();
+                    var client = new this.HttpClient();
                     client.get(theurl, function(response) {});
 
                         },22000);
@@ -11486,35 +11476,15 @@ bajarcampana:  function(evt){
 
 
 subircampana: function(evt){
-    var HttpClient = function() {
-                        this.get = function(aUrl, aCallback) {
-                            var anHttpRequest = new XMLHttpRequest();
-                            anHttpRequest.onreadystatechange = function() {
-                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                    aCallback(anHttpRequest.responseText);
-                            }
-                            anHttpRequest.open("GET", aUrl, true);
-                            anHttpRequest.send(null);
-                        }
-                    }
+  
                     var theurl = 'http://192.168.0.80/arduino/digital/8/1';
-                    var client = new HttpClient();
+                    var client = new this.HttpClient();
                     client.get(theurl, function(response) {
                         setTimeout(function(){
 
-                            var HttpClient = function() {
-                        this.get = function(aUrl, aCallback) {
-                            var anHttpRequest = new XMLHttpRequest();
-                            anHttpRequest.onreadystatechange = function() {
-                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                    aCallback(anHttpRequest.responseText);
-                            }
-                            anHttpRequest.open("GET", aUrl, true);
-                            anHttpRequest.send(null);
-                        }
-                    }
+                          
                     var theurl = 'http://192.168.0.80/arduino/digital/8/0';
-                    var client = new HttpClient();
+                    var client = new this.HttpClient();
                     client.get(theurl, function(response) {});
 
                         },2000);
