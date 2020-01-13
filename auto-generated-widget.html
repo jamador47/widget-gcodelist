@@ -3362,6 +3362,157 @@
 
 
                 onPlay: function(event) {
+
+
+                    var esto = this;
+
+
+                    var HttpClient = function() {
+                        this.get = function(aUrl, aCallback) {
+                            var anHttpRequest = new XMLHttpRequest();
+                            anHttpRequest.onreadystatechange = function() {
+                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                    aCallback(anHttpRequest.responseText);
+                            }
+                            anHttpRequest.open("GET", aUrl, true);
+                            anHttpRequest.send(null);
+                        }
+                    }
+
+                    var theurl = 'http://192.168.0.83/arduino/digital/32';
+                    var client = new HttpClient();
+                    client.get(theurl, function(response) {
+
+                        var res = response.split("Pin D32 set to ");
+                        response = parseInt(res[1]);
+
+                        if (response == 1) {
+
+
+                            var HttpClient = function() {
+                                this.get = function(aUrl, aCallback) {
+                                    var anHttpRequest = new XMLHttpRequest();
+                                    anHttpRequest.onreadystatechange = function() {
+                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                            aCallback(anHttpRequest.responseText);
+                                    }
+                                    anHttpRequest.open("GET", aUrl, true);
+                                    anHttpRequest.send(null);
+                                }
+                            }
+
+                            var theurl = 'http://192.168.0.83/arduino/digital/29';
+                            var client = new HttpClient();
+                            client.get(theurl, function(response) {
+
+                                var res = response.split("Pin D29 set to ");
+                                response = parseInt(res[1]);
+
+                                if (response == 1) {
+
+
+                                    var HttpClient = function() {
+                                        this.get = function(aUrl, aCallback) {
+                                            var anHttpRequest = new XMLHttpRequest();
+                                            anHttpRequest.onreadystatechange = function() {
+                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                    aCallback(anHttpRequest.responseText);
+                                            }
+                                            anHttpRequest.open("GET", aUrl, true);
+                                            anHttpRequest.send(null);
+                                        }
+                                    }
+
+                                    var theurl = 'http://192.168.0.82/arduino/digital/41';
+                                    var client = new HttpClient();
+                                    client.get(theurl, function(response) {
+
+                                        var res = response.split("Pin D41 set to ");
+                                        response = parseInt(res[1]);
+
+                                        if (response == 1) {
+
+
+
+                                            var HttpClient = function() {
+                                                this.get = function(aUrl, aCallback) {
+                                                    var anHttpRequest = new XMLHttpRequest();
+                                                    anHttpRequest.onreadystatechange = function() {
+                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                            aCallback(anHttpRequest.responseText);
+                                                    }
+                                                    anHttpRequest.open("GET", aUrl, true);
+                                                    anHttpRequest.send(null);
+                                                }
+                                            }
+
+                                            var theurl = 'http://192.168.0.82/arduino/digital/40';
+                                            var client = new HttpClient();
+                                            client.get(theurl, function(response) {
+
+                                                var res = response.split("Pin D40 set to ");
+                                                response = parseInt(res[1]);
+
+                                                if (response == 1) {
+
+
+
+
+
+                                                    // ACA VA EL CODIGO DE PLAY.
+
+
+
+
+                                                } else {
+
+                                                    alert(
+                                                        "Mesa A no está bloqueada"
+                                                    );
+
+                                                }
+                                            });
+
+
+
+                                        } else {
+
+                                            alert(
+                                                "Mesa A no está en posición de trabajo"
+                                            );
+
+                                        }
+                                    });
+
+
+
+
+                                } else {
+
+                                    alert(
+                                        "Mesa Y no está bloqueada"
+                                    );
+
+                                }
+                            });
+
+
+
+                        } else {
+
+                            alert(
+                                "Mesa Y no está en posición de trabajo"
+                            );
+
+                        }
+                    });
+
+
+
+                    ///TERMINAAAAA
+
+
+
                     var cmd = "!%";
                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
@@ -3385,7 +3536,7 @@
                     //hacer cambio de herramienta previa si esta en modoh.********************************
 
                     //ELIMINARESTO
-                    chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
+                    // chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
 
 
                     var esto = this;
@@ -3952,7 +4103,7 @@
 
                     if (this.currentLine > 0) {
                         var linea = this.fileLines[this.currentLine - 1];
-                    
+
                         if (linea.match(/\bUAO\b/i)) {
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
@@ -3965,15 +4116,15 @@
                         if (linea.match(/\bPAUSA\b/i)) {
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
-                        
+
 
                     }
                     if (this.currentLine > 1) {
-                        var lineaantes = this.fileLines[this.currentLine-2];
+                        var lineaantes = this.fileLines[this.currentLine - 2];
                         if (lineaantes.match(/\bPAUSA\b/i)) {
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
-         
+
                     }
                     /*  
                      
@@ -4644,7 +4795,7 @@
                             // set that it is queued
                             this.metaLines[idnum - 1].isSent = true;
                             var linea = this.fileLines[idnum - 1];
-                            
+
                             // update the dom if this row is showing  
                             // send in 1-based number, not 0-based
                             // our id is 1-based, i.e. the row number
@@ -4686,7 +4837,7 @@
                         // set that it is queued
                         this.metaLines[idnum - 1].isQueued = true;
 
-                        
+
                         // update the dom if this row is showing  
                         // send in 1-based number, not 0-based
                         // our id is 1-based, i.e. the row number
@@ -5228,8 +5379,8 @@
 
 
                                     case (gcodeline.match(/\bPAUSA\b/i) || {}).input:
-                                    var cmd = "!";
-                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
+                                        var cmd = "!";
+                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
 
                                         document.getElementById("salirpausa").disabled = false;
                                         document.getElementById("salirpausa").style = "background-color: greenyellow";
@@ -5238,7 +5389,7 @@
                                         break;
 
 
-                                   
+
                                         /********** INICIO CAMBIO HERRAMIENTA ******/
                                     case (gcodeline.match(/\bM6\b/i) || {}).input:
                                         var cmd = "!";
@@ -7889,9 +8040,9 @@ TERMINA COMENT *****/
 
 
                                         case (gcodeline.match(/\bPAUSA\b/i) || {}).input:
-                                            
-                                        var cmd = "!";
-                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
+
+                                            var cmd = "!";
+                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
 
                                             document.getElementById("salirpausa").disabled = false;
                                             document.getElementById("salirpausa").style = "background-color: greenyellow";
