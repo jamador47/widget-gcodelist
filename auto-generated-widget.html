@@ -330,6 +330,17 @@
         var toolausar = 0;
         var objetodah = 0;
         var ultimopausa = 0;
+        var HttpClient = function() {
+                        this.get = function(aUrl, aCallback) {
+                            var anHttpRequest = new XMLHttpRequest();
+                            anHttpRequest.onreadystatechange = function() {
+                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                    aCallback(anHttpRequest.responseText);
+                            }
+                            anHttpRequest.open("GET", aUrl, true);
+                            anHttpRequest.send(null);
+                        }
+                    }
 
         var ocupado = 0;
         var sigespecial = 0;
@@ -11388,23 +11399,7 @@ TERMINA COMENT *****/
 // Validación
 
 // Si el brazo no está extendido
-var HttpClient = function() {
-    this.get = function(aUrl, aCallback) {
-        var anHttpRequest = new XMLHttpRequest();
-        anHttpRequest.onreadystatechange = function() {
-            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                aCallback(anHttpRequest.responseText);
-        }
-        anHttpRequest.open("GET", aUrl, true);
-        anHttpRequest.send(null);
-    }
-}
-var theurl = 'http://192.168.0.80/arduino/digital/8/1';
-var client = new HttpClient();
-client.get(theurl, function(response) {
-  
-
-});
+this.subircampana();
 
 
 
@@ -11434,24 +11429,8 @@ chilipeppr.publish(
 
 onM10BtnClick: function(evt) {
 
-var HttpClient = function() {
-    this.get = function(aUrl, aCallback) {
-        var anHttpRequest = new XMLHttpRequest();
-        anHttpRequest.onreadystatechange = function() {
-            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                aCallback(anHttpRequest.responseText);
-        }
-        anHttpRequest.open("GET", aUrl, true);
-        anHttpRequest.send(null);
-    }
-}
-var theurl = 'http://192.168.0.80/arduino/digital/3/1';
-var client = new HttpClient();
-client.get(theurl, function(response) {
 
-   
-
-});
+this.bajarcampana();
 
 
 
@@ -11478,17 +11457,7 @@ chilipeppr.publish(
 
 
 bajarcampana:  function(evt){
-    var HttpClient = function() {
-                        this.get = function(aUrl, aCallback) {
-                            var anHttpRequest = new XMLHttpRequest();
-                            anHttpRequest.onreadystatechange = function() {
-                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                    aCallback(anHttpRequest.responseText);
-                            }
-                            anHttpRequest.open("GET", aUrl, true);
-                            anHttpRequest.send(null);
-                        }
-                    }
+    
                     var theurl = 'http://192.168.0.80/arduino/digital/3/1';
                     var client = new HttpClient();
                     client.get(theurl, function(response) {
