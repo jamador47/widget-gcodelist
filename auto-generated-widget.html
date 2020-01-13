@@ -3459,6 +3459,640 @@
 
 
 
+                                                    var cmd = "!%";
+                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + esto.serialPort + " " + cmd);
+
+                                                    esto.getGcode();
+                                                    console.log("got onPlay. esto:", esto, "event:", event);
+
+
+
+
+                                                    // indicate we're starting play in the UI
+                                                    $('.com-chilipeppr-widget-gcode-startindicator').removeClass("hidden");
+
+                                                    // fire off pubsub signal for others to watch the play btn
+                                                    var meta = {
+                                                        isPlayByUser: event ? true : false
+                                                    };
+                                                    meta.gcodeLines = esto.fileLines;
+
+
+                                                    //hacer cambio de herramienta previa si esta en modoh.********************************
+
+                                                    //ELIMINARESTO
+                                                     chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
+
+
+                                                   
+                                                    var HttpClient = function() {
+
+                                                        esto.get = function(aUrl, aCallback) {
+                                                            var anHttpRequest = new XMLHttpRequest();
+                                                            anHttpRequest.onreadystatechange = function() {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                    aCallback(anHttpRequest.responseText);
+                                                            }
+                                                            anHttpRequest.open("GET", aUrl, true);
+                                                            anHttpRequest.send(null);
+                                                        }
+                                                    }
+
+                                                    var theurl = 'http://192.168.0.98/geth';
+                                                    var client = new HttpClient();
+                                                    client.get(theurl, function(response) {
+
+                                                        var obj = JSON.parse(response);
+
+
+                                                        var modoh = obj[0]['modoh'];
+                                                        // SI ES MODO H:
+                                                        if (modoh) {
+                                                            var HttpClient = function() {
+
+                                                                esto.get = function(aUrl, aCallback) {
+                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                            aCallback(anHttpRequest.responseText);
+                                                                    }
+                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                    anHttpRequest.send(null);
+                                                                }
+                                                            }
+                                                            var theurl = 'http://192.168.0.98/geth';
+                                                            var client = new HttpClient();
+                                                            client.get(theurl, function(response) {
+
+                                                                var obj = JSON.parse(response);
+                                                                window.objetodah = obj;
+                                                            });
+
+
+                                                            var largodecodigo = esto.fileLines.length;
+                                                            var valorsiguientetool = 1000;
+
+                                                            for (var n = 0; n < largodecodigo; n++) {
+
+                                                                var gcodetemporal = esto.fileLines[n];
+
+                                                                if (gcodetemporal.match(/\bM6\b/i)) {
+
+                                                                    var linean = "N" + (n + 1);
+                                                                    var lineatemporal = gcodetemporal.replace('M6', "").trim();
+                                                                    lineatemporal = lineatemporal.replace('M7', "").trim();
+                                                                    lineatemporal = lineatemporal.replace('T', "").trim();
+                                                                    lineatemporal = lineatemporal.replace(linean, "").trim();
+                                                                    var valorstool = parseInt(lineatemporal);
+                                                                    n = 100000;
+
+                                                                }
+                                                            }
+
+                                                            for (var i = 0; i < 17; i++) {
+                                                                if (parseInt(obj[i]['herramienta']) == valorstool) {
+                                                                    // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
+                                                                    var indexher = i;
+                                                                    valorsiguientetool = i + 1;
+                                                                }
+                                                            }
+                                                            //si existe alguna siguiente tool hacer rotacion. si no, no hacer nada.
+
+                                                            if (valorsiguientetool != 1000) {
+
+                                                                setTimeout(function() {
+
+                                                                    cmd = "i" + valorsiguientetool;
+                                                                    //alert(cmd);
+                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd + "\n");
+                                                                    //Cambio brazo en la tabla.
+                                                                    var HttpClient = function() {
+
+                                                                        esto.get = function(aUrl, aCallback) {
+                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                    aCallback(anHttpRequest.responseText);
+                                                                            }
+                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                            anHttpRequest.send(null);
+                                                                        }
+                                                                    }
+                                                                    var theurl = 'http://192.168.0.98/rotarcar/' + valorsiguientetool;
+                                                                    var client = new HttpClient();
+                                                                    client.get(theurl, function(response) {
+
+                                                                    });
+
+
+
+                                                                }, 1000);
+
+                                                            }
+
+                                                        }
+                                                    });
+                                                    //
+
+
+
+                                                    esto.bajartstopsBtnClick();
+                                                    setTimeout(function() {
+                                                        var self = esto;
+
+
+
+
+
+                                                        var HttpClient = function() {
+                                                            esto.get = function(aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function() {
+                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                        aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                            }
+                                                        }
+
+
+                                                        var theurl = 'http://192.168.0.82/arduino/digital/45';
+                                                        var client = new HttpClient();
+                                                        client.get(theurl, function(response) {
+
+                                                            var res = response.split("Pin D45 set to ");
+
+                                                            response = parseInt(res[1]);
+
+                                                            if (response == 1) {
+                                                                var HttpClient = function() {
+                                                                    esto.get = function(aUrl, aCallback) {
+                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                aCallback(anHttpRequest.responseText);
+                                                                        }
+                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                        anHttpRequest.send(null);
+                                                                    }
+                                                                }
+
+
+                                                                var theurl = 'http://192.168.0.82/arduino/digital/36';
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function(response) {
+
+                                                                    var res = response.split("Pin D36 set to ");
+
+                                                                    response = parseInt(res[1]);
+
+                                                                    if (response == 1) {
+
+
+                                                                        var HttpClient = function() {
+                                                                            esto.get = function(aUrl, aCallback) {
+                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                }
+                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                anHttpRequest.send(null);
+                                                                            }
+                                                                        }
+
+
+                                                                        var theurl = 'http://192.168.0.83/arduino/digital/27';
+                                                                        var client = new HttpClient();
+                                                                        client.get(theurl, function(response) {
+
+                                                                            var res = response.split("Pin D27 set to ");
+
+                                                                            response = parseInt(res[1]);
+
+                                                                            if (response == 1) {
+
+                                                                                var HttpClient = function() {
+                                                                                    esto.get = function(aUrl, aCallback) {
+                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                        }
+                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                        anHttpRequest.send(null);
+                                                                                    }
+                                                                                }
+
+                                                                                //Arduino 8.
+                                                                                var theurl = 'http://192.168.0.83/arduino/digital/28';
+                                                                                var client = new HttpClient();
+                                                                                client.get(theurl, function(response) {
+
+                                                                                    var res = response.split("Pin D28 set to ");
+
+                                                                                    response = parseInt(res[1]);
+
+                                                                                    if (response == 1) {
+
+
+                                                                                        chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
+                                                                                    } else {
+
+                                                                                        // MESA A NO ESTA EN POSICION CERO ABSOLUTO
+                                                                                        var erroresexistentes = document.getElementById("textoerrores").value;
+
+                                                                                        erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+
+                                                                                        erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
+
+                                                                                        document.getElementById("textoerrores").value = erroresexistentes;
+
+                                                                                        var cmd = "!";
+                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + esto.serialPort + " " + cmd);
+                                                                                        document.getElementById("indicadorerrorejec").className = "led-red";
+
+                                                                                    }
+                                                                                });
+
+                                                                            } else {
+
+                                                                                var erroresexistentes = document.getElementById("textoerrores").value;
+
+                                                                                erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+
+                                                                                erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
+
+                                                                                document.getElementById("textoerrores").value = erroresexistentes;
+
+                                                                                var cmd = "!";
+                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + esto.serialPort + " " + cmd);
+                                                                                document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                // MESA A NO ESTA EN POSICION DE TRABAJO
+
+                                                                            }
+
+                                                                        });
+
+                                                                    } else {
+
+                                                                        var erroresexistentes = document.getElementById("textoerrores").value;
+
+                                                                        erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+
+                                                                        erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
+
+                                                                        document.getElementById("textoerrores").value = erroresexistentes;
+
+                                                                        var cmd = "!";
+                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + esto.serialPort + " " + cmd);
+                                                                        document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                        // MESA A NO ESTA EN POSICION DE TRABAJO
+
+                                                                    }
+
+                                                                });
+                                                            } else {
+
+                                                                var erroresexistentes = document.getElementById("textoerrores").value;
+
+                                                                erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+
+                                                                erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
+
+                                                    var cmd = "!%";
+                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + esto.serialPort + " " + cmd);
+
+                                                    esto.getGcode();
+                                                    console.log("got onPlay. esto:", esto, "event:", event);
+
+
+
+
+                                                    // indicate we're starting play in the UI
+                                                    $('.com-chilipeppr-widget-gcode-startindicator').removeClass("hidden");
+
+                                                    // fire off pubsub signal for others to watch the play btn
+                                                    var meta = {
+                                                        isPlayByUser: event ? true : false
+                                                    };
+                                                    meta.gcodeLines = esto.fileLines;
+
+
+                                                    //hacer cambio de herramienta previa si esta en modoh.********************************
+
+                                                    //ELIMINARESTO
+                                                     chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
+
+
+                                                   
+                                                    var HttpClient = function() {
+
+                                                        esto.get = function(aUrl, aCallback) {
+                                                            var anHttpRequest = new XMLHttpRequest();
+                                                            anHttpRequest.onreadystatechange = function() {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                    aCallback(anHttpRequest.responseText);
+                                                            }
+                                                            anHttpRequest.open("GET", aUrl, true);
+                                                            anHttpRequest.send(null);
+                                                        }
+                                                    }
+
+                                                    var theurl = 'http://192.168.0.98/geth';
+                                                    var client = new HttpClient();
+                                                    client.get(theurl, function(response) {
+
+                                                        var obj = JSON.parse(response);
+
+
+                                                        var modoh = obj[0]['modoh'];
+                                                        // SI ES MODO H:
+                                                        if (modoh) {
+                                                            var HttpClient = function() {
+
+                                                                esto.get = function(aUrl, aCallback) {
+                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                            aCallback(anHttpRequest.responseText);
+                                                                    }
+                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                    anHttpRequest.send(null);
+                                                                }
+                                                            }
+                                                            var theurl = 'http://192.168.0.98/geth';
+                                                            var client = new HttpClient();
+                                                            client.get(theurl, function(response) {
+
+                                                                var obj = JSON.parse(response);
+                                                                window.objetodah = obj;
+                                                            });
+
+
+                                                            var largodecodigo = esto.fileLines.length;
+                                                            var valorsiguientetool = 1000;
+
+                                                            for (var n = 0; n < largodecodigo; n++) {
+
+                                                                var gcodetemporal = esto.fileLines[n];
+
+                                                                if (gcodetemporal.match(/\bM6\b/i)) {
+
+                                                                    var linean = "N" + (n + 1);
+                                                                    var lineatemporal = gcodetemporal.replace('M6', "").trim();
+                                                                    lineatemporal = lineatemporal.replace('M7', "").trim();
+                                                                    lineatemporal = lineatemporal.replace('T', "").trim();
+                                                                    lineatemporal = lineatemporal.replace(linean, "").trim();
+                                                                    var valorstool = parseInt(lineatemporal);
+                                                                    n = 100000;
+
+                                                                }
+                                                            }
+
+                                                            for (var i = 0; i < 17; i++) {
+                                                                if (parseInt(obj[i]['herramienta']) == valorstool) {
+                                                                    // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
+                                                                    var indexher = i;
+                                                                    valorsiguientetool = i + 1;
+                                                                }
+                                                            }
+                                                            //si existe alguna siguiente tool hacer rotacion. si no, no hacer nada.
+
+                                                            if (valorsiguientetool != 1000) {
+
+                                                                setTimeout(function() {
+
+                                                                    cmd = "i" + valorsiguientetool;
+                                                                    //alert(cmd);
+                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd + "\n");
+                                                                    //Cambio brazo en la tabla.
+                                                                    var HttpClient = function() {
+
+                                                                        esto.get = function(aUrl, aCallback) {
+                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                    aCallback(anHttpRequest.responseText);
+                                                                            }
+                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                            anHttpRequest.send(null);
+                                                                        }
+                                                                    }
+                                                                    var theurl = 'http://192.168.0.98/rotarcar/' + valorsiguientetool;
+                                                                    var client = new HttpClient();
+                                                                    client.get(theurl, function(response) {
+
+                                                                    });
+
+
+
+                                                                }, 1000);
+
+                                                            }
+
+                                                        }
+                                                    });
+                                                    //
+
+
+
+                                                    esto.bajartstopsBtnClick();
+                                                    setTimeout(function() {
+                                                        var self = esto;
+
+
+
+
+
+                                                        var HttpClient = function() {
+                                                            esto.get = function(aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function() {
+                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                        aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                            }
+                                                        }
+
+
+                                                        var theurl = 'http://192.168.0.82/arduino/digital/45';
+                                                        var client = new HttpClient();
+                                                        client.get(theurl, function(response) {
+
+                                                            var res = response.split("Pin D45 set to ");
+
+                                                            response = parseInt(res[1]);
+
+                                                            if (response == 1) {
+                                                                var HttpClient = function() {
+                                                                    esto.get = function(aUrl, aCallback) {
+                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                aCallback(anHttpRequest.responseText);
+                                                                        }
+                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                        anHttpRequest.send(null);
+                                                                    }
+                                                                }
+
+
+                                                                var theurl = 'http://192.168.0.82/arduino/digital/36';
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function(response) {
+
+                                                                    var res = response.split("Pin D36 set to ");
+
+                                                                    response = parseInt(res[1]);
+
+                                                                    if (response == 1) {
+
+
+                                                                        var HttpClient = function() {
+                                                                            esto.get = function(aUrl, aCallback) {
+                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                }
+                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                anHttpRequest.send(null);
+                                                                            }
+                                                                        }
+
+
+                                                                        var theurl = 'http://192.168.0.83/arduino/digital/27';
+                                                                        var client = new HttpClient();
+                                                                        client.get(theurl, function(response) {
+
+                                                                            var res = response.split("Pin D27 set to ");
+
+                                                                            response = parseInt(res[1]);
+
+                                                                            if (response == 1) {
+
+                                                                                var HttpClient = function() {
+                                                                                    esto.get = function(aUrl, aCallback) {
+                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                        }
+                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                        anHttpRequest.send(null);
+                                                                                    }
+                                                                                }
+
+                                                                                //Arduino 8.
+                                                                                var theurl = 'http://192.168.0.83/arduino/digital/28';
+                                                                                var client = new HttpClient();
+                                                                                client.get(theurl, function(response) {
+
+                                                                                    var res = response.split("Pin D28 set to ");
+
+                                                                                    response = parseInt(res[1]);
+
+                                                                                    if (response == 1) {
+
+
+                                                                                        chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
+                                                                                    } else {
+
+                                                                                        // MESA A NO ESTA EN POSICION CERO ABSOLUTO
+                                                                                        var erroresexistentes = document.getElementById("textoerrores").value;
+
+                                                                                        erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+
+                                                                                        erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
+
+                                                                                        document.getElementById("textoerrores").value = erroresexistentes;
+
+                                                                                        var cmd = "!";
+                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + esto.serialPort + " " + cmd);
+                                                                                        document.getElementById("indicadorerrorejec").className = "led-red";
+
+                                                                                    }
+                                                                                });
+
+                                                                            } else {
+
+                                                                                var erroresexistentes = document.getElementById("textoerrores").value;
+
+                                                                                erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+
+                                                                                erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
+
+                                                                                document.getElementById("textoerrores").value = erroresexistentes;
+
+                                                                                var cmd = "!";
+                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + esto.serialPort + " " + cmd);
+                                                                                document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                // MESA A NO ESTA EN POSICION DE TRABAJO
+
+                                                                            }
+
+                                                                        });
+
+                                                                    } else {
+
+                                                                        var erroresexistentes = document.getElementById("textoerrores").value;
+
+                                                                        erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+
+                                                                        erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
+
+                                                                        document.getElementById("textoerrores").value = erroresexistentes;
+
+                                                                        var cmd = "!";
+                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + esto.serialPort + " " + cmd);
+                                                                        document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                        // MESA A NO ESTA EN POSICION DE TRABAJO
+
+                                                                    }
+
+                                                                });
+                                                            } else {
+
+                                                                var erroresexistentes = document.getElementById("textoerrores").value;
+
+                                                                erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+
+                                                                erroresexistentes = erroresexistentes.concat("Pines no lograron bajar, Error de Movimiento");
+
+                                                                document.getElementById("textoerrores").value = erroresexistentes;
+
+                                                                var cmd = "!";
+                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + esto.serialPort + " " + cmd);
+                                                                document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                // MESA A NO ESTA EN POSICION DE TRABAJO
+
+                                                            }
+
+                                                        });
+
+                                                        // CODIGO A PEGAR 
+                                                    }, 8000);
+
+                                                                document.getElementById("textoerrores").value = erroresexistentes;
+
+                                                                var cmd = "!";
+                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + esto.serialPort + " " + cmd);
+                                                                document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                // MESA A NO ESTA EN POSICION DE TRABAJO
+
+                                                            }
+
+                                                        });
+
+                                                        // CODIGO A PEGAR 
+                                                    }, 8000);
+
                                                     // ACA VA EL CODIGO DE PLAY.
 
 
