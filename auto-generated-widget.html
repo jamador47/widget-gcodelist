@@ -6132,14 +6132,13 @@
 
 
                                                                         var linea = gcodeline.replace('M6', "").trim();
-                                                                        alert(linea);
                                                                         linea = linea.replace('M7', "").trim();
                                                                         linea = linea.replace('T', "").trim();
 
                                                                         var linean = "N" + (idnum);
                                                                         linea = linea.replace(linean, "").trim();
                                                                         window.toolausar = parseInt(linea);
-                                                                        alert("ACA SE ASIGNO");
+                                         
 
 
                                                                         if (window.toolausar == 0) {
@@ -6258,7 +6257,7 @@
 
                                                                                     valorz = valorz + longitud;
                                                                                     valorz = valorz.toString();
-                                                                                    alert(valorz);
+                                                                                    
                                                                                     var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
                                                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
 
@@ -6464,7 +6463,7 @@
 
                                                                                     valorz = valorz + longitud;
                                                                                     valorz = valorz.toString();
-                                                                                    alert(valorz);
+                                                                                    
                                                                                     var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
                                                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
 
@@ -6974,7 +6973,7 @@
 
                                                                                 valorz = valorz + longitud;
                                                                                 valorz = valorz.toString();
-                                                                                alert(valorz);
+                                                                                
                                                                                 var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
                                                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
 
@@ -7182,8 +7181,7 @@
 
                                                                         // SI ES MODO LINEAL:  ***********************************************************************************************
                                                                         else {
-                                                                            alert(toolausar);
-                                                                            alert(window.toolausar);
+                                                                            ;
                                                                             var longitud = parseFloat(window.objetodah[(window.toolausar - 1)]['longitud']);
 
                                                                             var indexher = window.toolausar - 1;
@@ -7235,7 +7233,7 @@
 
                                                                                 valorz = valorz + longitud;
                                                                                 valorz = valorz.toString();
-                                                                                alert(valorz);
+                                                                                
                                                                                 var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
                                                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
 
@@ -8793,18 +8791,18 @@ TERMINA COMENT *****/
 
 
                                                                             var linea = lineacodigog.replace('M6', "").trim();
-                                                                            alert(linea);
-                                                                            alert(contador2);
+                                                                           
+                                                                            
                                                                             linea = linea.replace('M7', "").trim();
                                                                             linea = linea.replace('T', "").trim();
-                                                                            alert(linea)
+                                                                            
 
 
                                                                             var linean = "N" + (contador2);
                                                                             linea = linea.replace(linean, "").trim();
                                                                             toolqueseusara = parseInt(linea);
-                                                                            alert("estaeslatool");
-                                                                            alert(toolqueseusara);
+                                                                            
+                                                                            
                                                                             if (toolqueseusara == 0) {
                                                                                 for (var i = 0; i < 17; i++) {
 
@@ -8919,7 +8917,7 @@ TERMINA COMENT *****/
 
                                                                                         valorz = valorz + longitud;
                                                                                         valorz = valorz.toString();
-                                                                                        alert(valorz);
+                                                                                        
                                                                                         var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
 
@@ -9067,8 +9065,8 @@ TERMINA COMENT *****/
                                                                                 else {
                                                                                     var indexher = toolqueseusara - 1;
                                                                                     var valortool = toolqueseusara;
-                                                                                    alert("ENTRE");
-                                                                                    alert(valortool);
+                                                                                   
+                                                                                    
 
                                                                                     var longitud = parseFloat(window.objetodah[(toolqueseusara - 1)]['longitud']);
 
@@ -9119,7 +9117,7 @@ TERMINA COMENT *****/
 
                                                                                         valorz = valorz + longitud;
                                                                                         valorz = valorz.toString();
-                                                                                        alert(valorz);
+                                                                                        
                                                                                         var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
 
@@ -9500,16 +9498,16 @@ TERMINA COMENT *****/
 
 
                                                                         var linea = lineacodigog.replace('M6', "").trim();
-                                                                        alert(linea);
-                                                                        alert(contador2);
+                                                                        
+                                                                        
                                                                         linea = linea.replace('M7', "").trim();
                                                                         linea = linea.replace('T', "").trim();
 
                                                                         var linean = "N" + (contador2);
                                                                         linea = linea.replace(linean, "").trim();
                                                                         toolqueseusara = parseInt(linea);
-                                                                        alert("estaeslatool");
-                                                                        alert(toolqueseusara);
+                                                                        
+                                                                        
 
 
 
@@ -9628,7 +9626,7 @@ TERMINA COMENT *****/
 
                                                                                     valorz = valorz + longitud;
                                                                                     valorz = valorz.toString();
-                                                                                    alert(valorz);
+                                                                                    
                                                                                     var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
                                                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
 
@@ -9835,15 +9833,14 @@ TERMINA COMENT *****/
 
                                                                             // SI ES MODO LINEAL:  ***********************************************************************************************
                                                                             else {
-                                                                                alert(toolausar);
-                                                                                alert(toolqueseusara);
-
+                                                                                
+                                                                                
                                                                                 var longitud = parseFloat(window.objetodah[(toolqueseusara - 1)]['longitud']);
 
                                                                                 var indexher = toolqueseusara - 1;
                                                                                 var valortool = toolqueseusara;
-                                                                                alert("ENTRE");
-                                                                                alert(valortool);
+                                                                                
+                                                                                
 
 
                                                                                 var HttpClient = function() {
@@ -9890,7 +9887,7 @@ TERMINA COMENT *****/
 
                                                                                     valorz = valorz + longitud;
                                                                                     valorz = valorz.toString();
-                                                                                    alert(valorz);
+                                                                                   
                                                                                     var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
                                                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
 
@@ -17231,7 +17228,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">YALIDA</span></div>
+            <div class="" style="padding-bottom:10px;"><span class="panel-title">GLIDA</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
