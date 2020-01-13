@@ -11406,7 +11406,8 @@ client.get(theurl, function(response) {
   
 
 });
-setTimeout(function(){
+var duration = 2000;
+$({to:0}).animate({to:1}, duration, function() {
     var HttpClient = function() {
     esto.get = function(aUrl, aCallback) {
         var anHttpRequest = new XMLHttpRequest();
@@ -11424,7 +11425,7 @@ client.get(theurl, function(response) {
   
 
 });
-},2000);
+});
 
 
 
