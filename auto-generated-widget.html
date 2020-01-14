@@ -2811,38 +2811,19 @@
 
 
                                     setTimeout(function(){
-                                    var HttpClient = function() {
-                                        this.get = function(aUrl, aCallback) {
-                                            var anHttpRequest = new XMLHttpRequest();
-                                            anHttpRequest.onreadystatechange = function() {
-                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                    aCallback(anHttpRequest.responseText);
-                                            }
-                                            anHttpRequest.open("GET", aUrl, true);
-                                            anHttpRequest.send(null);
-                                        }
-                                    }
-                                    var theurl = 'http://192.168.0.88/arduino/digital/19/1';
-                                    var client = new HttpClient();
+                                  
+                                    theurl = 'http://192.168.0.88/arduino/digital/19/1';
+                                 client = new HttpClient();
                                     client.get(theurl, function(response) {
                                         var response1 = JSON.parse(response);
                                     });
+                                   
                             
                                     setTimeout(function(){
 
-                                    var HttpClient = function() {
-                                        this.get = function(aUrl, aCallback) {
-                                            var anHttpRequest = new XMLHttpRequest();
-                                            anHttpRequest.onreadystatechange = function() {
-                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                    aCallback(anHttpRequest.responseText);
-                                            }
-                                            anHttpRequest.open("GET", aUrl, true);
-                                            anHttpRequest.send(null);
-                                        }
-                                    }
-                                    var theurl = 'http://192.168.0.88/arduino/digital/22/1';
-                                    var client = new HttpClient();
+                                   
+                                     theurl = 'http://192.168.0.88/arduino/digital/22/1';
+                                     client = new HttpClient();
                                     client.get(theurl, function(response) {
                                         var response1 = JSON.parse(response);
                                     });
