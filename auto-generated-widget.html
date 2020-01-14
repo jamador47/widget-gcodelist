@@ -2810,6 +2810,7 @@
                                     });
 
 
+                                    setTimeout(function(){
                                     var HttpClient = function() {
                                         this.get = function(aUrl, aCallback) {
                                             var anHttpRequest = new XMLHttpRequest();
@@ -2826,6 +2827,8 @@
                                     client.get(theurl, function(response) {
                                         var response1 = JSON.parse(response);
                                     });
+                            
+                                    setTimeout(function(){
 
                                     var HttpClient = function() {
                                         this.get = function(aUrl, aCallback) {
@@ -2843,15 +2846,16 @@
                                     client.get(theurl, function(response) {
                                         var response1 = JSON.parse(response);
                                     });
-
                                     document.getElementById("indicadorhusillo").className = "led-green";
                                     chilipeppr.publish(
                                         '/com-chilipeppr-elem-flashmsg/flashmsg',
                                         "Estado del Husillo",
                                         "Husillo Activado ",
-                                        2000 // show for 2 second 
+                                        2000 /* show for 2 second */
                                     );
+                                },1200);
 
+                                },1200);
 
                                 } else {
                                     $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
@@ -17297,7 +17301,7 @@ chilipeppr.publish(
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10px;"><span class="panel-title">TIDA</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">DIDA</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
