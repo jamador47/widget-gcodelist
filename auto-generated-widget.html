@@ -6312,7 +6312,8 @@
                                                                                     });
                                                                                 } else {
 
-                                                                                    esto.onM10BtnClick();
+                                                                                    var cmd = "p";
+                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
 
                                                                                     esto.activarm3();
@@ -7088,7 +7089,8 @@
                                                                                         },15000);
                                                                                         */
                                                                             } else {
-                                                                                esto.onM10BtnClick();
+                                                                                var cmd = "p";
+                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
                                                                                 esto.activarm3();
                                                                                 //ENCENDERHUSILLO
@@ -7397,7 +7399,8 @@
 
                                                                                 } else {
 
-                                                                                    esto.onM10BtnClick();
+                                                                                    var cmd = "p";
+                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
                                                                                     esto.activarm3();
                                                                                     //ENCENDERHUSILLO
@@ -8968,7 +8971,9 @@ TERMINA COMENT *****/
 
                                                                                         });
                                                                                     } else {
-                                                                                        esto.onM10BtnClick();
+
+                                                                                        var cmd = "p";
+                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
                                                                                         esto.activarm3();
                                                                                         //ENCENDERHUSILLO
@@ -9299,7 +9304,8 @@ TERMINA COMENT *****/
 
                                                                                         } else {
 
-                                                                                            esto.onM10BtnClick();
+                                                                                            var cmd = "p";
+                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
                                                                                             esto.activarm3();
                                                                                             //ENCENDERHUSILLO
@@ -9738,8 +9744,10 @@ TERMINA COMENT *****/
                                                                                             },15000);
                                                                                             */
                                                                                 } else {
-                                                                                    esto.onM10BtnClick();
+                                                                                    var cmd = "p";
+                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
+                                                                                    esto.
                                                                                     esto.activarm3();
                                                                                     //ENCENDERHUSILLO
                                                                                     setTimeout(() => {
@@ -10047,7 +10055,8 @@ TERMINA COMENT *****/
 
                                                                                     } else {
 
-                                                                                        esto.onM10BtnClick();
+                                                                                        var cmd = "p";
+                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
                                                                                         esto.activarm3();
                                                                                         //ENCENDERHUSILLO
@@ -17282,7 +17291,7 @@ chilipeppr.publish(
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">YTDA</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">YYDA</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
