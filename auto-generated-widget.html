@@ -6027,6 +6027,7 @@
 
                                         /********** INICIO CAMBIO HERRAMIENTA ******/
                                     case (gcodeline.match(/\bM6\b/i) || {}).input:
+                                    this.onM20BtnClick();
                                         var cmd = "!";
                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                         this.activarm5();
@@ -6649,9 +6650,7 @@
 
                                                                                     } else {
 
-                                                                                        var cmd = "p";
-                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
-
+                                                                                        esto.onM10BtnClick();
                                                                                         esto.activarm3();
                                                                                         //ENCENDERHUSILLO
                                                                                         setTimeout(() => {
@@ -8687,6 +8686,8 @@ TERMINA COMENT *****/
 
                                             /********** INICIO CAMBIO HERRAMIENTA ******/
                                         case (gcodeline.match(/\bM6\b/i) || {}).input:
+
+                                        this.onM20BtnClick();
                                             var lineacodigog = gcodeline;
                                             var toolqueseusara = 0;
                                             var contador2 = contadordelinea;
@@ -17290,7 +17291,7 @@ chilipeppr.publish(
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">DYDA</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">YYDA</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
