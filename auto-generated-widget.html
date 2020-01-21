@@ -7951,20 +7951,8 @@
 
                                             if (response == 1) {
 
-
-                                                var HttpClient = function() {
-                                                    this.get = function(aUrl, aCallback) {
-                                                        var anHttpRequest = new XMLHttpRequest();
-                                                        anHttpRequest.onreadystatechange = function() {
-                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                aCallback(anHttpRequest.responseText);
-                                                        }
-                                                        anHttpRequest.open("GET", aUrl, true);
-                                                        anHttpRequest.send(null);
-                                                    }
-                                                }
-                                                var theurl = 'http://192.168.0.83/arduino/digital/29';
-                                                var client = new HttpClient();
+                                                theurl = 'http://192.168.0.83/arduino/digital/29';
+                                                client = new HttpClient();
 
                                                 client.get(theurl, function(response) {
                                                     var res = response.split("Pin D29 set to ");
@@ -8022,19 +8010,9 @@
                                             if (response == 1) {
 
 
-                                                var HttpClient = function() {
-                                                    this.get = function(aUrl, aCallback) {
-                                                        var anHttpRequest = new XMLHttpRequest();
-                                                        anHttpRequest.onreadystatechange = function() {
-                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                aCallback(anHttpRequest.responseText);
-                                                        }
-                                                        anHttpRequest.open("GET", aUrl, true);
-                                                        anHttpRequest.send(null);
-                                                    }
-                                                }
-                                                var theurl = 'http://192.168.0.82/arduino/digital/40';
-                                                var client = new HttpClient();
+
+                                                theurl = 'http://192.168.0.82/arduino/digital/40';
+                                                client = new HttpClient();
 
                                                 client.get(theurl, function(response) {
                                                     var res = response.split("Pin D40 set to ");
@@ -10689,19 +10667,8 @@ TERMINA COMENT *****/
                                                 if (response == 1) {
 
 
-                                                    var HttpClient = function() {
-                                                        this.get = function(aUrl, aCallback) {
-                                                            var anHttpRequest = new XMLHttpRequest();
-                                                            anHttpRequest.onreadystatechange = function() {
-                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                    aCallback(anHttpRequest.responseText);
-                                                            }
-                                                            anHttpRequest.open("GET", aUrl, true);
-                                                            anHttpRequest.send(null);
-                                                        }
-                                                    }
-                                                    var theurl = 'http://192.168.0.83/arduino/digital/29';
-                                                    var client = new HttpClient();
+                                                    theurl = 'http://192.168.0.83/arduino/digital/29';
+                                                    client = new HttpClient();
 
                                                     client.get(theurl, function(response) {
                                                         var res = response.split("Pin D29 set to ");
@@ -10759,19 +10726,9 @@ TERMINA COMENT *****/
                                                 if (response == 1) {
 
 
-                                                    var HttpClient = function() {
-                                                        this.get = function(aUrl, aCallback) {
-                                                            var anHttpRequest = new XMLHttpRequest();
-                                                            anHttpRequest.onreadystatechange = function() {
-                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                    aCallback(anHttpRequest.responseText);
-                                                            }
-                                                            anHttpRequest.open("GET", aUrl, true);
-                                                            anHttpRequest.send(null);
-                                                        }
-                                                    }
-                                                    var theurl = 'http://192.168.0.82/arduino/digital/40';
-                                                    var client = new HttpClient();
+
+                                                    theurl = 'http://192.168.0.82/arduino/digital/40';
+                                                    client = new HttpClient();
 
                                                     client.get(theurl, function(response) {
                                                         var res = response.split("Pin D40 set to ");
