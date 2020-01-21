@@ -4752,12 +4752,6 @@
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
 
-                        if (linea.match(/\bM57\b/i)) {
-                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                        }
-                        if (linea.match(/\bM58\b/i)) {
-                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                        }
 
                     }
                     if (this.currentLine > 1) {
@@ -7923,136 +7917,40 @@
 
                                         /*************************************FIN M5 ***********************************/
 
-
                                         /***************************************INICIO M57 SACAR PALETA DERECHA*********/
                                     case (gcodeline.match(/\bM57\b/i) || {}).input:
-
 
                                         this.activarM57();
 
                                         ocupado = 0;
-
-                                        var HttpClient = function() {
-                                            this.get = function(aUrl, aCallback) {
-                                                var anHttpRequest = new XMLHttpRequest();
-                                                anHttpRequest.onreadystatechange = function() {
-                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                        aCallback(anHttpRequest.responseText);
-                                                }
-                                                anHttpRequest.open("GET", aUrl, true);
-                                                anHttpRequest.send(null);
-                                            }
+                                        if (!sigespecial && !errora && !errory) {
+                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                            var cmd = "~";
+                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
                                         }
-                                        var theurl = 'http://192.168.0.83/arduino/digital/32';
-                                        var client = new HttpClient();
-                                        client.get(theurl, function(response) {
-                                            var res = response.split("Pin D32 set to ");
-                                            response = parseInt(res[1]);
-
-                                            if (response == 1) {
-
-
-                                                var HttpClient = function() {
-                                                    this.get = function(aUrl, aCallback) {
-                                                        var anHttpRequest = new XMLHttpRequest();
-                                                        anHttpRequest.onreadystatechange = function() {
-                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                aCallback(anHttpRequest.responseText);
-                                                        }
-                                                        anHttpRequest.open("GET", aUrl, true);
-                                                        anHttpRequest.send(null);
-                                                    }
-                                                }
-                                                var theurl = 'http://192.168.0.83/arduino/digital/29';
-                                                var client = new HttpClient();
-
-                                                client.get(theurl, function(response) {
-                                                    var res = response.split("Pin D29 set to ");
-                                                    response = parseInt(res[1]);
-
-                                                    if (response == 1) {
-
-                                                        var cmd = "~";
-                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
-                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-
-                                                    }
-                                                });
-
-                                            }
-
-
-
-                                        });
-
                                         // alert ("M57");
 
                                         break;
-
                                         /***************************************FIN M57 SACAR PALETA DERECHA*********/
 
 
 
 
 
-                                        /***************************************INICIO M58 SACAR PALETA IZQUIERDA*********/
+                                        /***************************************INICIO M58 Meter PALETA DERECHA*********/
 
 
                                     case (gcodeline.match(/\bM58\b/i) || {}).input:
 
                                         this.activarM58();
                                         ocupado = 0;
-                                        var HttpClient = function() {
-                                            this.get = function(aUrl, aCallback) {
-                                                var anHttpRequest = new XMLHttpRequest();
-                                                anHttpRequest.onreadystatechange = function() {
-                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                        aCallback(anHttpRequest.responseText);
-                                                }
-                                                anHttpRequest.open("GET", aUrl, true);
-                                                anHttpRequest.send(null);
-                                            }
+                                        if (!sigespecial && !errora && !errory) {
+                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
+                                            var cmd = "~";
+                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+
                                         }
-                                        var theurl = 'http://192.168.0.82/arduino/digital/41';
-                                        var client = new HttpClient();
-                                        client.get(theurl, function(response) {
-                                            var res = response.split("Pin D41 set to ");
-                                            response = parseInt(res[1]);
-
-                                            if (response == 1) {
-
-
-                                                var HttpClient = function() {
-                                                    this.get = function(aUrl, aCallback) {
-                                                        var anHttpRequest = new XMLHttpRequest();
-                                                        anHttpRequest.onreadystatechange = function() {
-                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                aCallback(anHttpRequest.responseText);
-                                                        }
-                                                        anHttpRequest.open("GET", aUrl, true);
-                                                        anHttpRequest.send(null);
-                                                    }
-                                                }
-                                                var theurl = 'http://192.168.0.82/arduino/digital/40';
-                                                var client = new HttpClient();
-
-                                                client.get(theurl, function(response) {
-                                                    var res = response.split("Pin D40 set to ");
-                                                    response = parseInt(res[1]);
-
-                                                    if (response == 1) {
-
-                                                        var cmd = "~";
-                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
-                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                    }
-                                                });
-
-                                            }
-
-
-
-                                        });
                                         // alert ("M58");
 
 
@@ -10660,7 +10558,6 @@ TERMINA COMENT *****/
 
                                             /*************************************FIN M5 ***********************************/
 
-
                                             /***************************************INICIO M57 SACAR PALETA DERECHA*********/
                                         case (gcodeline.match(/\bM57\b/i) || {}).input:
 
@@ -10668,135 +10565,35 @@ TERMINA COMENT *****/
                                             this.activarM57();
 
                                             ocupado = 0;
+                                            if (!sigespecial && !errora && !errory) {
+                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
 
-                                            var HttpClient = function() {
-                                                this.get = function(aUrl, aCallback) {
-                                                    var anHttpRequest = new XMLHttpRequest();
-                                                    anHttpRequest.onreadystatechange = function() {
-                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                            aCallback(anHttpRequest.responseText);
-                                                    }
-                                                    anHttpRequest.open("GET", aUrl, true);
-                                                    anHttpRequest.send(null);
-                                                }
+                                                var cmd = "~";
+                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
                                             }
-                                            var theurl = 'http://192.168.0.83/arduino/digital/32';
-                                            var client = new HttpClient();
-                                            client.get(theurl, function(response) {
-                                                var res = response.split("Pin D32 set to ");
-                                                response = parseInt(res[1]);
-
-                                                if (response == 1) {
-
-
-                                                    var HttpClient = function() {
-                                                        this.get = function(aUrl, aCallback) {
-                                                            var anHttpRequest = new XMLHttpRequest();
-                                                            anHttpRequest.onreadystatechange = function() {
-                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                    aCallback(anHttpRequest.responseText);
-                                                            }
-                                                            anHttpRequest.open("GET", aUrl, true);
-                                                            anHttpRequest.send(null);
-                                                        }
-                                                    }
-                                                    var theurl = 'http://192.168.0.83/arduino/digital/29';
-                                                    var client = new HttpClient();
-
-                                                    client.get(theurl, function(response) {
-                                                        var res = response.split("Pin D29 set to ");
-                                                        response = parseInt(res[1]);
-
-                                                        if (response == 1) {
-
-                                                            var cmd = "~";
-                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
-                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-
-                                                        }
-                                                    });
-
-                                                }
-
-
-
-                                            });
-
                                             // alert ("M57");
 
                                             break;
 
-                                            /***************************************FIN M57 SACAR PALETA DERECHA*********/
-
-
-
-
-
-                                            /***************************************INICIO M58 SACAR PALETA IZQUIERDA*********/
+                                            /***************************************INICIO M58 Meter PALETA DERECHA*********/
 
 
                                         case (gcodeline.match(/\bM58\b/i) || {}).input:
 
                                             this.activarM58();
                                             ocupado = 0;
-                                            var HttpClient = function() {
-                                                this.get = function(aUrl, aCallback) {
-                                                    var anHttpRequest = new XMLHttpRequest();
-                                                    anHttpRequest.onreadystatechange = function() {
-                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                            aCallback(anHttpRequest.responseText);
-                                                    }
-                                                    anHttpRequest.open("GET", aUrl, true);
-                                                    anHttpRequest.send(null);
-                                                }
+                                            if (!sigespecial && !errora && !errory) {
+                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
+                                                var cmd = "~";
+                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+
                                             }
-                                            var theurl = 'http://192.168.0.82/arduino/digital/41';
-                                            var client = new HttpClient();
-                                            client.get(theurl, function(response) {
-                                                var res = response.split("Pin D41 set to ");
-                                                response = parseInt(res[1]);
-
-                                                if (response == 1) {
-
-
-                                                    var HttpClient = function() {
-                                                        this.get = function(aUrl, aCallback) {
-                                                            var anHttpRequest = new XMLHttpRequest();
-                                                            anHttpRequest.onreadystatechange = function() {
-                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                    aCallback(anHttpRequest.responseText);
-                                                            }
-                                                            anHttpRequest.open("GET", aUrl, true);
-                                                            anHttpRequest.send(null);
-                                                        }
-                                                    }
-                                                    var theurl = 'http://192.168.0.82/arduino/digital/40';
-                                                    var client = new HttpClient();
-
-                                                    client.get(theurl, function(response) {
-                                                        var res = response.split("Pin D40 set to ");
-                                                        response = parseInt(res[1]);
-
-                                                        if (response == 1) {
-
-                                                            var cmd = "~";
-                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
-                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-
-                                                        }
-                                                    });
-
-                                                }
-
-
-
-                                            });
                                             // alert ("M58");
 
 
                                             break;
                                             /*************************************FIN M57 ***********************************/
-
 
 
 
@@ -17485,7 +17282,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">TYDA</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">DYDA</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
