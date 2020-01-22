@@ -2356,6 +2356,43 @@
                     });
                 },
 
+                encenderblower: function(evt) {
+                    var HttpClient = function() {
+                        this.get = function(aUrl, aCallback) {
+                            var anHttpRequest = new XMLHttpRequest();
+                            anHttpRequest.onreadystatechange = function() {
+                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                    aCallback(anHttpRequest.responseText);
+                            }
+                            anHttpRequest.open("GET", aUrl, true);
+                            anHttpRequest.send(null);
+                        }
+                    }
+                    var theurl = 'http://192.168.0.80/arduino/digital/7/1';
+                    var client = new HttpClient();
+                    client.get(theurl, function(response) {});
+
+                },
+
+                apagarblower: function(evt) {
+                    var HttpClient = function() {
+                        this.get = function(aUrl, aCallback) {
+                            var anHttpRequest = new XMLHttpRequest();
+                            anHttpRequest.onreadystatechange = function() {
+                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                    aCallback(anHttpRequest.responseText);
+                            }
+                            anHttpRequest.open("GET", aUrl, true);
+                            anHttpRequest.send(null);
+                        }
+                    }
+                    var theurl = 'http://192.168.0.80/arduino/digital/7/0';
+                    var client = new HttpClient();
+                    client.get(theurl, function(response) {});
+
+                },
+
+
                 bajarstopa1f2: function(evt) {
                     var HttpClient = function() {
                         this.get = function(aUrl, aCallback) {
@@ -5907,7 +5944,7 @@
                                 gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) ||
                                 gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) ||
                                 gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) ||
-                                gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
+                                gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bM80\b/i) || gcodeline.match(/\bM81\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
 
                                 var cmd = "!";
                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
@@ -5922,6 +5959,29 @@
 
                                 switch (gcodeline) {
 
+
+
+
+                                    case (gcodeline.match(/\bM80\b/i) || {}).input:
+                                        this.encenderblower();
+                                        if (!sigespecial && !errora && !errory) {
+                                            setTimeout(function() {
+                                                var cmd = "~";
+                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                            }, temp);
+                                        }
+                                        break;
+
+
+                                    case (gcodeline.match(/\bM81\b/i) || {}).input:
+                                        this.apagarblower();
+                                        if (!sigespecial && !errora && !errory) {
+                                            setTimeout(function() {
+                                                var cmd = "~";
+                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                            }, temp);
+                                        }
+                                        break;
 
                                     case (gcodeline.match(/\bPAUSA\b/i) || {}).input:
                                         var cmd = "!";
@@ -8552,7 +8612,7 @@ TERMINA COMENT *****/
                                     gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) ||
                                     gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) ||
                                     gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) ||
-                                    gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
+                                    gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bM80\b/i) || gcodeline.match(/\bM81\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
 
                                     ocupado = 1;
                                     var cmd = "!";
@@ -8565,6 +8625,27 @@ TERMINA COMENT *****/
 
 
                                     switch (gcodeline) {
+
+                                        case (gcodeline.match(/\bM80\b/i) || {}).input:
+                                            this.encenderblower();
+                                            if (!sigespecial && !errora && !errory) {
+                                                setTimeout(function() {
+                                                    var cmd = "~";
+                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                }, temp);
+                                            }
+                                            break;
+
+
+                                        case (gcodeline.match(/\bM81\b/i) || {}).input:
+                                            this.apagarblower();
+                                            if (!sigespecial && !errora && !errory) {
+                                                setTimeout(function() {
+                                                    var cmd = "~";
+                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                }, temp);
+                                            }
+                                            break;
 
 
                                         case (gcodeline.match(/\bPAUSA\b/i) || {}).input:
@@ -17279,7 +17360,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">Mesas</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">Blower</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
