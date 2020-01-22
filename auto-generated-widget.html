@@ -1871,27 +1871,7 @@
                         origline = that.getCommentMarkup(origline);
 
                         tdDom.html(origline);
-                        /*
-                         //var html = tdDom.html();
-                         //console.log("html:", html);
-                         //var curF = html.match(/(F)(\d+\.{0,1}\d*?)([\s$])/g);
-                         var curF = origline.match(/(F)(\d+\.{0,1}\d*)/g);
-                         if (curF) {
-                         //console.log("origline:", origline, "curF:", curF);
-                         //console.log("original file line:", origline);
-                         for (var i = 0; i < curF.length; i++) {
-                         var item = curF[i];
-                         var fval = parseFloat(item.replace(/F/i, ""));
-                         //console.log("fval:", fval);
-                         fval = val * fval;
-                         //console.log("new fval:", fval);
-                         origline = origline.replace(item, "<span class=\"feedrate-adjust\">F" + fval.toFixed(2) + "</span>");
-                         }
-                         tdDom.html(origline);
-                         }
-                         //curF = parseFloat(curF);
-                         //console.log("curF:", curF);
-                         */
+
                     });
                 },
                 onRecv3dObjectPerRowTd: null, // this is set before calling onRecv3dObjectPerRow()
@@ -4767,21 +4747,6 @@
                         }
 
                     }
-                    /*  
-                     
-                      
-
-                      if (linea.match(/\bG4\b/i)) {
-                          //chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                      }
-                      if (linea.match(/\bM57\b/i)) {
-                          //  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                      }
-                      if (linea.match(/\bM58\b/i)) {
-                          // chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                      }
-
-                     */
 
 
 
