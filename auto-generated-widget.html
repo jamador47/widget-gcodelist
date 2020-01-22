@@ -718,8 +718,7 @@
                         console.log("onPlay pubsub test. CANCELLING EVENT.");
                         // then send a new /play about 5 seconds later to mimic an async interrupt
                         setTimeout(function() {
-                            // pretend we threw up a dialog box, let the user choose stuff, and then they move along
-                            // we have to mimic the user is hitting play to start the process again
+
                             chilipeppr.publish("/com-chilipeppr-widget-gcode/play", event);
                         }, 5000);
 
@@ -730,9 +729,7 @@
                         return false;
                     } else {
 
-                        // we get here after we resend the /play signal to the Gcode widget. when it gets that
-                        // it starts the process again of a play and we should let it continue on since we already
-                        // did our important work
+
                         console.log("onPlay pubsub test. Now allowing play to continue on.")
                         return true;
                     }
@@ -919,9 +916,7 @@
 
                     console.log(this.name + " done loading.");
                 },
-                /**
-                 * Configure the "Feed Rate Override" button and the "Tool Changes" pulldown
-                 */
+
                 setupSecondaryButtons: function() {
 
                     // setup Feed Rate Override to toggle the actual region
@@ -942,16 +937,13 @@
                         btnEl.addClass("active");
                     }
                 },
-                /**
-                 * This method scans the Gcode for tool changes and then populates the pulldown menu so
-                 * you can easily jump to the changes in the file and continue where you left off.
-                 */
+
                 toolChanges: {},
                 toolChangesKeys: [], // need to store keys in own array cuz keys in javascript are strings and we wants ints
                 toolComments: {},
                 setupToolChanges: function() {
 
-                    // scan gcode for tool change info
+
 
                     console.log("about to look for tool changes in this.fileLines. lines:", this.fileLines.length);
 
@@ -4455,11 +4447,7 @@
                 },
                 isResetMetaBeforePlay: false, // this is set to true after a play has been completed and done all the way to the end. usually we reset the meta data when user hits stop, but we want to let the user know all lines were completed after their job was done so we don't reset. however, if they hit play again we need to reset
                 isJobDonePubSubSent: false, // track this so that we don't fire the end of job pubsub event more than once. this was needed because you could sleep your laptop after a job done, then unsleep, reconnect to cnc controller, get the line complete status again, and think the job just got done when it clearly didn't
-                /**
-                 * This is now called from pubsub, which means we publish our own /onPlay event when user hits button and then listen
-                 * for the callback so that other widgets can interrupt the /onPlay if they have to. We get called last because
-                 * we subscribe at the lowest priority.
-                 */
+
                 onPlayAfter: function(event) {
                     // loop thru each line and send gcode
                     console.log("got onPlayAfter. this:", this, "event:", event);
@@ -4467,19 +4455,12 @@
 
                     $('.com-chilipeppr-widget-gcode-startindicator').addClass("hidden");
 
-                    // this is set to true after a play has been completed and done 
-                    // all the way to the end. usually we reset the meta data when 
-                    // user hits stop, but we want to let the user know all lines 
-                    // were completed after their job was done so we don't reset.
-                    // however, if they hit play again we need to reset
+
                     if (this.isResetMetaBeforePlay) {
                         this.resetMetaDataQueueWriteComplete();
                         this.isResetMetaBeforePlay = false;
                     }
-                    // set back to false in case user changed modes to remove
-                    // line numbers. this will get set back to true on the first
-                    // onExecuted() encountered, so we're safe putting this to false
-                    // on each play
+
                     this.isInExecuteScrollToMode = false;
 
                     // set back to false so we get job done pubsub
@@ -4499,10 +4480,7 @@
                     this.isPlaying = true;
                     this.isPaused = false;
 
-                    // reset onExecuted's last ctr (need to do this since
-                    // we could start from middle position). also when this val
-                    // is null it means we won't track onExecuted, i.e. if user
-                    // types a command from serial port console we can ignore
+
                     if (this.currentLine != null)
                         this.lastLineMarkedExecuted = this.currentLine;
                     else
@@ -4514,13 +4492,6 @@
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/send", "%\n");
 
 
-                    // start from scratch. this is the same method
-                    // that the jumpscroll uses to go to top
-                    //this.jumpToTop();
-
-                    //this.currentLine = 0;
-
-                    // do pre-Upload
                     if (this.options.preUpload && this.options.preUpload != 'none') {
                         // TODO. double check if in send to 3d viewer mode
                         // to skip this
@@ -4546,13 +4517,6 @@
                         this.onPlayNextLine();
                     }
 
-                    // commented out on 1/2/17 by JLauer because we now fire this off before any play action occurs
-                    // so others can interrupt
-                    /*
-                    // fire off pubsub signal for others to watch the play btn
-                    var meta = { isPlayByUser: event ? true : false };
-                    chilipeppr.publish("/com-chilipeppr-widget-gcode/onplay", meta);
-                    */
 
                     return true;
                 },
@@ -4605,15 +4569,6 @@
                     // so it can do some intelligent decision making
                     this.isInPreUploadMode = true;
 
-                    // send a feedhold command to SPJS
-                    //chilipeppr.publish("/com-chilipeppr-widget-serialport/send", linegcode + "\n");
-
-                    // we know onPlayNextLine() publishes here
-                    // so steal the publish by subscribing at top priority
-                    // and returning false so other subscribes don't get
-                    // the call. gang up the lines.
-                    // unsubscribe from the publish. then send
-                    // the lines ourself
                     this.preUploadGang = ""; // clear preupload string
                     this.preUploadGangArr = []; // clear preupload array
                     // subscribe at priority 1 better than default of 10
@@ -4660,13 +4615,7 @@
                     //chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "Pre-Uploading Gcode", "Done pre-uploading " + amtLinesToUpload + " lines.", 3000);
 
 
-                    // set currentLine which is 0 based to number of lines
-                    // we uploaded, i.e. if we upload 1, index should now
-                    // be 1 which is next line, cuz index 0 was the line
-                    // we uploaded
-                    //this.currentLine = numToUpload;
 
-                    // send cycle resume command to SPJS
 
                     this.statEls.sent.text(this.currentLine);
                     this.statEls.remaining.text(this.fileLines.length - this.currentLine);
@@ -4787,10 +4736,7 @@
 
                     }
 
-                    // we should mark this off as checked since it's sent
-                    // that doesn't mean it's executed yet, but that's proving to be really hard
-                    // to know exactly when our gcode command is executed
-                    // ACTUALLY just pass in "markSent" to gotoLine below
+
 
                     // publish to 3d viewer so it syncs to us
                     if (this.options.whenPlay == "3d")
@@ -4799,12 +4745,7 @@
                             gcode: linegcode
                         });
 
-                    // sync gcode list view
-                    /* we are no longer scrolling on queue, but on complete, so its done
-                       outside of this onPlayNextLine() method
-                    if (!this.isPlayNextLineNoScroll)
-                        this.gotoLine(ctr + 1, true);
-                     */
+
                     this.currentLine++;
                     localStorage.setItem('currentLine', this.currentLine);
                     if (this.statEls == null) {
@@ -4879,9 +4820,7 @@
                 onChiliPepprPause: function(meta) {
                     console.log("onChiliPepprPause");
 
-                    // pass a null event, but false for the isFromM6 parameter,
-                    // but true for isFromCpPause so user knows the pause event
-                    // was from the chilipeppr_pause command inside the gcode
+
                     this.onPause(null, false, true);
 
                     chilipeppr.publish("/com-chilipeppr-widget-gcode/onChiliPepprPause", meta);
@@ -16261,6 +16200,44 @@ TERMINA COMENT *****/
                         }
                     }
 
+                    var elurl = 'http://192.168.0.83/arduino/digital/32';
+                    var cliente = new HttpCliente();
+                    cliente.get(elurl, function(response) {
+
+                        var res = response.split("Pin D32 set to ");
+                        response = parseInt(res[1]);
+
+                        if (response == 1) {
+
+                            var HttpCliente = function() {
+                                this.get = function(aUrl, aCallback) {
+                                    var anHttpRequest = new XMLHttpRequest();
+                                    anHttpRequest.onreadystatechange = function() {
+                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                            aCallback(anHttpRequest.responseText);
+                                    }
+                                    anHttpRequest.open("GET", aUrl, true);
+                                    anHttpRequest.send(null);
+                                }
+                            }
+
+                            var elurl = 'http://192.168.0.83/arduino/digital/29';
+                            var cliente = new HttpCliente();
+                            cliente.get(elurl, function(response) {
+                                var res = response.split("Pin D29 set to ");
+                                response = parseInt(res[1]);
+                                if (response == 1) {
+                                    var cmd = "~";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
+
+
+                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                }
+                            });
+
+
+                        }
+                    });
                 },
 
                 verificarmesaizqdentro: function(evt) {
@@ -16275,13 +16252,46 @@ TERMINA COMENT *****/
                             anHttpRequest.send(null);
                         }
                     }
-                    var elurl = 'http://192.168.0.83/arduino/digital/32';
+
+                    var elurl = 'http://192.168.0.82/arduino/digital/41';
                     var cliente = new HttpCliente();
-                    cliente.get(elurl, function(response) {});
+                    cliente.get(elurl, function(response) {
 
+                        var res = response.split("Pin D41 set to ");
+                        response = parseInt(res[1]);
+
+                        if (response == 1) {
+
+                            var HttpCliente = function() {
+                                this.get = function(aUrl, aCallback) {
+                                    var anHttpRequest = new XMLHttpRequest();
+                                    anHttpRequest.onreadystatechange = function() {
+                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                            aCallback(anHttpRequest.responseText);
+                                    }
+                                    anHttpRequest.open("GET", aUrl, true);
+                                    anHttpRequest.send(null);
+                                }
+                            }
+
+                            var elurl = 'http://192.168.0.82/arduino/digital/40';
+                            var cliente = new HttpCliente();
+                            cliente.get(elurl, function(response) {
+                                var res = response.split("Pin D40 set to ");
+                                response = parseInt(res[1]);
+                                if (response == 1) {
+                                    var cmd = "~";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
+
+
+                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                }
+                            });
+
+
+                        }
+                    });
                 },
-
-
                 activarM57: function(evt) {
 
                     // VERIFICAR SI MESA A ESTA AFUERA
@@ -17269,7 +17279,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">TRGDA</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">Mesas</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
