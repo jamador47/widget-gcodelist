@@ -1668,9 +1668,7 @@
                 },
                 forkSetup: function() {
                     var topCssSelector = '#com-chilipeppr-widget-gcodeviewer';
-                    //$(topCssSelector + ' .fork').prop('href', this.fiddleurl);
-                    //$(topCssSelector + ' .standalone').prop('href', this.url);
-                    //$(topCssSelector + ' .fork-name').html(this.id);
+
                     $(topCssSelector + ' .panel-title').popover({
                         title: this.name,
                         content: this.desc,
@@ -1803,13 +1801,7 @@
                 onRecv3dObjectPerRow: function(obj3d) {
                     console.log("got onRecv3dObjectPerRow. obj3d:", obj3d, "onRecv3dObjectPerRowTd:", this.onRecv3dObjectPerRowTd);
 
-                    /*
-                     // this lets us cache the obj3d so we don't have to keep pubsubbing
-                     // if we were passed in the obj3d, set it to global propertry
-                     if (obj3d) this.obj3d = obj3d;
-                     // else set obj3d from global property
-                     else obj3d = this.obj3d;
-                     */
+
 
                     var that = this;
                     this.isShowingCoords = true;
@@ -1883,12 +1875,7 @@
                     //console.log("new start pos indx:", indx, "evt.target:", evt.target);
                     console.log("new start pos indx:", indx);
 
-                    // let's use metadata
-                    // indx we have is UI indx which is 1-based, metaLines is 0-based
-                    //that.metaLines[indx - 1].isNewStartPos = true;
 
-                    // reset meta data for all lines after me
-                    // this method wants 1-based index
                     this.resetMetaDataQueueWriteComplete(indx);
 
                     console.log("tr:", tr);
@@ -1931,14 +1918,7 @@
                     $('#com-chilipeppr-widget-gcode-tbl')
                         .on("mouseout", 'tr', function(evt) {
                             console.log("got mouseout on tr");
-                            /*
-                             setTimeout(function() {
-                             if (that.isShowingCoords && !that.isInsideCoords) {
-                             $('.com-chilipeppr-widget-gcodeviewer-coords-wrapper').remove();
-                             that.isShowingCoords = false;
-                             }
-                             }, 5);
-                             */
+
                         });
 
 
@@ -1957,26 +1937,6 @@
                         });
 
 
-                    /*
-                     $('#com-chilipeppr-widget-gcode-tbl')
-                     .on("mouseout", function() {
-                     that.cleanupHilites();
-                     });
-                     */
-
-                    /*
-                     $('#com-chilipeppr-widget-gcode-tbl')
-                     .on("mouseout", 'tr', function (evt) {
-                     console.log("got mouseout on tr:", evt);
-                     var td = $(evt.currentTarget).children(".g");
-                     if (td) {
-                     that.cleanupDomElem(td);
-                     //td.html(td.text());
-                     //that.parseGcodeForDomElem(td, false);
-                     }
-                     $(".com-chilipeppr-widget-gcode .popover").remove();
-                     });
-                     */
 
                     $('#com-chilipeppr-widget-gcode-tbl')
                         .on("click", 'tr', function(evt) {
@@ -1986,19 +1946,7 @@
                             if (tr.hasClass("gcode-rowhilite")) tr.removeClass("gcode-rowhilite");
                             else tr.addClass("gcode-rowhilite");
 
-                            /*
-                             var td = tr.children(".g");
-                             console.log(td);
-                             var gcodehtml = td.html();
-                             // remove divs and spans
-                             console.log("gcode html", gcodehtml);
 
-                             var tmp = $('#com-chilipeppr-widget-gcode-tmparea');
-                             tmp.html(gcodehtml);
-                             tmp.children(".popover").remove();
-                             var gcode = tmp.text();
-                             var rowind = td[0].parentNode.rowIndex;
-                             */
                             var rowind = tr.children('.indx').text();
                             var indx = parseInt(rowind) - 1;
                             var gcode = that.fileLines[indx];
@@ -2177,11 +2125,6 @@
                         if (event && this.options.ppsOnStopFeedhold)
                             chilipeppr.publish("/com-chilipeppr-widget-serialport/send", "!");
 
-                        /*
-             $('#com-chilipeppr-widget-gcode-tbl tr').each(function (i, tr) {
-             $(tr).children("td:first").children("span").css("color", "");
-             });
-             */
 
                         // fire off pubsub signal for others to watch the stop btn
                         var meta = {
@@ -16689,48 +16632,7 @@ TERMINA COMENT *****/
 
                     var linea = this.fileLines[linenum - 1];
 
-                    //ACA TRABAJO AHORITA.
-                    // alert(ultimopausa);
 
-                    /*
-                    if (ultimopausa != linenum) {
-                        if (linenum > 1) {
-                            var lineaantes = this.fileLines[linenum - 2];
-
-                            if (lineaantes.match(/\bM6\b/i)) {
-                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                                ultimopausa = linenum;
-                            }
-
-                            if (linea.match(/\bG4\b/i)) {
-                                //chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                            }
-                            if (linea.match(/\bM57\b/i)) {
-                                //  chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                            }
-                            if (linea.match(/\bM58\b/i)) {
-                                // chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                            }
-
-                            if (lineaantes.match(/\bUTO\b/i)) {
-                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                                ultimopausa = linenum;
-
-                            }
-                            if (lineaantes.match(/\bUAO\b/i)) {
-                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                                ultimopausa = linenum;
-
-                            }
-
-                            if (lineaantes.match(/\bPAUSA\b/i)) {
-                                ultimopausa = linenum;
-
-                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
-                            }
-
-                        }
-                    }*/
                     // We will update the checkmark based on the underlying meta data for
                     // the line. Lines are stored in this.fileLines and meta data is in
                     // this.metaLines. They have equal indexes.
@@ -16943,32 +16845,7 @@ TERMINA COMENT *****/
                     if (html !== undefined && html.match(/\(.*\)|;/)) {
                         console.log("got comments match");
 
-                        /*
-                        // this is kinda fancy. we are adding artificial spaces. this is so
-                        // we don't have a word too long that mucks with how beautiful our
-                        // widget is in terms for forcing the width too wide
-                        var newcomment;
-                        if (html.match(/(\(.*?\))/) || html.match(/(;.*)/)) {
-                            var tmp = RegExp.$1;
-                            console.log("$1 was:", tmp);
-                            var arr = tmp.split(/ /);
-                            var newarr = [];
-                            $.each(arr, function(i, item) {
-                                if (item.length > 30) {
-                                    console.log("found a comment with word too long. splitting");
-                                    var subarr = item.match(/.{1,30}/g);
-                                    console.log("subarr:", subarr);
-                                    newarr = newarr.concat(subarr);
-                                } else {
-                                    newarr.push(item);
-                                }
-                            });
-                            newcomment = newarr.join(" ");
-                            console.log("newarr:", newarr);
-                            console.log("our new html with artificial spaces:", newcomment);
-                            if (html.match(/(\(.*?\))/)) html = html.replace(/(\(.*?\))/, newcomment);
-                            if (html.match(/(;.*)/)) html = html.replace(/(;.*)/, newcomment);
-                        }*/
+
 
                         // ok, just swap a span around comment
                         html = html.replace(/(\(.*?\))/, '<span class="gcode-comment">$1</span>');
