@@ -10,8 +10,6 @@
     <!-- ChiliPeppr is based on bootstrap CSS. -->
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
-    <!-- Customized version of require.js for ChiliPeppr. Please see requfire.js docs for how
-    ChiliPeppr's dependency system works as it's based on require.js. -->
     <script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>
 
     <style type='text/css'>
@@ -243,16 +241,8 @@
         }
         
         .paginator {
-            /* position: absolute; */
-            /* min-height:25px; */
-            /* display: table-cell; */
-            /* height:10px; */
             width: 20px;
             height: 20%;
-            /* background-color: rgba(0,0,255,0.5); */
-            /* border-bottom:1px solid silver; */
-            /* margin-bottom:1px; */
-            /* padding-bottom:1px; */
             padding: 0;
             margin: 0;
             overflow: hidden;
@@ -284,7 +274,6 @@
             /* padding:1px 8px; */
             width: 20px;
             background-color: none;
-            /* background-color: rgba(255,255,255,0.5); */
             border: 0;
             height: 100%;
         }
@@ -337,14 +326,13 @@
         // Load additional files via Chilipeppr's require.js
         requirejs.config({
             paths: {
-                //jqueryui: '//chilipeppr.com/js/jquery-ui-1.10.4/ui/minified/jquery.ui.core.min',
-                //jqueryuiResizeable: '//chilipeppr.com/js/jquery-ui-1.10.4/ui/minified/jquery.ui.resizable.min',
+
                 jqueryui: '//i2dcui.appspot.com/js/jquery-ui-1.10.4/ui/jquery.ui.core',
                 jqueryuiWidget: '//i2dcui.appspot.com/js/jquery-ui-1.10.4/ui/jquery.ui.widget',
                 jqueryuiMouse: '//i2dcui.appspot.com/js/jquery-ui-1.10.4/ui/jquery.ui.mouse',
                 jqueryuiResizeable: '//i2dcui.appspot.com/js/jquery-ui-1.10.4/ui/jquery.ui.resizable',
                 waypoints: '//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.4/waypoints.min',
-                //jqueryWaypointsInfinite: '//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.4/waypoints-infinite.min'
+
             },
             shim: {
                 //jqueryWaypointsInfinite: ['waypoints']
@@ -359,22 +347,7 @@
         cprequire_test(["inline:com-chilipeppr-widget-gcode"], function(gcode) {
             console.log("test running of " + gcode.id);
 
-            //console.log(gcode);
-            /*
-             gcode.gcodeLoad(function() {
-             console.log("done loading gcode data...");
-             //console.log(gcode.gcodeData);
-             });
-             */
 
-            /*
-             cprequire(["inline:com-chilipeppr-elem-gcodedata"], function (gcd) {
-             console.log("inside the cprequire which i think is getting called too fast.");
-             console.log(gcd.gcode);
-             //console.log(gcode);
-             //console.log(gcode.gcode());
-             });
-             */
 
             // add flash msg
             chilipeppr.load(
@@ -390,9 +363,6 @@
                 }
             );
 
-            // create a div to hold dragdrop
-            // Element / Drag Drop
-            // http://jsfiddle.net/jlauer/Q654J/
 
             chilipeppr.load("dragdrop",
                 "http://fiddle.jshell.net/jlauer/Z9F6G/show/light/",
@@ -628,14 +598,7 @@
                 chilipeppr.publish("/com-chilipeppr-widget-3dviewer/recv3dObject", obj);
             });
             gcode.init();
-            //gcode.init({lineNumbersOnByDefault: true});
-            //gcode.showOptionsModal();
-            //gcode.setupInfiniteScroll();
 
-            //var txt = gcode.fileLines.join('\n');
-            //window.open('data:text/csv;charset=utf-8,' + escape(txt));
-
-            // test a fake receiving of an onQueue msg
             var numerobroca = "no";
 
             var testOnQueue = function() {
@@ -677,33 +640,27 @@
                 }, 7000);
             };
             var testOnError = function() {
-                    setTimeout(function() {
-                        chilipeppr.publish("/com-chilipeppr-widget-serialport/onError", {
-                            Id: "g3"
-                        });
-                    }, 7000);
-                }
-                // testOnQueue();
-                // testOnWrite();
-                // testOnComplete();
-                // testOnExecute();
-                //testOnError();
+                setTimeout(function() {
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/onError", {
+                        Id: "g3"
+                    });
+                }, 7000);
+            }
+
 
             var testPublishGcode = function() {
-                    setTimeout(function() {
-                        chilipeppr.publish("/com-chilipeppr-widget-gcode/requestGcode", "");
-                    }, 5000);
-                }
-                //testPublishGcode();
+                setTimeout(function() {
+                    chilipeppr.publish("/com-chilipeppr-widget-gcode/requestGcode", "");
+                }, 5000);
+            }
+
 
             var testJumpToLine = function() {
-                    setTimeout(function() {
-                        chilipeppr.publish("/com-chilipeppr-widget-gcode/jumpToLine", 5);
-                    }, 6000);
-                }
-                //testJumpToLine();
+                setTimeout(function() {
+                    chilipeppr.publish("/com-chilipeppr-widget-gcode/jumpToLine", 5);
+                }, 6000);
+            }
 
-            // force widget to set width to test css
             $('#com-chilipeppr-widget-gcodeviewer').css('width', '350px');
             $('body').css('padding', '20px');
 
@@ -815,9 +772,7 @@
 
                     }
 
-                    // Added on 1/2/17 by JLauer so we can allow onPlay to get interrupted
-                    // subscribe to our own /onPlay event at lowest priority so we get it last
-                    // setting priority to 11 because default is 10 and lower values have higher priority
+
                     chilipeppr.subscribe("/com-chilipeppr-widget-gcode/onplay", this, this.onPlayAfter, 11);
 
                     this.setupOptionsModal();
@@ -863,10 +818,7 @@
                                 console.log("error loading default file");
                             });
                     }
-                    // subscribe to file load events
-                    // do it a a stronger priority than default so we get this first
-                    // before the 3d viewser since we modify gcode and may have
-                    // to re-issue it
+
                     chilipeppr.subscribe("/com-chilipeppr-elem-dragdrop/ondropped", this, this.onFileLoaded, 9);
 
                     // subscribe to pause/resume events
@@ -896,8 +848,6 @@
 
                     //this.showToolChangeModal();
 
-                    // setup play/pause/stop subscribe signals so other code
-                    // can control the playing/pausing/stopping of gcode
                     this.setupPlayPauseStopPubSub();
 
                     // setup subscribe to jumpToLine
@@ -910,8 +860,7 @@
 
                     this.setupSecondaryButtons();
 
-                    // get estimated time duration. request this after a few
-                    // seconds to give best chance of 3d viewer being loaded
+
                     setTimeout(this.getEstimates.bind(this), 5000);
 
                     console.log(this.name + " done loading.");
@@ -954,9 +903,7 @@
                     for (var i = 0; i < this.fileLines.length; i++) {
                         var line = this.fileLines[i];
 
-                        // see if we have line where comment starts with
-                        // look for something like:
-                        // (T1 D=3.175 CR=0. - ZMIN=-4.2 - FLAT END MILL)
+
                         if (line.match(/\(T(\d+)\s+(.*)\)/i)) {
                             var toolNum = parseInt(RegExp.$1);
                             var toolComment = "T" + toolNum + " " + RegExp.$2;
@@ -986,7 +933,7 @@
                     console.log("this.toolComments:", this.toolComments);
                     console.log("this.toolChanges:", this.toolChanges);
 
-                    // now look for a comment up to 10 lines above the M6 tool change line to see if any comments are there
+
                     var keys = this.toolChangesKeys; //Object.keys(this.toolChanges).sort();
                     console.log("looking for comments above m6 to get a label for this tool change. keys:", keys);
                     for (var i = 0; i < keys.length; i++) {
@@ -1124,9 +1071,7 @@
                 },
                 setupPlayPauseStopPubSub: function() {
                     var that = this;
-                    /*chilipeppr.subscribe("/" + this.id + "/play", this, function() { that.onPlay(true); } );
-                    chilipeppr.subscribe("/" + this.id + "/pause", this, function() { that.onPause(true); } );
-                    chilipeppr.subscribe("/" + this.id + "/stop", this, function() { that.onStop(true); } );*/
+
                     chilipeppr.subscribe("/" + this.id + "/play", this, function() {
                         that.onPlay({});
                     });
@@ -1148,9 +1093,7 @@
                     }
                     chilipeppr.publish("/" + this.id + "/recvGcode", gcode);
                 },
-                // options: stores the cookie settings for the user
-                // example: {whenPlay: "serial", perRow: "3d", perRow3dType: "goto"}
-                // it is set during the setupOptionsModal()
+
                 options: null,
                 setupOptionsModal: function() {
                     console.log("setupOptionsModal");
@@ -1625,20 +1568,7 @@
                         z: z
                     });
                 },
-                /*
-                 initControllerSpecific: function(controllerId) {
-                 // This is the init section specific to a controller, that way we can support different controllers
-                 // in the future like GrblShield, etc.
 
-                 if (controllerId == "tinyg" || controllerId == null) {
-                 // subscribe to the TinyG plannerresume/plannerpause signals so we know when to slow
-                 // down on our sending
-
-                 } else {
-                 console.error("Being asked to init controller we have no code for.");
-                 }
-                 },
-                 */
                 btnSetup: function() {
 
                     // chevron hide body
