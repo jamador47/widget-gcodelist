@@ -7762,6 +7762,7 @@
 
                                         /***************************************INICIO M57 SACAR PALETA DERECHA*********/
                                     case (gcodeline.match(/\bM57\b/i) || {}).input:
+                                    document.getElementById("salirpausa").disabled = false;
 
                                         this.activarM57();
 
@@ -7781,6 +7782,7 @@
 
 
                                     case (gcodeline.match(/\bM58\b/i) || {}).input:
+                                    document.getElementById("salirpausa").disabled = false;
 
                                         this.activarM58();
                                         ocupado = 0;
@@ -10416,6 +10418,7 @@ TERMINA COMENT *****/
 
                                             /***************************************INICIO M57 SACAR PALETA DERECHA*********/
                                         case (gcodeline.match(/\bM57\b/i) || {}).input:
+                                        document.getElementById("salirpausa").disabled = false;
 
                                             this.activarM57();
 
@@ -10430,6 +10433,7 @@ TERMINA COMENT *****/
 
 
                                         case (gcodeline.match(/\bM58\b/i) || {}).input:
+                                        document.getElementById("salirpausa").disabled = false;
 
                                             this.activarM58();
                                             ocupado = 0;
@@ -16181,6 +16185,7 @@ TERMINA COMENT *****/
                                 var res = response.split("Pin D29 set to ");
                                 response = parseInt(res[1]);
                                 if (response == 1) {
+                                    document.getElementById("salirpausa").disabled = true;
                                     var cmd = "~";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
 
@@ -16234,6 +16239,9 @@ TERMINA COMENT *****/
                                 var res = response.split("Pin D40 set to ");
                                 response = parseInt(res[1]);
                                 if (response == 1) {
+
+                                    document.getElementById("salirpausa").disabled = true;
+
                                     var cmd = "~";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
 
@@ -17167,7 +17175,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">Blower</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">Tlower</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
