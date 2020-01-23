@@ -7763,6 +7763,7 @@
                                         /***************************************INICIO M57 SACAR PALETA DERECHA*********/
                                     case (gcodeline.match(/\bM57\b/i) || {}).input:
                                     document.getElementById("salirpausa").disabled = false;
+                                    document.getElementById("salirpausa").style = "background-color: greenyellow";
 
                                         this.activarM57();
 
@@ -7783,6 +7784,7 @@
 
                                     case (gcodeline.match(/\bM58\b/i) || {}).input:
                                     document.getElementById("salirpausa").disabled = false;
+                                    document.getElementById("salirpausa").style = "background-color: greenyellow";
 
                                         this.activarM58();
                                         ocupado = 0;
@@ -10419,6 +10421,7 @@ TERMINA COMENT *****/
                                             /***************************************INICIO M57 SACAR PALETA DERECHA*********/
                                         case (gcodeline.match(/\bM57\b/i) || {}).input:
                                         document.getElementById("salirpausa").disabled = false;
+                                        document.getElementById("salirpausa").style = "background-color: greenyellow";
 
                                             this.activarM57();
 
@@ -10434,6 +10437,7 @@ TERMINA COMENT *****/
 
                                         case (gcodeline.match(/\bM58\b/i) || {}).input:
                                         document.getElementById("salirpausa").disabled = false;
+                                        document.getElementById("salirpausa").style = "background-color: greenyellow";
 
                                             this.activarM58();
                                             ocupado = 0;
@@ -16187,6 +16191,7 @@ TERMINA COMENT *****/
                                 if (response == 1) {
                                     document.getElementById("salirpausa").disabled = true;
                                     var cmd = "~";
+                                    document.getElementById("salirpausa").style = " background-color:gray"
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
 
 
@@ -16241,7 +16246,7 @@ TERMINA COMENT *****/
                                 if (response == 1) {
 
                                     document.getElementById("salirpausa").disabled = true;
-
+                                    document.getElementById("salirpausa").style = " background-color:gray"
                                     var cmd = "~";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
 
