@@ -3215,19 +3215,12 @@
 
                 salirpausa: function(event) {
 
-                    var cmd = "~";
-                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
-
-
+                   
                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
                     setTimeout(function() {
                         var cmd = "~";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
-
-
-                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-
-                    }, 1200);
+                    }, 100);
                     document.getElementById("salirpausa").style = " background-color:gray"
 
                     document.getElementById("salirpausa").disabled = true;
