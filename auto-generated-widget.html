@@ -1882,6 +1882,7 @@
                     //tr.parent().find('td').removeClass('alert-danger').css('background-color', 'none');
                     tr.find('.glyphicon-ok').css('color', '#a94442').parent().css('background-color', '#f2dede');
                     this.currentLine = indx - 1;
+                    this.contadordelinea = this.currentLine;
                     localStorage.setItem('currentLine', this.currentLine);
                     console.groupEnd();
 
