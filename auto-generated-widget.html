@@ -17107,21 +17107,19 @@ TERMINA COMENT *****/
                 },
                 gcodeIsLoaded: false,
                 gcodeData: [],
-                /* gcodeLoad: function(callback, context) {
-                     var that = this;
-                     chilipeppr.load("com-chilipeppr-elem-gcodedata",
-                         "http://fiddle.jshell.net/chilipeppr/QPG2v/show/light/",
+                gcodeLoad: function(callback, context) {
+                    var that = this;
 
-                         function() {
-                             cprequire(["inline:com-chilipeppr-elem-gcodedata"], function(gcd) {
-                                 console.log("in callback from chilipeppr.load() for gcodedata");
-                                 that.gcodeIsLoaded = true;
-                                 that.gcodeData = gcd.gcode;
-                                 that.createGcodeDesc();
-                                 if (callback) callback.apply(context, gcd);
-                             });
-                         });
-                 },*/
+
+                    cprequire(["inline:com-chilipeppr-elem-gcodedata"], function(gcd) {
+                        console.log("in callback from chilipeppr.load() for gcodedata");
+                        that.gcodeIsLoaded = true;
+                        that.gcodeData = gcd.gcode;
+                        that.createGcodeDesc();
+                        if (callback) callback.apply(context, gcd);
+                    });
+
+                },
                 obj3d: null, // gets the 3dviewer obj stored in here on callback
                 obj3dmeta: null, // gets metadata for 3dviewer
                 userCallbackForGet3dObj: null,
