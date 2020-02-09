@@ -3214,7 +3214,7 @@
 
                 salirpausa: function(event) {
 
-                   
+
                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
                     setTimeout(function() {
                         var cmd = "~";
@@ -7754,8 +7754,8 @@
 
                                         /***************************************INICIO M57 SACAR PALETA DERECHA*********/
                                     case (gcodeline.match(/\bM57\b/i) || {}).input:
-                                    document.getElementById("salirpausa").disabled = false;
-                                    document.getElementById("salirpausa").style = "background-color: greenyellow";
+                                        document.getElementById("salirpausa").disabled = false;
+                                        document.getElementById("salirpausa").style = "background-color: greenyellow";
 
                                         this.activarM57();
 
@@ -7775,8 +7775,8 @@
 
 
                                     case (gcodeline.match(/\bM58\b/i) || {}).input:
-                                    document.getElementById("salirpausa").disabled = false;
-                                    document.getElementById("salirpausa").style = "background-color: greenyellow";
+                                        document.getElementById("salirpausa").disabled = false;
+                                        document.getElementById("salirpausa").style = "background-color: greenyellow";
 
                                         this.activarM58();
                                         ocupado = 0;
@@ -10412,8 +10412,8 @@ TERMINA COMENT *****/
 
                                             /***************************************INICIO M57 SACAR PALETA DERECHA*********/
                                         case (gcodeline.match(/\bM57\b/i) || {}).input:
-                                        document.getElementById("salirpausa").disabled = false;
-                                        document.getElementById("salirpausa").style = "background-color: greenyellow";
+                                            document.getElementById("salirpausa").disabled = false;
+                                            document.getElementById("salirpausa").style = "background-color: greenyellow";
 
                                             this.activarM57();
 
@@ -10428,8 +10428,8 @@ TERMINA COMENT *****/
 
 
                                         case (gcodeline.match(/\bM58\b/i) || {}).input:
-                                        document.getElementById("salirpausa").disabled = false;
-                                        document.getElementById("salirpausa").style = "background-color: greenyellow";
+                                            document.getElementById("salirpausa").disabled = false;
+                                            document.getElementById("salirpausa").style = "background-color: greenyellow";
 
                                             this.activarM58();
                                             ocupado = 0;
@@ -17107,21 +17107,21 @@ TERMINA COMENT *****/
                 },
                 gcodeIsLoaded: false,
                 gcodeData: [],
-                gcodeLoad: function(callback, context) {
-                    var that = this;
-                    chilipeppr.load("com-chilipeppr-elem-gcodedata",
-                        "http://fiddle.jshell.net/chilipeppr/QPG2v/show/light/",
+                /* gcodeLoad: function(callback, context) {
+                     var that = this;
+                     chilipeppr.load("com-chilipeppr-elem-gcodedata",
+                         "http://fiddle.jshell.net/chilipeppr/QPG2v/show/light/",
 
-                        function() {
-                            cprequire(["inline:com-chilipeppr-elem-gcodedata"], function(gcd) {
-                                console.log("in callback from chilipeppr.load() for gcodedata");
-                                that.gcodeIsLoaded = true;
-                                that.gcodeData = gcd.gcode;
-                                that.createGcodeDesc();
-                                if (callback) callback.apply(context, gcd);
-                            });
-                        });
-                },
+                         function() {
+                             cprequire(["inline:com-chilipeppr-elem-gcodedata"], function(gcd) {
+                                 console.log("in callback from chilipeppr.load() for gcodedata");
+                                 that.gcodeIsLoaded = true;
+                                 that.gcodeData = gcd.gcode;
+                                 that.createGcodeDesc();
+                                 if (callback) callback.apply(context, gcd);
+                             });
+                         });
+                 },*/
                 obj3d: null, // gets the 3dviewer obj stored in here on callback
                 obj3dmeta: null, // gets metadata for 3dviewer
                 userCallbackForGet3dObj: null,
