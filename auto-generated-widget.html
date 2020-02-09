@@ -1,4 +1,3 @@
-+
 <!DOCTYPE html>
 <html>
 
@@ -2241,7 +2240,7 @@
                             anHttpRequest.send(null);
                         }
                     }
-                    var theurl = 'http://192.168.0.80/arduino/digital/7/1';
+                    var theurl = 'http://192.168.0.80/arduino/digital/9/1';
                     var client = new HttpClient();
                     client.get(theurl, function(response) {});
 
@@ -2259,7 +2258,7 @@
                             anHttpRequest.send(null);
                         }
                     }
-                    var theurl = 'http://192.168.0.80/arduino/digital/7/0';
+                    var theurl = 'http://192.168.0.80/arduino/digital/9/0';
                     var client = new HttpClient();
                     client.get(theurl, function(response) {});
 
@@ -2718,7 +2717,7 @@
                                             );
                                         }, 1200);
 
-                                    }, 1200);
+                                    }, 2200);
 
                                 } else {
                                     $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
@@ -3215,19 +3214,12 @@
 
                 salirpausa: function(event) {
 
-                    var cmd = "~";
-                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
-
-
+                   
                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
                     setTimeout(function() {
                         var cmd = "~";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
-
-
-                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-
-                    }, 1200);
+                    }, 100);
                     document.getElementById("salirpausa").style = " background-color:gray"
 
                     document.getElementById("salirpausa").disabled = true;
@@ -6613,7 +6605,7 @@
                                                     });
 
 
-                                                }, 15000);
+                                                }, 19000);
 
 
                                             } else {
@@ -7762,6 +7754,8 @@
 
                                         /***************************************INICIO M57 SACAR PALETA DERECHA*********/
                                     case (gcodeline.match(/\bM57\b/i) || {}).input:
+                                    document.getElementById("salirpausa").disabled = false;
+                                    document.getElementById("salirpausa").style = "background-color: greenyellow";
 
                                         this.activarM57();
 
@@ -7781,6 +7775,8 @@
 
 
                                     case (gcodeline.match(/\bM58\b/i) || {}).input:
+                                    document.getElementById("salirpausa").disabled = false;
+                                    document.getElementById("salirpausa").style = "background-color: greenyellow";
 
                                         this.activarM58();
                                         ocupado = 0;
@@ -9265,7 +9261,7 @@ TERMINA COMENT *****/
                                                         });
 
 
-                                                    }, 15000);
+                                                    }, 19000);
 
 
                                                 } else {
@@ -10416,6 +10412,8 @@ TERMINA COMENT *****/
 
                                             /***************************************INICIO M57 SACAR PALETA DERECHA*********/
                                         case (gcodeline.match(/\bM57\b/i) || {}).input:
+                                        document.getElementById("salirpausa").disabled = false;
+                                        document.getElementById("salirpausa").style = "background-color: greenyellow";
 
                                             this.activarM57();
 
@@ -10430,6 +10428,8 @@ TERMINA COMENT *****/
 
 
                                         case (gcodeline.match(/\bM58\b/i) || {}).input:
+                                        document.getElementById("salirpausa").disabled = false;
+                                        document.getElementById("salirpausa").style = "background-color: greenyellow";
 
                                             this.activarM58();
                                             ocupado = 0;
@@ -16181,7 +16181,9 @@ TERMINA COMENT *****/
                                 var res = response.split("Pin D29 set to ");
                                 response = parseInt(res[1]);
                                 if (response == 1) {
+                                    document.getElementById("salirpausa").disabled = true;
                                     var cmd = "~";
+                                    document.getElementById("salirpausa").style = " background-color:gray"
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
 
 
@@ -16234,6 +16236,9 @@ TERMINA COMENT *****/
                                 var res = response.split("Pin D40 set to ");
                                 response = parseInt(res[1]);
                                 if (response == 1) {
+
+                                    document.getElementById("salirpausa").disabled = true;
+                                    document.getElementById("salirpausa").style = " background-color:gray"
                                     var cmd = "~";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
 
@@ -17167,7 +17172,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">Blower</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">Gcode</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
