@@ -2247,6 +2247,80 @@
 
                 },
 
+
+                onm7: function(evt) {
+                    var HttpClient = function() {
+
+                        this.get = function(aUrl, aCallback) {
+                            var anHttpRequest = new XMLHttpRequest();
+                            anHttpRequest.onreadystatechange = function() {
+                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                    aCallback(anHttpRequest.responseText);
+                            }
+                            anHttpRequest.open("GET", aUrl, true);
+                            anHttpRequest.send(null);
+                        }
+                    }
+                    var theurl = 'http://192.168.0.98/geth';
+                    var client = new HttpClient();
+                    client.get(theurl, function(response) {
+
+                        var valorzsumado = 200
+                        var obj = JSON.parse(response);
+                        for (var i = 0; i < 17; i++) {
+                            if (parseInt(obj[i]['enhusillo']) == 1) {
+                                // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
+                                valorzsumado = parseFloat(obj[i]['longitud']);;
+                            }
+                        }
+
+                        var HttpClient = function() {
+
+                            this.get = function(aUrl, aCallback) {
+                                var anHttpRequest = new XMLHttpRequest();
+                                anHttpRequest.onreadystatechange = function() {
+                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                        aCallback(anHttpRequest.responseText);
+                                }
+                                anHttpRequest.open("GET", aUrl, true);
+                                anHttpRequest.send(null);
+                            }
+                        }
+                        var theurl = 'http://192.168.0.98/api/origenesactivos/';
+                        var client = new HttpClient();
+                        client.get(theurl, function(response) {
+
+                            var obj2 = JSON.parse(response);
+
+                            var valorx = obj2['x'];
+                            var valory = obj2['y'];
+                            var valorz = parseFloat(obj2['z']);
+                            var valora = obj2['a'];
+
+                            valorz = valorz + valorzsumado;
+                            valorz = valorz.toString();
+
+                            var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
+                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
+
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
+                            var cmd = "~";
+                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
+
+
+
+
+                        });
+
+
+
+                    });
+
+
+                },
+
+
                 apagarblower: function(evt) {
                     var HttpClient = function() {
                         this.get = function(aUrl, aCallback) {
@@ -4580,6 +4654,9 @@
                         if (linea.match(/\bM6\b/i)) {
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
+                        if (linea.match(/\bM7\b/i)) {
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
                         if (linea.match(/\bPAUSA\b/i)) {
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
@@ -5810,7 +5887,7 @@
                                 gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) ||
                                 gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) ||
                                 gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) ||
-                                gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bM80\b/i) || gcodeline.match(/\bM81\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
+                                gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM7\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bM80\b/i) || gcodeline.match(/\bM81\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
 
                                 var cmd = "!";
                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
@@ -5826,6 +5903,13 @@
                                 switch (gcodeline) {
 
 
+                                    case (gcodeline.match(/\bM7\b/i) || {}).input:
+                                        var cmd = "!";
+                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
+                                        this.onm7();
+
+
+                                        break;
 
 
                                     case (gcodeline.match(/\bM80\b/i) || {}).input:
@@ -8482,7 +8566,7 @@ TERMINA COMENT *****/
                                     gcodeline.match(/\bM107\b/i) || gcodeline.match(/\bM106\b/i) || gcodeline.match(/\bM105\b/i) || gcodeline.match(/\bM104\b/i) ||
                                     gcodeline.match(/\bM103\b/i) || gcodeline.match(/\bM102\b/i) || gcodeline.match(/\bM101\b/i) || gcodeline.match(/\bM100\b/i) ||
                                     gcodeline.match(/\bM22\b/i) || gcodeline.match(/\bM12\b/i) || gcodeline.match(/\bM9\b/i) || gcodeline.match(/\bM8\b/i) ||
-                                    gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bM80\b/i) || gcodeline.match(/\bM81\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
+                                    gcodeline.match(/\bM701\b/i) || gcodeline.match(/\bM7\b/i) || gcodeline.match(/\bM20\b/i) || gcodeline.match(/\bM10\b/i) || gcodeline.match(/\bM80\b/i) || gcodeline.match(/\bM81\b/i) || gcodeline.match(/\bUTO\b/i) || gcodeline.match(/\bUAO\b/i) || gcodeline.match(/\bPAUSA\b/i)) {
 
                                     ocupado = 1;
                                     var cmd = "!";
@@ -8495,6 +8579,16 @@ TERMINA COMENT *****/
 
 
                                     switch (gcodeline) {
+
+
+                                        case (gcodeline.match(/\bM7\b/i) || {}).input:
+                                            var cmd = "!";
+                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
+                                            this.onm7();
+
+
+                                            break;
+
 
                                         case (gcodeline.match(/\bM80\b/i) || {}).input:
                                             this.encenderblower();
