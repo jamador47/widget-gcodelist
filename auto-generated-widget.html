@@ -2249,7 +2249,7 @@
 
 
                 onm7: function(evt) {
-                    alert("ENTRE M7");
+                   
                     var HttpClient = function() {
 
                         this.get = function(aUrl, aCallback) {
@@ -2272,11 +2272,10 @@
                             if (parseInt(obj[i]['enhusillo']) == 1) {
                                 // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                 valorzsumado = parseFloat(obj[i]['longitud']);;
-                                alert("ESTA EN HUSILLO LA");
-                                alert(i+1);
+                               
                             }
                         }
-                        alert(valorzsumado);
+                      
                         var HttpClient = function() {
 
                             this.get = function(aUrl, aCallback) {
@@ -2302,7 +2301,7 @@
 
                             valorz = valorz + valorzsumado;
                             valorz = valorz.toString();
-                            alert(valorz);
+                          
                             var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
 
@@ -17268,7 +17267,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">Gcode3</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">Gcode</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
