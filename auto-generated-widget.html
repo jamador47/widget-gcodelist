@@ -3294,18 +3294,26 @@
 
                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
                     setTimeout(function() {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
                         var cmd = "~";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
                     }, 100);
                     setTimeout(function() {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
                         var cmd = "~";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
                     }, 110);
                     setTimeout(function() {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
                         var cmd = "~";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
                     }, 120);
                     setTimeout(function() {
+                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
                         var cmd = "~";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
                     }, 130);
@@ -17289,7 +17297,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">icode</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">rcode</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
