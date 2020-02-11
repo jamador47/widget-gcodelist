@@ -4660,6 +4660,9 @@
                         if (linea.match(/\bM7\b/i)) {
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
+                        if (linea.match(/\bM199\b/i)) {
+                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
+                        }
                         if (linea.match(/\bPAUSA\b/i)) {
                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerpause', "");
                         }
@@ -8283,6 +8286,7 @@
                                         ocupado = 1;
 
 
+
                                         this.activarM199();
 
                                         // alert ("M199");
@@ -8292,6 +8296,8 @@
                                         if (!sigespecial && !errora && !errory) {
                                             setTimeout(function() {
                                                 var cmd = "~";
+                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
                                             }, temp);
                                         }
@@ -10956,6 +10962,8 @@ TERMINA COMENT *****/
 
                                             if (!sigespecial && !errora && !errory) {
                                                 setTimeout(function() {
+                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
                                                     var cmd = "~";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
                                                 }, temp);
@@ -17268,7 +17276,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">Gcode</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">5code</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
