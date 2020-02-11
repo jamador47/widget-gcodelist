@@ -8297,7 +8297,7 @@
                                             setTimeout(function() {
                                                 var cmd = "~";
                                                 chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-
+                                                temp = 0;
                                                 chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
                                             }, temp);
                                         }
@@ -10963,7 +10963,7 @@ TERMINA COMENT *****/
                                             if (!sigespecial && !errora && !errory) {
                                                 setTimeout(function() {
                                                    
-
+                                                    temp = 0;
                                                     var cmd = "~";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
                                                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
