@@ -2249,7 +2249,7 @@
 
 
                 onm7: function(evt) {
-                   
+
                     var HttpClient = function() {
 
                         this.get = function(aUrl, aCallback) {
@@ -2272,10 +2272,10 @@
                             if (parseInt(obj[i]['enhusillo']) == 1) {
                                 // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                 valorzsumado = parseFloat(obj[i]['longitud']);;
-                               
+
                             }
                         }
-                      
+
                         var HttpClient = function() {
 
                             this.get = function(aUrl, aCallback) {
@@ -2301,7 +2301,7 @@
 
                             valorz = valorz + valorzsumado;
                             valorz = valorz.toString();
-                          
+
                             var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
 
@@ -3307,7 +3307,8 @@
 
                 onPlay: function(event) {
 
-
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 g");
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM3 28.2 Z0");
                     var esto = this;
 
 
