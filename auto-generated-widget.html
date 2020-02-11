@@ -8290,7 +8290,7 @@
                                         this.activarM199();
 
                                         // alert ("M199");
-                                        var tiempo = 4000;
+                                        var tiempo = 500;
                                         temp = temp + tiempo;
                                         //alert(sigespecial);
                                         if (!sigespecial && !errora && !errory) {
@@ -10957,15 +10957,16 @@ TERMINA COMENT *****/
                                             this.activarM199();
 
                                             // alert ("M199");
-                                            var tiempo = 4000;
+                                            var tiempo = 500;
                                             temp = temp + tiempo;
 
                                             if (!sigespecial && !errora && !errory) {
                                                 setTimeout(function() {
-                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                   
 
                                                     var cmd = "~";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
                                                 }, temp);
                                             }
 
