@@ -6001,7 +6001,8 @@
 
                                         /********** INICIO CAMBIO HERRAMIENTA ******/
                                     case (gcodeline.match(/\bM6\b/i) || {}).input:
-                                        this.onM20BtnClick();
+                                    alert("INICIO NORMAL");
+                                       this.onM20BtnClick();
                                         var cmd = "!";
                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                         this.activarm5();
@@ -8684,6 +8685,7 @@ TERMINA COMENT *****/
 
                                             /********** INICIO CAMBIO HERRAMIENTA ******/
                                         case (gcodeline.match(/\bM6\b/i) || {}).input:
+                                        alert("INICIO SALTADO");
                                             this.onM20BtnClick();
                                             var lineacodigog = gcodeline;
                                             var toolqueseusara = 0;
