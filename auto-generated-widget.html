@@ -2710,6 +2710,7 @@
                 /***********************************************************/
 
                 activarm3: function(evt) {
+                   
                     var HttpClient = function() {
                         this.get = function(aUrl, aCallback) {
                             var anHttpRequest = new XMLHttpRequest();
@@ -2747,9 +2748,9 @@
                                 var res = response.split("Pin D11 set to ");
 
                                 response = parseInt(res[1]);
+
                                 if (response == 0) {
-                                    var cmd = "!";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+
                                     var HttpClient = function() {
                                         this.get = function(aUrl, aCallback) {
                                             var anHttpRequest = new XMLHttpRequest();
@@ -2764,64 +2765,94 @@
                                     var theurl = 'http://192.168.0.88/arduino/digital/29/1';
                                     var client = new HttpClient();
                                     client.get(theurl, function(response) {
-                                        var response1 = JSON.parse(response);
+                                        var HttpClient = function() {
+                                            this.get = function(aUrl, aCallback) {
+                                                var anHttpRequest = new XMLHttpRequest();
+                                                anHttpRequest.onreadystatechange = function() {
+                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                        aCallback(anHttpRequest.responseText);
+                                                }
+                                                anHttpRequest.open("GET", aUrl, true);
+                                                anHttpRequest.send(null);
+                                            }
+                                        }
+                                        var theurl = 'http://192.168.0.88/arduino/digital/19/1';
+                                        var client = new HttpClient();
+                                        client.get(theurl, function(response) {
+
+                                            var HttpClient = function() {
+                                                this.get = function(aUrl, aCallback) {
+                                                    var anHttpRequest = new XMLHttpRequest();
+                                                    anHttpRequest.onreadystatechange = function() {
+                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                            aCallback(anHttpRequest.responseText);
+                                                    }
+                                                    anHttpRequest.open("GET", aUrl, true);
+                                                    anHttpRequest.send(null);
+                                                }
+                                            }
+                                            var theurl = 'http://192.168.0.88/arduino/digital/22/1';
+                                            var client = new HttpClient();
+                                            client.get(theurl, function(response) {
+                                                document.getElementById("indicadorhusillo").className = "led-green";
+                                                chilipeppr.publish(
+                                                    '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                    "Estado del Husillo",
+                                                    "Husillo Activado ",
+                                                    2000 /* show for 2 second */
+                                                );
+
+
+                                            });
+                                        });
+
                                     });
 
 
-                                    setTimeout(function() {
-
-                                        theurl = 'http://192.168.0.88/arduino/digital/19/1';
-                                        client = new HttpClient();
-                                        client.get(theurl, function(response) {
-                                            var response1 = JSON.parse(response);
-                                        });
 
 
-                                        setTimeout(function() {
-
-
-                                            theurl = 'http://192.168.0.88/arduino/digital/22/1';
-                                            client = new HttpClient();
-                                            client.get(theurl, function(response) {
-                                                var response1 = JSON.parse(response);
-                                            });
-                                            document.getElementById("indicadorhusillo").className = "led-green";
-                                            chilipeppr.publish(
-                                                '/com-chilipeppr-elem-flashmsg/flashmsg',
-                                                "Estado del Husillo",
-                                                "Husillo Activado ",
-                                                2000 /* show for 2 second */
-                                            );
-                                        }, 1200);
-
-                                    }, 2200);
 
                                 } else {
-                                    $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
-                                    $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
-                                    $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
                                     chilipeppr.publish(
                                         '/com-chilipeppr-elem-flashmsg/flashmsg',
                                         "Estado del Husillo",
-                                        "El husillo no está desbloqueado (I.99), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
-                                        2000 // show for 2 second 
+                                        "El husillo no está desbloqueado (I.99) ",
+                                        2000 /* show for 2 second */
                                     );
+
+                                    var alarmasexistentes = document.getElementById("textoalarmas").value;
+
+                                    document.getElementById("indicadoralarma").className = "led-yellow";
+                                    alarmasexistentes = alarmasexistentes.concat("\\\n\\\n");
+
+                                    alarmasexistentes = alarmasexistentes.concat("El husillo no está desbloqueado (I.99).");
+
+                                    document.getElementById("textoalarmas").value = alarmasexistentes;
                                 }
                             });
                         } else {
-                            $('#com-chilipeppr-widget-gcode-play').prop("disabled", false);
-                            $('#com-chilipeppr-widget-gcode-stop').prop("disabled", false);
-                            $('#com-chilipeppr-widget-gcode-pause').prop("disabled", true);
                             chilipeppr.publish(
                                 '/com-chilipeppr-elem-flashmsg/flashmsg',
                                 "Estado del Husillo",
-                                "El Husillo no está desocupado (I.19), para continuar resuelva el problema y haga click en el boton &#9658; o reinicie con &#9632;.",
-                                2000 // show for 2 second 
+                                "El Husillo no está desocupado (I.19) ",
+                                2000 /* show for 2 second */
                             );
+
+                            var alarmasexistentes = document.getElementById("textoalarmas").value;
+                            document.getElementById("indicadoralarma").className = "led-yellow";
+                            alarmasexistentes = alarmasexistentes.concat("\\\n\\\n");
+
+                            alarmasexistentes = alarmasexistentes.concat("El Husillo no está desocupado (I.19)");
+
+                            document.getElementById("textoalarmas").value = alarmasexistentes;
                         }
                     });
 
+
+
+
                 },
+
 
 
                 activarm5: function(evt) {
@@ -17293,7 +17324,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">Ycode</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">Tcode</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
