@@ -2767,6 +2767,8 @@
                                     var theurl = 'http://192.168.0.88/arduino/digital/29/1';
                                     var client = new HttpClient();
                                     client.get(theurl, function(response) {
+
+                                        setTimeout(function(){
                                         var HttpClient = function() {
                                             this.get = function(aUrl, aCallback) {
                                                 var anHttpRequest = new XMLHttpRequest();
@@ -2781,7 +2783,7 @@
                                         var theurl = 'http://192.168.0.88/arduino/digital/19/1';
                                         var client = new HttpClient();
                                         client.get(theurl, function(response) {
-
+                                            setTimeout(function(){
                                             var HttpClient = function() {
                                                 this.get = function(aUrl, aCallback) {
                                                     var anHttpRequest = new XMLHttpRequest();
@@ -2806,7 +2808,9 @@
 
 
                                             });
+                                        },1000)
                                         });
+                                    },1000)
 
                                     });
 
@@ -17299,7 +17303,7 @@ entrabajo = 0;
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">Dcode</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">Ucode</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
