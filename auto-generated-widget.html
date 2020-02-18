@@ -8413,60 +8413,6 @@
           gcodelineplus.match(/\bM22\b/i) || gcodelineplus.match(/\bM12\b/i) || gcodelineplus.match(/\bM9\b/i) || gcodelineplus.match(/\bM8\b/i) || 
           gcodelineplus.match(/\bM701\b/i) || gcodelineplus.match(/\bM20\b/i) || gcodelineplus.match(/\bM10\b/i) )  {
 
-            var cmd  = "!";
-                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                    var cmd  = gcodeline;
-         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
-                               
-            var cmd  = "YOFUI!";
-         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + " " + cmd);
-                  
-                        
-            sigespecial = 1;
-            if( gcodelineplus.match(/\bM57\b/i) ){
-
- var HttpClient = function() {
-this.get = function(aUrl, aCallback) {
-var anHttpRequest = new XMLHttpRequest();
-anHttpRequest.onreadystatechange = function() {
-if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-aCallback(anHttpRequest.responseText);
-}
-anHttpRequest.open("GET", aUrl, true);
-anHttpRequest.send(null);
-}
-}
-var theurl = 'http://192.168.0.98/api/estados';
-var client = new HttpClient();
-client.get(theurl, function(response) {
-var obj = JSON.parse(response);
- 
-if (parseInt(obj['I']["307"]) != 0 && parseInt(obj['I']["306"]) != 0 && parseInt(obj['I']["309"]) != 0 && parseInt(obj['I']["310"]) != 0){
-aentrabajo = 1;
-yentrabajo=0;
-sigespecial = 0;
-errora=0;
-
-}
-else{
-    errora=1;
-
-var erroresexistentes = document.getElementById("textoerrores").value;
-
-erroresexistentes = erroresexistentes.concat("\\\n\\\n");
-
-erroresexistentes = erroresexistentes.concat("Mesa A No esta lista para ser llamada por Código G, Error de Movimiento");
-
-document.getElementById("textoerrores").value = erroresexistentes;
-document.getElementById("indicadorerrorejec").className = "led-red";
-
-}
-});
-
-
-}
-
-
            
            if( gcodelineplus.match(/\bM58\b/i)  ){
            
