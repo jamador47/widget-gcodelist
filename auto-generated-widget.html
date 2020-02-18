@@ -310,6 +310,7 @@
         const serialPort = "COM3"; // 
         const serialPort2 = "COM4"; // 
         var contadordelinea = 0;
+        var entrabajo = 0;
         var aentrabajo = 0;
         var temp = 0;
         var yentrabajo = 0;
@@ -11405,7 +11406,7 @@ TERMINA COMENT *****/
 
                     var cmd = "g";
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort2 + " " + cmd);
-
+entrabajo = 0;
                     document.getElementById("indicadorposhusillo").className = "led-off";
 
                     chilipeppr.publish(
@@ -11444,7 +11445,7 @@ TERMINA COMENT *****/
                     var client = new HttpClient();
                     client.get(theurl, function(response) {
                         var res = parseFloat(response);
-                        if (res<30){
+                        if (res<30 && entrabajo==0){
 
 
                     var HttpClient = function() {
@@ -11480,6 +11481,7 @@ TERMINA COMENT *****/
 
 
                     var cmd = "p";
+                    entrabajo = 1;
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort2 + " " + cmd);
 
                     document.getElementById("indicadorposhusillo").className = "led-green";
@@ -17343,7 +17345,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">Hcode</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">Fcode</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
