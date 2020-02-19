@@ -6006,11 +6006,7 @@ entrabajo = 0;
 
                                         /********** INICIO CAMBIO HERRAMIENTA ******/
                                     case (gcodeline.match(/\bM6\b/i) || {}).input:
-                                    var cmd = "~";
-                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 G53 G0 Z-10");
-
-                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 G28.2 Z0");
+                                       
 ultimom6 = (idnum - 1);
                                
                                        this.onM20BtnClick();
@@ -8642,11 +8638,7 @@ TERMINA COMENT *****/
 
                                             /********** INICIO CAMBIO HERRAMIENTA ******/
                                         case (gcodeline.match(/\bM6\b/i) || {}).input:
-                                        var cmd = "~";
-                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 G53 G0 Z-10");
-                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 G28.2 Z0");
-
+                      
                                         if (contadordelinea-1 != ultimom6){
                                    
                                             this.onM20BtnClick();
@@ -17302,7 +17294,7 @@ entrabajo = 0;
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">Hcode</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">Scode</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
