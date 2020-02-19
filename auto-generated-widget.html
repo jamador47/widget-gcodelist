@@ -6008,7 +6008,8 @@ entrabajo = 0;
                                     case (gcodeline.match(/\bM6\b/i) || {}).input:
                                     var cmd = "~";
                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                           
+                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 G53 G0 Z-10");
+
                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 G28.2 Z0");
 ultimom6 = (idnum - 1);
                                
@@ -8643,7 +8644,7 @@ TERMINA COMENT *****/
                                         case (gcodeline.match(/\bM6\b/i) || {}).input:
                                         var cmd = "~";
                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                       
+                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 G53 G0 Z-10");
                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 G28.2 Z0");
 
                                         if (contadordelinea-1 != ultimom6){
