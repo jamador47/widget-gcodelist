@@ -6008,8 +6008,9 @@ entrabajo = 0;
                                     case (gcodeline.match(/\bM6\b/i) || {}).input:
                                     var cmd = "~";
                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                       
-                                    ultimom6 = (idnum - 1);
+                                           
+                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM3 G28.2 Z0");
+ultimom6 = (idnum - 1);
                                
                                        this.onM20BtnClick();
                                         var cmd = "!";
