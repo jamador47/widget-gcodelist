@@ -16172,6 +16172,8 @@ TERMINA COMENT *****/
 
                 activarM58: function(evt) {
 
+
+
                     // VERIFICAR SI MESA A ESTA AFUERA
 
                     var self = this;
@@ -16222,6 +16224,20 @@ TERMINA COMENT *****/
                                 response = parseInt(res[1]);
 
                                 if (response == 1) {
+
+                                    var cmd = "$3ma=3";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+
+                                    var cmd = "$2ma=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
 
                                     self.sacarpaletaizquierda();
@@ -16427,6 +16443,21 @@ TERMINA COMENT *****/
                                 response = parseInt(res[1]);
 
                                 if (response == 1) {
+
+                                    var cmd = "$3ma=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+
+
+                                    var cmd = "$2ma=3";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
 
                                     self.sacarpaletaderecha();
