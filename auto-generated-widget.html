@@ -16157,14 +16157,14 @@ TERMINA COMENT *****/
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$asx=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-
+setTimeout(function(){
                                     var cmd = "$2ma=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$ysn=0";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$ysx=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-
+                                },1000)
 
                                     self.sacarpaletaizquierda();
 
@@ -16370,21 +16370,22 @@ TERMINA COMENT *****/
 
                                 if (response == 1) {
 
+
                                     var cmd = "$3ma=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$ysn=0";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$ysx=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-
-
+                               
+                                setTimeout(function(){
                                     var cmd = "$2ma=3";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$asn=0";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$asx=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-
+                                },1000);
 
                                     self.sacarpaletaderecha();
 
