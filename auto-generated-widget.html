@@ -3319,12 +3319,7 @@
 
                     });
                 },
-                /**
-                 * The onPlay is called from the Play button (or other mechanism) and as of 1/2/17 it
-                 * now fires off the /onPlay pubsub so that a Play can get interrupted. It then listens to it's own
-                 * /onPlay publish event at the lowest priority so that it can play as the last step in the pubsub chain.
-                 * This gives other widgets a chance to interrupt the play event.
-                 */
+
 
                 salirpausa: function(event) {
 
@@ -9905,54 +9900,6 @@ TERMINA COMENT *****/
 
 
 
-
-                                                                                            /* ESTO TENDRIA QUE IR EN EL FINAL De la cadena de X.
-                                        
-                                                    setTimeout( function(){
-                                                        
-                                                        
-                                                            var HttpClient = function () {
-                                                                        
-                                                                        this.get = function (aUrl, aCallback) {
-                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                anHttpRequest.onreadystatechange = function () {
-                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                aCallback(anHttpRequest.responseText);
-                                                                }
-                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                anHttpRequest.send(null);
-                                                                }
-                                                                }
-                                                                var theurl = 'http://192.168.0.98/rotarcar/'+toolausar;
-                                                                var client = new HttpClient();
-                                                                client.get(theurl, function (response) {
-                                                                    var HttpClient = function () {
-                                                                        
-                                                                        this.get = function (aUrl, aCallback) {
-                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                anHttpRequest.onreadystatechange = function () {
-                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                aCallback(anHttpRequest.responseText);
-                                                                }
-                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                anHttpRequest.send(null);
-                                                                }
-                                                                }
-                                                                var theurl = 'http://192.168.0.98/cambiobrazomodop';
-                                                                var client = new HttpClient();
-                                                                client.get(theurl, function (response) {
-                                                                });
-                                                                });
-                                                        
-                                                                // CAMBIAR EN TABLA
-                                                        
-                                        
-                                                        //Cambiar real.
-                                                            cmd = "x"+toolausar+";"+obj[(toolausar-1)]['longitud'];
-                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
-                                        
-                                                        },7000);
-                                                        */
 
                                                                                         }
                                                                                     }
