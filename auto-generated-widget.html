@@ -4905,13 +4905,7 @@
                     var tr = $('#com-chilipeppr-widget-gcode-tbl tbody tr').eq(indx);
 
                     this.updateRowQueueStatsEl(tr);
-                    /*
-                    if (isMarkSent) {
-                        var check = tr.find('.glyphicon-ok');
-                        //console.log("marking as sent. black checkbox. checkDom:", check, "tr:", tr);
-                        check.css('color', 'black');
-                    }
-                    */
+
                     var scrollTo = tr;
                     console.log("indx:", indx, "scrollTo:", scrollTo);
 
@@ -4921,12 +4915,7 @@
                     );
 
 
-                    // Or you can animate the scrolling:
-                    /*
-                     container.animate({
-                     scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-                     });
-                     */
+
 
                 },
                 fileInfo: null, // stores the info for the file drag/dropped
@@ -4941,12 +4930,7 @@
                         this.showUOMModal(txt, info, skipLocalStore);
                     }
 
-                    // create flag to know if we did anything in this method
-                    // where we actually added/removed any lines of gcode cuz
-                    // then at end of method we need to re-send the gcode back
-                    // to the workspace as if it were drag/dropped by the user
-                    // as if the modified gcode we created was in the original
-                    // file.
+
                     var isDirty = false;
 
                     //if G20 or G21 was added manually, mark as dirty to re-issue to workspace.
@@ -4997,14 +4981,11 @@
                         // remove line numbers
                         if (this.options.addlinenums) {
                             if (fileLine.match(/N\d/i)) {
-                                // candidate, but could be a comment
-                                //console.warn("got line num removal candidate. line:", fileLine);
-                                // see if we have whole line comment
+
                                 if (fileLine.match(/^;|^\(.*\)$/)) {
                                     //console.warn("we have whole line comment, ignore");
                                 } else {
-                                    // we have real gcode
-                                    //console.warn("we have real gcode:", fileLine);
+
                                     var myFileLine = fileLine.replace(/N\s*\d+/ig, "");
                                     // comments removed
                                     // now we can see what the number is
@@ -5030,12 +5011,6 @@
                     }
                     this.fileLines = newFileLines;
 
-                    // create array to store meta data for each line
-                    // this will hold onSent, onQueue, onWritten, onCompleted,
-                    // onExecuted statuses. It also holds whether this is a comment
-                    // so we know whether onExecute will ever get called for this line.
-                    // It could hold other meta data in the future too like feedrate
-                    // overrides, etc.
                     this.metaLines = [];
 
                     // if adding line nums, do it here temporarily
@@ -5063,17 +5038,6 @@
                         isDirty = true;
                     }
 
-                    //this.metaLines = [this.fileLines.length];
-
-
-                    // test code where we set some different statuses
-                    /*
-                    this.metaLines[0] = { isQueued: true, isWritten: true, isCompleted: true };
-                    this.metaLines[1] = { isQueued: true, isWritten: true };
-                    this.metaLines[2] = { isQueued: true };
-                    */
-
-                    // update dom to show lines
                     $('#com-chilipeppr-widget-gcode-footer #gcode-lines').text(this.fileLines.length);
                     $('#com-chilipeppr-widget-gcode-footer #gcode-lines-sent').text("0");
                     $('#com-chilipeppr-widget-gcode-footer #gcode-lines-remaining').text(this.fileLines.length);
@@ -5112,13 +5076,8 @@
                         localStorage.removeItem('last-loaded');
                     }
 
-                    // if we did anything that changed how many gcode lines there
-                    // are we need to re-send to the workspace to reset all
-                    // other widgets that subscribe to onDropped
                     if (isDirty) {
-                        // Let's do this in setTimeout to put it later in the stack
-                        // so that other widgets can process the initial /onDropped
-                        // and then we'll get put way later in stack to run afterwards
+
                         setTimeout(this.resendGcodeToWorkspace.bind(this), 200);
 
                         // get estimated time duration. request this after a few
@@ -5129,9 +5088,7 @@
                         console.log("tool change will get called in 3.5secs");
                         setTimeout(this.onAfterGcodeFileLoaded.bind(this), 1500);
 
-                        // we return false to tell pubsub that no further
-                        // listeners should parse this onDropped because we just
-                        // reissued it
+
                         return false;
                     } else {
 
@@ -5248,8 +5205,7 @@
                     var wayStart = $('#showstart');
                     var wayEnd = $('#showend');
 
-                    // destory waypoints because as the DOM gets rows injected/removed
-                    // the waypoints cache their x/y pos and so we need to recreate them
+
                     wayStart.waypoint('destroy');
                     wayEnd.waypoint('destroy');
                 },
