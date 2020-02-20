@@ -1589,6 +1589,9 @@
                     $('#com-chilipeppr-widget-gcode-play').click(this.onPlay.bind(this));
                     $('#salirpausa').click(this.salirpausa.bind(this));
 
+                    $('#salirpausa2').click(this.salirpausa2.bind(this));
+
+
                     $('#com-chilipeppr-widget-gcode-pause').click(this.onPause.bind(this));
                     $('#com-chilipeppr-widget-gcode-stop').click(this.onStop.bind(this));
                     $('#com-chilipeppr-widget-gcode-stepback').click(this.onStepBack.bind(this));
@@ -3320,7 +3323,15 @@
                     });
                 },
 
+                salirpausa2: function(event) {
 
+
+chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+document.getElementById("salirpausa2").style = " background-color:gray"
+
+document.getElementById("salirpausa2").disabled = true;
+
+                },
                 salirpausa: function(event) {
 
 
@@ -5949,6 +5960,8 @@
 
                                         document.getElementById("salirpausa").disabled = false;
                                         document.getElementById("salirpausa").style = "background-color: greenyellow";
+                                        document.getElementById("salirpausa2").disabled = false;
+                                        document.getElementById("salirpausa2").style = "background-color: greenyellow";
 
 
                                         break;
@@ -7854,6 +7867,8 @@
                                     case (gcodeline.match(/\bM57\b/i) || {}).input:
                                         document.getElementById("salirpausa").disabled = false;
                                         document.getElementById("salirpausa").style = "background-color: greenyellow";
+                                        document.getElementById("salirpausa2").disabled = false;
+                                        document.getElementById("salirpausa2").style = "background-color: greenyellow";
 
                                         this.activarM57();
 
@@ -7875,6 +7890,8 @@
                                     case (gcodeline.match(/\bM58\b/i) || {}).input:
                                         document.getElementById("salirpausa").disabled = false;
                                         document.getElementById("salirpausa").style = "background-color: greenyellow";
+                                        document.getElementById("salirpausa2").disabled = false;
+                                        document.getElementById("salirpausa2").style = "background-color: greenyellow";
 
                                         this.activarM58();
                                         ocupado = 0;
@@ -8581,6 +8598,8 @@ TERMINA COMENT *****/
 
                                             document.getElementById("salirpausa").disabled = false;
                                             document.getElementById("salirpausa").style = "background-color: greenyellow";
+                                            document.getElementById("salirpausa2").disabled = false;
+                                        document.getElementById("salirpausa2").style = "background-color: greenyellow";
 
 
                                             break;
@@ -10426,6 +10445,8 @@ TERMINA COMENT *****/
                                         case (gcodeline.match(/\bM57\b/i) || {}).input:
                                             document.getElementById("salirpausa").disabled = false;
                                             document.getElementById("salirpausa").style = "background-color: greenyellow";
+                                            document.getElementById("salirpausa2").disabled = false;
+                                        document.getElementById("salirpausa2").style = "background-color: greenyellow";
 
                                             this.activarM57();
 
@@ -10442,6 +10463,8 @@ TERMINA COMENT *****/
                                         case (gcodeline.match(/\bM58\b/i) || {}).input:
                                             document.getElementById("salirpausa").disabled = false;
                                             document.getElementById("salirpausa").style = "background-color: greenyellow";
+                                            document.getElementById("salirpausa2").disabled = false;
+                                        document.getElementById("salirpausa2").style = "background-color: greenyellow";
 
                                             this.activarM58();
                                             ocupado = 0;
@@ -17277,7 +17300,10 @@ TERMINA COMENT *****/
                         <span class="caret"></span>
                     </button>
                     <button type="button" id="salirpausa" style="background-color:gray" disabled> 
-                        SALIR DE PAUSA
+                        SALIR DE PAUSA 1
+                    </button>
+                    <button type="button" id="salirpausa2" style="background-color:gray" disabled> 
+                        SALIR DE PAUSA 2
                     </button>
                     <ul class="dropdown-menu xdropdown-menu-right com-chilipeppr-widget-gcode-menuToolChange" role="menu">
                         <li role="presentation" class="dropdown-header com-chilipeppr-widget-gcode-toolchanges-hdr">(No Tool Changes in Gcode)</li>
