@@ -7663,7 +7663,6 @@ document.getElementById("salirpausa2").disabled = true;
                                     var cmd = "$ysx=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                
-                                setTimeout(function(){
                                     var cmd = "$2ma=3";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$asn=0";
@@ -7676,7 +7675,7 @@ document.getElementById("salirpausa2").disabled = true;
                                         ocupado = 0;
 
                                         this.verificarmesaizqdentro();
-                                    },1000);
+                                  
 
                                         break;
                                         /***************************************FIN M57 SACAR PALETA DERECHA*********/
@@ -7699,7 +7698,7 @@ document.getElementById("salirpausa2").disabled = true;
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$asx=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-setTimeout(function(){
+
                                     var cmd = "$2ma=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$ysn=0";
@@ -7710,7 +7709,7 @@ setTimeout(function(){
                                         this.activarM58();
                                         ocupado = 0;
                                         this.verificarmesaderechadentro();
-                                    },1000);
+                          
                                         // alert ("M58");
 
 
@@ -17049,7 +17048,7 @@ setTimeout(function(){
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">Ycode</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">Tcode</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
