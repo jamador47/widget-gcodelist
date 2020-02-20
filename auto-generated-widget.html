@@ -7661,28 +7661,14 @@ document.getElementById("salirpausa2").disabled = true;
                                     document.getElementById("salirpausa2").style = " background-color:greenyellow"
                                     
                                     var esto = this;
-                                        var cmd = "$3ma=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                               
-                              setTimeout(function(){
-                                    var cmd = "$2ma=3";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                               
+                                    
                                        esto.activarM57();
 
                                         ocupado = 0;
 
                                         esto.verificarmesaizqdentro();
                                
-                                    },1000) ;
+                                  
                                   
 
                                         break;
@@ -7704,24 +7690,11 @@ document.getElementById("salirpausa2").disabled = true;
                                     document.getElementById("salirpausa2").style = " background-color:greenyellow"
                                  var  esto = this;
 
-                                        var cmd = "$3ma=3";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-setTimeout(function(){
-                                    var cmd = "$2ma=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                              
+                           
                                         esto.activarM58();
                                         ocupado = 0;
                                         esto.verificarmesaderechadentro();
-                                    },1000);
+                                    
                                         // alert ("M58");
 
 
@@ -10312,24 +10285,11 @@ TERMINA COMENT *****/
                                     document.getElementById("salirpausa2").style = " background-color:greenyellow"
                                   var esto = this;
 
-                                        var cmd = "$3ma=3";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-setTimeout(function(){
-                                    var cmd = "$2ma=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                              
+
                                         esto.activarM58();
                                         ocupado = 0;
                                         esto.verificarmesaderechadentro();
-                                    },1000);
+                                  
                                             // alert ("M58");
 
 
@@ -16090,21 +16050,24 @@ alert("ENTRE");
                                 var res = response.split("Pin D29 set to ");
                                 response = parseInt(res[1]);
                                 if (response == 1) {
+
                                     var cmd = "$3ma=3";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$asn=0";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$asx=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-
+setTimeout(function(){
                                     var cmd = "$2ma=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$ysn=0";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$ysx=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    
-                                    document.getElementById("salirpausa").disabled = true;
+                               
+                                    setTimeout(function(){
+
+                                        document.getElementById("salirpausa").disabled = true;
                                     var cmd = "~";
                                     document.getElementById("salirpausa2").disabled = true;
                                     var cmd = "~";
@@ -16115,7 +16078,12 @@ alert("ENTRE");
 
 
                                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                }else{
+                         
+
+
+                                },1000);
+                            },1000)   
+                                          }else{
                                     alert("MESA DER NO ESTA EN POSICION DE TRABAJO, LLEVELA A POSICION DE TRABAJO Y LUEGO SALGA DE PAUSA");
 
                                     
@@ -16179,6 +16147,7 @@ alert("ENTRE");
                                     var cmd = "$ysx=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                
+                               setTimeout(function(){
                                     var cmd = "$2ma=3";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$asn=0";
@@ -16186,6 +16155,7 @@ alert("ENTRE");
                                     var cmd = "$asx=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                
+                                    setTimeout(function(){
 
                                     document.getElementById("salirpausa").disabled = true;
                                     document.getElementById("salirpausa").style = " background-color:gray"
@@ -16197,6 +16167,9 @@ alert("ENTRE");
 
 
                                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                },1000);
+                            },1000);
+                                
                                 }
                                 else{
                                     alert("MESA IZQ NO ESTA EN POSICION DE TRABAJO, LLEVELA A POSICION DE TRABAJO Y LUEGO SALGA DE PAUSA");
@@ -17120,7 +17093,7 @@ alert("ENTRE");
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">Tcode</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">Bcode</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
