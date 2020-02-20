@@ -7869,13 +7869,27 @@ document.getElementById("salirpausa2").disabled = true;
                                         document.getElementById("salirpausa").style = "background-color: greenyellow";
                                         document.getElementById("salirpausa2").disabled = false;
                                         document.getElementById("salirpausa2").style = "background-color: greenyellow";
-
+                                        var cmd = "$3ma=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                               
+                                setTimeout(function(){
+                                    var cmd = "$2ma=3";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                               
                                         this.activarM57();
 
                                         ocupado = 0;
 
                                         this.verificarmesaizqdentro();
-
+                                    },1000);
 
                                         break;
                                         /***************************************FIN M57 SACAR PALETA DERECHA*********/
@@ -7892,11 +7906,24 @@ document.getElementById("salirpausa2").disabled = true;
                                         document.getElementById("salirpausa").style = "background-color: greenyellow";
                                         document.getElementById("salirpausa2").disabled = false;
                                         document.getElementById("salirpausa2").style = "background-color: greenyellow";
-
+                                        var cmd = "$3ma=3";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+setTimeout(function(){
+                                    var cmd = "$2ma=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                              
                                         this.activarM58();
                                         ocupado = 0;
                                         this.verificarmesaderechadentro();
-
+                                    },1000);
                                         // alert ("M58");
 
 
@@ -10443,17 +10470,27 @@ TERMINA COMENT *****/
 
                                             /***************************************INICIO M57 SACAR PALETA DERECHA*********/
                                         case (gcodeline.match(/\bM57\b/i) || {}).input:
-                                            document.getElementById("salirpausa").disabled = false;
-                                            document.getElementById("salirpausa").style = "background-color: greenyellow";
-                                            document.getElementById("salirpausa2").disabled = false;
-                                        document.getElementById("salirpausa2").style = "background-color: greenyellow";
+                                        var cmd = "$3ma=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                               
+                                setTimeout(function(){
+                                    var cmd = "$2ma=3";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                               
+                                        this.activarM57();
 
-                                            this.activarM57();
+                                        ocupado = 0;
 
-                                            ocupado = 0;
-
-                                            this.verificarmesaizqdentro();
-
+                                        this.verificarmesaizqdentro();
+                                    },1000);
 
                                             break;
 
@@ -10466,12 +10503,24 @@ TERMINA COMENT *****/
                                             document.getElementById("salirpausa2").disabled = false;
                                         document.getElementById("salirpausa2").style = "background-color: greenyellow";
 
-                                            this.activarM58();
-                                            ocupado = 0;
-                                            this.verificarmesaderechadentro();
-                                            if (!sigespecial && !errora && !errory) {
-
-                                            }
+                                        var cmd = "$3ma=3";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+setTimeout(function(){
+                                    var cmd = "$2ma=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                              
+                                        this.activarM58();
+                                        ocupado = 0;
+                                        this.verificarmesaderechadentro();
+                                    },1000);
                                             // alert ("M58");
 
 
@@ -16151,20 +16200,7 @@ TERMINA COMENT *****/
 
                                 if (response == 1) {
 
-                                    var cmd = "$3ma=3";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-setTimeout(function(){
-                                    var cmd = "$2ma=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                },1000)
+                                   
 
                                     self.sacarpaletaizquierda();
 
@@ -16371,21 +16407,7 @@ setTimeout(function(){
                                 if (response == 1) {
 
 
-                                    var cmd = "$3ma=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                               
-                                setTimeout(function(){
-                                    var cmd = "$2ma=3";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                },1000);
+                                
 
                                     self.sacarpaletaderecha();
 
@@ -17252,7 +17274,7 @@ setTimeout(function(){
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">Ucode</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">Ycode</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
