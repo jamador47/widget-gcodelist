@@ -17168,15 +17168,9 @@ setTimeout(function(){
                     });
                 },
                 createGcodeDesc: function() {
-                    // Take from Gcode Wikipedia page and turned into json
-                    //this.createGcodeList();
-                    // create regexp list
-                    //console.log("creating regexp list for gcode");
-                    //gcodeReList = [];
+                    
                     $.each(this.gcodeData, function(i, elem) {
-                        //console.log(elem.code);
-                        //gcodeReList.push(new RegExp(elem.code, "ig"));
-                        //elem.code = elem.code.replace("%", "\%");
+                        
                         elem.re = new RegExp("^(" + elem.code + ")$", "i");
 
                         // collapse leading zeroes
@@ -17191,23 +17185,21 @@ setTimeout(function(){
                             elem.re = new RegExp("^(" + elem.code + "|" + elem.code2 + ")$", "i");
                         }
 
-                        // escape double quotes in desc and info
+                       
                         if (elem.desc) {
-                            //elem.desc = elem.desc.replace(/"/g, '\\"');
-                            // remove html
+                            
                             elem.desc = elem.desc.replace(/\<.*?\>/g, '');
-                            // esc double quote
+                            
                             elem.desc = elem.desc.replace(/"/g, '&quot;');
                         }
                         if (elem.info) {
                             elem.info = elem.info.replace(/\<.*?\>/g, '');
-                            // esc double quote
+                    
                             elem.info = elem.info.replace(/"/g, '&quot;');
                         }
-                        //console.log(elem.re);
+                    
                     });
-                    //console.log(gcode);
-                    //console.log("done creating regex list for gcode");
+                    
                 },
                 gcodeIsLoaded: false,
                 gcodeData: [],
@@ -17238,20 +17230,16 @@ setTimeout(function(){
                     this.obj3d = data;
                     this.obj3dmeta = meta;
                     if (this.userCallbackForGet3dObj) {
-                        //setTimeout(this.userCallbackForGet3dObj.bind(this), 200);
-                        //console.log("going to call callback after getting back the new 3dobj. this.userCallbackForGet3dObj:", this.userCallbackForGet3dObj);
-                        this.userCallbackForGet3dObj();
+                           this.userCallbackForGet3dObj();
                         this.userCallbackForGet3dObj = null;
                     }
                 },
                 calcEstimatedRemain: function(indexOfLineAt) {
-                    // assume we have an obj3d from other method calls
                     if (this.obj3d && this.obj3d.userData && this.obj3d.userData.lines) {
                         var lastLine = this.obj3d.userData.lines[this.obj3d.userData.lines.length - 1];
                         if ('p2' in lastLine && 'timeMinsSum' in lastLine.p2) {
                             console.log("we got a timeMinsSum:", lastLine.p2.timeMinsSum);
-                            // get the timeMinsSum of the line we're on
-                            var curEstDurMins = this.obj3d.userData.lines[indexOfLineAt].p2.timeMinsSum;
+                               var curEstDurMins = this.obj3d.userData.lines[indexOfLineAt].p2.timeMinsSum;
                             var estDurMins = lastLine.p2.timeMinsSum;
                             var remainMins = estDurMins - curEstDurMins;
                             var str = "-";
@@ -17270,7 +17258,7 @@ setTimeout(function(){
 
 <body>
 
-    <!--Put HTML Contents of Widget Here-->
+
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
@@ -17307,10 +17295,7 @@ setTimeout(function(){
 
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right pubsub-dropdown-menu" role="menu">
-                        <!-- <li role="presentation" class="dropdown-header fork-name"></li>
-                    <li><a href="" class="standalone" target="_blank">View Widget Standalone</a></li>
-                    <li><a href="" class="fork" target="_blank">Fork Widget</a></li> -->
-                    </ul>
+                            </ul>
                 </div>
             </div>
             <div>
@@ -17330,9 +17315,7 @@ setTimeout(function(){
                     </button>
                     <ul class="dropdown-menu xdropdown-menu-right com-chilipeppr-widget-gcode-menuToolChange" role="menu">
                         <li role="presentation" class="dropdown-header com-chilipeppr-widget-gcode-toolchanges-hdr">(No Tool Changes in Gcode)</li>
-                        <!--<li><a href="" class="standalone" target="_blank">View Widget Standalone</a></li>-->
-                        <!--<li><a href="" class="fork" target="_blank">Fork Widget</a></li>-->
-                    </ul>
+                       </ul>
                 </div>
 
             </div>
@@ -17712,27 +17695,20 @@ setTimeout(function(){
                             </label>
                         </div>
 
-                        <!-- <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-default">Sign in</button>
-                  </div>
-              </div> -->
+                      
 
                     </form>
 
                 </div>
-                <!-- <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary optionsbtnsave">Save changes</button>
-        </div> -->
+               
             </div>
-            <!-- /.modal-content -->
+          
         </div>
-        <!-- /.modal-dialog -->
+      
     </div>
-    <!-- /.modal -->
 
-    <!-- tool change modal -->
+
+    
     <div class="modal fade " id="com-chilipeppr-widget-gcode-toolchange-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
