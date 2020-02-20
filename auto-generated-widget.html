@@ -2712,7 +2712,7 @@
                 /***********************************************************/
 
                 activarm3: function(evt) {
-                   
+
                     var HttpClient = function() {
                         this.get = function(aUrl, aCallback) {
                             var anHttpRequest = new XMLHttpRequest();
@@ -2768,22 +2768,7 @@
                                     var client = new HttpClient();
                                     client.get(theurl, function(response) {
 
-                                        setTimeout(function(){
-                                        var HttpClient = function() {
-                                            this.get = function(aUrl, aCallback) {
-                                                var anHttpRequest = new XMLHttpRequest();
-                                                anHttpRequest.onreadystatechange = function() {
-                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                        aCallback(anHttpRequest.responseText);
-                                                }
-                                                anHttpRequest.open("GET", aUrl, true);
-                                                anHttpRequest.send(null);
-                                            }
-                                        }
-                                        var theurl = 'http://192.168.0.88/arduino/digital/19/1';
-                                        var client = new HttpClient();
-                                        client.get(theurl, function(response) {
-                                            setTimeout(function(){
+                                        setTimeout(function() {
                                             var HttpClient = function() {
                                                 this.get = function(aUrl, aCallback) {
                                                     var anHttpRequest = new XMLHttpRequest();
@@ -2795,22 +2780,37 @@
                                                     anHttpRequest.send(null);
                                                 }
                                             }
-                                            var theurl = 'http://192.168.0.88/arduino/digital/22/1';
+                                            var theurl = 'http://192.168.0.88/arduino/digital/19/1';
                                             var client = new HttpClient();
                                             client.get(theurl, function(response) {
-                                                document.getElementById("indicadorhusillo").className = "led-green";
-                                                chilipeppr.publish(
-                                                    '/com-chilipeppr-elem-flashmsg/flashmsg',
-                                                    "Estado del Husillo",
-                                                    "Husillo Activado ",
-                                                    2000 /* show for 2 second */
-                                                );
+                                                setTimeout(function() {
+                                                    var HttpClient = function() {
+                                                        this.get = function(aUrl, aCallback) {
+                                                            var anHttpRequest = new XMLHttpRequest();
+                                                            anHttpRequest.onreadystatechange = function() {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                    aCallback(anHttpRequest.responseText);
+                                                            }
+                                                            anHttpRequest.open("GET", aUrl, true);
+                                                            anHttpRequest.send(null);
+                                                        }
+                                                    }
+                                                    var theurl = 'http://192.168.0.88/arduino/digital/22/1';
+                                                    var client = new HttpClient();
+                                                    client.get(theurl, function(response) {
+                                                        document.getElementById("indicadorhusillo").className = "led-green";
+                                                        chilipeppr.publish(
+                                                            '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                                            "Estado del Husillo",
+                                                            "Husillo Activado ",
+                                                            2000 /* show for 2 second */
+                                                        );
 
 
+                                                    });
+                                                }, 1000)
                                             });
-                                        },1000)
-                                        });
-                                    },2000)
+                                        }, 2000)
 
                                     });
 
@@ -3331,22 +3331,22 @@
 
                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
                     setTimeout(function() {
-                       
+
                         var cmd = "~";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
                     }, 100);
                     setTimeout(function() {
-                     
+
                         var cmd = "~";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
                     }, 110);
                     setTimeout(function() {
-                        
+
                         var cmd = "~";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
                     }, 120);
                     setTimeout(function() {
-                      
+
                         var cmd = "~";
                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
                     }, 130);
@@ -3359,8 +3359,8 @@
 
 
                 onPlay: function(event) {
-entrabajo = 0;
-                   // chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 g");
+                    entrabajo = 0;
+                    // chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 g");
                     //chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM3 G28.2 Z0");
                     var esto = this;
 
@@ -6006,10 +6006,10 @@ entrabajo = 0;
 
                                         /********** INICIO CAMBIO HERRAMIENTA ******/
                                     case (gcodeline.match(/\bM6\b/i) || {}).input:
-                                       
-ultimom6 = (idnum - 1);
-                               
-                                       this.onM20BtnClick();
+
+                                        ultimom6 = (idnum - 1);
+
+                                        this.onM20BtnClick();
                                         var cmd = "!";
                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                         this.activarm5();
@@ -8638,40 +8638,742 @@ TERMINA COMENT *****/
 
                                             /********** INICIO CAMBIO HERRAMIENTA ******/
                                         case (gcodeline.match(/\bM6\b/i) || {}).input:
-                      
-                                        if (contadordelinea-1 != ultimom6){
-                                   
-                                            this.onM20BtnClick();
-                                            var lineacodigog = gcodeline;
-                                            var toolqueseusara = 0;
-                                            var contador2 = contadordelinea;
-                                            var cmd = "!";
-                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                            this.activarm5();
-                                            var esto = this;
+
+                                            if (contadordelinea - 1 != ultimom6) {
+
+                                                this.onM20BtnClick();
+                                                var lineacodigog = gcodeline;
+                                                var toolqueseusara = 0;
+                                                var contador2 = contadordelinea;
+                                                var cmd = "!";
+                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                                this.activarm5();
+                                                var esto = this;
 
 
-                                            var HttpClient = function() {
-                                                this.get = function(aUrl, aCallback) {
-                                                    var anHttpRequest = new XMLHttpRequest();
-                                                    anHttpRequest.onreadystatechange = function() {
-                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                            aCallback(anHttpRequest.responseText);
+                                                var HttpClient = function() {
+                                                    this.get = function(aUrl, aCallback) {
+                                                        var anHttpRequest = new XMLHttpRequest();
+                                                        anHttpRequest.onreadystatechange = function() {
+                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                        }
+                                                        anHttpRequest.open("GET", aUrl, true);
+                                                        anHttpRequest.send(null);
                                                     }
-                                                    anHttpRequest.open("GET", aUrl, true);
-                                                    anHttpRequest.send(null);
                                                 }
-                                            }
-                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                            var client = new HttpClient();
-                                            client.get(theurl, function(response) {
+                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                var client = new HttpClient();
+                                                client.get(theurl, function(response) {
 
-                                                var res = response.split("Pin A5 reads analog ");
+                                                    var res = response.split("Pin A5 reads analog ");
 
-                                                response = parseInt(res[1]);
+                                                    response = parseInt(res[1]);
 
-                                                if (response < 900) {
-                                                    setTimeout(() => {
+                                                    if (response < 900) {
+                                                        setTimeout(() => {
+
+                                                            var HttpClient = function() {
+                                                                this.get = function(aUrl, aCallback) {
+                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                            aCallback(anHttpRequest.responseText);
+                                                                    }
+                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                    anHttpRequest.send(null);
+                                                                }
+                                                            }
+                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                            var client = new HttpClient();
+                                                            client.get(theurl, function(response) {
+
+                                                                var res = response.split("Pin A5 reads analog ");
+
+                                                                response = parseInt(res[1]);
+
+                                                                if (response > 900) {
+                                                                    var HttpClient = function() {
+                                                                        this.get = function(aUrl, aCallback) {
+                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                    aCallback(anHttpRequest.responseText);
+                                                                            }
+                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                            anHttpRequest.send(null);
+                                                                        }
+                                                                    }
+                                                                    var theurl = 'http://192.168.0.80/arduino/digital/29';
+                                                                    var client = new HttpClient();
+                                                                    client.get(theurl, function(response) {
+
+                                                                        var res = response.split("Pin D29 set to ");
+
+                                                                        response = parseInt(res[1]);
+
+                                                                        if (response == 1) {
+
+
+                                                                            // COMIENZA CH
+                                                                            var HttpClient = function() {
+
+                                                                                this.get = function(aUrl, aCallback) {
+                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                    }
+                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                    anHttpRequest.send(null);
+                                                                                }
+                                                                            }
+                                                                            var theurl = 'http://192.168.0.98/geth';
+                                                                            var client = new HttpClient();
+                                                                            client.get(theurl, function(response) {
+
+                                                                                var obj = JSON.parse(response);
+                                                                                window.objetodah = obj;
+                                                                                var modoh = parseInt(obj[0]['modoh']);
+
+
+
+                                                                                var linea = lineacodigog.replace('M6', "").trim();
+
+
+                                                                                linea = linea.replace('M7', "").trim();
+                                                                                linea = linea.replace('T', "").trim();
+
+
+
+                                                                                var linean = "N" + (contador2);
+                                                                                linea = linea.replace(linean, "").trim();
+                                                                                toolqueseusara = parseInt(linea);
+
+
+                                                                                if (toolqueseusara == 0) {
+                                                                                    for (var i = 0; i < 17; i++) {
+
+                                                                                        if (parseInt(obj[i]['enhusillo'])) {
+                                                                                            // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
+
+                                                                                            var valortool = i + 1;
+
+                                                                                        }
+                                                                                    }
+
+                                                                                    cmd = "q" + valortool + ";1";
+                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
+
+                                                                                    if (modoh == 1) {
+                                                                                        var HttpClient = function() {
+
+                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                }
+                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                anHttpRequest.send(null);
+                                                                                            }
+                                                                                        }
+                                                                                        var theurl = 'http://192.168.0.98/cambiobrazomodoh/' + valortool;
+                                                                                        var client = new HttpClient();
+                                                                                        client.get(theurl, function(response) {
+
+                                                                                        });
+                                                                                    } else {
+                                                                                        var HttpClient = function() {
+
+                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                }
+                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                anHttpRequest.send(null);
+                                                                                            }
+                                                                                        }
+                                                                                        var theurl = 'http://192.168.0.98/cambiobrazomodop';
+                                                                                        var client = new HttpClient();
+                                                                                        client.get(theurl, function(response) {});
+
+                                                                                    }
+
+
+
+                                                                                } else {
+
+                                                                                    // SI ES MODO H:
+                                                                                    if (modoh == 1) {
+                                                                                        var HttpClient = function() {
+
+                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                }
+                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                anHttpRequest.send(null);
+                                                                                            }
+                                                                                        }
+                                                                                        var theurl = 'http://192.168.0.98/geth';
+                                                                                        var client = new HttpClient();
+                                                                                        client.get(theurl, function(response) {
+
+                                                                                            var obj = JSON.parse(response);
+                                                                                            window.objetodah = obj;
+                                                                                        });
+                                                                                        // Loop para encontrar que pocket tiene la herramienta pedida.
+                                                                                        for (var i = 0; i < 17; i++) {
+
+                                                                                            if (window.objetodah[i]['herramienta'] == toolqueseusara) {
+                                                                                                // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
+                                                                                                var indexher = i;
+                                                                                                var valortool = i + 1;
+                                                                                                var longitud = parseFloat(window.objetodah[i]['longitud']);
+                                                                                                var enhusillo = parseInt(window.objetodah[i]['enhusillo']);
+                                                                                            }
+                                                                                        }
+
+                                                                                        //COMPENSACION
+                                                                                        var HttpClient = function() {
+
+                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                }
+                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                anHttpRequest.send(null);
+                                                                                            }
+                                                                                        }
+                                                                                        var theurl = 'http://192.168.0.98/api/origenesactivos/';
+                                                                                        var client = new HttpClient();
+                                                                                        client.get(theurl, function(response) {
+
+                                                                                            var obj = JSON.parse(response);
+
+                                                                                            var valorx = obj['x'];
+                                                                                            var valory = obj['y'];
+                                                                                            var valorz = parseFloat(obj['z']);
+                                                                                            var valora = obj['a'];
+
+                                                                                            valorz = valorz + longitud;
+                                                                                            valorz = valorz.toString();
+
+                                                                                            var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
+                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
+
+
+
+                                                                                        });
+
+
+
+
+
+                                                                                        //FIN COMPENSACION
+
+
+                                                                                        if (!parseInt(window.objetodah[indexher]['enhusillo'])) {
+
+
+                                                                                            // CAMBIO BRAZO
+                                                                                            var HttpClient = function() {
+
+                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                    }
+                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                    anHttpRequest.send(null);
+                                                                                                }
+                                                                                            }
+                                                                                            var theurl = 'http://192.168.0.98/sigherramienta/' + toolqueseusara;
+                                                                                            var client = new HttpClient();
+                                                                                            client.get(theurl, function(response) {});
+
+                                                                                            cmd = "q" + valortool + ";1";
+                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
+
+
+
+
+                                                                                            //Cambio brazo en la tabla.
+                                                                                            var HttpClient = function() {
+
+                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                    }
+                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                    anHttpRequest.send(null);
+                                                                                                }
+                                                                                            }
+                                                                                            var theurl = 'http://192.168.0.98/cambiobrazomodoh/' + valortool;
+                                                                                            var client = new HttpClient();
+                                                                                            client.get(theurl, function(response) {
+
+                                                                                            });
+                                                                                        } else {
+
+                                                                                            esto.onM10BtnClick();
+                                                                                            esto.activarm3();
+                                                                                            //ENCENDERHUSILLO
+                                                                                            setTimeout(() => {
+                                                                                                var HttpClient = function() {
+                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                        }
+                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                        anHttpRequest.send(null);
+                                                                                                    }
+                                                                                                }
+                                                                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                var client = new HttpClient();
+                                                                                                client.get(theurl, function(response) {
+
+                                                                                                    response = response.split("Pin A5 reads analog ");
+                                                                                                    response = parseInt(response);
+
+                                                                                                    if (response < 900) {
+                                                                                                        var cmd = "~";
+                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                    } else {
+
+
+                                                                                                        setTimeout(function() {
+
+                                                                                                            var HttpClient = function() {
+                                                                                                                this.get = function(aUrl, aCallback) {
+                                                                                                                    var anHttpRequest = new XMLHttpRequest();
+                                                                                                                    anHttpRequest.onreadystatechange = function() {
+                                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                            aCallback(anHttpRequest.responseText);
+                                                                                                                    }
+                                                                                                                    anHttpRequest.open("GET", aUrl, true);
+                                                                                                                    anHttpRequest.send(null);
+                                                                                                                }
+                                                                                                            }
+                                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                            var client = new HttpClient();
+                                                                                                            client.get(theurl, function(response) {
+
+                                                                                                                response = response.split("Pin A5 reads analog ");
+                                                                                                                response = parseInt(response[1]);
+                                                                                                                if (response < 900) {
+                                                                                                                    var cmd = "~";
+                                                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                } else {
+
+                                                                                                                    var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                                    erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                                    erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                                    document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                                    document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                                }
+
+
+                                                                                                            });
+
+                                                                                                        }, 10000)
+
+                                                                                                    }
+
+                                                                                                });
+                                                                                            }, 10000);
+
+
+
+                                                                                            //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
+
+
+
+                                                                                        }
+
+                                                                                    }
+
+                                                                                    // SI ES MODO LINEAL:  ***********************************************************************************************
+                                                                                    else {
+                                                                                        var indexher = toolqueseusara - 1;
+                                                                                        var valortool = toolqueseusara;
+
+
+
+                                                                                        var longitud = parseFloat(window.objetodah[(toolqueseusara - 1)]['longitud']);
+
+
+                                                                                        var HttpClient = function() {
+
+                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                }
+                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                anHttpRequest.send(null);
+                                                                                            }
+                                                                                        }
+                                                                                        var theurl = 'http://192.168.0.98/sigherramienta/' + toolqueseusara;
+                                                                                        var client = new HttpClient();
+                                                                                        client.get(theurl, function(response) {});
+
+                                                                                        var enhusillo = 100;
+
+
+
+                                                                                        //COMPENSACION MODO LINEAL
+                                                                                        var HttpClient = function() {
+
+                                                                                            this.get = function(aUrl, aCallback) {
+                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                anHttpRequest.onreadystatechange = function() {
+                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                        aCallback(anHttpRequest.responseText);
+                                                                                                }
+                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                anHttpRequest.send(null);
+                                                                                            }
+                                                                                        }
+                                                                                        var theurl = 'http://192.168.0.98/api/origenesactivos/';
+                                                                                        var client = new HttpClient();
+                                                                                        client.get(theurl, function(response) {
+
+                                                                                            var obj = JSON.parse(response);
+
+                                                                                            var valorx = obj['x'];
+                                                                                            var valory = obj['y'];
+                                                                                            var valorz = parseFloat(obj['z']);
+                                                                                            var valora = obj['a'];
+
+                                                                                            valorz = valorz + longitud;
+                                                                                            valorz = valorz.toString();
+
+                                                                                            var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
+                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
+
+
+
+                                                                                        });
+
+
+
+
+
+                                                                                        //FIN COMPENSACION
+
+                                                                                        var valortoolenhusillo = valortool;
+
+                                                                                        //BUSCAR SI HAY HERRAMIENTA EN EL HUSILLO
+                                                                                        for (var i = 0; i < 17; i++) {
+
+                                                                                            if (parseInt(obj[i]['enhusillo']) == 1) {
+                                                                                                enhusillo = 1;
+                                                                                                var indexherenhusillo = i;
+                                                                                                var valortoolenhusillo = i + 1;
+                                                                                            }
+
+                                                                                        }
+
+
+
+
+                                                                                        if (valortoolenhusillo != valortool) {
+                                                                                            //SI HAY: REGRESARLA A POSICIÓN ORIGINAL  Y luego cambiar nueva
+                                                                                            if (enhusillo == 1) {
+
+
+                                                                                                // cambio posicion original.
+
+
+                                                                                                // ROTAR EN TABLA
+                                                                                                var HttpClient = function() {
+
+                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                        }
+                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                        anHttpRequest.send(null);
+                                                                                                    }
+                                                                                                }
+                                                                                                var theurl = 'http://192.168.0.98/rotarcar/' + valortoolenhusillo;
+                                                                                                var client = new HttpClient();
+                                                                                                client.get(theurl, function(response) {
+
+                                                                                                    // CAMBIAR EN TABLA
+                                                                                                    var HttpClient = function() {
+
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.98/cambiobrazomodop';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {});
+
+                                                                                                });
+
+                                                                                                //Mandar a hacer el cambio real
+
+                                                                                                cmd = "Q" + valortoolenhusillo + ";1";
+                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
+
+
+                                                                                                var HttpClient = function() {
+
+                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                        }
+                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                        anHttpRequest.send(null);
+                                                                                                    }
+                                                                                                }
+                                                                                                var theurl = 'http://192.168.0.98/sigherramienta/' + toolqueseusara;
+                                                                                                var client = new HttpClient();
+                                                                                                client.get(theurl, function(response) {});
+
+                                                                                                /* ESTO TENDRIA QUE IR EN EL FINAL De la cadena de X.
+                                        
+                                                    setTimeout( function(){
+                                                        
+                                                        
+                                                            var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/rotarcar/'+toolausar;
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+                                                                    var HttpClient = function () {
+                                                                        
+                                                                        this.get = function (aUrl, aCallback) {
+                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                anHttpRequest.onreadystatechange = function () {
+                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                aCallback(anHttpRequest.responseText);
+                                                                }
+                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                anHttpRequest.send(null);
+                                                                }
+                                                                }
+                                                                var theurl = 'http://192.168.0.98/cambiobrazomodop';
+                                                                var client = new HttpClient();
+                                                                client.get(theurl, function (response) {
+                                                                });
+                                                                });
+                                                        
+                                                                // CAMBIAR EN TABLA
+                                                        
+                                        
+                                                        //Cambiar real.
+                                                            cmd = "x"+toolausar+";"+obj[(toolausar-1)]['longitud'];
+                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
+                                        
+                                                        },7000);
+                                                        */
+
+                                                                                            }
+                                                                                        }
+                                                                                        // Si la herramienta en el husillo es la herramienta que se pidió.
+                                                                                        else {
+
+
+                                                                                            if (enhusillo != 1) {
+
+                                                                                                var HttpClient = function() {
+
+                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                        }
+                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                        anHttpRequest.send(null);
+                                                                                                    }
+                                                                                                }
+                                                                                                var theurl = 'http://192.168.0.98/rotarcar/' + toolqueseusara;
+                                                                                                var client = new HttpClient();
+                                                                                                client.get(theurl, function(response) {
+
+                                                                                                    // CAMBIAR EN TABLA
+                                                                                                    var HttpClient = function() {
+
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.98/cambiobrazomodop';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {});
+
+                                                                                                });
+
+                                                                                                cmd = "q" + toolqueseusara + ";1";
+                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
+
+
+                                                                                            } else {
+
+                                                                                                esto.onM10BtnClick();
+                                                                                                esto.activarm3();
+                                                                                                //ENCENDERHUSILLO
+                                                                                                setTimeout(() => {
+                                                                                                    var HttpClient = function() {
+                                                                                                        this.get = function(aUrl, aCallback) {
+                                                                                                            var anHttpRequest = new XMLHttpRequest();
+                                                                                                            anHttpRequest.onreadystatechange = function() {
+                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                    aCallback(anHttpRequest.responseText);
+                                                                                                            }
+                                                                                                            anHttpRequest.open("GET", aUrl, true);
+                                                                                                            anHttpRequest.send(null);
+                                                                                                        }
+                                                                                                    }
+                                                                                                    var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                    var client = new HttpClient();
+                                                                                                    client.get(theurl, function(response) {
+
+                                                                                                        response = response.split("Pin A5 reads analog ");
+                                                                                                        response = parseInt(response);
+
+                                                                                                        if (response < 900) {
+                                                                                                            var cmd = "~";
+                                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                        } else {
+
+
+                                                                                                            setTimeout(function() {
+
+                                                                                                                var HttpClient = function() {
+                                                                                                                    this.get = function(aUrl, aCallback) {
+                                                                                                                        var anHttpRequest = new XMLHttpRequest();
+                                                                                                                        anHttpRequest.onreadystatechange = function() {
+                                                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                                        }
+                                                                                                                        anHttpRequest.open("GET", aUrl, true);
+                                                                                                                        anHttpRequest.send(null);
+                                                                                                                    }
+                                                                                                                }
+                                                                                                                var theurl = 'http://192.168.0.88/arduino/analog/5';
+                                                                                                                var client = new HttpClient();
+                                                                                                                client.get(theurl, function(response) {
+
+                                                                                                                    response = response.split("Pin A5 reads analog ");
+                                                                                                                    response = parseInt(response[1]);
+                                                                                                                    if (response < 900) {
+                                                                                                                        var cmd = "~";
+                                                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
+                                                                                                                        chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                                                                                                    } else {
+
+                                                                                                                        var erroresexistentes = document.getElementById("textoerrores").value;
+                                                                                                                        erroresexistentes = erroresexistentes.concat("\\\n\\\n");
+                                                                                                                        erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
+                                                                                                                        document.getElementById("textoerrores").value = erroresexistentes;
+                                                                                                                        document.getElementById("indicadorerrorejec").className = "led-red";
+                                                                                                                    }
+
+
+                                                                                                                });
+
+                                                                                                            }, 10000)
+
+                                                                                                        }
+
+                                                                                                    });
+
+                                                                                                }, 10000);
+
+                                                                                                //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
+
+                                                                                            }
+
+                                                                                        }
+
+
+                                                                                    }
+                                                                                }
+
+                                                                            });
+
+
+
+
+
+
+
+                                                                            //TERMINA CH
+
+
+
+
+
+
+                                                                        } else {
+
+                                                                            alert("Debe bloquear las válvula del carrusel para poder moverlo.");
+
+                                                                        }
+
+
+
+                                                                    });
+
+                                                                } else {
+                                                                    alert("El husillo no ha terminado de girar");
+                                                                }
+
+                                                            });
+
+
+                                                        }, 19000);
+
+
+                                                    } else {
 
                                                         var HttpClient = function() {
                                                             this.get = function(aUrl, aCallback) {
@@ -8734,6 +9436,7 @@ TERMINA COMENT *****/
 
                                                                             var obj = JSON.parse(response);
                                                                             window.objetodah = obj;
+
                                                                             var modoh = parseInt(obj[0]['modoh']);
 
 
@@ -8744,11 +9447,12 @@ TERMINA COMENT *****/
                                                                             linea = linea.replace('M7', "").trim();
                                                                             linea = linea.replace('T', "").trim();
 
-
-
                                                                             var linean = "N" + (contador2);
                                                                             linea = linea.replace(linean, "").trim();
                                                                             toolqueseusara = parseInt(linea);
+
+
+
 
 
                                                                             if (toolqueseusara == 0) {
@@ -8827,6 +9531,7 @@ TERMINA COMENT *****/
                                                                                         var obj = JSON.parse(response);
                                                                                         window.objetodah = obj;
                                                                                     });
+
                                                                                     // Loop para encontrar que pocket tiene la herramienta pedida.
                                                                                     for (var i = 0; i < 17; i++) {
 
@@ -8834,10 +9539,10 @@ TERMINA COMENT *****/
                                                                                             // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
                                                                                             var indexher = i;
                                                                                             var valortool = i + 1;
-                                                                                            var longitud = parseFloat(window.objetodah[i]['longitud']);
-                                                                                            var enhusillo = parseInt(window.objetodah[i]['enhusillo']);
+                                                                                            var longitud = window.objetodah[i]['longitud'];
                                                                                         }
                                                                                     }
+
 
                                                                                     //COMPENSACION
                                                                                     var HttpClient = function() {
@@ -8878,12 +9583,11 @@ TERMINA COMENT *****/
 
 
                                                                                     //FIN COMPENSACION
-
-
-                                                                                    if (!parseInt(window.objetodah[indexher]['enhusillo'])) {
+                                                                                    if (!parseInt(obj[indexher]['enhusillo'])) {
 
 
                                                                                         // CAMBIO BRAZO
+
                                                                                         var HttpClient = function() {
 
                                                                                             this.get = function(aUrl, aCallback) {
@@ -8896,13 +9600,13 @@ TERMINA COMENT *****/
                                                                                                 anHttpRequest.send(null);
                                                                                             }
                                                                                         }
-                                                                                        var theurl = 'http://192.168.0.98/sigherramienta/' + toolqueseusara;
+                                                                                        var theurl = 'http://192.168.0.98/sigherramienta/' + valortool;
                                                                                         var client = new HttpClient();
                                                                                         client.get(theurl, function(response) {});
 
+
                                                                                         cmd = "q" + valortool + ";1";
                                                                                         chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
-
 
 
 
@@ -8924,8 +9628,72 @@ TERMINA COMENT *****/
                                                                                         client.get(theurl, function(response) {
 
                                                                                         });
-                                                                                    } else {
 
+                                                                                        // }
+                                                                                        //ROTACIÓN a nueva posicion.
+
+
+                                                                                        //codigo de busqueda de siguiente herramienta -- SOLO EN GCODE.
+
+                                                                                        /*       var largodecodigo = esto.gcode.lines.length;
+                                                                                                var valorsiguientetool = 1000;
+                                                                                                
+                                                                                                for (var n=(idnum); n<largodecodigo; n++){
+                                                                                                
+                                                                                                    var gcodetemporal = esto.gcode.lines[n];
+                                                                                                    if(gcodetemporal.match(/\bM6\b/i)){
+                                                                                                        var linean = "N"+(n+1);
+                                                                                                        var lineatemporal = gcodetemporal.replace('M6', "").trim();
+                                                                                                        lineatemporal = lineatemporal.replace('T', "").trim();
+                                                                                                        lineatemporal = lineatemporal.replace('M7', "").trim();
+                                                                                                        lineatemporal = lineatemporal.replace(linean, "").trim();
+                                                                                                
+                                                                                                        var valorstool = parseInt(lineatemporal);
+                                                                                                                            n=100000;
+                                                                                                
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                
+                                                                                                                    for( var i = 0; i < 17; i++){
+                                                                                                if (parseInt(obj[i]['herramienta']) == valorstool){
+                                                                                                    // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
+                                                                                                    var indexher = i;
+                                                                                                valorsiguientetool = i+1;
+                                                                                                }}
+                                                                                                
+                                                                                                //si existe alguna siguiente tool hacer rotacion. si no, no hacer nada.
+                                                                                                
+                                                                                                
+                                                                                                setTimeout(function(){
+                                                                                                    if(valorsiguientetool != 1000){
+                                                                                                
+                                                                                                    cmd = "i"+valorsiguientetool;
+                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
+                                                                                                //Cambio brazo en la tabla.
+                                                                                                        var HttpClient = function () {
+                                                                                                        
+                                                                                                        this.get = function (aUrl, aCallback) {
+                                                                                                var anHttpRequest = new XMLHttpRequest();
+                                                                                                anHttpRequest.onreadystatechange = function () {
+                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                                                                aCallback(anHttpRequest.responseText);
+                                                                                                }
+                                                                                                anHttpRequest.open("GET", aUrl, true);
+                                                                                                anHttpRequest.send(null);
+                                                                                                }
+                                                                                                }
+                                                                                                var theurl = 'http://192.168.0.98/rotarcar/'+valorsiguientetool;
+                                                                                                var client = new HttpClient();
+                                                                                                client.get(theurl, function (response) {
+                                                                                                
+                                                                                                });
+                                                                                                
+                                                                                                }
+                                                                                                var cmd  = "~";
+                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + this.serialPort + " " + cmd);
+                                                                                                },15000);
+                                                                                                */
+                                                                                    } else {
                                                                                         esto.onM10BtnClick();
                                                                                         esto.activarm3();
                                                                                         //ENCENDERHUSILLO
@@ -8997,24 +9765,23 @@ TERMINA COMENT *****/
                                                                                             });
                                                                                         }, 10000);
 
-
-
                                                                                         //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
 
-
-
                                                                                     }
+
 
                                                                                 }
 
                                                                                 // SI ES MODO LINEAL:  ***********************************************************************************************
                                                                                 else {
+
+
+                                                                                    var longitud = parseFloat(window.objetodah[(toolqueseusara - 1)]['longitud']);
+
                                                                                     var indexher = toolqueseusara - 1;
                                                                                     var valortool = toolqueseusara;
 
 
-
-                                                                                    var longitud = parseFloat(window.objetodah[(toolqueseusara - 1)]['longitud']);
 
 
                                                                                     var HttpClient = function() {
@@ -9034,8 +9801,6 @@ TERMINA COMENT *****/
                                                                                     client.get(theurl, function(response) {});
 
                                                                                     var enhusillo = 100;
-
-
 
                                                                                     //COMPENSACION MODO LINEAL
                                                                                     var HttpClient = function() {
@@ -9090,13 +9855,9 @@ TERMINA COMENT *****/
 
                                                                                     }
 
-
-
-
                                                                                     if (valortoolenhusillo != valortool) {
                                                                                         //SI HAY: REGRESARLA A POSICIÓN ORIGINAL  Y luego cambiar nueva
                                                                                         if (enhusillo == 1) {
-
 
                                                                                             // cambio posicion original.
 
@@ -9143,21 +9904,7 @@ TERMINA COMENT *****/
                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
 
-                                                                                            var HttpClient = function() {
 
-                                                                                                this.get = function(aUrl, aCallback) {
-                                                                                                    var anHttpRequest = new XMLHttpRequest();
-                                                                                                    anHttpRequest.onreadystatechange = function() {
-                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                            aCallback(anHttpRequest.responseText);
-                                                                                                    }
-                                                                                                    anHttpRequest.open("GET", aUrl, true);
-                                                                                                    anHttpRequest.send(null);
-                                                                                                }
-                                                                                            }
-                                                                                            var theurl = 'http://192.168.0.98/sigherramienta/' + toolqueseusara;
-                                                                                            var client = new HttpClient();
-                                                                                            client.get(theurl, function(response) {});
 
                                                                                             /* ESTO TENDRIA QUE IR EN EL FINAL De la cadena de X.
                                         
@@ -9253,7 +10000,6 @@ TERMINA COMENT *****/
                                                                                             cmd = "q" + toolqueseusara + ";1";
                                                                                             chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
 
-
                                                                                         } else {
 
                                                                                             esto.onM10BtnClick();
@@ -9329,10 +10075,10 @@ TERMINA COMENT *****/
                                                                                             }, 10000);
 
                                                                                             //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
-
                                                                                         }
-
                                                                                     }
+
+
 
 
                                                                                 }
@@ -9370,759 +10116,13 @@ TERMINA COMENT *****/
                                                         });
 
 
-                                                    }, 19000);
 
 
-                                                } else {
 
-                                                    var HttpClient = function() {
-                                                        this.get = function(aUrl, aCallback) {
-                                                            var anHttpRequest = new XMLHttpRequest();
-                                                            anHttpRequest.onreadystatechange = function() {
-                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                    aCallback(anHttpRequest.responseText);
-                                                            }
-                                                            anHttpRequest.open("GET", aUrl, true);
-                                                            anHttpRequest.send(null);
-                                                        }
                                                     }
-                                                    var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                    var client = new HttpClient();
-                                                    client.get(theurl, function(response) {
+                                                })
 
-                                                        var res = response.split("Pin A5 reads analog ");
-
-                                                        response = parseInt(res[1]);
-
-                                                        if (response > 900) {
-                                                            var HttpClient = function() {
-                                                                this.get = function(aUrl, aCallback) {
-                                                                    var anHttpRequest = new XMLHttpRequest();
-                                                                    anHttpRequest.onreadystatechange = function() {
-                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                            aCallback(anHttpRequest.responseText);
-                                                                    }
-                                                                    anHttpRequest.open("GET", aUrl, true);
-                                                                    anHttpRequest.send(null);
-                                                                }
-                                                            }
-                                                            var theurl = 'http://192.168.0.80/arduino/digital/29';
-                                                            var client = new HttpClient();
-                                                            client.get(theurl, function(response) {
-
-                                                                var res = response.split("Pin D29 set to ");
-
-                                                                response = parseInt(res[1]);
-
-                                                                if (response == 1) {
-
-
-                                                                    // COMIENZA CH
-                                                                    var HttpClient = function() {
-
-                                                                        this.get = function(aUrl, aCallback) {
-                                                                            var anHttpRequest = new XMLHttpRequest();
-                                                                            anHttpRequest.onreadystatechange = function() {
-                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                    aCallback(anHttpRequest.responseText);
-                                                                            }
-                                                                            anHttpRequest.open("GET", aUrl, true);
-                                                                            anHttpRequest.send(null);
-                                                                        }
-                                                                    }
-                                                                    var theurl = 'http://192.168.0.98/geth';
-                                                                    var client = new HttpClient();
-                                                                    client.get(theurl, function(response) {
-
-                                                                        var obj = JSON.parse(response);
-                                                                        window.objetodah = obj;
-
-                                                                        var modoh = parseInt(obj[0]['modoh']);
-
-
-
-                                                                        var linea = lineacodigog.replace('M6', "").trim();
-
-
-                                                                        linea = linea.replace('M7', "").trim();
-                                                                        linea = linea.replace('T', "").trim();
-
-                                                                        var linean = "N" + (contador2);
-                                                                        linea = linea.replace(linean, "").trim();
-                                                                        toolqueseusara = parseInt(linea);
-
-
-
-
-
-                                                                        if (toolqueseusara == 0) {
-                                                                            for (var i = 0; i < 17; i++) {
-
-                                                                                if (parseInt(obj[i]['enhusillo'])) {
-                                                                                    // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
-
-                                                                                    var valortool = i + 1;
-
-                                                                                }
-                                                                            }
-
-                                                                            cmd = "q" + valortool + ";1";
-                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
-
-                                                                            if (modoh == 1) {
-                                                                                var HttpClient = function() {
-
-                                                                                    this.get = function(aUrl, aCallback) {
-                                                                                        var anHttpRequest = new XMLHttpRequest();
-                                                                                        anHttpRequest.onreadystatechange = function() {
-                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                aCallback(anHttpRequest.responseText);
-                                                                                        }
-                                                                                        anHttpRequest.open("GET", aUrl, true);
-                                                                                        anHttpRequest.send(null);
-                                                                                    }
-                                                                                }
-                                                                                var theurl = 'http://192.168.0.98/cambiobrazomodoh/' + valortool;
-                                                                                var client = new HttpClient();
-                                                                                client.get(theurl, function(response) {
-
-                                                                                });
-                                                                            } else {
-                                                                                var HttpClient = function() {
-
-                                                                                    this.get = function(aUrl, aCallback) {
-                                                                                        var anHttpRequest = new XMLHttpRequest();
-                                                                                        anHttpRequest.onreadystatechange = function() {
-                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                aCallback(anHttpRequest.responseText);
-                                                                                        }
-                                                                                        anHttpRequest.open("GET", aUrl, true);
-                                                                                        anHttpRequest.send(null);
-                                                                                    }
-                                                                                }
-                                                                                var theurl = 'http://192.168.0.98/cambiobrazomodop';
-                                                                                var client = new HttpClient();
-                                                                                client.get(theurl, function(response) {});
-
-                                                                            }
-
-
-
-                                                                        } else {
-
-                                                                            // SI ES MODO H:
-                                                                            if (modoh == 1) {
-                                                                                var HttpClient = function() {
-
-                                                                                    this.get = function(aUrl, aCallback) {
-                                                                                        var anHttpRequest = new XMLHttpRequest();
-                                                                                        anHttpRequest.onreadystatechange = function() {
-                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                aCallback(anHttpRequest.responseText);
-                                                                                        }
-                                                                                        anHttpRequest.open("GET", aUrl, true);
-                                                                                        anHttpRequest.send(null);
-                                                                                    }
-                                                                                }
-                                                                                var theurl = 'http://192.168.0.98/geth';
-                                                                                var client = new HttpClient();
-                                                                                client.get(theurl, function(response) {
-
-                                                                                    var obj = JSON.parse(response);
-                                                                                    window.objetodah = obj;
-                                                                                });
-
-                                                                                // Loop para encontrar que pocket tiene la herramienta pedida.
-                                                                                for (var i = 0; i < 17; i++) {
-
-                                                                                    if (window.objetodah[i]['herramienta'] == toolqueseusara) {
-                                                                                        // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
-                                                                                        var indexher = i;
-                                                                                        var valortool = i + 1;
-                                                                                        var longitud = window.objetodah[i]['longitud'];
-                                                                                    }
-                                                                                }
-
-
-                                                                                //COMPENSACION
-                                                                                var HttpClient = function() {
-
-                                                                                    this.get = function(aUrl, aCallback) {
-                                                                                        var anHttpRequest = new XMLHttpRequest();
-                                                                                        anHttpRequest.onreadystatechange = function() {
-                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                aCallback(anHttpRequest.responseText);
-                                                                                        }
-                                                                                        anHttpRequest.open("GET", aUrl, true);
-                                                                                        anHttpRequest.send(null);
-                                                                                    }
-                                                                                }
-                                                                                var theurl = 'http://192.168.0.98/api/origenesactivos/';
-                                                                                var client = new HttpClient();
-                                                                                client.get(theurl, function(response) {
-
-                                                                                    var obj = JSON.parse(response);
-
-                                                                                    var valorx = obj['x'];
-                                                                                    var valory = obj['y'];
-                                                                                    var valorz = parseFloat(obj['z']);
-                                                                                    var valora = obj['a'];
-
-                                                                                    valorz = valorz + longitud;
-                                                                                    valorz = valorz.toString();
-
-                                                                                    var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
-                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
-
-
-
-                                                                                });
-
-
-
-
-
-                                                                                //FIN COMPENSACION
-                                                                                if (!parseInt(obj[indexher]['enhusillo'])) {
-
-
-                                                                                    // CAMBIO BRAZO
-
-                                                                                    var HttpClient = function() {
-
-                                                                                        this.get = function(aUrl, aCallback) {
-                                                                                            var anHttpRequest = new XMLHttpRequest();
-                                                                                            anHttpRequest.onreadystatechange = function() {
-                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                    aCallback(anHttpRequest.responseText);
-                                                                                            }
-                                                                                            anHttpRequest.open("GET", aUrl, true);
-                                                                                            anHttpRequest.send(null);
-                                                                                        }
-                                                                                    }
-                                                                                    var theurl = 'http://192.168.0.98/sigherramienta/' + valortool;
-                                                                                    var client = new HttpClient();
-                                                                                    client.get(theurl, function(response) {});
-
-
-                                                                                    cmd = "q" + valortool + ";1";
-                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
-
-
-
-                                                                                    //Cambio brazo en la tabla.
-                                                                                    var HttpClient = function() {
-
-                                                                                        this.get = function(aUrl, aCallback) {
-                                                                                            var anHttpRequest = new XMLHttpRequest();
-                                                                                            anHttpRequest.onreadystatechange = function() {
-                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                    aCallback(anHttpRequest.responseText);
-                                                                                            }
-                                                                                            anHttpRequest.open("GET", aUrl, true);
-                                                                                            anHttpRequest.send(null);
-                                                                                        }
-                                                                                    }
-                                                                                    var theurl = 'http://192.168.0.98/cambiobrazomodoh/' + valortool;
-                                                                                    var client = new HttpClient();
-                                                                                    client.get(theurl, function(response) {
-
-                                                                                    });
-
-                                                                                    // }
-                                                                                    //ROTACIÓN a nueva posicion.
-
-
-                                                                                    //codigo de busqueda de siguiente herramienta -- SOLO EN GCODE.
-
-                                                                                    /*       var largodecodigo = esto.gcode.lines.length;
-                                                                                            var valorsiguientetool = 1000;
-                                                                                            
-                                                                                            for (var n=(idnum); n<largodecodigo; n++){
-                                                                                            
-                                                                                                var gcodetemporal = esto.gcode.lines[n];
-                                                                                                if(gcodetemporal.match(/\bM6\b/i)){
-                                                                                                    var linean = "N"+(n+1);
-                                                                                                    var lineatemporal = gcodetemporal.replace('M6', "").trim();
-                                                                                                    lineatemporal = lineatemporal.replace('T', "").trim();
-                                                                                                    lineatemporal = lineatemporal.replace('M7', "").trim();
-                                                                                                    lineatemporal = lineatemporal.replace(linean, "").trim();
-                                                                                            
-                                                                                                    var valorstool = parseInt(lineatemporal);
-                                                                                                                        n=100000;
-                                                                                            
-                                                                                                                    }
-                                                                                                                }
-                                                                                            
-                                                                                                                for( var i = 0; i < 17; i++){
-                                                                                            if (parseInt(obj[i]['herramienta']) == valorstool){
-                                                                                                // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
-                                                                                                var indexher = i;
-                                                                                            valorsiguientetool = i+1;
-                                                                                            }}
-                                                                                            
-                                                                                            //si existe alguna siguiente tool hacer rotacion. si no, no hacer nada.
-                                                                                            
-                                                                                            
-                                                                                            setTimeout(function(){
-                                                                                                if(valorsiguientetool != 1000){
-                                                                                            
-                                                                                                cmd = "i"+valorsiguientetool;
-                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
-                                                                                            //Cambio brazo en la tabla.
-                                                                                                    var HttpClient = function () {
-                                                                                                    
-                                                                                                    this.get = function (aUrl, aCallback) {
-                                                                                            var anHttpRequest = new XMLHttpRequest();
-                                                                                            anHttpRequest.onreadystatechange = function () {
-                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                            aCallback(anHttpRequest.responseText);
-                                                                                            }
-                                                                                            anHttpRequest.open("GET", aUrl, true);
-                                                                                            anHttpRequest.send(null);
-                                                                                            }
-                                                                                            }
-                                                                                            var theurl = 'http://192.168.0.98/rotarcar/'+valorsiguientetool;
-                                                                                            var client = new HttpClient();
-                                                                                            client.get(theurl, function (response) {
-                                                                                            
-                                                                                            });
-                                                                                            
-                                                                                            }
-                                                                                            var cmd  = "~";
-                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + this.serialPort + " " + cmd);
-                                                                                            },15000);
-                                                                                            */
-                                                                                } else {
-                                                                                    esto.onM10BtnClick();
-                                                                                    esto.activarm3();
-                                                                                    //ENCENDERHUSILLO
-                                                                                    setTimeout(() => {
-                                                                                        var HttpClient = function() {
-                                                                                            this.get = function(aUrl, aCallback) {
-                                                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                                                anHttpRequest.onreadystatechange = function() {
-                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                        aCallback(anHttpRequest.responseText);
-                                                                                                }
-                                                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                                                anHttpRequest.send(null);
-                                                                                            }
-                                                                                        }
-                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                        var client = new HttpClient();
-                                                                                        client.get(theurl, function(response) {
-
-                                                                                            response = response.split("Pin A5 reads analog ");
-                                                                                            response = parseInt(response);
-
-                                                                                            if (response < 900) {
-                                                                                                var cmd = "~";
-                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                            } else {
-
-
-                                                                                                setTimeout(function() {
-
-                                                                                                    var HttpClient = function() {
-                                                                                                        this.get = function(aUrl, aCallback) {
-                                                                                                            var anHttpRequest = new XMLHttpRequest();
-                                                                                                            anHttpRequest.onreadystatechange = function() {
-                                                                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                                    aCallback(anHttpRequest.responseText);
-                                                                                                            }
-                                                                                                            anHttpRequest.open("GET", aUrl, true);
-                                                                                                            anHttpRequest.send(null);
-                                                                                                        }
-                                                                                                    }
-                                                                                                    var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                                    var client = new HttpClient();
-                                                                                                    client.get(theurl, function(response) {
-
-                                                                                                        response = response.split("Pin A5 reads analog ");
-                                                                                                        response = parseInt(response[1]);
-                                                                                                        if (response < 900) {
-                                                                                                            var cmd = "~";
-                                                                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                                        } else {
-
-                                                                                                            var erroresexistentes = document.getElementById("textoerrores").value;
-                                                                                                            erroresexistentes = erroresexistentes.concat("\\\n\\\n");
-                                                                                                            erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
-                                                                                                            document.getElementById("textoerrores").value = erroresexistentes;
-                                                                                                            document.getElementById("indicadorerrorejec").className = "led-red";
-                                                                                                        }
-
-
-                                                                                                    });
-
-                                                                                                }, 10000)
-
-                                                                                            }
-
-                                                                                        });
-                                                                                    }, 10000);
-
-                                                                                    //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
-
-                                                                                }
-
-
-                                                                            }
-
-                                                                            // SI ES MODO LINEAL:  ***********************************************************************************************
-                                                                            else {
-
-
-                                                                                var longitud = parseFloat(window.objetodah[(toolqueseusara - 1)]['longitud']);
-
-                                                                                var indexher = toolqueseusara - 1;
-                                                                                var valortool = toolqueseusara;
-
-
-
-
-                                                                                var HttpClient = function() {
-
-                                                                                    this.get = function(aUrl, aCallback) {
-                                                                                        var anHttpRequest = new XMLHttpRequest();
-                                                                                        anHttpRequest.onreadystatechange = function() {
-                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                aCallback(anHttpRequest.responseText);
-                                                                                        }
-                                                                                        anHttpRequest.open("GET", aUrl, true);
-                                                                                        anHttpRequest.send(null);
-                                                                                    }
-                                                                                }
-                                                                                var theurl = 'http://192.168.0.98/sigherramienta/' + toolqueseusara;
-                                                                                var client = new HttpClient();
-                                                                                client.get(theurl, function(response) {});
-
-                                                                                var enhusillo = 100;
-
-                                                                                //COMPENSACION MODO LINEAL
-                                                                                var HttpClient = function() {
-
-                                                                                    this.get = function(aUrl, aCallback) {
-                                                                                        var anHttpRequest = new XMLHttpRequest();
-                                                                                        anHttpRequest.onreadystatechange = function() {
-                                                                                            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                aCallback(anHttpRequest.responseText);
-                                                                                        }
-                                                                                        anHttpRequest.open("GET", aUrl, true);
-                                                                                        anHttpRequest.send(null);
-                                                                                    }
-                                                                                }
-                                                                                var theurl = 'http://192.168.0.98/api/origenesactivos/';
-                                                                                var client = new HttpClient();
-                                                                                client.get(theurl, function(response) {
-
-                                                                                    var obj = JSON.parse(response);
-
-                                                                                    var valorx = obj['x'];
-                                                                                    var valory = obj['y'];
-                                                                                    var valorz = parseFloat(obj['z']);
-                                                                                    var valora = obj['a'];
-
-                                                                                    valorz = valorz + longitud;
-                                                                                    valorz = valorz.toString();
-
-                                                                                    var cmd = "G10 L2 P1 X" + valorx + " Y" + valory + " A" + valora + " Z" + valorz;
-                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3 " + cmd);
-
-
-
-                                                                                });
-
-
-
-
-
-                                                                                //FIN COMPENSACION
-
-                                                                                var valortoolenhusillo = valortool;
-
-                                                                                //BUSCAR SI HAY HERRAMIENTA EN EL HUSILLO
-                                                                                for (var i = 0; i < 17; i++) {
-
-                                                                                    if (parseInt(obj[i]['enhusillo']) == 1) {
-                                                                                        enhusillo = 1;
-                                                                                        var indexherenhusillo = i;
-                                                                                        var valortoolenhusillo = i + 1;
-                                                                                    }
-
-                                                                                }
-
-                                                                                if (valortoolenhusillo != valortool) {
-                                                                                    //SI HAY: REGRESARLA A POSICIÓN ORIGINAL  Y luego cambiar nueva
-                                                                                    if (enhusillo == 1) {
-
-                                                                                        // cambio posicion original.
-
-
-                                                                                        // ROTAR EN TABLA
-                                                                                        var HttpClient = function() {
-
-                                                                                            this.get = function(aUrl, aCallback) {
-                                                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                                                anHttpRequest.onreadystatechange = function() {
-                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                        aCallback(anHttpRequest.responseText);
-                                                                                                }
-                                                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                                                anHttpRequest.send(null);
-                                                                                            }
-                                                                                        }
-                                                                                        var theurl = 'http://192.168.0.98/rotarcar/' + valortoolenhusillo;
-                                                                                        var client = new HttpClient();
-                                                                                        client.get(theurl, function(response) {
-
-                                                                                            // CAMBIAR EN TABLA
-                                                                                            var HttpClient = function() {
-
-                                                                                                this.get = function(aUrl, aCallback) {
-                                                                                                    var anHttpRequest = new XMLHttpRequest();
-                                                                                                    anHttpRequest.onreadystatechange = function() {
-                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                            aCallback(anHttpRequest.responseText);
-                                                                                                    }
-                                                                                                    anHttpRequest.open("GET", aUrl, true);
-                                                                                                    anHttpRequest.send(null);
-                                                                                                }
-                                                                                            }
-                                                                                            var theurl = 'http://192.168.0.98/cambiobrazomodop';
-                                                                                            var client = new HttpClient();
-                                                                                            client.get(theurl, function(response) {});
-
-                                                                                        });
-
-                                                                                        //Mandar a hacer el cambio real
-
-                                                                                        cmd = "Q" + valortoolenhusillo + ";1";
-                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
-
-
-
-
-                                                                                        /* ESTO TENDRIA QUE IR EN EL FINAL De la cadena de X.
-                                        
-                                                    setTimeout( function(){
-                                                        
-                                                        
-                                                            var HttpClient = function () {
-                                                                        
-                                                                        this.get = function (aUrl, aCallback) {
-                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                anHttpRequest.onreadystatechange = function () {
-                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                aCallback(anHttpRequest.responseText);
-                                                                }
-                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                anHttpRequest.send(null);
-                                                                }
-                                                                }
-                                                                var theurl = 'http://192.168.0.98/rotarcar/'+toolausar;
-                                                                var client = new HttpClient();
-                                                                client.get(theurl, function (response) {
-                                                                    var HttpClient = function () {
-                                                                        
-                                                                        this.get = function (aUrl, aCallback) {
-                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                anHttpRequest.onreadystatechange = function () {
-                                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                aCallback(anHttpRequest.responseText);
-                                                                }
-                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                anHttpRequest.send(null);
-                                                                }
-                                                                }
-                                                                var theurl = 'http://192.168.0.98/cambiobrazomodop';
-                                                                var client = new HttpClient();
-                                                                client.get(theurl, function (response) {
-                                                                });
-                                                                });
-                                                        
-                                                                // CAMBIAR EN TABLA
-                                                        
-                                        
-                                                        //Cambiar real.
-                                                            cmd = "x"+toolausar+";"+obj[(toolausar-1)]['longitud'];
-                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd );
-                                        
-                                                        },7000);
-                                                        */
-
-                                                                                    }
-                                                                                }
-                                                                                // Si la herramienta en el husillo es la herramienta que se pidió.
-                                                                                else {
-
-
-                                                                                    if (enhusillo != 1) {
-
-                                                                                        var HttpClient = function() {
-
-                                                                                            this.get = function(aUrl, aCallback) {
-                                                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                                                anHttpRequest.onreadystatechange = function() {
-                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                        aCallback(anHttpRequest.responseText);
-                                                                                                }
-                                                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                                                anHttpRequest.send(null);
-                                                                                            }
-                                                                                        }
-                                                                                        var theurl = 'http://192.168.0.98/rotarcar/' + toolqueseusara;
-                                                                                        var client = new HttpClient();
-                                                                                        client.get(theurl, function(response) {
-
-                                                                                            // CAMBIAR EN TABLA
-                                                                                            var HttpClient = function() {
-
-                                                                                                this.get = function(aUrl, aCallback) {
-                                                                                                    var anHttpRequest = new XMLHttpRequest();
-                                                                                                    anHttpRequest.onreadystatechange = function() {
-                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                            aCallback(anHttpRequest.responseText);
-                                                                                                    }
-                                                                                                    anHttpRequest.open("GET", aUrl, true);
-                                                                                                    anHttpRequest.send(null);
-                                                                                                }
-                                                                                            }
-                                                                                            var theurl = 'http://192.168.0.98/cambiobrazomodop';
-                                                                                            var client = new HttpClient();
-                                                                                            client.get(theurl, function(response) {});
-
-                                                                                        });
-
-                                                                                        cmd = "q" + toolqueseusara + ";1";
-                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send COM4 " + cmd);
-
-                                                                                    } else {
-
-                                                                                        esto.onM10BtnClick();
-                                                                                        esto.activarm3();
-                                                                                        //ENCENDERHUSILLO
-                                                                                        setTimeout(() => {
-                                                                                            var HttpClient = function() {
-                                                                                                this.get = function(aUrl, aCallback) {
-                                                                                                    var anHttpRequest = new XMLHttpRequest();
-                                                                                                    anHttpRequest.onreadystatechange = function() {
-                                                                                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                            aCallback(anHttpRequest.responseText);
-                                                                                                    }
-                                                                                                    anHttpRequest.open("GET", aUrl, true);
-                                                                                                    anHttpRequest.send(null);
-                                                                                                }
-                                                                                            }
-                                                                                            var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                            var client = new HttpClient();
-                                                                                            client.get(theurl, function(response) {
-
-                                                                                                response = response.split("Pin A5 reads analog ");
-                                                                                                response = parseInt(response);
-
-                                                                                                if (response < 900) {
-                                                                                                    var cmd = "~";
-                                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                                } else {
-
-
-                                                                                                    setTimeout(function() {
-
-                                                                                                        var HttpClient = function() {
-                                                                                                            this.get = function(aUrl, aCallback) {
-                                                                                                                var anHttpRequest = new XMLHttpRequest();
-                                                                                                                anHttpRequest.onreadystatechange = function() {
-                                                                                                                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                                                                                                        aCallback(anHttpRequest.responseText);
-                                                                                                                }
-                                                                                                                anHttpRequest.open("GET", aUrl, true);
-                                                                                                                anHttpRequest.send(null);
-                                                                                                            }
-                                                                                                        }
-                                                                                                        var theurl = 'http://192.168.0.88/arduino/analog/5';
-                                                                                                        var client = new HttpClient();
-                                                                                                        client.get(theurl, function(response) {
-
-                                                                                                            response = response.split("Pin A5 reads analog ");
-                                                                                                            response = parseInt(response[1]);
-                                                                                                            if (response < 900) {
-                                                                                                                var cmd = "~";
-                                                                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-                                                                                                                chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                                                                                            } else {
-
-                                                                                                                var erroresexistentes = document.getElementById("textoerrores").value;
-                                                                                                                erroresexistentes = erroresexistentes.concat("\\\n\\\n");
-                                                                                                                erroresexistentes = erroresexistentes.concat("HUSILLO NO COMENZO A GIRAR");
-                                                                                                                document.getElementById("textoerrores").value = erroresexistentes;
-                                                                                                                document.getElementById("indicadorerrorejec").className = "led-red";
-                                                                                                            }
-
-
-                                                                                                        });
-
-                                                                                                    }, 10000)
-
-                                                                                                }
-
-                                                                                            });
-
-                                                                                        }, 10000);
-
-                                                                                        //EN HUSILLO, SOLO BAJAR Y ARRANCAR.
-                                                                                    }
-                                                                                }
-
-
-
-
-                                                                            }
-                                                                        }
-
-                                                                    });
-
-
-
-
-
-
-
-                                                                    //TERMINA CH
-
-
-
-
-
-
-                                                                } else {
-
-                                                                    alert("Debe bloquear las válvula del carrusel para poder moverlo.");
-
-                                                                }
-
-
-
-                                                            });
-
-                                                        } else {
-                                                            alert("El husillo no ha terminado de girar");
-                                                        }
-
-                                                    });
-
-
-
-
-
-                                                }
-                                            })
-
-                                        }
+                                            }
                                             break;
 
 
@@ -10967,7 +10967,7 @@ TERMINA COMENT *****/
 
                                             if (!sigespecial && !errora && !errory) {
                                                 setTimeout(function() {
-                                                   
+
                                                     temp = 0;
                                                     var cmd = "~";
                                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
@@ -11351,13 +11351,13 @@ TERMINA COMENT *****/
 
 
                     });
-                  
+
 
 
 
                     var cmd = "g";
                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort2 + " " + cmd);
-entrabajo = 0;
+                    entrabajo = 0;
                     document.getElementById("indicadorposhusillo").className = "led-off";
 
                     chilipeppr.publish(
@@ -11396,51 +11396,51 @@ entrabajo = 0;
                     var client = new HttpClient();
                     client.get(theurl, function(response) {
                         var res = parseFloat(response);
-                        if (res<30 && entrabajo==0){
+                        if (res < 30 && entrabajo == 0) {
 
 
-                    var HttpClient = function() {
-                        this.get = function(aUrl, aCallback) {
-                            var anHttpRequest = new XMLHttpRequest();
-                            anHttpRequest.onreadystatechange = function() {
-                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                    aCallback(anHttpRequest.responseText);
+                            var HttpClient = function() {
+                                this.get = function(aUrl, aCallback) {
+                                    var anHttpRequest = new XMLHttpRequest();
+                                    anHttpRequest.onreadystatechange = function() {
+                                        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                            aCallback(anHttpRequest.responseText);
+                                    }
+                                    anHttpRequest.open("GET", aUrl, true);
+                                    anHttpRequest.send(null);
+                                }
                             }
-                            anHttpRequest.open("GET", aUrl, true);
-                            anHttpRequest.send(null);
-                        }
-                    }
-                    var theurl = 'http://192.168.0.80/arduino/digital/8/0';
-                    var client = new HttpClient();
-                    client.get(theurl, function(response) {
+                            var theurl = 'http://192.168.0.80/arduino/digital/8/0';
+                            var client = new HttpClient();
+                            client.get(theurl, function(response) {
 
 
 
-                    });
-
-         
-                        theurl = 'http://192.168.0.80/arduino/digital/3/1';
-                        client.get(theurl, function(response) {
+                            });
 
 
-
-                        });
-
-            
+                            theurl = 'http://192.168.0.80/arduino/digital/3/1';
+                            client.get(theurl, function(response) {
 
 
-                    var cmd = "p";
-                    entrabajo = 1;
-                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort2 + " " + cmd);
 
-                    document.getElementById("indicadorposhusillo").className = "led-green";
+                            });
 
-                    chilipeppr.publish(
-                        '/com-chilipeppr-elem-flashmsg/flashmsg',
-                        "Estado del Husillo",
-                        "Husillo en posición de trabajo",
-                        4000 /* show for 2 second */
-                    );
+
+
+
+                            var cmd = "p";
+                            entrabajo = 1;
+                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + serialPort2 + " " + cmd);
+
+                            document.getElementById("indicadorposhusillo").className = "led-green";
+
+                            chilipeppr.publish(
+                                '/com-chilipeppr-elem-flashmsg/flashmsg',
+                                "Estado del Husillo",
+                                "Husillo en posición de trabajo",
+                                4000 /* show for 2 second */
+                            );
 
                         }
                     });
@@ -16223,6 +16223,21 @@ entrabajo = 0;
 
                                 if (response == 1) {
 
+                                    var cmd = "$3ma=3";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+
+                                    var cmd = "$2ma=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+
+
 
                                     self.sacarpaletaizquierda();
 
@@ -16427,6 +16442,21 @@ entrabajo = 0;
                                 response = parseInt(res[1]);
 
                                 if (response == 1) {
+
+                                    var cmd = "$3ma=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+
+
+                                    var cmd = "$2ma=3";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
 
                                     self.sacarpaletaderecha();
@@ -17294,7 +17324,7 @@ entrabajo = 0;
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">Scode</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">SUode</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
