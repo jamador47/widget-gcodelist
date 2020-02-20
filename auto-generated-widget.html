@@ -7652,20 +7652,7 @@ document.getElementById("salirpausa2").disabled = true;
 
                                         /***************************************INICIO M57 SACAR PALETA DERECHA*********/
                                     case (gcodeline.match(/\bM57\b/i) || {}).input:
-                                          var cmd = "$3ma=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                               
-                                    var cmd = "$2ma=3";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                               
+  
                                         this.activarM57();
 
                                         ocupado = 0;
@@ -7684,20 +7671,7 @@ document.getElementById("salirpausa2").disabled = true;
 
 
                                     case (gcodeline.match(/\bM58\b/i) || {}).input:
-                                        var cmd = "$3ma=3";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-
-                                    var cmd = "$2ma=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                              
+                                            
                                         this.activarM58();
                                         ocupado = 0;
                                         this.verificarmesaderechadentro();
@@ -16055,13 +16029,40 @@ alert("ENTRE");
                                 var res = response.split("Pin D29 set to ");
                                 response = parseInt(res[1]);
                                 if (response == 1) {
+                                    var cmd = "$3ma=3";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+
+                                    var cmd = "$2ma=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    
                                     document.getElementById("salirpausa").disabled = true;
                                     var cmd = "~";
+                                    document.getElementById("salirpausa2").disabled = true;
+                                    var cmd = "~";
+                                    document.getElementById("salirpausa2").style = " background-color:gray"
+                                   
                                     document.getElementById("salirpausa").style = " background-color:gray"
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
 
 
                                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                }else{
+                                    document.getElementById("salirpausa").disabled = false;
+                                    
+                                    document.getElementById("salirpausa").style = " background-color:greenyellow"
+                                    document.getElementById("salirpausa2").disabled = false;
+                                    
+                                    document.getElementById("salirpausa2").style = " background-color:greenyellow"
+                                    
+
                                 }
                             });
 
@@ -16110,14 +16111,38 @@ alert("ENTRE");
                                 var res = response.split("Pin D40 set to ");
                                 response = parseInt(res[1]);
                                 if (response == 1) {
+                                    var cmd = "$3ma=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$ysx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                               
+                                    var cmd = "$2ma=3";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asn=0";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var cmd = "$asx=1";
+                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                               
 
                                     document.getElementById("salirpausa").disabled = true;
                                     document.getElementById("salirpausa").style = " background-color:gray"
+                                    document.getElementById("salirpausa2").disabled = true;
+                                    document.getElementById("salirpausa2").style = " background-color:gray"
+                                    
                                     var cmd = "~";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
 
 
                                     chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                }
+                                else{
+                                    document.getElementById("salirpausa").disabled = false;
+                                    document.getElementById("salirpausa").style = " background-color:greenyellow"
+                                    document.getElementById("salirpausa2").disabled = false;
+                                    document.getElementById("salirpausa2").style = " background-color:greenyellow"
+                                  
                                 }
                             });
 
@@ -17034,7 +17059,7 @@ alert("ENTRE");
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">Acode</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">Ycode</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
