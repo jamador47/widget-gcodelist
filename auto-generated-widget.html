@@ -12917,6 +12917,14 @@ TERMINA COMENT *****/
 
                     });
 
+                    setTimeout(function(){
+                        var theurl = 'http://192.168.0.82/arduino/digital/34/1';
+                    var client = new HttpClient();
+                    client.get(theurl, function(response) {
+
+                    });
+                  
+
                     setTimeout(function() {
 
                         var HttpClient = function() {
@@ -13006,7 +13014,7 @@ TERMINA COMENT *****/
 
                     }, 1000)
 
-
+                },2000)
 
                 },
 
@@ -14442,12 +14450,15 @@ TERMINA COMENT *****/
                             }
                         }
 
+                        var theurl = 'http://192.168.0.83/arduino/digital/42/1';
+                    var client = new HttpClient();
+                     
+                        client.get(theurl, function(response) {});
 
                         var theurl = 'http://192.168.0.83/arduino/digital/42/0';
                         var client = new HttpClient();
+
                         client.get(theurl, function(response) {});
-
-
 
 
                         var HttpClient = function() {
