@@ -16009,26 +16009,23 @@ TERMINA COMENT *****/
 
 
                 verificarmesaderechadentro: function(evt) {
-                    var HttpCliente = function() {
-                        this.get = function(aUrl, aCallback) {
-                            var anHttpRequest = new XMLHttpRequest();
-                            anHttpRequest.onreadystatechange = function() {
-                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                    aCallback(anHttpRequest.responseText);
-                            }
-                            anHttpRequest.open("GET", aUrl, true);
-                            anHttpRequest.send(null);
-                        }
-                    }
 
-                    var elurl = 'http://192.168.0.83/arduino/digital/32';
-                    var cliente = new HttpCliente();
-                    cliente.get(elurl, function(response) {
+                    var cmd = "$3ma=3";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                    var cmd = "$asn=0";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                    var cmd = "$asx=1";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                    setTimeout(function() {
+                        var cmd = "$2ma=1";
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        var cmd = "$ysn=0";
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        var cmd = "$ysx=1";
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
-                        var res = response.split("Pin D32 set to ");
-                        response = parseInt(res[1]);
+                        setTimeout(function() {
 
-                        if (response == 1) {
 
                             var HttpCliente = function() {
                                 this.get = function(aUrl, aCallback) {
@@ -16042,28 +16039,35 @@ TERMINA COMENT *****/
                                 }
                             }
 
-                            var elurl = 'http://192.168.0.83/arduino/digital/29';
+                            var elurl = 'http://192.168.0.83/arduino/digital/32';
                             var cliente = new HttpCliente();
                             cliente.get(elurl, function(response) {
-                                var res = response.split("Pin D29 set to ");
+
+                                var res = response.split("Pin D32 set to ");
                                 response = parseInt(res[1]);
+
                                 if (response == 1) {
 
-                                    var cmd = "$3ma=3";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    setTimeout(function() {
-                                        var cmd = "$2ma=1";
-                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                        var cmd = "$ysn=0";
-                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                        var cmd = "$ysx=1";
-                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var HttpCliente = function() {
+                                        this.get = function(aUrl, aCallback) {
+                                            var anHttpRequest = new XMLHttpRequest();
+                                            anHttpRequest.onreadystatechange = function() {
+                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                    aCallback(anHttpRequest.responseText);
+                                            }
+                                            anHttpRequest.open("GET", aUrl, true);
+                                            anHttpRequest.send(null);
+                                        }
+                                    }
 
-                                        setTimeout(function() {
+                                    var elurl = 'http://192.168.0.83/arduino/digital/29';
+                                    var cliente = new HttpCliente();
+                                    cliente.get(elurl, function(response) {
+                                        var res = response.split("Pin D29 set to ");
+                                        response = parseInt(res[1]);
+                                        if (response == 1) {
+
+
 
                                             document.getElementById("salirpausa").disabled = true;
                                             var cmd = "~";
@@ -16079,45 +16083,46 @@ TERMINA COMENT *****/
 
 
 
-                                        }, 1000);
-                                    }, 1000)
+
+                                        } else {
+                                            alert("MESA DER NO ESTA EN POSICION DE TRABAJO, LLEVELA A POSICION DE TRABAJO Y LUEGO SALGA DE PAUSA");
+
+
+
+                                        }
+                                    });
+
+
                                 } else {
                                     alert("MESA DER NO ESTA EN POSICION DE TRABAJO, LLEVELA A POSICION DE TRABAJO Y LUEGO SALGA DE PAUSA");
 
-
-
                                 }
                             });
-
-
-                        } else {
-                            alert("MESA DER NO ESTA EN POSICION DE TRABAJO, LLEVELA A POSICION DE TRABAJO Y LUEGO SALGA DE PAUSA");
-
-                        }
-                    });
+                        }, 1000);
+                    }, 1000)
                 },
 
                 verificarmesaizqdentro: function(evt) {
-                    var HttpCliente = function() {
-                        this.get = function(aUrl, aCallback) {
-                            var anHttpRequest = new XMLHttpRequest();
-                            anHttpRequest.onreadystatechange = function() {
-                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                                    aCallback(anHttpRequest.responseText);
-                            }
-                            anHttpRequest.open("GET", aUrl, true);
-                            anHttpRequest.send(null);
-                        }
-                    }
 
-                    var elurl = 'http://192.168.0.82/arduino/digital/41';
-                    var cliente = new HttpCliente();
-                    cliente.get(elurl, function(response) {
+                    var cmd = "$3ma=1";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                    var cmd = "$ysn=0";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                    var cmd = "$ysx=1";
+                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
-                        var res = response.split("Pin D41 set to ");
-                        response = parseInt(res[1]);
+                    setTimeout(function() {
+                        var cmd = "$2ma=3";
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        var cmd = "$asn=0";
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                        var cmd = "$asx=1";
+                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
-                        if (response == 1) {
+                        setTimeout(function() {
+
+
+
 
                             var HttpCliente = function() {
                                 this.get = function(aUrl, aCallback) {
@@ -16131,28 +16136,33 @@ TERMINA COMENT *****/
                                 }
                             }
 
-                            var elurl = 'http://192.168.0.82/arduino/digital/40';
+                            var elurl = 'http://192.168.0.82/arduino/digital/41';
                             var cliente = new HttpCliente();
                             cliente.get(elurl, function(response) {
-                                var res = response.split("Pin D40 set to ");
+
+                                var res = response.split("Pin D41 set to ");
                                 response = parseInt(res[1]);
+
                                 if (response == 1) {
-                                    var cmd = "$3ma=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
-                                    setTimeout(function() {
-                                        var cmd = "$2ma=3";
-                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                        var cmd = "$asn=0";
-                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                        var cmd = "$asx=1";
-                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                    var HttpCliente = function() {
+                                        this.get = function(aUrl, aCallback) {
+                                            var anHttpRequest = new XMLHttpRequest();
+                                            anHttpRequest.onreadystatechange = function() {
+                                                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                                                    aCallback(anHttpRequest.responseText);
+                                            }
+                                            anHttpRequest.open("GET", aUrl, true);
+                                            anHttpRequest.send(null);
+                                        }
+                                    }
 
-                                        setTimeout(function() {
+                                    var elurl = 'http://192.168.0.82/arduino/digital/40';
+                                    var cliente = new HttpCliente();
+                                    cliente.get(elurl, function(response) {
+                                        var res = response.split("Pin D40 set to ");
+                                        response = parseInt(res[1]);
+                                        if (response == 1) {
 
                                             document.getElementById("salirpausa").disabled = true;
                                             document.getElementById("salirpausa").style = " background-color:gray"
@@ -16164,20 +16174,21 @@ TERMINA COMENT *****/
 
 
                                             chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                        }, 1000);
-                                    }, 1000);
+
+
+                                        } else {
+                                            alert("MESA IZQ NO ESTA EN POSICION DE TRABAJO, LLEVELA A POSICION DE TRABAJO Y LUEGO SALGA DE PAUSA");
+
+                                        }
+                                    });
+
 
                                 } else {
                                     alert("MESA IZQ NO ESTA EN POSICION DE TRABAJO, LLEVELA A POSICION DE TRABAJO Y LUEGO SALGA DE PAUSA");
-
                                 }
                             });
-
-
-                        } else {
-                            alert("MESA IZQ NO ESTA EN POSICION DE TRABAJO, LLEVELA A POSICION DE TRABAJO Y LUEGO SALGA DE PAUSA");
-                        }
-                    });
+                        }, 1000);
+                    }, 1000);
                 },
                 activarM57: function(evt) {
 
@@ -17088,7 +17099,7 @@ TERMINA COMENT *****/
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">Bcode</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">Ccode</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
