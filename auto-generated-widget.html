@@ -13378,6 +13378,8 @@ TERMINA COMENT *****/
                                                                                 // LEE SI MESA ESTA EN CARGA
                                                                                 var theurl = 'http://192.168.0.82/arduino/digital/37';
                                                                                 var client = new HttpClient();
+
+                                                                                setTimeout(function(){
                                                                                 client.get(theurl, function(response) {
 
                                                                                     var res = response.split("Pin D37 set to ");
@@ -13431,13 +13433,12 @@ TERMINA COMENT *****/
 
                                                                                         document.getElementById("textoerrores").value = erroresexistentes;
                                                                                         document.getElementById("indicadorerrorejec").className = "led-red";
-                                                                                        var cmd = "!";
-                                                                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-
+        
 
 
                                                                                     }
                                                                                 });
+                                                                            },2000);
 
 
 
@@ -13628,6 +13629,8 @@ TERMINA COMENT *****/
                                                         // LEE SI MESA ESTA EN CARGA
                                                         var theurl = 'http://192.168.0.82/arduino/digital/37';
                                                         var client = new HttpClient();
+
+                                                        setTimeout(function(){
                                                         client.get(theurl, function(response) {
 
                                                             var res = response.split("Pin D37 set to ");
@@ -13681,15 +13684,15 @@ TERMINA COMENT *****/
 
                                                                 document.getElementById("textoerrores").value = erroresexistentes;
                                                                 document.getElementById("indicadorerrorejec").className = "led-red";
-                                                                var cmd = "!";
-                                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-
+                
 
 
                                                             }
-                                                        });
-
-
+                                                       
+                                                       
+                                                  
+                                                });
+                                            },2000);
 
 
 
@@ -14948,9 +14951,7 @@ TERMINA COMENT *****/
 
                                                                                     document.getElementById("textoerrores").value = erroresexistentes;
                                                                                     document.getElementById("indicadorerrorejec").className = "led-red";
-                                                                                    var cmd = "!";
-                                                                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-
+                                                                                    
 
 
                                                                                 }
@@ -15201,9 +15202,7 @@ TERMINA COMENT *****/
 
                                                             document.getElementById("textoerrores").value = erroresexistentes;
                                                             document.getElementById("indicadorerrorejec").className = "led-red";
-                                                            var cmd = "!";
-                                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + this.serialPort + " " + cmd);
-
+                        
 
 
                                                         }
