@@ -219,9 +219,7 @@
             /* height:100%; */
         }
         
-        #com-chilipeppr-widget-gcode-body-jumpscroll-wrapper {
-       
-        }
+        #com-chilipeppr-widget-gcode-body-jumpscroll-wrapper {}
         
         #com-chilipeppr-widget-gcode-body-jumpscroll {
             /* position: absolute; */
@@ -3321,10 +3319,10 @@
                 salirpausa2: function(event) {
 
 
-chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-document.getElementById("salirpausa2").style = " background-color:gray"
+                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                    document.getElementById("salirpausa2").style = " background-color:gray"
 
-document.getElementById("salirpausa2").disabled = true;
+                    document.getElementById("salirpausa2").disabled = true;
 
                 },
                 salirpausa: function(event) {
@@ -5684,7 +5682,7 @@ document.getElementById("salirpausa2").disabled = true;
                             var gcodeline = this.gcode.lines[idnum - 1];
                             var gcodelineplus = this.gcode.lines[idnum];
 
-                     
+
 
 
                             if (gcodeline.match(/\bM6\b/i) || gcodeline.match(/\bM3\b/i) || gcodeline.match(/\bM67\b/i) ||
@@ -7654,22 +7652,22 @@ document.getElementById("salirpausa2").disabled = true;
                                     case (gcodeline.match(/\bM57\b/i) || {}).input:
                                     case (gcodeline.match(/\bM57\b/i) || {}).input:
                                         document.getElementById("salirpausa").disabled = false;
-                                    
-                                    document.getElementById("salirpausa").style = " background-color:greenyellow"
-                                    document.getElementById("salirpausa2").disabled = false;
-                                    
-                                    document.getElementById("salirpausa2").style = " background-color:greenyellow"
-                                    
-                                    var esto = this;
-                                    
-                                       esto.activarM57();
+
+                                        document.getElementById("salirpausa").style = " background-color:greenyellow"
+                                        document.getElementById("salirpausa2").disabled = false;
+
+                                        document.getElementById("salirpausa2").style = " background-color:greenyellow"
+
+                                        var esto = this;
+
+                                        esto.activarM57();
 
                                         ocupado = 0;
 
                                         esto.verificarmesaizqdentro();
-                               
-                                  
-                                  
+
+
+
 
                                         break;
                                         /***************************************FIN M57 SACAR PALETA DERECHA*********/
@@ -7682,19 +7680,19 @@ document.getElementById("salirpausa2").disabled = true;
 
 
                                     case (gcodeline.match(/\bM58\b/i) || {}).input:
-                                    document.getElementById("salirpausa").disabled = false;
-                                    
-                                    document.getElementById("salirpausa").style = " background-color:greenyellow"
-                                    document.getElementById("salirpausa2").disabled = false;
-                                    
-                                    document.getElementById("salirpausa2").style = " background-color:greenyellow"
-                                 var  esto = this;
+                                        document.getElementById("salirpausa").disabled = false;
 
-                           
+                                        document.getElementById("salirpausa").style = " background-color:greenyellow"
+                                        document.getElementById("salirpausa2").disabled = false;
+
+                                        document.getElementById("salirpausa2").style = " background-color:greenyellow"
+                                        var esto = this;
+
+
                                         esto.activarM58();
                                         ocupado = 0;
                                         esto.verificarmesaderechadentro();
-                                    
+
                                         // alert ("M58");
 
 
@@ -8397,7 +8395,7 @@ TERMINA COMENT *****/
                                             document.getElementById("salirpausa").disabled = false;
                                             document.getElementById("salirpausa").style = "background-color: greenyellow";
                                             document.getElementById("salirpausa2").disabled = false;
-                                        document.getElementById("salirpausa2").style = "background-color: greenyellow";
+                                            document.getElementById("salirpausa2").style = "background-color: greenyellow";
 
 
                                             break;
@@ -10241,55 +10239,55 @@ TERMINA COMENT *****/
 
                                             /***************************************INICIO M57 SACAR PALETA DERECHA*********/
                                         case (gcodeline.match(/\bM57\b/i) || {}).input:
-                                        document.getElementById("salirpausa").disabled = false;
-                                    
-                                    document.getElementById("salirpausa").style = " background-color:greenyellow"
-                                    document.getElementById("salirpausa2").disabled = false;
-                                    
-                                    document.getElementById("salirpausa2").style = " background-color:greenyellow"
-                                    
-                                    var esto = this;
-                                        var cmd = "$3ma=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                               
-                              setTimeout(function(){
-                                    var cmd = "$2ma=3";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                               
-                                       esto.activarM57();
+                                            document.getElementById("salirpausa").disabled = false;
 
-                                        ocupado = 0;
+                                            document.getElementById("salirpausa").style = " background-color:greenyellow"
+                                            document.getElementById("salirpausa2").disabled = false;
 
-                                        esto.verificarmesaizqdentro();
-                               
-                                    },1000) ;
+                                            document.getElementById("salirpausa2").style = " background-color:greenyellow"
+
+                                            var esto = this;
+                                            var cmd = "$3ma=1";
+                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                            var cmd = "$ysn=0";
+                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                            var cmd = "$ysx=1";
+                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+
+                                            setTimeout(function() {
+                                                var cmd = "$2ma=3";
+                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                                var cmd = "$asn=0";
+                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                                var cmd = "$asx=1";
+                                                chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+
+                                                esto.activarM57();
+
+                                                ocupado = 0;
+
+                                                esto.verificarmesaizqdentro();
+
+                                            }, 1000);
                                             break;
 
                                             /***************************************INICIO M58 Meter PALETA DERECHA*********/
 
 
                                         case (gcodeline.match(/\bM58\b/i) || {}).input:
-                                        document.getElementById("salirpausa").disabled = false;
-                                    
-                                    document.getElementById("salirpausa").style = " background-color:greenyellow"
-                                    document.getElementById("salirpausa2").disabled = false;
-                                    
-                                    document.getElementById("salirpausa2").style = " background-color:greenyellow"
-                                  var esto = this;
+                                            document.getElementById("salirpausa").disabled = false;
+
+                                            document.getElementById("salirpausa").style = " background-color:greenyellow"
+                                            document.getElementById("salirpausa2").disabled = false;
+
+                                            document.getElementById("salirpausa2").style = " background-color:greenyellow"
+                                            var esto = this;
 
 
-                                        esto.activarM58();
-                                        ocupado = 0;
-                                        esto.verificarmesaderechadentro();
-                                  
+                                            esto.activarM58();
+                                            ocupado = 0;
+                                            esto.verificarmesaderechadentro();
+
                                             // alert ("M58");
 
 
@@ -15916,7 +15914,7 @@ TERMINA COMENT *****/
 
                 activarM58: function(evt) {
 
-alert("ENTRE");
+                    alert("ENTRE");
 
                     // VERIFICAR SI MESA A ESTA AFUERA
 
@@ -16057,43 +16055,42 @@ alert("ENTRE");
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$asx=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-setTimeout(function(){
-                                    var cmd = "$2ma=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$ysx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                               
-                                    setTimeout(function(){
+                                    setTimeout(function() {
+                                        var cmd = "$2ma=1";
+                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                        var cmd = "$ysn=0";
+                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                        var cmd = "$ysx=1";
+                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
 
-                                        document.getElementById("salirpausa").disabled = true;
-                                    var cmd = "~";
-                                    document.getElementById("salirpausa2").disabled = true;
-                                    var cmd = "~";
-                                    document.getElementById("salirpausa2").style = " background-color:gray"
-                                   
-                                    document.getElementById("salirpausa").style = " background-color:gray"
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
+                                        setTimeout(function() {
 
+                                            document.getElementById("salirpausa").disabled = true;
+                                            var cmd = "~";
+                                            document.getElementById("salirpausa2").disabled = true;
+                                            var cmd = "~";
+                                            document.getElementById("salirpausa2").style = " background-color:gray"
 
-                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                         
+                                            document.getElementById("salirpausa").style = " background-color:gray"
+                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
 
 
-                                },1000);
-                            },1000)   
-                                          }else{
+                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+
+
+
+                                        }, 1000);
+                                    }, 1000)
+                                } else {
                                     alert("MESA DER NO ESTA EN POSICION DE TRABAJO, LLEVELA A POSICION DE TRABAJO Y LUEGO SALGA DE PAUSA");
 
-                                    
+
 
                                 }
                             });
 
 
-                        }
-                        else{
+                        } else {
                             alert("MESA DER NO ESTA EN POSICION DE TRABAJO, LLEVELA A POSICION DE TRABAJO Y LUEGO SALGA DE PAUSA");
 
                         }
@@ -16146,40 +16143,38 @@ setTimeout(function(){
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
                                     var cmd = "$ysx=1";
                                     chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                               
-                               setTimeout(function(){
-                                    var cmd = "$2ma=3";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asn=0";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                                    var cmd = "$asx=1";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
-                               
-                                    setTimeout(function(){
 
-                                    document.getElementById("salirpausa").disabled = true;
-                                    document.getElementById("salirpausa").style = " background-color:gray"
-                                    document.getElementById("salirpausa2").disabled = true;
-                                    document.getElementById("salirpausa2").style = " background-color:gray"
-                                    
-                                    var cmd = "~";
-                                    chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
+                                    setTimeout(function() {
+                                        var cmd = "$2ma=3";
+                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                        var cmd = "$asn=0";
+                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+                                        var cmd = "$asx=1";
+                                        chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf " + serialPort + " " + cmd);
+
+                                        setTimeout(function() {
+
+                                            document.getElementById("salirpausa").disabled = true;
+                                            document.getElementById("salirpausa").style = " background-color:gray"
+                                            document.getElementById("salirpausa2").disabled = true;
+                                            document.getElementById("salirpausa2").style = " background-color:gray"
+
+                                            var cmd = "~";
+                                            chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "sendnobuf COM3" + " " + cmd);
 
 
-                                    chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
-                                },1000);
-                            },1000);
-                                
-                                }
-                                else{
+                                            chilipeppr.publish('/com-chilipeppr-interface-cnccontroller/plannerresume', "");
+                                        }, 1000);
+                                    }, 1000);
+
+                                } else {
                                     alert("MESA IZQ NO ESTA EN POSICION DE TRABAJO, LLEVELA A POSICION DE TRABAJO Y LUEGO SALGA DE PAUSA");
 
                                 }
                             });
 
 
-                        }
-                        else{
+                        } else {
                             alert("MESA IZQ NO ESTA EN POSICION DE TRABAJO, LLEVELA A POSICION DE TRABAJO Y LUEGO SALGA DE PAUSA");
                         }
                     });
@@ -16238,7 +16233,7 @@ setTimeout(function(){
                                 if (response == 1) {
 
 
-                                
+
 
                                     self.sacarpaletaderecha();
 
@@ -16999,9 +16994,9 @@ setTimeout(function(){
                     });
                 },
                 createGcodeDesc: function() {
-                    
+
                     $.each(this.gcodeData, function(i, elem) {
-                        
+
                         elem.re = new RegExp("^(" + elem.code + ")$", "i");
 
                         // collapse leading zeroes
@@ -17016,21 +17011,21 @@ setTimeout(function(){
                             elem.re = new RegExp("^(" + elem.code + "|" + elem.code2 + ")$", "i");
                         }
 
-                       
+
                         if (elem.desc) {
-                            
+
                             elem.desc = elem.desc.replace(/\<.*?\>/g, '');
-                            
+
                             elem.desc = elem.desc.replace(/"/g, '&quot;');
                         }
                         if (elem.info) {
                             elem.info = elem.info.replace(/\<.*?\>/g, '');
-                    
+
                             elem.info = elem.info.replace(/"/g, '&quot;');
                         }
-                    
+
                     });
-                    
+
                 },
                 gcodeIsLoaded: false,
                 gcodeData: [],
@@ -17061,7 +17056,7 @@ setTimeout(function(){
                     this.obj3d = data;
                     this.obj3dmeta = meta;
                     if (this.userCallbackForGet3dObj) {
-                           this.userCallbackForGet3dObj();
+                        this.userCallbackForGet3dObj();
                         this.userCallbackForGet3dObj = null;
                     }
                 },
@@ -17070,7 +17065,7 @@ setTimeout(function(){
                         var lastLine = this.obj3d.userData.lines[this.obj3d.userData.lines.length - 1];
                         if ('p2' in lastLine && 'timeMinsSum' in lastLine.p2) {
                             console.log("we got a timeMinsSum:", lastLine.p2.timeMinsSum);
-                               var curEstDurMins = this.obj3d.userData.lines[indexOfLineAt].p2.timeMinsSum;
+                            var curEstDurMins = this.obj3d.userData.lines[indexOfLineAt].p2.timeMinsSum;
                             var estDurMins = lastLine.p2.timeMinsSum;
                             var remainMins = estDurMins - curEstDurMins;
                             var str = "-";
@@ -17126,7 +17121,7 @@ setTimeout(function(){
 
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right pubsub-dropdown-menu" role="menu">
-                            </ul>
+                    </ul>
                 </div>
             </div>
             <div>
@@ -17146,7 +17141,7 @@ setTimeout(function(){
                     </button>
                     <ul class="dropdown-menu xdropdown-menu-right com-chilipeppr-widget-gcode-menuToolChange" role="menu">
                         <li role="presentation" class="dropdown-header com-chilipeppr-widget-gcode-toolchanges-hdr">(No Tool Changes in Gcode)</li>
-                       </ul>
+                    </ul>
                 </div>
 
             </div>
@@ -17526,20 +17521,20 @@ setTimeout(function(){
                             </label>
                         </div>
 
-                      
+
 
                     </form>
 
                 </div>
-               
+
             </div>
-          
+
         </div>
-      
+
     </div>
 
 
-    
+
     <div class="modal fade " id="com-chilipeppr-widget-gcode-toolchange-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
