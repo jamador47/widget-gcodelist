@@ -14686,6 +14686,10 @@ setTimeout(function(){
                                         }
                                     }
 
+                                    
+                                    var theurl = 'http://192.168.0.83/arduino/digital/42/0';
+                                    var client = new HttpClient();
+                                    client.get(theurl, function(response) {});
                                     // ENCIENDE INTERRUPTOR
                                     var theurl = 'http://192.168.0.83/arduino/digital/43/1';
                                     var client = new HttpClient();
@@ -15345,7 +15349,9 @@ setTimeout(function(){
                                             anHttpRequest.send(null);
                                         }
                                     }
-
+                                    var theurl = 'http://192.168.0.83/arduino/digital/42/0';
+                                    var client = new HttpClient();
+                                    client.get(theurl, function(response) {});
                                     // ENCIENDE INTERRUPTOR
                                     var theurl = 'http://192.168.0.83/arduino/digital/43/1';
                                     var client = new HttpClient();
