@@ -16114,6 +16114,8 @@ setTimeout(function(){
 
 
                                         } else {
+                                            document.getElementById("indicadorerrorejec").className = "led-red";
+
                                             var erroresexistentes = document.getElementById("textoerrores").value;
 
 erroresexistentes = erroresexistentes.concat("\\\n\\\n");
@@ -16128,6 +16130,8 @@ document.getElementById("textoerrores").value = erroresexistentes;
 
 
                                 } else {
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
+
                                     var erroresexistentes = document.getElementById("textoerrores").value;
 
 erroresexistentes = erroresexistentes.concat("\\\n\\\n");
@@ -16235,6 +16239,8 @@ document.getElementById("textoerrores").value = erroresexistentes;
                                         } else {
                                             var erroresexistentes = document.getElementById("textoerrores").value;
 
+                                            document.getElementById("indicadorerrorejec").className = "led-red";
+
 erroresexistentes = erroresexistentes.concat("\\\n\\\n");
 
 erroresexistentes = erroresexistentes.concat("MESA IZQ NO ESTA EN POSICION DE TRABAJO, LLEVELA A POSICION DE TRABAJO Y LUEGO SALGA DE PAUSA");
@@ -16246,6 +16252,9 @@ document.getElementById("textoerrores").value = erroresexistentes;
 
 
                                 } else {
+
+                                    document.getElementById("indicadorerrorejec").className = "led-red";
+
                                     var erroresexistentes = document.getElementById("textoerrores").value;
 
 erroresexistentes = erroresexistentes.concat("\\\n\\\n");
@@ -17168,7 +17177,7 @@ document.getElementById("textoerrores").value = erroresexistentes;
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">YTcode</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">TWcode</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
