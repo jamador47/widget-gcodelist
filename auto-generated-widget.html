@@ -2709,6 +2709,7 @@
 
                 activarm3: function(evt) {
 
+setTimeout(function(){
                     var HttpClient = function() {
                         this.get = function(aUrl, aCallback) {
                             var anHttpRequest = new XMLHttpRequest();
@@ -2851,7 +2852,7 @@
                     });
 
 
-
+                },1500);
 
                 },
 
@@ -17177,7 +17178,7 @@ document.getElementById("textoerrores").value = erroresexistentes;
     <div id="com-chilipeppr-widget-gcodeviewer" class="panel panel-default com-chilipeppr-widget-gcode ">
         <div class="panel-heading">
 
-            <div class="" style="padding-bottom:10;"><span class="panel-title">TWcode</span></div>
+            <div class="" style="padding-bottom:10;"><span class="panel-title">NWcode</span></div>
 
             <div class="btn-toolbar" role="toolbar" style="position:absolute;right:0px;top:0px;padding:10px 15px;">
                 <div class="btn-group plannerpause" data-toggle="popover" data-content="This indicator shows that we're being asked to pause our sending of commands to the CNC controller so we don't overfill the buffer.">
